@@ -11,6 +11,13 @@ name: Weekly digest
 on:
   schedule:
     - cron: "0 6 * * 1"
+  # Rebuild the page when the code that produces it changes, so the site
+  # never lags behind main. (The bot's own digest commits don't trigger this.)
+  push:
+    branches: [main]
+    paths:
+      - "src/nucleuswatch/**"
+      - ".github/workflows/weekly.yml"
   workflow_dispatch:
     inputs:
       days:

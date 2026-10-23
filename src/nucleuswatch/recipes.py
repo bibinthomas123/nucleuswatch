@@ -27,6 +27,7 @@ All thresholds are parameters; tune them for your science case.
 
 from __future__ import annotations
 
+import math
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import asdict, dataclass, field
 from datetime import datetime, timedelta, timezone
@@ -116,6 +117,9 @@ def nuclear_transients(
     if unknown:
         raise ValueError(f"unknown source(s) {sorted(unknown)}; choose from {SOURCES}")
     start, stop = (now - timedelta(days=days)).date(), (now + timedelta(days=1)).date()
+    # Windows that ended more than two days ago no longer change; cache them long.
+    historical = now < datetime.now(timezone.utc) - timedelta(days=2)
+    ttl = HISTORICAL_TTL if historical else 600
     errors: list[str] = []
     funnel = {"alerts_scanned": 0, "objects_scanned": 0, "passed_cuts": 0, "by_source": {}}
     found: dict[str, dict] = {}
@@ -124,7 +128,7 @@ def nuclear_transients(
         alerts: list[dict] = []
         for cls in fink_classes:
             try:
-                rows = fink.latests_all(cls, start, stop, use_cache=use_cache)
+                rows = fink.latests_all(cls, start, stop, use_cache=use_cache, ttl=ttl)
             except BrokerError as exc:
                 errors.append(f"fink latests {cls!r}: {exc}")
                 continue
@@ -135,6 +139,7 @@ def nuclear_transients(
         funnel["objects_scanned"] += len({a.get("i:objectId") for a in alerts})
         # One row per object: keep its brightest passing alert.
         best: dict[str, dict] = {}
+        first_pass: dict[str, float] = {}
         streams: dict[str, set] = {}
         for a in alerts:
             if not cuts.passes(a):
@@ -143,10 +148,12 @@ def nuclear_transients(
             if not oid:
                 continue
             streams.setdefault(oid, set()).add(a["_fink_class"])
+            if a.get("i:jd"):
+                first_pass[oid] = min(first_pass.get(oid, math.inf), a["i:jd"] - JD_TO_MJD)
             if oid not in best or a["i:magpsf"] < best[oid]["i:magpsf"]:
                 best[oid] = a
         for oid, a in best.items():
-            found[oid] = _fink_row(a, sorted(streams[oid]))
+            found[oid] = {**_fink_row(a, sorted(streams[oid])), "first_pass_mjd": first_pass.get(oid)}
         funnel["by_source"]["fink"] = len(best)
 
     used: list[str] = ["fink"] if "fink" in sources else []
@@ -200,8 +207,9 @@ def nuclear_transients(
 
 CANDIDATE_COLUMNS = [
     "object_id", "ra", "dec", "mag", "band", "mjd", "distnr", "distpsnr1", "sgscore1",
-    "ndethist", "fink_class", "first_seen_mjd", "sources",
+    "ndethist", "fink_class", "first_seen_mjd", "first_pass_mjd", "sources",
 ]
+HISTORICAL_TTL = 30 * 86400
 
 
 def _fink_row(a: dict, streams: list[str]) -> dict:
