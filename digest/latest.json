@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-23T19:35:13+00:00",
- "nucleuswatch_version": "0.2.0",
+ "generated": "2026-10-23T19:46:58+00:00",
+ "nucleuswatch_version": "1.0.0",
  "query": {
   "recipe": "nuclear_transients",
   "days": 7.0,
