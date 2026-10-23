@@ -113,20 +113,29 @@ def export_subjects(
 
 def _save_stamps(stamps: dict[str, list], path: Path) -> None:
     import matplotlib.pyplot as plt
-    import numpy as np
 
     fig, axes = plt.subplots(1, len(stamps), figsize=(3 * len(stamps), 3.3))
+    draw_stamps(axes, stamps)
+    fig.tight_layout()
+    fig.savefig(path, dpi=100)
+    plt.close(fig)
+
+
+STAMP_TITLES = {"Science": "New", "Template": "Before", "Difference": "Difference"}
+
+
+def draw_stamps(axes, stamps: dict[str, list]) -> None:
+    """Draw cutouts (from :func:`fink.cutout`) onto ``axes``, one per kind."""
+    import numpy as np
+
     for ax, (kind, pixels) in zip(axes, stamps.items()):
         img = np.asarray(pixels, dtype=float)
         # Percentile stretch per stamp: shows faint host structure without
         # letting the nucleus saturate. Difference images are centred on 0.
         lo, hi = np.nanpercentile(img, [1, 99.5])
         ax.imshow(img, cmap="gray", vmin=lo, vmax=hi, origin="lower", interpolation="nearest")
-        ax.set_title({"Science": "New", "Template": "Before", "Difference": "Difference"}[kind])
+        ax.set_title(STAMP_TITLES[kind])
         ax.set_axis_off()
-    fig.tight_layout()
-    fig.savefig(path, dpi=100)
-    plt.close(fig)
 
 
 def _write_manifest(rows: list[dict], path: Path) -> None:

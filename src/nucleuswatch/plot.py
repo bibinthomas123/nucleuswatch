@@ -22,29 +22,49 @@ def plot_object(obj: MergedObject, ax=None, *, annotate: bool = True):
 
     lc = obj.lightcurve
     if annotate:
+        from matplotlib.lines import Line2D
+
+        # Brokers usually report the very same alerts, so their points would sit
+        # exactly on top of each other. Nudge each broker slightly in time.
+        brokers = sorted(lc["broker"].unique())
+        span = (lc["mjd"].max() - lc["mjd"].min()) or 1.0
+        step = span * 0.012
+        shift = {b: (i - (len(brokers) - 1) / 2) * step for i, b in enumerate(brokers)}
         for (broker, band), grp in lc.groupby(["broker", "band"]):
+            colour = BAND_COLORS.get(band, "grey")
             ax.errorbar(
-                grp["mjd"], grp["mag"], yerr=grp["mag_err"],
-                fmt=BROKER_MARKERS.get(broker, "D"), color=BAND_COLORS.get(band, "grey"),
-                mfc="none" if broker != "alerce" else BAND_COLORS.get(band, "grey"),
-                ms=6, capsize=0, lw=0.8, label=f"{broker} {band}",
+                grp["mjd"] + shift[broker], grp["mag"], yerr=grp["mag_err"],
+                fmt=BROKER_MARKERS.get(broker, "D"), color=colour,
+                mfc=colour if broker == brokers[0] else "none",
+                ms=6, capsize=0, lw=0.8,
             )
-        ax.set_xlabel("MJD")
+        ax.set_xlabel("MJD" + (f"  (brokers offset by ±{step * 24:.1f} h for visibility)"
+                               if len(brokers) > 1 else ""))
+        band_handles = [Line2D([], [], ls="", marker="o", color=BAND_COLORS.get(b, "grey"), label=f"{b} band")
+                        for b in sorted(lc["band"].dropna().unique())]
+        broker_handles = [Line2D([], [], ls="", marker=BROKER_MARKERS.get(b, "D"), color="#555",
+                                 mfc="#555" if b == brokers[0] else "none", label=b) for b in brokers]
+        first = ax.legend(handles=broker_handles, title="broker", fontsize=8, title_fontsize=8,
+                          frameon=False, loc="upper left")
+        ax.add_artist(first)
+        ax.legend(handles=band_handles, fontsize=8, frameon=False, loc="lower right")
         c = obj.consensus()
         votes = ", ".join(f"{v['broker']}:{v['label']}" for v in c["votes"])
         ax.set_title(f"{obj.object_id} — brokers {c['status']}\n{votes}", fontsize=10)
-    else:
-        # Same alert seen by several brokers -> plot it once.
-        lc = lc.drop_duplicates("candid") if lc["candid"].notna().all() else lc
-        t0 = lc["mjd"].min()
-        for band, grp in lc.groupby("band"):
-            ax.errorbar(
-                grp["mjd"] - t0, grp["mag"], yerr=grp["mag_err"], fmt="o",
-                color=BAND_COLORS.get(band, "grey"), ms=6, capsize=0, lw=0.8, label=f"{band} band",
-            )
-        ax.set_xlabel("Days since first detection")
+        ax.invert_yaxis()
+        ax.set_ylabel("PSF magnitude")
+        return ax
 
+    # Volunteer view. The same alert seen by several brokers is plotted once.
+    lc = lc.drop_duplicates("candid") if lc["candid"].notna().all() else lc
+    t0 = lc["mjd"].min()
+    for band, grp in lc.groupby("band"):
+        ax.errorbar(
+            grp["mjd"] - t0, grp["mag"], yerr=grp["mag_err"], fmt="o",
+            color=BAND_COLORS.get(band, "grey"), ms=6, capsize=0, lw=0.8, label=f"{band} band",
+        )
+    ax.set_xlabel("Days since first detection")
     ax.invert_yaxis()
-    ax.set_ylabel("Magnitude (brighter ↑)" if not annotate else "PSF magnitude")
-    ax.legend(fontsize=8, ncol=2, frameon=False)
+    ax.set_ylabel("Magnitude (brighter ↑)")
+    ax.legend(fontsize=8, frameon=False)
     return ax

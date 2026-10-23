@@ -9,6 +9,7 @@ from __future__ import annotations
 
 import argparse
 import sys
+import textwrap
 
 import pandas as pd
 
@@ -56,11 +57,20 @@ def _object(args, p) -> int:
 
     print(f"\n{obj.object_id}\n")
     if obj.results:
-        print(obj.summary().drop(columns=["url"]).to_string(index=False))
+        summary = obj.summary().drop(columns=["url"])
+        # Long free-text fields (Sherlock's description) are shown below the table.
+        notes = summary.pop("sherlock_description") if "sherlock_description" in summary else None
+        digits = {"ra": 5, "dec": 5, "offset_arcsec": 2, "first_mjd": 2, "last_mjd": 2}
+        print(summary.round(digits).to_string(index=False, na_rep="-"))
+        if notes is not None and notes.notna().any():
+            text = textwrap.shorten(notes.dropna().iloc[0], 240)
+            print("\n" + textwrap.fill(text, 96, initial_indent="Lasair Sherlock: ", subsequent_indent="  "))
         print("\nClassifications:")
         cls = obj.classifications
         cls["votes"] = cls["votes"].map({True: "*", False: ""})
-        print(cls[["broker", "classifier", "label", "probability", "category", "votes"]].to_string(index=False))
+        cls["probability"] = pd.to_numeric(cls["probability"], errors="coerce")
+        print(cls[["broker", "classifier", "label", "probability", "category", "votes"]].to_string(
+            index=False, float_format=lambda x: f"{x:.3f}", na_rep="-"))
         print("(* = counts toward consensus)")
         c = obj.consensus()
         print(f"\nConsensus: {c['status'].upper()}  {c['categories']}")
