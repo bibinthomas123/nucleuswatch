@@ -174,10 +174,10 @@ def _num(v):
     return None if v is None or pd.isna(v) else float(v)
 
 
-# Plots on the page match its typography: serif text, quiet axes.
+# Plots on the page match its typography: sans-serif text, quiet axes.
 _PLOT_STYLE = {
-    "font.family": "serif", "font.serif": ["Source Serif 4", "STIXGeneral", "DejaVu Serif"],
-    "mathtext.fontset": "stix", "font.size": 9.5, "axes.edgecolor": "#55514a", "axes.linewidth": 0.7,
+    "font.family": "sans-serif", "font.sans-serif": ["IBM Plex Sans", "Helvetica Neue", "Arial", "DejaVu Sans"],
+    "font.size": 9.5, "axes.edgecolor": "#55514a", "axes.linewidth": 0.7,
     "xtick.color": "#55514a", "ytick.color": "#55514a", "xtick.direction": "in", "ytick.direction": "in",
     "axes.titlesize": 9.5, "legend.frameon": False,
 }
@@ -232,13 +232,13 @@ def _legacy_viewer(ra, dec) -> str | None:
 # ------------------------------------------------------------------ HTML
 
 _FONTS = ("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500"
-          "&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap")
+          "&family=IBM+Plex+Sans:wght@400;500;600&display=swap")
 
 _CSS = """
 :root {
   --bg:#f7f5ef; --fg:#1c1a16; --muted:#6a645a; --line:#ddd6c8; --rule:#1c1a16; --link:#1d5872;
   --bar:#3d4f5c; --agree:#3b6e3f; --disagree:#b4501f; --insufficient:#9b7a1b; --known:#a39d91; --plate:#ffffff;
-  --serif:"Source Serif 4", "Source Serif Pro", Charter, "Iowan Old Style", Georgia, serif;
+  --sans:"IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) { :root {
@@ -246,30 +246,29 @@ _CSS = """
   --bar:#8ea4b3; --agree:#84b98a; --disagree:#e3895a; --insufficient:#d6b65a; --known:#59606b; --plate:#f2efe8; } }
 * { box-sizing:border-box; }
 html { -webkit-text-size-adjust:100%; }
-body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 var(--serif);
-       font-feature-settings:"onum" 1, "kern" 1; }
+body { margin:0; background:var(--bg); color:var(--fg); font:16px/1.6 var(--sans); }
 main { max-width:1080px; margin:0 auto; padding:40px 20px 80px; }
 a { color:var(--link); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px; }
 a:hover { text-decoration-thickness:2px; }
-.masthead { border-top:3px solid var(--rule); border-bottom:1px solid var(--rule); padding:14px 0 18px; }
-.kicker { font:500 12px/1.4 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
-h1 { font-size:46px; line-height:1.05; font-weight:700; letter-spacing:-.015em; margin:6px 0 10px; }
-.dek { font-size:20px; line-height:1.45; margin:0 0 10px; max-width:46em; }
+.masthead { border-bottom:1px solid var(--line); padding:0 0 18px; }
+.kicker { font:500 12px/1.4 var(--mono); letter-spacing:.06em; text-transform:uppercase; color:var(--muted); }
+h1 { font-size:32px; line-height:1.15; font-weight:600; letter-spacing:-.01em; margin:6px 0 8px; }
+.dek { font-size:17px; line-height:1.55; margin:0 0 10px; max-width:48em; }
 .meta { font:13px/1.5 var(--mono); color:var(--muted); }
 nav { display:flex; gap:22px; flex-wrap:wrap; padding:10px 0; border-bottom:1px solid var(--line);
-      font:500 13px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.06em; }
+      font:500 14px/1.4 var(--sans); }
 nav a { color:var(--fg); text-decoration:none; } nav a:hover { color:var(--link); }
-h2 { font-size:26px; font-weight:600; margin:56px 0 14px; padding-top:12px; border-top:1px solid var(--rule);
-     display:flex; gap:14px; align-items:baseline; }
+h2 { font-size:22px; font-weight:600; margin:52px 0 14px; padding-top:12px; border-top:1px solid var(--line);
+     display:flex; gap:12px; align-items:baseline; }
 h2 .num { font:500 13px var(--mono); color:var(--muted); }
-h3 { font-size:15px; font-weight:600; margin:0 0 8px; font-variant:small-caps; letter-spacing:.04em; }
+h3 { font-size:15px; font-weight:600; margin:0 0 8px; }
 p { margin:0 0 12px; }
 .muted { color:var(--muted); } .small { font-size:14px; line-height:1.5; }
 .mono, td.num, .id { font-family:var(--mono); font-feature-settings:"tnum" 1; }
 .figures { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); margin:26px 0 8px; }
 .figures div { padding:4px 18px 8px; border-left:1px solid var(--line); }
 .figures div:first-child { border-left:0; padding-left:0; }
-.figures dd { margin:0; font-size:44px; line-height:1.1; font-weight:600; font-feature-settings:"lnum" 1; }
+.figures dd { margin:0; font-size:36px; line-height:1.15; font-weight:600; font-feature-settings:"tnum" 1; }
 .figures dt { font-size:14px; color:var(--muted); line-height:1.35; }
 .cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:28px; }
 .col { border-top:1px solid var(--line); padding-top:12px; }
@@ -277,7 +276,7 @@ p { margin:0 0 12px; }
             font-size:14px; }
 .bars span.b { height:6px; background:var(--bar); display:block; }
 .bars span.n { text-align:right; font:13px var(--mono); }
-.table-wrap { overflow-x:auto; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+.table-wrap { overflow-x:auto; border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
 table { border-collapse:collapse; width:100%; font-size:14.5px; }
 th, td { padding:7px 12px 7px 0; text-align:left; white-space:nowrap; border-bottom:1px solid var(--line); }
 tbody tr:last-child td { border-bottom:0; }
@@ -290,11 +289,11 @@ td a.id { text-decoration:none; }
 .agree { color:var(--agree); } .disagree { color:var(--disagree); } .insufficient { color:var(--insufficient); }
 .tier { font:12px var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
 .entry { border-top:1px solid var(--line); padding:22px 0 8px; }
-.entry h3 { font:600 19px var(--mono); font-variant:normal; letter-spacing:0; display:flex; gap:14px;
+.entry h3 { font:600 18px var(--mono); display:flex; gap:14px;
             align-items:baseline; flex-wrap:wrap; margin-bottom:4px; }
 .entry .facts { font:13px/1.6 var(--mono); color:var(--muted); }
 .entry .links { font-size:14px; margin:4px 0 8px; }
-.entry .spec { font-style:italic; }
+.entry .spec { font-weight:500; }
 ul.votes { margin:6px 0 10px; padding-left:20px; font-size:15px; }
 .imgs { display:grid; grid-template-columns:160px minmax(0,1.5fr) minmax(0,1fr); gap:14px; align-items:start; margin-top:12px; }
 .imgs img { max-width:100%; height:auto; display:block; background:var(--plate); padding:4px; }
@@ -310,7 +309,7 @@ figcaption { font-size:14px; color:var(--muted); margin-top:6px; }
 svg text { fill:var(--muted); font:11px var(--mono); }
 svg .grid { stroke:var(--line); stroke-width:1; fill:none; }
 details { margin:6px 0; font-size:14px; } summary { cursor:pointer; color:var(--link); }
-footer { margin-top:64px; padding-top:12px; border-top:3px solid var(--rule); font-size:14px; color:var(--muted); }
+footer { margin-top:64px; padding-top:12px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); }
 code { font:14px var(--mono); }
 """
 
@@ -472,7 +471,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
 <style>{_CSS}</style></head>
 <body><main>
 <header class="masthead">
- <div class="kicker">Weekly bulletin · Week {iso_week}, {iso_year}</div>
+ <div class="kicker">Week {iso_week}, {iso_year}</div>
  <h1>nucleuswatch</h1>
  <p class="dek">New transients at the centres of galaxies in the ZTF alert stream (tidal disruption events,
  AGN flares, nuclear supernovae), and whether the ALeRCE, Fink and Lasair brokers agree on what they are.</p>
