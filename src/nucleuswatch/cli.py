@@ -22,7 +22,7 @@ def main(argv: list[str] | None = None) -> int:
     sub = p.add_subparsers(dest="command", required=True)
 
     o = sub.add_parser("object", help="merged view of one object")
-    o.add_argument("object_id", help="ZTF object id, e.g. ZTF21abfmbix")
+    o.add_argument("object_id", help="ZTF id (ZTF21abfmbix) or LSST diaObjectId (170587117485817955)")
     o.add_argument("--brokers", nargs="+", choices=list(ADAPTERS), help="brokers to query (default: all)")
     o.add_argument("--no-cache", action="store_true", help="always refetch from the brokers")
     o.add_argument("--plot", metavar="FILE", help="save a light-curve plot to FILE (png/pdf)")

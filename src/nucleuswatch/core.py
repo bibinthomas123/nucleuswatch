@@ -10,11 +10,23 @@ import numpy as np
 import pandas as pd
 
 from ._http import BrokerError
-from .brokers import ADAPTERS
+from .brokers import SURVEYS
 from .brokers.base import CLASSIFICATION_COLUMNS, LIGHTCURVE_COLUMNS, BrokerResult
 from .taxonomy import VOTING_CLASSIFIERS, categorize
 
 ZTF_ID = re.compile(r"^ZTF\d{2}[a-z]{7}$")
+LSST_ID = re.compile(r"^\d{15,20}$")  # Rubin diaObjectId
+
+
+def survey_of(object_id: str) -> str:
+    """'ztf' or 'lsst', from the shape of the object id."""
+    object_id = str(object_id).strip()
+    if ZTF_ID.match(object_id):
+        return "ztf"
+    if LSST_ID.match(object_id):
+        return "lsst"
+    raise ValueError(f"{object_id!r} is neither a ZTF object id (e.g. 'ZTF21abfmbix') "
+                     "nor an LSST diaObjectId (e.g. 170587117485817955)")
 
 
 @dataclass
@@ -26,6 +38,7 @@ class MergedObject:
     """
 
     object_id: str
+    survey: str = "ztf"
     results: dict[str, BrokerResult] = field(default_factory=dict)
     errors: dict[str, str] = field(default_factory=dict)
 
@@ -144,7 +157,10 @@ def get_object(
     use_cache: bool = True,
     lasair_token: str | None = None,
 ) -> MergedObject:
-    """Query brokers in parallel for a ZTF object and merge the results.
+    """Query brokers in parallel for a ZTF or LSST object and merge the results.
+
+    The survey is inferred from the id: ``ZTF..`` names are ZTF, integer
+    ``diaObjectId`` values are Rubin/LSST.
 
     A broker that fails (down, rate-limited, no token) is recorded in
     ``.errors`` instead of failing the whole call.
@@ -152,22 +168,22 @@ def get_object(
     >>> obj = get_object("ZTF21abfmbix")
     >>> obj.consensus()["status"]
     """
-    object_id = object_id.strip()
-    if not ZTF_ID.match(object_id):
-        raise ValueError(f"{object_id!r} is not a ZTF object id (e.g. 'ZTF21abfmbix')")
+    object_id = str(object_id).strip()
+    survey = survey_of(object_id)
+    adapters = SURVEYS[survey]
 
-    names = brokers or list(ADAPTERS)
-    unknown = set(names) - set(ADAPTERS)
+    names = brokers or list(adapters)
+    unknown = set(names) - set(adapters)
     if unknown:
-        raise ValueError(f"unknown broker(s): {sorted(unknown)}; choose from {list(ADAPTERS)}")
+        raise ValueError(f"unknown broker(s): {sorted(unknown)}; choose from {list(adapters)}")
 
     def run(name: str) -> BrokerResult:
         kwargs = {"use_cache": use_cache}
         if name == "lasair":
             kwargs["token"] = lasair_token
-        return ADAPTERS[name].fetch(object_id, **kwargs)
+        return adapters[name].fetch(object_id, **kwargs)
 
-    merged = MergedObject(object_id)
+    merged = MergedObject(object_id, survey)
     with ThreadPoolExecutor(max_workers=len(names)) as pool:
         futures = {name: pool.submit(run, name) for name in names}
     for name, fut in futures.items():

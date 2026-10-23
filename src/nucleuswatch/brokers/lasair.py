@@ -35,15 +35,15 @@ def fetch(object_id: str, *, use_cache: bool = True, token: str | None = None) -
     return parse(object_id, obj)
 
 
-def _token_from_dotenv(path: str | os.PathLike = ".env") -> str | None:
-    """Read LASAIR_TOKEN from a .env file without adding a dependency."""
+def _token_from_dotenv(path: str | os.PathLike = ".env", key: str = "LASAIR_TOKEN") -> str | None:
+    """Read ``key`` from a .env file without adding a dependency."""
     try:
         lines = Path(path).read_text().splitlines()
     except OSError:
         return None
     for line in lines:
-        key, sep, value = line.strip().partition("=")
-        if sep and key.strip().removeprefix("export ").strip() == "LASAIR_TOKEN":
+        name, sep, value = line.strip().partition("=")
+        if sep and name.strip().removeprefix("export ").strip() == key:
             return value.strip().strip("'\"") or None
     return None
 

@@ -5,7 +5,7 @@ from typing import TYPE_CHECKING
 if TYPE_CHECKING:
     from .core import MergedObject
 
-BAND_COLORS = {"g": "#2a9d8f", "r": "#e76f51", "i": "#8d6cab"}
+BAND_COLORS = {"u": "#3b6fb6", "g": "#2a9d8f", "r": "#e76f51", "i": "#8d6cab", "z": "#9c6b30", "y": "#555555"}
 BROKER_MARKERS = {"alerce": "o", "fink": "s", "lasair": "^"}
 
 
@@ -21,6 +21,12 @@ def plot_object(obj: MergedObject, ax=None, *, annotate: bool = True):
         _, ax = plt.subplots(figsize=(8, 4.5))
 
     lc = obj.lightcurve
+    # LSST difference fluxes can be negative (no magnitude), so plot flux.
+    use_flux = obj.survey == "lsst"
+    y, yerr = ("flux", "flux_err") if use_flux else ("mag", "mag_err")
+    scale = 1e-3 if use_flux else 1.0  # nJy -> µJy
+    ylabel = "Difference flux (µJy)" if use_flux else None
+
     if annotate:
         from matplotlib.lines import Line2D
 
@@ -33,7 +39,7 @@ def plot_object(obj: MergedObject, ax=None, *, annotate: bool = True):
         for (broker, band), grp in lc.groupby(["broker", "band"]):
             colour = BAND_COLORS.get(band, "grey")
             ax.errorbar(
-                grp["mjd"] + shift[broker], grp["mag"], yerr=grp["mag_err"],
+                grp["mjd"] + shift[broker], grp[y] * scale, yerr=grp[yerr] * scale,
                 fmt=BROKER_MARKERS.get(broker, "D"), color=colour,
                 mfc=colour if broker == brokers[0] else "none",
                 ms=6, capsize=0, lw=0.8,
@@ -51,8 +57,7 @@ def plot_object(obj: MergedObject, ax=None, *, annotate: bool = True):
         c = obj.consensus()
         votes = ", ".join(f"{v['broker']}:{v['label']}" for v in c["votes"])
         ax.set_title(f"{obj.object_id} — brokers {c['status']}\n{votes}", fontsize=10)
-        ax.invert_yaxis()
-        ax.set_ylabel("PSF magnitude")
+        _finish_axis(ax, use_flux, ylabel or "PSF magnitude")
         return ax
 
     # Volunteer view. The same alert seen by several brokers is plotted once.
@@ -60,11 +65,18 @@ def plot_object(obj: MergedObject, ax=None, *, annotate: bool = True):
     t0 = lc["mjd"].min()
     for band, grp in lc.groupby("band"):
         ax.errorbar(
-            grp["mjd"] - t0, grp["mag"], yerr=grp["mag_err"], fmt="o",
+            grp["mjd"] - t0, grp[y] * scale, yerr=grp[yerr] * scale, fmt="o",
             color=BAND_COLORS.get(band, "grey"), ms=6, capsize=0, lw=0.8, label=f"{band} band",
         )
     ax.set_xlabel("Days since first detection")
-    ax.invert_yaxis()
-    ax.set_ylabel("Magnitude (brighter ↑)")
+    _finish_axis(ax, use_flux, ylabel or "Magnitude (brighter ↑)")
     ax.legend(fontsize=8, frameon=False)
     return ax
+
+
+def _finish_axis(ax, use_flux: bool, ylabel: str) -> None:
+    if use_flux:
+        ax.axhline(0, color="#999", lw=0.6, zorder=0)
+    else:
+        ax.invert_yaxis()
+    ax.set_ylabel(ylabel)

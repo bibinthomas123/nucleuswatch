@@ -93,7 +93,7 @@ def export_subjects(
         plt.close(ax.figure)
         row["image1"] = lc_name
 
-        if cutouts:
+        if cutouts and obj.survey == "ztf":  # LSST stamps: not wired up yet
             try:
                 stamps = {k: fink.cutout(obj.object_id, k, use_cache=use_cache) for k in fink.CUTOUT_KINDS}
             except BrokerError:

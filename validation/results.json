@@ -1,0 +1,111 @@
+{
+ "nucleuswatch_version": "0.2.0",
+ "generated": "2026-10-23T19:30:42+00:00",
+ "window": [
+  "2024-01-01",
+  "2026-01-01"
+ ],
+ "cuts": {
+  "mag_max": 19.0,
+  "distnr_max": 0.5,
+  "distpsnr1_max": 1.0,
+  "sgscore1_max": 0.5,
+  "ndethist_min": 2
+ },
+ "tde": {
+  "total": 47,
+  "passed": 24,
+  "lost_by_cut": {
+   "mag_max": 21,
+   "distnr": 2
+  },
+  "recovered_vs_mag_max": {
+   "18.5": 14,
+   "19.0": 24,
+   "19.5": 30,
+   "20.0": 34,
+   "20.5": 37
+  },
+  "passed_ids": [
+   "ZTF18aabdajx",
+   "ZTF18aaxqitv",
+   "ZTF18abxnvoz",
+   "ZTF18acecugr",
+   "ZTF19accskvu",
+   "ZTF20aahmtso",
+   "ZTF20abwtifz",
+   "ZTF20accxwrk",
+   "ZTF22aadesap",
+   "ZTF22aafujzv",
+   "ZTF22abegjtx",
+   "ZTF24aaahxwr",
+   "ZTF24aaecooj",
+   "ZTF24aatxshz",
+   "ZTF24abiqyej",
+   "ZTF24abjfuew",
+   "ZTF24abmybnp",
+   "ZTF24abmzcpa",
+   "ZTF24abyhjvc",
+   "ZTF25aagevje",
+   "ZTF25aagfhmz",
+   "ZTF25aajfjhm",
+   "ZTF25aaymnha",
+   "ZTF25abwvuln"
+  ],
+  "missed_ids": [
+   "ZTF17aaazdba",
+   "ZTF18aabtxvd",
+   "ZTF18aahqkbt",
+   "ZTF18achzddr",
+   "ZTF18acmqevd",
+   "ZTF18acpdvos",
+   "ZTF19abzrhgq",
+   "ZTF19acasuyp",
+   "ZTF20aamaczu",
+   "ZTF21aanxhjv",
+   "ZTF22aaigqsr",
+   "ZTF23abgnxfv",
+   "ZTF23abohtqf",
+   "ZTF23abvzeqp",
+   "ZTF24aaoxmyb",
+   "ZTF24aazlori",
+   "ZTF24abdmewj",
+   "ZTF24abfuwbm",
+   "ZTF25aafwfzz",
+   "ZTF25aagrecw",
+   "ZTF25aajjeon",
+   "ZTF25aaptkov",
+   "ZTF25aaxdtdm"
+  ]
+ },
+ "composition": {
+  "TDE": {
+   "total": 47,
+   "passed": 24
+  },
+  "SN Ia": {
+   "total": 2505,
+   "passed": 236
+  },
+  "SN II": {
+   "total": 808,
+   "passed": 56
+  },
+  "SN IIn": {
+   "total": 123,
+   "passed": 16
+  },
+  "SN Ibc": {
+   "total": 180,
+   "passed": 15
+  },
+  "SLSN": {
+   "total": 75,
+   "passed": 7
+  },
+  "AGN/QSO": {
+   "total": 117,
+   "passed": 48
+  }
+ }
+}

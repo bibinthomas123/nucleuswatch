@@ -32,7 +32,7 @@ def fetch(object_id: str, *, use_cache: bool = True) -> BrokerResult:
 
 
 def latests(fink_class: str, startdate: str, stopdate: str, n: int = 1000,
-            *, use_cache: bool = True) -> list[dict]:
+            *, use_cache: bool = True, ttl: float = 600) -> list[dict]:
     """Latest alerts Fink assigned to ``fink_class`` between two ISO dates.
 
     Returns raw alert rows (one per alert, several per object possible).
@@ -44,7 +44,7 @@ def latests(fink_class: str, startdate: str, stopdate: str, n: int = 1000,
         json_body={"class": fink_class, "n": str(n), "startdate": startdate,
                    "stopdate": stopdate, "output-format": "json"},
         use_cache=use_cache,
-        ttl=600,  # live data; keep the cache short
+        ttl=ttl,  # default is short because recent windows are still filling
     )
 
 

@@ -40,3 +40,10 @@ def test_live_alertissimo_bridge():
     obj = from_alertissimo(api.execute_dsl("objects ZTF21abfmbix from ztf via alerce\n"
                                            "with lightcurve via fink\n"))
     assert obj.results["fink"].ndet > 0
+
+
+def test_live_lsst_alerce_and_fink():
+    obj = bm.get_object("170587117485817955", brokers=["alerce", "fink"], use_cache=False)
+    assert obj.survey == "lsst"
+    assert not obj.errors, obj.errors
+    assert obj.results["alerce"].ndet > 0 and obj.results["fink"].ndet > 0

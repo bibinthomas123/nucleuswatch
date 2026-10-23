@@ -1,0 +1,448 @@
+{
+"_source": "Lasair LSST /api/object/ response for 313761042336317573, captured 2026-08-13 by the Alertissimo project (BSD-3-Clause, github.com/sambolino/alertissimo, tests/fixtures/lasair/lsst); trimmed to the fields nucleuswatch reads.",
+"diaObjectId": "313761042336317573",
+"diaObject": {
+"ra": 62.7316607972814,
+"decl": -49.27644298014233,
+"firstDiaSourceMjdTai": 61003.324393250674,
+"lastDiaSourceMjdTai": 61235.41918367943
+},
+"lasairData": {
+"sherlock": {
+"diaObjectId": 313761042336317573,
+"classification": "SN",
+"association_type": "SN",
+"catalogue_table_name": "DESI",
+"catalogue_object_id": "10000,80324,10756",
+"catalogue_object_type": "galaxy",
+"raDeg": 62.731686737139384,
+"decDeg": -49.276451928845084,
+"separationArcsec": 0.152,
+"northSeparationArcsec": -0.0769836,
+"eastSeparationArcsec": -0.130709,
+"physical_separation_kpc": null,
+"direct_distance": null,
+"distance": null,
+"z": null,
+"photoZ": null,
+"photoZErr": null,
+"Mag": 20.472,
+"MagFilter": "r",
+"MagErr": 0.002,
+"classificationReliability": 2,
+"major_axis_arcsec": null,
+"annotator": "https://github.com/thespacedoctor/sherlock/releases/tag/v3.1.0",
+"additional_output": "http://lasair-lsst.lsst.ac.uk/api/sherlock/object/313761042336317573",
+"description": "The transient is possibly associated with <em>10000,80324,10756</em>; an r=20.47 mag galaxy found in the DESI catalogue. Its located 0.08\" N, 0.13\" E from the galaxy centre.",
+"summary": null,
+"best_distance": null,
+"best_distance_flag": null,
+"best_distance_source": null
+},
+"TNS": {},
+"tns_name": null,
+"nDiaSources": 259
+},
+"diaSourcesList": [
+{
+"diaSourceId": 170666304482574503,
+"midpointMjdTai": 61235.41918367943,
+"band": "i",
+"psfFlux": -4584.091796875,
+"psfFluxErr": 343.0228271484375,
+"ra": 62.73166472417017,
+"decl": -49.276427146862645,
+"reliability": 0.6567744016647339
+},
+{
+"diaSourceId": 170666303669928021,
+"midpointMjdTai": 61235.41362237149,
+"band": "g",
+"psfFlux": -6347.18994140625,
+"psfFluxErr": 271.41546630859375,
+"ra": 62.73169478221444,
+"decl": -49.27642781957835,
+"reliability": 0.7993238568305969
+},
+{
+"diaSourceId": 170666303537283146,
+"midpointMjdTai": 61235.413180802294,
+"band": "g",
+"psfFlux": -6660.21728515625,
+"psfFluxErr": 249.6172332763672,
+"ra": 62.7316965085666,
+"decl": -49.276430443583955,
+"reliability": 0.8321239948272705
+},
+{
+"diaSourceId": 170644276248051893,
+"midpointMjdTai": 61230.424392296976,
+"band": "r",
+"psfFlux": -6559.6494140625,
+"psfFluxErr": 199.2275390625,
+"ra": 62.731688195654755,
+"decl": -49.276440912812774,
+"reliability": 0.8334527015686035
+},
+{
+"diaSourceId": 170644275586924670,
+"midpointMjdTai": 61230.41923626095,
+"band": "r",
+"psfFlux": -6277.064453125,
+"psfFluxErr": 252.60609436035156,
+"ra": 62.73169024025019,
+"decl": -49.2764303082655,
+"reliability": 0.7837378978729248
+},
+{
+"diaSourceId": 170644275456376947,
+"midpointMjdTai": 61230.418804941335,
+"band": "r",
+"psfFlux": -6561.9951171875,
+"psfFluxErr": 237.35438537597656,
+"ra": 62.731679158486976,
+"decl": -49.276437307883775,
+"reliability": 0.784978449344635
+},
+{
+"diaSourceId": 170644275287031940,
+"midpointMjdTai": 61230.41836263283,
+"band": "r",
+"psfFlux": -6121.38720703125,
+"psfFluxErr": 232.04013061523438,
+"ra": 62.73166284948936,
+"decl": -49.27644187375944,
+"reliability": 0.810588002204895
+},
+{
+"diaSourceId": 170631127078797421,
+"midpointMjdTai": 61227.420054280956,
+"band": "i",
+"psfFlux": -6219.7294921875,
+"psfFluxErr": 372.8110046386719,
+"ra": 62.73168880789995,
+"decl": -49.27643082583272,
+"reliability": 0.7615994811058044
+},
+{
+"diaSourceId": 170631126943531197,
+"midpointMjdTai": 61227.41962591419,
+"band": "i",
+"psfFlux": -5770.88623046875,
+"psfFluxErr": 375.02056884765625,
+"ra": 62.73170731310609,
+"decl": -49.276438108398175,
+"reliability": 0.5971725583076477
+},
+{
+"diaSourceId": 170631126138748998,
+"midpointMjdTai": 61227.41494805919,
+"band": "g",
+"psfFlux": -8291.16015625,
+"psfFluxErr": 386.260009765625,
+"ra": 62.731763351584846,
+"decl": -49.276425727596845,
+"reliability": 0.7038512825965881
+},
+{
+"diaSourceId": 170595945658449979,
+"midpointMjdTai": 61219.42507306526,
+"band": "g",
+"psfFlux": -8036.29248046875,
+"psfFluxErr": 558.88623046875,
+"ra": 62.73170303312163,
+"decl": -49.27642705168076,
+"reliability": 0.5868393182754517
+},
+{
+"diaSourceId": 170595945385820221,
+"midpointMjdTai": 61219.42410242419,
+"band": "g",
+"psfFlux": -9525.7734375,
+"psfFluxErr": 582.0994873046875,
+"ra": 62.73173034118851,
+"decl": -49.27645070548666,
+"reliability": 0.5786039233207703
+},
+{
+"diaSourceId": 170587118163722445,
+"midpointMjdTai": 61217.425639118446,
+"band": "i",
+"psfFlux": -6039.4501953125,
+"psfFluxErr": 275.82330322265625,
+"ra": 62.731697940831516,
+"decl": -49.276448580753716,
+"reliability": 0.8736324906349182
+},
+{
+"diaSourceId": 170587117870645415,
+"midpointMjdTai": 61217.42270507246,
+"band": "g",
+"psfFlux": -7972.140625,
+"psfFluxErr": 144.3697052001953,
+"ra": 62.73171886427145,
+"decl": -49.2764351477055,
+"reliability": 0.8344676494598389
+},
+{
+"diaSourceId": 170587117738000550,
+"midpointMjdTai": 61217.42217825258,
+"band": "g",
+"psfFlux": -7869.37109375,
+"psfFluxErr": 146.1294403076172,
+"ra": 62.731714736941164,
+"decl": -49.276441851629535,
+"reliability": 0.8248977661132812
+},
+{
+"diaSourceId": 170094457413173307,
+"midpointMjdTai": 61105.11587761537,
+"band": "g",
+"psfFlux": -6049.3798828125,
+"psfFluxErr": 584.439453125,
+"ra": 62.73159740031296,
+"decl": -49.276448172864434,
+"reliability": 0.5688297152519226
+},
+{
+"diaSourceId": 170094456662917190,
+"midpointMjdTai": 61105.10377557087,
+"band": "g",
+"psfFlux": -6052.5498046875,
+"psfFluxErr": 470.7745361328125,
+"ra": 62.73169146819174,
+"decl": -49.27644708987252,
+"reliability": 0.6873830556869507
+},
+{
+"diaSourceId": 170076864161775711,
+"midpointMjdTai": 61101.07548563987,
+"band": "g",
+"psfFlux": -4505.49658203125,
+"psfFluxErr": 434.22015380859375,
+"ra": 62.73165654977083,
+"decl": -49.27645435325359,
+"reliability": 0.6553670167922974
+},
+{
+"diaSourceId": 170072470693347480,
+"midpointMjdTai": 61100.07841357533,
+"band": "r",
+"psfFlux": -5013.39794921875,
+"psfFluxErr": 302.9988098144531,
+"ra": 62.73166092537915,
+"decl": -49.276425287728536,
+"reliability": 0.7008200287818909
+},
+{
+"diaSourceId": 170072470531342536,
+"midpointMjdTai": 61100.077971928404,
+"band": "r",
+"psfFlux": -5522.7197265625,
+"psfFluxErr": 323.316162109375,
+"ra": 62.73164276076598,
+"decl": -49.27643747825139,
+"reliability": 0.7074292898178101
+},
+{
+"diaSourceId": 170063689884369028,
+"midpointMjdTai": 61098.10443691962,
+"band": "r",
+"psfFlux": -5187.765625,
+"psfFluxErr": 303.46209716796875,
+"ra": 62.73163853686391,
+"decl": -49.27643474590739,
+"reliability": 0.7163037061691284
+},
+{
+"diaSourceId": 170063689611215000,
+"midpointMjdTai": 61098.103567828264,
+"band": "r",
+"psfFlux": -4618.5234375,
+"psfFluxErr": 288.8702392578125,
+"ra": 62.73166207933948,
+"decl": -49.276427021466404,
+"reliability": 0.6172680258750916
+},
+{
+"diaSourceId": 170063689342255298,
+"midpointMjdTai": 61098.10269776439,
+"band": "r",
+"psfFlux": -4891.9990234375,
+"psfFluxErr": 289.50189208984375,
+"ra": 62.73167438633229,
+"decl": -49.27643558716712,
+"reliability": 0.5721527338027954
+},
+{
+"diaSourceId": 170063689072771304,
+"midpointMjdTai": 61098.10183018125,
+"band": "r",
+"psfFlux": -5120.2373046875,
+"psfFluxErr": 296.6308898925781,
+"ra": 62.73166687533664,
+"decl": -49.27645536475179,
+"reliability": 0.6793372631072998
+},
+{
+"diaSourceId": 170063688533803147,
+"midpointMjdTai": 61098.100095675065,
+"band": "r",
+"psfFlux": -4913.35888671875,
+"psfFluxErr": 288.1304626464844,
+"ra": 62.731685100077165,
+"decl": -49.27642899844958,
+"reliability": 0.6635751724243164
+},
+{
+"diaSourceId": 170063688267464865,
+"midpointMjdTai": 61098.099140959406,
+"band": "r",
+"psfFlux": -5188.66748046875,
+"psfFluxErr": 286.873291015625,
+"ra": 62.731676368026434,
+"decl": -49.27644419305825,
+"reliability": 0.7350066900253296
+},
+{
+"diaSourceId": 170063687919861867,
+"midpointMjdTai": 61098.09783112275,
+"band": "r",
+"psfFlux": -5184.18017578125,
+"psfFluxErr": 318.1405029296875,
+"ra": 62.7316566538397,
+"decl": -49.27646809904914,
+"reliability": 0.6692350506782532
+},
+{
+"diaSourceId": 170063687727972527,
+"midpointMjdTai": 61098.09739582523,
+"band": "r",
+"psfFlux": -5505.12646484375,
+"psfFluxErr": 294.4543762207031,
+"ra": 62.73168669356739,
+"decl": -49.276427758388245,
+"reliability": 0.7216389775276184
+},
+{
+"diaSourceId": 170063687457964157,
+"midpointMjdTai": 61098.09652848007,
+"band": "r",
+"psfFlux": -5215.39599609375,
+"psfFluxErr": 304.20770263671875,
+"ra": 62.73166952127704,
+"decl": -49.27644941630243,
+"reliability": 0.7444829940795898
+},
+{
+"diaSourceId": 170063687191101588,
+"midpointMjdTai": 61098.095659364306,
+"band": "r",
+"psfFlux": -5633.69287109375,
+"psfFluxErr": 324.7646789550781,
+"ra": 62.7316508614764,
+"decl": -49.2764520601127,
+"reliability": 0.7235634326934814
+},
+{
+"diaSourceId": 170063686671532147,
+"midpointMjdTai": 61098.09391434504,
+"band": "r",
+"psfFlux": -5290.3310546875,
+"psfFluxErr": 297.8790588378906,
+"ra": 62.73165590750802,
+"decl": -49.276444085090496,
+"reliability": 0.7173906564712524
+},
+{
+"diaSourceId": 170063686393659566,
+"midpointMjdTai": 61098.09275163098,
+"band": "r",
+"psfFlux": -5514.529296875,
+"psfFluxErr": 306.2315368652344,
+"ra": 62.73166867248238,
+"decl": -49.276427926573845,
+"reliability": 0.7494267821311951
+},
+{
+"diaSourceId": 170063686264160374,
+"midpointMjdTai": 61098.092309574466,
+"band": "r",
+"psfFlux": -5832.76220703125,
+"psfFluxErr": 321.8056945800781,
+"ra": 62.731614444301144,
+"decl": -49.27642620245112,
+"reliability": 0.7209111452102661
+},
+{
+"diaSourceId": 170063686125748333,
+"midpointMjdTai": 61098.091881043554,
+"band": "r",
+"psfFlux": -5282.228515625,
+"psfFluxErr": 299.8071594238281,
+"ra": 62.731653520959576,
+"decl": -49.276438809143436,
+"reliability": 0.7389576435089111
+},
+{
+"diaSourceId": 170063685857837153,
+"midpointMjdTai": 61098.091013110825,
+"band": "r",
+"psfFlux": -4827.96044921875,
+"psfFluxErr": 328.21142578125,
+"ra": 62.73166285264361,
+"decl": -49.276451504386344,
+"reliability": 0.6405068039894104
+},
+{
+"diaSourceId": 170063685585207426,
+"midpointMjdTai": 61098.09015068112,
+"band": "r",
+"psfFlux": -4894.66796875,
+"psfFluxErr": 271.6868591308594,
+"ra": 62.731656522714914,
+"decl": -49.27645067317863,
+"reliability": 0.7540268898010254
+},
+{
+"diaSourceId": 170063684780949629,
+"midpointMjdTai": 61098.08754500734,
+"band": "r",
+"psfFlux": -4869.51318359375,
+"psfFluxErr": 291.1972351074219,
+"ra": 62.731657771226224,
+"decl": -49.276445202226235,
+"reliability": 0.6754534840583801
+},
+{
+"diaSourceId": 170063684240933195,
+"midpointMjdTai": 61098.08576730031,
+"band": "r",
+"psfFlux": -5188.96533203125,
+"psfFluxErr": 287.48388671875,
+"ra": 62.73166368380733,
+"decl": -49.276450040997986,
+"reliability": 0.7625917196273804
+},
+{
+"diaSourceId": 170063677805297787,
+"midpointMjdTai": 61098.061354940204,
+"band": "g",
+"psfFlux": -5226.46630859375,
+"psfFluxErr": 252.25115966796875,
+"ra": 62.73165683333823,
+"decl": -49.27643642375271,
+"reliability": 0.782751739025116
+},
+{
+"diaSourceId": 170063677532143715,
+"midpointMjdTai": 61098.06049439458,
+"band": "g",
+"psfFlux": -5728.40234375,
+"psfFluxErr": 269.79541015625,
+"ra": 62.7316691542754,
+"decl": -49.276449340999676,
+"reliability": 0.820754885673523
+}
+]
+}

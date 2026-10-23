@@ -29,6 +29,7 @@ VOTING_CLASSIFIERS = {
     ("alerce", "lc_classifier"),
     ("alerce", "stamp_classifier"),
     ("fink", "fink_classification"),
+    ("fink", "cats"),  # LSST
     ("lasair", "sherlock"),
 }
 
@@ -36,6 +37,10 @@ VOTING_CLASSIFIERS = {
 _RULES: list[tuple[str, str | None]] = [
     # Abstentions first, so "Unknown"/"Ambiguous" never match anything else.
     (r"^(unknown|ambiguous|unclear|orphan|fail.*|none|nan)$", None),
+    # Fink CATS (LSST) broad classes that mix several physical types.
+    (r"^(fast|long)$", None),
+    (r"^non-periodic$", AGN),
+    (r"^periodic$", VARSTAR),
     (r"^(sherlock-)?nt$", NUCLEAR),
     (r"^bs$", STAR),
     (r"^vs$", VARSTAR),
