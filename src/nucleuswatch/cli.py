@@ -39,6 +39,9 @@ def main(argv: list[str] | None = None) -> int:
 
     d = sub.add_parser("digest", help="weekly digest: record in --data, static site in --site")
     d.add_argument("--days", type=float, default=7)
+    d.add_argument("--mag-max", type=float, default=20.0, help="faintest magnitude (default 20)")
+    d.add_argument("--until", metavar="YYYY-MM-DD", help="end of the window (default: now), for backfilling")
+    d.add_argument("--brokers", nargs="+", choices=list(ADAPTERS), help="brokers for consensus (default: all)")
     d.add_argument("--data", default="digest", help="folder for the committed JSON/CSV records")
     d.add_argument("--site", default="_site", help="folder for the generated web page")
     d.add_argument("--no-cache", action="store_true")
@@ -124,9 +127,14 @@ def _nuclear(args, p) -> int:
 
 
 def _digest(args, p) -> int:
+    from datetime import datetime, timezone
+
     from . import digest
 
-    record, search = digest.build(args.days, use_cache=not args.no_cache)
+    now = (datetime.fromisoformat(args.until).replace(tzinfo=timezone.utc, hour=23, minute=59)
+           if args.until else None)
+    record, search = digest.build(args.days, args.mag_max, brokers=args.brokers, now=now,
+                                  use_cache=not args.no_cache)
     path = digest.write_data(record, args.data)
     page = digest.render_site(record, args.data, args.site, search, use_cache=not args.no_cache)
     print(f"{record['n_candidates']} candidates ({record['n_disagree']} disagree)")

@@ -68,7 +68,7 @@ def test_rejects_unknown_broker():
     ("QSO", "AGN"), ("Blazar", "AGN"), ("Seyfert_1", "AGN"),
     ("CV/Nova", "CV/Nova"), ("CataclyV*", "CV/Nova"),
     ("RRL", "VarStar"), ("EB*", "VarStar"), ("VS", "VarStar"),
-    ("NT", "Nuclear"), ("TDE", "TDE"), ("Kilonova candidate", "Kilonova"),
+    ("NT", None), ("TDE", "TDE"), ("Kilonova candidate", "Kilonova"),
     ("Solar System MPC", "SolarSystem"), ("bogus", "Bogus"),
     ("Unknown", None), ("Ambiguous", None), ("UNCLEAR", None), (None, None),
 ])
@@ -115,3 +115,22 @@ def test_disagreement(offline_brokers, monkeypatch):
     c = bm.get_object(OBJECT_ID).consensus()
     assert c["status"] == "disagree"
     assert c["categories"] == ["AGN", "SN"]
+
+
+def test_one_vote_per_broker_prefers_light_curve_classifier(offline_brokers):
+    votes = bm.get_object(OBJECT_ID).consensus()["votes"]
+    assert sorted(v["broker"] for v in votes) == ["alerce", "fink", "lasair"]
+    assert next(v for v in votes if v["broker"] == "alerce")["classifier"] == "lc_classifier"
+
+
+def test_sherlock_nt_abstains(offline_brokers, monkeypatch):
+    from nucleuswatch.brokers import lasair
+
+    from .conftest import load
+
+    data = load("lasair_object.json")
+    data["sherlock"]["classification"] = "NT"
+    monkeypatch.setattr(lasair, "fetch", lambda oid, **kw: lasair.parse(oid, data))
+    c = bm.get_object(OBJECT_ID).consensus()
+    assert "lasair" not in {v["broker"] for v in c["votes"]}
+    assert c["status"] == "agree"  # ALeRCE and Fink still agree on SN

@@ -194,32 +194,59 @@ Pass a Rubin `diaObjectId` anywhere a ZTF name works, for example
 
 ## Weekly digest
 
-`nucleuswatch digest` runs the search and writes a small record
-(`digest/<date>.json` and `.csv`, committed so the history lives in the repo).
-It also writes a static page with plots, stamps, broker votes, TNS
-spectroscopic types and an archive. The
-[weekly workflow](https://github.com/bibinthomas123/nucleuswatch/blob/main/.github/workflows/weekly.yml) runs it every
-Monday and publishes the page to GitHub Pages.
+`nucleuswatch digest` runs a wider search than the default recipe and
+publishes it. The [weekly workflow](https://github.com/bibinthomas123/nucleuswatch/blob/main/.github/workflows/weekly.yml)
+runs it every Monday and deploys the page to GitHub Pages:
+**https://bibinthomas123.github.io/nucleuswatch/**
+
+- **Sources:** Fink's SN-like, Ambiguous, TNS- and SIMBAD-labelled AGN/TDE
+  streams, plus Lasair objects that Sherlock classes as nuclear transients.
+- **Depth:** mag ≤ 20, where validation recovers 72% of confirmed TDEs. Each
+  candidate is tagged *bright* (≤ 19) or *faint*.
+- **New vs known:** objects first detected in the last year are compared
+  across all brokers. Older nuclear sources that were active (mostly AGN) are
+  listed separately. A typical week has ~30 new candidates and ~350 known
+  sources.
+- **Page contents:** headline numbers, a selection funnel, consensus and
+  category breakdowns, a sky map, a table and a detailed card per candidate
+  (host image from the Legacy Survey, merged light curve, stamps, broker
+  votes, TNS name and spectroscopic type), the known-source list, a history
+  chart, the method and validation summary, and an archive.
+- **Data:** `digest/<date>.json`, `.csv` and `_known.csv` are committed, so
+  the history stays in the repo.
+
+Backfill past weeks with `nucleuswatch digest --until 2026-10-16`. Lasair's
+query API can't search the past, so backfilled weeks use Fink candidates only.
 
 ## How consensus works
 
 <details>
 <summary>Details</summary>
 
-Only classifiers that give a whole-object best guess vote (see
-`taxonomy.VOTING_CLASSIFIERS`): ALeRCE `stamp_classifier` and
-`lc_classifier`, Fink `v:classification` (ZTF) or CATS (Rubin), and Lasair Sherlock. Labels map to
-coarse categories (`SN`, `AGN`, `VarStar`, `CV/Nova`, `TDE`, `Nuclear`, …)
-through `nucleuswatch.categorize`. "Unknown" and "Ambiguous" abstain.
+**Each broker casts one vote**, from its preferred whole-object classifier
+(see `taxonomy.VOTE_PRIORITY`):
 
-- **agree**: every vote lands in one category
+- **ALeRCE:** `lc_classifier`, falling back to `stamp_classifier`. The
+  light-curve classifier sees the whole light curve; the stamp classifier only
+  sees the first images.
+- **Fink:** `v:classification` (ZTF) or CATS (Rubin).
+- **Lasair:** Sherlock.
+
+Labels map to coarse categories (`SN`, `AGN`, `VarStar`, `CV/Nova`, `TDE`, …)
+through `nucleuswatch.categorize`. "Unknown" and "Ambiguous" abstain, and so
+does Sherlock's `NT` (nuclear transient). `NT` says *where* the source is, and
+every candidate here is nuclear by selection, so it says nothing about what
+the source is.
+
+- **agree**: every broker's vote lands in one category
 - **disagree**: votes land in more than one category
 - **insufficient**: fewer than two brokers voted
 
-Binary scores (e.g. Fink's SNIa-vs-non-Ia) are shown but get no category and
-no vote. When ALeRCE serves several versions of one model, it still gets one
-vote. The mapping is deliberately simple; please open an issue if a label is
-mapped wrongly.
+Every classifier output, including the ones that don't vote, stays in
+`obj.classifications`. Binary scores (e.g. Fink's SNIa-vs-non-Ia) get no
+category. When a broker serves several versions of one model, the most
+confident one is used. The mapping is deliberately simple; please open an
+issue if a label is mapped wrongly.
 </details>
 
 ## Brokers
@@ -240,8 +267,11 @@ for objects, 10 min for streams) to respect rate limits.
   for lookups, consensus and plots.
 - Lasair's Rubin adapter is built against recorded responses and hasn't been
   run live yet (it needs an LSST token).
-- Candidates come only from four Fink classes, so objects Fink files
-  elsewhere (e.g. SIMBAD-matched AGN) are not searched yet.
+- Lasair-sourced candidates don't carry ZTF's alert-level cut fields; they
+  rely on Sherlock's nuclear association and the magnitude limit.
+- "New" uses Fink's first-detection date where available, otherwise the year
+  in the ZTF name, so a new flare in an old ZTF object can land in the
+  known list.
 - Direct Zooniverse upload is tested against a mocked client, not a live project.
 - The Alertissimo bridge handles single-object results.
   [docs/alertissimo.md](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/alertissimo.md) lists what Alertissimo can't do

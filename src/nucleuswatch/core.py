@@ -12,7 +12,7 @@ import pandas as pd
 from ._http import BrokerError
 from .brokers import SURVEYS
 from .brokers.base import CLASSIFICATION_COLUMNS, LIGHTCURVE_COLUMNS, BrokerResult
-from .taxonomy import VOTING_CLASSIFIERS, categorize
+from .taxonomy import VOTE_PRIORITY, VOTING_CLASSIFIERS, categorize
 
 ZTF_ID = re.compile(r"^ZTF\d{2}[a-z]{7}$")
 LSST_ID = re.compile(r"^\d{15,20}$")  # Rubin diaObjectId
@@ -115,17 +115,22 @@ class MergedObject:
         the distinct ``categories`` voted for, and the individual ``votes``.
         """
         df = self.classifications
-        # A classifier can appear more than once (ALeRCE serves several model
-        # versions); it still only gets one vote per category.
-        voters = df[df["votes"] & df["category"].notna()].drop_duplicates(
-            ["broker", "classifier", "category"]
-        )
-        votes = [
-            {"broker": b, "classifier": c, "label": lab, "category": cat}
-            for b, c, lab, cat in voters[["broker", "classifier", "label", "category"]].itertuples(index=False)
-        ]
-        categories = sorted(set(voters["category"]))
-        if len(set(voters["broker"])) < 2:
+        usable = df[df["votes"] & df["category"].notna()]
+        votes = []
+        for broker, rows in usable.groupby("broker", sort=False):
+            # One vote per broker: its most-preferred classifier that answered.
+            # A classifier can appear several times (ALeRCE serves several
+            # model versions); the most confident row wins.
+            for name in VOTE_PRIORITY.get(broker, ()):
+                chosen = rows[rows["classifier"] == name]
+                if len(chosen):
+                    best = chosen.assign(_p=pd.to_numeric(chosen["probability"], errors="coerce").fillna(-1))
+                    row = best.sort_values("_p", ascending=False).iloc[0]
+                    votes.append({"broker": broker, "classifier": name, "label": row["label"],
+                                  "category": row["category"]})
+                    break
+        categories = sorted({v["category"] for v in votes})
+        if len(votes) < 2:
             status = "insufficient"
         elif len(categories) == 1:
             status = "agree"

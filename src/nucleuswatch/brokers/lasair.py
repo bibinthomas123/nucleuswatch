@@ -35,6 +35,44 @@ def fetch(object_id: str, *, use_cache: bool = True, token: str | None = None) -
     return parse(object_id, obj)
 
 
+def nuclear_candidates(days: float = 7, mag_max: float = 20.0, max_separation: float = 1.0, *,
+                       token: str | None = None, use_cache: bool = True, limit: int = 1000) -> list[dict]:
+    """Objects Sherlock classifies as nuclear transients (``NT``), active recently.
+
+    Uses Lasair's query API: the object must have a detection in the last
+    ``days`` days, at least two detections, a latest g or r magnitude brighter
+    than ``mag_max``, and lie within ``max_separation`` arcsec of the host
+    galaxy's core. Returns one dict per object.
+    """
+    token = token or os.environ.get("LASAIR_TOKEN") or _token_from_dotenv()
+    if not token:
+        raise BrokerError("no Lasair token; set LASAIR_TOKEN (env or .env) to include Lasair")
+    conditions = (
+        "sherlock_classifications.classification = 'NT'"
+        f" AND sherlock_classifications.separationArcsec <= {float(max_separation)}"
+        f" AND objects.jdmax > JDNOW() - {float(days)}"
+        " AND objects.ncand >= 2"
+        f" AND (objects.gmag <= {float(mag_max)} OR objects.rmag <= {float(mag_max)})"
+    )
+    rows = request_json(
+        "POST",
+        f"{API}/query/",
+        data={
+            "selected": ("objects.objectId, objects.ramean, objects.decmean, objects.gmag, objects.rmag,"
+                         " objects.jdmax, objects.ncand, sherlock_classifications.separationArcsec"),
+            "tables": "objects, sherlock_classifications",
+            "conditions": conditions,
+            "limit": limit,
+        },
+        headers={"Authorization": f"Token {token}"},
+        use_cache=use_cache,
+        ttl=600,
+    )
+    if isinstance(rows, dict) and "error" in rows:
+        raise BrokerError(f"lasair query: {rows['error']}")
+    return rows
+
+
 def _token_from_dotenv(path: str | os.PathLike = ".env", key: str = "LASAIR_TOKEN") -> str | None:
     """Read ``key`` from a .env file without adding a dependency."""
     try:

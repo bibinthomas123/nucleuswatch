@@ -6,6 +6,8 @@ ZTF alert fields, ``d:`` Fink science-module outputs, ``v:`` derived values.
 
 from __future__ import annotations
 
+from datetime import date
+
 from .._http import BrokerError, request_json
 from .base import JD_TO_MJD, ZTF_BANDS, BrokerResult, classification_frame, lightcurve_frame
 
@@ -46,6 +48,26 @@ def latests(fink_class: str, startdate: str, stopdate: str, n: int = 1000,
         use_cache=use_cache,
         ttl=ttl,  # default is short because recent windows are still filling
     )
+
+
+LATESTS_CAP = 1000  # Fink returns at most this many alerts per request
+
+
+def latests_all(fink_class: str, start: date, stop: date, *, use_cache: bool = True,
+                ttl: float = 600) -> list[dict]:
+    """Every alert of ``fink_class`` in [start, stop), however many there are.
+
+    Fink caps each request at LATESTS_CAP alerts (the newest ones), so a full
+    window is split in half until each piece fits. A single day that still
+    hits the cap is returned as-is (capped), which is then a known limit.
+    """
+    rows = latests(fink_class, start.isoformat(), stop.isoformat(), n=LATESTS_CAP,
+                   use_cache=use_cache, ttl=ttl)
+    if len(rows) < LATESTS_CAP or (stop - start).days <= 1:
+        return rows
+    mid = start + (stop - start) / 2
+    return (latests_all(fink_class, start, mid, use_cache=use_cache, ttl=ttl)
+            + latests_all(fink_class, mid, stop, use_cache=use_cache, ttl=ttl))
 
 
 CUTOUT_KINDS = ("Science", "Template", "Difference")

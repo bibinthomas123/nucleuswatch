@@ -13,7 +13,6 @@ import re
 SN = "SN"
 TDE = "TDE"
 KILONOVA = "Kilonova"
-NUCLEAR = "Nuclear"  # Sherlock "NT": nuclear transient, AGN or TDE
 AGN = "AGN"
 CV = "CV/Nova"
 VARSTAR = "VarStar"
@@ -22,16 +21,18 @@ MICROLENSING = "Microlensing"
 SOLAR_SYSTEM = "SolarSystem"
 BOGUS = "Bogus"
 
-# Classifiers whose output is a single best-guess label for the whole object.
-# Binary scores (e.g. Fink's SNIa-vs-non-Ia) and ALeRCE's conditional
-# sub-classifiers are excluded because they only answer a narrower question.
-VOTING_CLASSIFIERS = {
-    ("alerce", "lc_classifier"),
-    ("alerce", "stamp_classifier"),
-    ("fink", "fink_classification"),
-    ("fink", "cats"),  # LSST
-    ("lasair", "sherlock"),
+# Classifiers whose output is a single best-guess label for the whole object,
+# per broker, in order of preference. Each broker casts ONE vote: the first
+# classifier in its list that gave a usable label. ALeRCE's light-curve
+# classifier uses the whole light curve, so it is preferred over the stamp
+# classifier, which only sees the first images. Binary scores (e.g. Fink's
+# SNIa-vs-non-Ia) and ALeRCE's conditional sub-classifiers never vote.
+VOTE_PRIORITY = {
+    "alerce": ("lc_classifier", "stamp_classifier"),
+    "fink": ("fink_classification", "cats"),  # cats: Rubin/LSST
+    "lasair": ("sherlock",),
 }
+VOTING_CLASSIFIERS = {(b, c) for b, names in VOTE_PRIORITY.items() for c in names}
 
 # Ordered (pattern, category) rules matched case-insensitively against labels.
 _RULES: list[tuple[str, str | None]] = [
@@ -41,7 +42,10 @@ _RULES: list[tuple[str, str | None]] = [
     (r"^(fast|long)$", None),
     (r"^non-periodic$", AGN),
     (r"^periodic$", VARSTAR),
-    (r"^(sherlock-)?nt$", NUCLEAR),
+    # Sherlock "NT" says *where* the transient is (on a galaxy nucleus), not
+    # what it is. Every nucleuswatch candidate is nuclear by construction, so
+    # it carries no information about SN vs AGN vs TDE and abstains.
+    (r"^(sherlock-)?nt$", None),
     (r"^bs$", STAR),
     (r"^vs$", VARSTAR),
     (r"^cv$|cv/nova|cataclyv|^nova|^cv\*", CV),

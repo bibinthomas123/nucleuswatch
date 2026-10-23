@@ -16,6 +16,19 @@ def isolated_cache(tmp_path, monkeypatch):
     monkeypatch.setenv("NUCLEUSWATCH_CACHE", str(tmp_path / "cache"))
 
 
+@pytest.fixture(autouse=True)
+def no_network(request, monkeypatch):
+    """Offline tests must never reach a broker; only tests marked live may."""
+    if request.node.get_closest_marker("live"):
+        return
+    from nucleuswatch import _http
+
+    def blocked(method, url, **kw):
+        raise RuntimeError(f"network access in an offline test: {method} {url}")
+
+    monkeypatch.setattr(_http, "_send", blocked)
+
+
 @pytest.fixture
 def offline_brokers(monkeypatch):
     """Serve recorded API responses instead of calling the brokers."""
