@@ -72,3 +72,10 @@ def test_failing_class_stream_is_reported(monkeypatch):
     search = nuclear_transients(merge=False, now=NOW)
     assert len(search) == 0
     assert search.errors and "fink down" in search.errors[0]
+
+
+def test_query_records_sources_actually_used(fink_stream):
+    past = datetime(2026, 1, 1, tzinfo=timezone.utc)  # Lasair can't search the past
+    search = nuclear_transients(7, merge=False, sources=("fink", "lasair"), now=past)
+    assert search.query["sources"] == ["fink"]
+    assert search.query["sources_requested"] == ["fink", "lasair"]

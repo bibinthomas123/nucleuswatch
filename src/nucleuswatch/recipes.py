@@ -149,6 +149,7 @@ def nuclear_transients(
             found[oid] = _fink_row(a, sorted(streams[oid]))
         funnel["by_source"]["fink"] = len(best)
 
+    used: list[str] = ["fink"] if "fink" in sources else []
     if "lasair" in sources:
         if now < datetime.now(timezone.utc) - timedelta(days=1):
             errors.append("lasair source skipped: its query API only searches up to now, not past windows")
@@ -166,6 +167,8 @@ def nuclear_transients(
                 else:
                     found[oid] = _lasair_row(r)
             funnel["by_source"]["lasair"] = len(rows)
+            if not any(e.startswith("lasair") for e in errors):
+                used.append("lasair")
 
     table = pd.DataFrame(list(found.values()), columns=CANDIDATE_COLUMNS)
     table["age_days"] = [_age_days(r, now) for r in table.to_dict("records")]
@@ -189,7 +192,8 @@ def nuclear_transients(
 
     table = table.sort_values("mag").reset_index(drop=True)
     query = {"recipe": "nuclear_transients", "days": days, "startdate": start.isoformat(),
-             "stopdate": stop.isoformat(), "sources": list(sources), "fink_classes": list(fink_classes),
+             "stopdate": stop.isoformat(), "sources": used, "sources_requested": list(sources),
+             "fink_classes": list(fink_classes),
              "new_within_days": new_within_days, "cuts": asdict(cuts)}
     return CandidateSearch(table, objects, query, errors, known, funnel)
 

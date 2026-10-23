@@ -9,8 +9,7 @@
   "startdate": "2026-09-11",
   "stopdate": "2026-09-19",
   "sources": [
-   "fink",
-   "lasair"
+   "fink"
   ],
   "fink_classes": [
    "SN candidate",
@@ -35,6 +34,10 @@
   "brokers": [
    "alerce",
    "fink"
+  ],
+  "sources_requested": [
+   "fink",
+   "lasair"
   ]
  },
  "errors": [
