@@ -21,6 +21,12 @@ classifiers = [
     "Programming Language :: Python :: 3",
 ]
 
+[project.urls]
+Homepage = "https://github.com/bibinthomas123/nucleuswatch"
+Source = "https://github.com/bibinthomas123/nucleuswatch"
+Issues = "https://github.com/bibinthomas123/nucleuswatch/issues"
+Validation = "https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/RESULTS.md"
+
 [project.optional-dependencies]
 plot = ["matplotlib>=3.6"]
 zooniverse = ["matplotlib>=3.6", "panoptes-client>=1.6"]
@@ -28,6 +34,9 @@ dev = ["pytest>=7", "ruff", "matplotlib>=3.6"]
 
 [project.scripts]
 nucleuswatch = "nucleuswatch.cli:main"
+
+[tool.hatch.build.targets.sdist]
+exclude = ["digest", ".github", "_site", "notebooks/zooniverse_export"]
 
 [tool.hatch.version]
 path = "src/nucleuswatch/__init__.py"

@@ -2,13 +2,13 @@
 
 [![CI](https://github.com/bibinthomas123/nucleuswatch/actions/workflows/ci.yml/badge.svg)](https://github.com/bibinthomas123/nucleuswatch/actions/workflows/ci.yml)
 ![Python](https://img.shields.io/badge/python-3.10%20%7C%203.12%20%7C%203.13-blue)
-[![License: MIT](https://img.shields.io/badge/license-MIT-green)](LICENSE)
-![Data: ZTF](https://img.shields.io/badge/data-ZTF-orange)
+[![License: MIT](https://img.shields.io/badge/license-MIT-green)](https://github.com/bibinthomas123/nucleuswatch/blob/main/LICENSE)
+![Data: ZTF | Rubin](https://img.shields.io/badge/data-ZTF%20%7C%20Rubin%2FLSST-orange)
 
 **Find nuclear transients in the alert stream, see whether ALeRCE, Fink and
 Lasair agree on what they are, and send them to Zooniverse.**
 
-![nucleuswatch nuclear search output](docs/images/cli_nuclear.svg)
+![nucleuswatch nuclear search output](https://raw.githubusercontent.com/bibinthomas123/nucleuswatch/main/docs/images/cli_nuclear.svg)
 
 <sub>Real output from 23 Oct 2026. Two of six candidates are flagged
 <b>disagree</b>: Pan-STARRS calls the host a galaxy, but Lasair's Sherlock
@@ -31,6 +31,9 @@ flares, nuclear supernovae):
 |---|---|
 | 🔭 **Search** | recent ZTF transients sitting on galaxy nuclei, using the standard positional cuts |
 | ⚖️ **Consensus** | every candidate is looked up in ALeRCE, Fink and Lasair, and the result is **agree / disagree / insufficient** |
+| ✅ **Validated** | recovers 51% of spectroscopically confirmed TDEs at mag ≤ 19 (72% at ≤ 20) and raises their share 4.9× ([results](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/RESULTS.md)) |
+| 🌌 **ZTF + Rubin** | ZTF names and Rubin/LSST `diaObjectId`s both work, through the same API |
+| 📅 **Weekly** | a scheduled job publishes a digest page and keeps the history in the repo |
 | 🧑‍🔬 **Zooniverse** | one flag writes a subject set ready to upload; broker opinions stay out of the volunteers' view |
 | 🔗 **Alertissimo** | works with results from the [Alertissimo](https://github.com/sambolino/alertissimo) orchestration layer |
 
@@ -49,12 +52,15 @@ cp .env_example .env                     # optional: add your Lasair token
 ```bash
 nucleuswatch nuclear --days 7 --mag-max 19            # this week's candidates
 nucleuswatch object ZTF21abfmbix --plot lc.png        # one object, all brokers
+nucleuswatch object 170587117485817955                # a Rubin/LSST object
 nucleuswatch nuclear --days 7 --zooniverse week43/    # + Zooniverse subject set
+nucleuswatch digest --days 7                          # weekly record + web page
 ```
 
 Lasair needs a free token: make an account, copy it from your profile, and
-put `LASAIR_TOKEN=...` in `.env` (or export it). Without one, Lasair is
-skipped and the other two brokers still work.
+put `LASAIR_TOKEN=...` in `.env` (or export it). Lasair's Rubin server has
+separate accounts, so LSST objects need `LASAIR_LSST_TOKEN` as well. Without a
+token, Lasair is skipped and the other two brokers still work.
 
 ## Screenshots
 
@@ -64,7 +70,7 @@ skipped and the other two brokers still work.
 vote (`*`). The position offsets between brokers, the TNS name and Lasair's
 Sherlock context all appear on one screen.
 
-![nucleuswatch object output](docs/images/cli_object.svg)
+![nucleuswatch object output](https://raw.githubusercontent.com/bibinthomas123/nucleuswatch/main/docs/images/cli_object.svg)
 
 ### The merged light curve
 
@@ -75,7 +81,7 @@ you can also see that **Fink is missing some alerts** (the first g-band point
 and all i-band points) that ALeRCE and Lasair have. `obj.coverage()` lists
 exactly which ones.
 
-![annotated light curve](docs/images/lightcurve_annotated.png)
+![annotated light curve](https://raw.githubusercontent.com/bibinthomas123/nucleuswatch/main/docs/images/lightcurve_annotated.png)
 
 ### What Zooniverse volunteers see
 
@@ -83,7 +89,7 @@ exactly which ones.
 with no ID, no broker labels and time relative to first detection, and
 **New / Before / Difference** stamps of the latest alert.
 
-![Zooniverse subject preview](docs/images/zooniverse_subject.png)
+![Zooniverse subject preview](https://raw.githubusercontent.com/bibinthomas123/nucleuswatch/main/docs/images/zooniverse_subject.png)
 
 The manifest uses Zooniverse's column prefixes to control what volunteers can see:
 
@@ -159,6 +165,42 @@ Each alert is tested against these cuts, and the brightest passing alert per obj
 | `ndethist >= ndethist_min` | 2 | not a one-off detection |
 | `isdiffpos` | positive | brightening, not fading |
 
+## Validation
+
+How well do the cuts do on objects whose nature is known? The answer comes from
+`validation/run_validation.py`, run against every object Fink cross-matched to a
+TNS spectroscopic classification in 2024–2025
+([full results](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/RESULTS.md)):
+
+- **24 / 47 confirmed TDEs (51%)** pass the default cuts. The nucleus cuts
+  remove only 2; the magnitude limit removes 21. Recovery rises to 64% at
+  `mag_max=19.5` and 72% at `mag_max=20`.
+- Among all spectroscopically classified objects, the cuts raise the TDE
+  share **4.9×** (1.2% → 6.0%). Nuclear SNe Ia and SNe II remain the majority.
+  That's expected, and it tells you how much follow-up a nuclear sample costs.
+- This measures the cuts, not the selection from Fink's classifier streams.
+
+## Rubin/LSST
+
+Pass a Rubin `diaObjectId` anywhere a ZTF name works, for example
+`nw.get_object(170587117485817955)`. The survey is detected from the ID.
+
+- ALeRCE (Rubin stamp classifier; its newest model version votes), Fink
+  (CATS broad classes, SuperNNova) and Lasair (Sherlock; needs
+  `LASAIR_LSST_TOKEN`).
+- Rubin difference fluxes can be negative, so light curves keep `flux` and
+  `flux_err` in nJy. `mag` is filled only where flux > 0, and plots use flux.
+- The nuclear search and image stamps are ZTF-only for now.
+
+## Weekly digest
+
+`nucleuswatch digest` runs the search and writes a small record
+(`digest/<date>.json` and `.csv`, committed so the history lives in the repo).
+It also writes a static page with plots, stamps, broker votes, TNS
+spectroscopic types and an archive. The
+[weekly workflow](https://github.com/bibinthomas123/nucleuswatch/blob/main/.github/workflows/weekly.yml) runs it every
+Monday and publishes the page to GitHub Pages.
+
 ## How consensus works
 
 <details>
@@ -166,7 +208,7 @@ Each alert is tested against these cuts, and the brightest passing alert per obj
 
 Only classifiers that give a whole-object best guess vote (see
 `taxonomy.VOTING_CLASSIFIERS`): ALeRCE `stamp_classifier` and
-`lc_classifier`, Fink `v:classification`, and Lasair Sherlock. Labels map to
+`lc_classifier`, Fink `v:classification` (ZTF) or CATS (Rubin), and Lasair Sherlock. Labels map to
 coarse categories (`SN`, `AGN`, `VarStar`, `CV/Nova`, `TDE`, `Nuclear`, …)
 through `nucleuswatch.categorize`. "Unknown" and "Ambiguous" abstain.
 
@@ -186,7 +228,7 @@ mapped wrongly.
 |---|---|---|
 | [ALeRCE](https://alerce.online) | public | light curve, `stamp_classifier`, `lc_classifier` |
 | [Fink](https://fink-portal.org) | public | candidate streams, light curve, classification, cutouts |
-| [Lasair](https://lasair-ztf.lsst.ac.uk) | free token | light curve, Sherlock context, TNS name |
+| [Lasair](https://lasair-ztf.lsst.ac.uk) | free token (separate one for [Rubin](https://lasair.lsst.ac.uk)) | light curve, Sherlock context, TNS name |
 
 A broker that is down, rate-limited or missing a token is reported in
 `obj.errors` and doesn't fail the call. Responses are cached on disk (1 h
@@ -194,12 +236,15 @@ for objects, 10 min for streams) to respect rate limits.
 
 ## Known limitations
 
-- ZTF only for now; LSST IDs will follow as broker LSST APIs stabilise.
+- The nuclear search and Zooniverse stamps are ZTF-only; Rubin objects work
+  for lookups, consensus and plots.
+- Lasair's Rubin adapter is built against recorded responses and hasn't been
+  run live yet (it needs an LSST token).
 - Candidates come only from four Fink classes, so objects Fink files
   elsewhere (e.g. SIMBAD-matched AGN) are not searched yet.
 - Direct Zooniverse upload is tested against a mocked client, not a live project.
 - The Alertissimo bridge handles single-object results.
-  [docs/alertissimo.md](docs/alertissimo.md) lists what Alertissimo can't do
+  [docs/alertissimo.md](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/alertissimo.md) lists what Alertissimo can't do
   yet and the bugs found.
 
 ## Development
@@ -210,15 +255,23 @@ pip install -e ".[dev]"
 pytest                       # offline tests on recorded broker responses
 pytest -m live               # also hit the real APIs
 python docs/make_images.py   # regenerate the screenshots in this README
+python validation/run_validation.py   # rerun the validation (~10 min, cached)
 ```
+
+Releases: bump `__version__`, then publish a GitHub release tagged
+`v<version>`. The [release workflow](https://github.com/bibinthomas123/nucleuswatch/blob/main/.github/workflows/release.yml)
+builds the package and uploads it to PyPI.
 
 ## Roadmap
 
 - [ ] Lasair Sherlock `NT` (nuclear transient) as a second candidate source
-- [ ] Fink `latests` recipe upstream in Alertissimo ([notes](docs/alertissimo.md))
+- [ ] Fink `latests` recipe upstream in Alertissimo ([notes](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/alertissimo.md))
 - [ ] Merge volunteer classifications back into the consensus table
-- [ ] Minimal web page for browsing a saved search
-- [ ] LSST object IDs; ANTARES adapter
+- [x] Weekly digest web page
+- [x] Rubin/LSST object IDs
+- [x] Validation against spectroscopically classified objects
+- [ ] Nuclear search on the Rubin stream; ANTARES adapter
+- [ ] Publish on PyPI
 
 ## Acknowledgements
 
@@ -230,4 +283,4 @@ a paper, please cite the brokers whose results you use
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://github.com/bibinthomas123/nucleuswatch/blob/main/LICENSE)
