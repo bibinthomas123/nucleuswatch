@@ -81,3 +81,61 @@ def test_lasair_token_from_dotenv(tmp_path, line):
 
 def test_lasair_dotenv_missing(tmp_path):
     assert lasair._token_from_dotenv(tmp_path / ".env") is None
+
+
+class FakeQuery:
+    """Stands in for lasair._query; records every call."""
+
+    def __init__(self, tns_error=None):
+        self.calls, self.tns_error = [], tns_error
+
+    def __call__(self, selected, tables, conditions, **kw):
+        self.calls.append((tables, conditions))
+        ids = [part.strip(" '") for part in conditions[conditions.index("(") + 1:-1].split(",")]
+        if "crossmatch_tns" in tables:
+            if self.tns_error:
+                raise self.tns_error
+            return [{"objectId": ids[0], "tns_name": "2026abc"}]
+        return [{"objectId": o, "ramean": 1.0, "decmean": 2.0, "classification": "SN",
+                 "description": "<em>near</em> a galaxy"} for o in ids if o != "ZTF26zzzzzzz"]
+
+
+def test_lasair_batch_uses_two_calls_per_hundred(monkeypatch):
+    fake = FakeQuery()
+    monkeypatch.setattr(lasair, "_query", fake)
+    ids = ["ZTF26abcdefg", "ZTF26zzzzzzz"]
+    out = lasair.batch_results(ids)
+    assert len(fake.calls) == 2  # Sherlock + TNS, not one per object
+    assert "ZTF26zzzzzzz" not in out  # unknown to Lasair
+    r = out["ZTF26abcdefg"]
+    assert r.classifications.iloc[0]["label"] == "SN"
+    assert r.extra["sherlock_description"] == "near a galaxy"
+
+
+def test_lasair_batch_rejects_unsafe_ids(monkeypatch):
+    fake = FakeQuery()
+    monkeypatch.setattr(lasair, "_query", fake)
+    lasair.batch_results(["ZTF26abcdefg", "x'); DROP TABLE objects; --"])
+    assert all("DROP" not in cond for _, cond in fake.calls)
+
+
+def test_lasair_batch_survives_tns_failure(monkeypatch):
+    from nucleuswatch import BrokerError
+
+    monkeypatch.setattr(lasair, "_query", FakeQuery(tns_error=BrokerError("rate limit exceeded")))
+    out = lasair.batch_results(["ZTF26abcdefg"])
+    assert out["ZTF26abcdefg"].classifications.iloc[0]["label"] == "SN"
+
+
+def test_merge_records_lasair_failure_per_object(offline_brokers, monkeypatch):
+    from nucleuswatch import BrokerError
+    from nucleuswatch.recipes import merge_objects
+
+    def limited(ids, **kw):
+        raise BrokerError("https://lasair-ztf.lsst.ac.uk/api/query/: rate limit exceeded")
+
+    monkeypatch.setattr(lasair, "batch_results", limited)
+    objs = merge_objects([OBJECT_ID])
+    assert "lasair" not in objs[OBJECT_ID].results
+    assert "rate limit" in objs[OBJECT_ID].errors["lasair"]
+    assert objs[OBJECT_ID].results["alerce"].ndet > 0

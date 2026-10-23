@@ -42,11 +42,8 @@ def nuclear_candidates(days: float = 7, mag_max: float = 20.0, max_separation: f
     Uses Lasair's query API: the object must have a detection in the last
     ``days`` days, at least two detections, a latest g or r magnitude brighter
     than ``mag_max``, and lie within ``max_separation`` arcsec of the host
-    galaxy's core. Returns one dict per object.
+    galaxy's core. Returns one dict per object. Costs one API call.
     """
-    token = token or os.environ.get("LASAIR_TOKEN") or _token_from_dotenv()
-    if not token:
-        raise BrokerError("no Lasair token; set LASAIR_TOKEN (env or .env) to include Lasair")
     conditions = (
         "sherlock_classifications.classification = 'NT'"
         f" AND sherlock_classifications.separationArcsec <= {float(max_separation)}"
@@ -54,19 +51,83 @@ def nuclear_candidates(days: float = 7, mag_max: float = 20.0, max_separation: f
         " AND objects.ncand >= 2"
         f" AND (objects.gmag <= {float(mag_max)} OR objects.rmag <= {float(mag_max)})"
     )
+    return _query(
+        "objects.objectId, objects.ramean, objects.decmean, objects.gmag, objects.rmag,"
+        " objects.jdmax, objects.ncand, sherlock_classifications.separationArcsec",
+        "objects, sherlock_classifications", conditions, limit=limit, token=token,
+        use_cache=use_cache, ttl=600,
+    )
+
+
+BATCH = 100  # object ids per query
+_ZTF_ID = re.compile(r"^ZTF\d{2}[a-z]{7}$")
+
+
+def batch_results(object_ids: list[str], *, token: str | None = None,
+                  use_cache: bool = True) -> dict[str, BrokerResult]:
+    """Sherlock classification, host description and TNS name for many objects.
+
+    Two query-API calls per 100 objects instead of one ``/object/`` call each,
+    which keeps a weekly digest far below Lasair's 100 calls/hour. The results
+    carry no light curve (ALeRCE and Fink report the same ZTF alerts).
+    Objects Lasair doesn't know are absent from the returned dict.
+    """
+    ids = sorted({o for o in object_ids if _ZTF_ID.match(o)})  # ids go into SQL: validate strictly
+    out: dict[str, BrokerResult] = {}
+    tns: dict[str, str] = {}
+    for i in range(0, len(ids), BATCH):
+        chunk = ids[i:i + BATCH]
+        members = ", ".join(f"'{o}'" for o in chunk)
+        rows = _query(
+            "objects.objectId, objects.ramean, objects.decmean,"
+            " sherlock_classifications.classification, sherlock_classifications.description",
+            "objects, sherlock_classifications", f"objects.objectId IN ({members})",
+            limit=len(chunk), token=token, use_cache=use_cache,
+        )
+        for r in rows:
+            out[r["objectId"]] = _batch_result(r)
+        try:
+            for r in _query("objects.objectId, crossmatch_tns.tns_name", "objects, crossmatch_tns",
+                            f"objects.objectId IN ({members})", limit=len(chunk), token=token,
+                            use_cache=use_cache):
+                if r.get("tns_name"):
+                    tns[r["objectId"]] = r["tns_name"]
+        except BrokerError:
+            pass  # TNS names are optional; never lose the Sherlock labels over them
+    for oid, name in tns.items():
+        if oid in out:
+            out[oid].extra["tns"] = name
+    return out
+
+
+def _batch_result(r: dict) -> BrokerResult:
+    classes = []
+    if r.get("classification"):
+        classes.append({"classifier": "sherlock", "label": r["classification"],
+                        "probability": None, "version": None})
+    return BrokerResult(
+        broker=NAME,
+        object_id=r["objectId"],
+        ra=r.get("ramean"),
+        dec=r.get("decmean"),
+        classifications=classification_frame(classes, NAME),
+        extra={"sherlock_description": _strip_html(r.get("description")), "tns": None},
+        url=f"https://lasair-ztf.lsst.ac.uk/objects/{r['objectId']}/",
+    )
+
+
+def _query(selected: str, tables: str, conditions: str, *, limit: int, token: str | None,
+           use_cache: bool, ttl: float = 6 * 3600) -> list[dict]:
+    token = token or os.environ.get("LASAIR_TOKEN") or _token_from_dotenv()
+    if not token:
+        raise BrokerError("no Lasair token; set LASAIR_TOKEN (env or .env) to include Lasair")
     rows = request_json(
         "POST",
         f"{API}/query/",
-        data={
-            "selected": ("objects.objectId, objects.ramean, objects.decmean, objects.gmag, objects.rmag,"
-                         " objects.jdmax, objects.ncand, sherlock_classifications.separationArcsec"),
-            "tables": "objects, sherlock_classifications",
-            "conditions": conditions,
-            "limit": limit,
-        },
+        data={"selected": selected, "tables": tables, "conditions": conditions, "limit": limit},
         headers={"Authorization": f"Token {token}"},
         use_cache=use_cache,
-        ttl=600,
+        ttl=ttl,
     )
     if isinstance(rows, dict) and "error" in rows:
         raise BrokerError(f"lasair query: {rows['error']}")

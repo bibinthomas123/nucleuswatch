@@ -190,11 +190,7 @@ def nuclear_transients(
 
     objects: dict[str, MergedObject] = {}
     if merge and len(table):
-        with ThreadPoolExecutor(max_workers=4) as pool:
-            merged = pool.map(
-                lambda oid: get_object(oid, brokers, use_cache=use_cache), table["object_id"]
-            )
-            objects = {m.object_id: m for m in merged}
+        objects = merge_objects(list(table["object_id"]), brokers, use_cache=use_cache)
         table = _add_consensus(table, objects)
 
     table = table.sort_values("mag").reset_index(drop=True)
@@ -203,6 +199,36 @@ def nuclear_transients(
              "fink_classes": list(fink_classes),
              "new_within_days": new_within_days, "cuts": asdict(cuts)}
     return CandidateSearch(table, objects, query, errors, known, funnel)
+
+
+def merge_objects(object_ids: list[str], brokers: list[str] | None = None, *,
+                  use_cache: bool = True) -> dict[str, MergedObject]:
+    """Look many objects up in every broker, economically.
+
+    ALeRCE and Fink are queried per object, in parallel. Lasair is queried in
+    one batch (see :func:`lasair.batch_results`), because its API allows only
+    100 calls per hour and a per-object lookup would exhaust that in a week
+    with ~30 candidates. If the batch fails, the reason is recorded on every
+    object instead of failing the search.
+    """
+    wanted = brokers or ["alerce", "fink", "lasair"]
+    per_object = [b for b in wanted if b != "lasair"]
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        merged = list(pool.map(lambda oid: get_object(oid, per_object, use_cache=use_cache), object_ids))
+    objects = {m.object_id: m for m in merged}
+    if "lasair" in wanted:
+        try:
+            found = lasair.batch_results(object_ids, use_cache=use_cache)
+        except BrokerError as exc:
+            for m in objects.values():
+                m.errors["lasair"] = str(exc)
+        else:
+            for oid, m in objects.items():
+                if oid in found:
+                    m.results["lasair"] = found[oid]
+                else:
+                    m.errors["lasair"] = "object not found"
+    return objects
 
 
 CANDIDATE_COLUMNS = [

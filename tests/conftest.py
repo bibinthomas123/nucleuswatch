@@ -43,3 +43,5 @@ def offline_brokers(monkeypatch):
     )
     monkeypatch.setattr(fink, "fetch", lambda oid, **kw: fink.parse(oid, load("fink_objects.json")))
     monkeypatch.setattr(lasair, "fetch", lambda oid, **kw: lasair.parse(oid, load("lasair_object.json")))
+    monkeypatch.setattr(lasair, "batch_results",
+                        lambda ids, **kw: {o: lasair.parse(o, load("lasair_object.json")) for o in ids})
