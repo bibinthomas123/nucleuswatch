@@ -176,7 +176,7 @@ def _num(v):
 
 # Plots on the page match its typography: sans-serif text, quiet axes.
 _PLOT_STYLE = {
-    "font.family": "sans-serif", "font.sans-serif": ["IBM Plex Sans", "Helvetica Neue", "Arial", "DejaVu Sans"],
+    "font.family": "sans-serif", "font.sans-serif": ["Inter", "Helvetica Neue", "Arial", "DejaVu Sans"],
     "font.size": 9.5, "axes.edgecolor": "#55514a", "axes.linewidth": 0.7,
     "xtick.color": "#55514a", "ytick.color": "#55514a", "xtick.direction": "in", "ytick.direction": "in",
     "axes.titlesize": 9.5, "legend.frameon": False,
@@ -232,13 +232,13 @@ def _legacy_viewer(ra, dec) -> str | None:
 # ------------------------------------------------------------------ HTML
 
 _FONTS = ("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500"
-          "&family=IBM+Plex+Sans:wght@400;500;600&display=swap")
+          "&family=Inter:wght@400;500;600&display=swap")
 
 _CSS = """
 :root {
   --bg:#f7f5ef; --fg:#1c1a16; --muted:#6a645a; --line:#ddd6c8; --rule:#1c1a16; --link:#1d5872;
   --bar:#3d4f5c; --agree:#3b6e3f; --disagree:#b4501f; --insufficient:#9b7a1b; --known:#a39d91; --plate:#ffffff;
-  --sans:"IBM Plex Sans", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --sans:"Inter", -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 }
 @media (prefers-color-scheme: dark) { :root {
@@ -464,7 +464,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>nucleuswatch — week {iso_week}, {iso_year}</title>
+<title>Nucleus Watch — week {iso_week}, {iso_year}</title>
 <meta name="description" content="Nuclear transients in the ZTF alert stream, with ALeRCE, Fink and Lasair classifications compared.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{_FONTS}">
@@ -472,7 +472,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
 <body><main>
 <header class="masthead">
  <div class="kicker">Week {iso_week}, {iso_year}</div>
- <h1>nucleuswatch</h1>
+ <h1>Nucleus Watch</h1>
  <p class="dek">New transients at the centres of galaxies in the ZTF alert stream (tidal disruption events,
  AGN flares, nuclear supernovae), and whether the ALeRCE, Fink and Lasair brokers agree on what they are.</p>
  <div class="meta">{escape(q.get('startdate', ''))} – {escape(q.get('stopdate', ''))} · sources: {escape(sources)} ·
