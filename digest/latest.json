@@ -1,0 +1,218 @@
+{
+ "generated": "2026-10-23T19:35:13+00:00",
+ "nucleuswatch_version": "0.2.0",
+ "query": {
+  "recipe": "nuclear_transients",
+  "days": 7.0,
+  "startdate": "2026-10-16",
+  "stopdate": "2026-10-24",
+  "fink_classes": [
+   "SN candidate",
+   "Early SN Ia candidate",
+   "SLSN candidate",
+   "Ambiguous"
+  ],
+  "cuts": {
+   "mag_max": 19.0,
+   "distnr_max": 0.5,
+   "distpsnr1_max": 1.0,
+   "sgscore1_max": 0.5,
+   "ndethist_min": 2
+  }
+ },
+ "errors": [],
+ "n_candidates": 4,
+ "n_disagree": 2,
+ "candidates": [
+  {
+   "object_id": "ZTF26acakche",
+   "ra": 40.2619969,
+   "dec": -7.4997294,
+   "mag": 17.57149,
+   "band": "g",
+   "mjd": 61333.39462959999,
+   "distnr": 0.41884205,
+   "distpsnr1": 0.42946285,
+   "sgscore1": 0.00375,
+   "ndethist": 22,
+   "fink_class": "SN candidate",
+   "consensus": "disagree",
+   "categories": "SN, VarStar",
+   "broker_labels": "alerce:SNIa; alerce:SN; fink:SN candidate; lasair:VS",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "alerce",
+     "classifier": "stamp_classifier",
+     "label": "SN",
+     "category": "SN"
+    },
+    {
+     "broker": "fink",
+     "classifier": "fink_classification",
+     "label": "SN candidate",
+     "category": "SN"
+    },
+    {
+     "broker": "lasair",
+     "classifier": "sherlock",
+     "label": "VS",
+     "category": "VarStar"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26acakche",
+    "fink": "https://fink-portal.org/ZTF26acakche",
+    "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acakche/"
+   },
+   "broker_errors": {},
+   "tns_name": "2026aeva",
+   "tns_type": null,
+   "sherlock": "The transient is synonymous with SDSS J024102.90-072958.9; an r=19.94 mag stellar source found in the SDSS catalogue. Its located 0.4\" from the stellar source core.",
+   "n_detections": 21
+  },
+  {
+   "object_id": "ZTF18abxnydk",
+   "ra": 0.9135256,
+   "dec": -12.8720593,
+   "mag": 17.624962,
+   "band": "r",
+   "mjd": 61331.2097800998,
+   "distnr": 0.33624992,
+   "distpsnr1": 0.4167532,
+   "sgscore1": 0.0,
+   "ndethist": 62,
+   "fink_class": "Ambiguous",
+   "consensus": "disagree",
+   "categories": "SN, VarStar",
+   "broker_labels": "alerce:SN; alerce:SLSN; lasair:VS",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "stamp_classifier",
+     "label": "SN",
+     "category": "SN"
+    },
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SLSN",
+     "category": "SN"
+    },
+    {
+     "broker": "lasair",
+     "classifier": "sherlock",
+     "label": "VS",
+     "category": "VarStar"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF18abxnydk",
+    "fink": "https://fink-portal.org/ZTF18abxnydk",
+    "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18abxnydk/"
+   },
+   "broker_errors": {},
+   "tns_name": "2026abui",
+   "tns_type": "SN Ib",
+   "sherlock": "The transient is synonymous with 2420947342472989952; a G=19.68 mag stellar source found in the GAIA catalogue. Its located 0.2\" from the stellar source core.",
+   "n_detections": 64
+  },
+  {
+   "object_id": "ZTF26abypolw",
+   "ra": 322.1723983,
+   "dec": 3.9633036,
+   "mag": 18.700523,
+   "band": "g",
+   "mjd": 61329.14613430016,
+   "distnr": 0.035276923,
+   "distpsnr1": 0.07334,
+   "sgscore1": 0.0120417,
+   "ndethist": 31,
+   "fink_class": "Ambiguous",
+   "consensus": "agree",
+   "categories": "SN",
+   "broker_labels": "alerce:SNIa; alerce:SN; lasair:SN",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "alerce",
+     "classifier": "stamp_classifier",
+     "label": "SN",
+     "category": "SN"
+    },
+    {
+     "broker": "lasair",
+     "classifier": "sherlock",
+     "label": "SN",
+     "category": "SN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abypolw",
+    "fink": "https://fink-portal.org/ZTF26abypolw",
+    "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abypolw/"
+   },
+   "broker_errors": {},
+   "tns_name": "2026aebg",
+   "tns_type": "SN Ia-91T-like",
+   "sherlock": "The transient is possibly associated with SDSS J212841.36+035748.0; an r=19.54 mag galaxy found in the SDSS/PS1 catalogues. Its located 0.43\" S, 0.13\" E from the galaxy centre.",
+   "n_detections": 39
+  },
+  {
+   "object_id": "ZTF26abysngk",
+   "ra": 20.8066729,
+   "dec": -3.1305208,
+   "mag": 18.750986,
+   "band": "r",
+   "mjd": 61329.26740740007,
+   "distnr": 0.4396308,
+   "distpsnr1": 0.32627362,
+   "sgscore1": 0.00125,
+   "ndethist": 31,
+   "fink_class": "Ambiguous",
+   "consensus": "agree",
+   "categories": "SN",
+   "broker_labels": "alerce:SNIa; alerce:SN; lasair:SN",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "alerce",
+     "classifier": "stamp_classifier",
+     "label": "SN",
+     "category": "SN"
+    },
+    {
+     "broker": "lasair",
+     "classifier": "sherlock",
+     "label": "SN",
+     "category": "SN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abysngk",
+    "fink": "https://fink-portal.org/ZTF26abysngk",
+    "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abysngk/"
+   },
+   "broker_errors": {},
+   "tns_name": "2026aecv",
+   "tns_type": "SN Ia",
+   "sherlock": "The transient is possibly associated with SDSS J012313.60-030749.6; an r=19.12 mag galaxy found in the SDSS/PS1 catalogues. Its located 0.26\" S, 0.03\" W from the galaxy centre.",
+   "n_detections": 42
+  }
+ ]
+}

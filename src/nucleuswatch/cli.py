@@ -2,6 +2,7 @@
 
     nucleuswatch object ZTF21abfmbix [--plot lc.png]
     nucleuswatch nuclear --days 7 --mag-max 19 [--csv out.csv] [--zooniverse DIR]
+    nucleuswatch digest --days 7 --data digest --site _site
     nucleuswatch zooniverse-upload DIR --project 1234 --subject-set "Week 43"
 """
 
@@ -36,6 +37,12 @@ def main(argv: list[str] | None = None) -> int:
     n.add_argument("--zooniverse", metavar="DIR", help="export Zooniverse subjects to DIR")
     n.add_argument("--no-cache", action="store_true")
 
+    d = sub.add_parser("digest", help="weekly digest: record in --data, static site in --site")
+    d.add_argument("--days", type=float, default=7)
+    d.add_argument("--data", default="digest", help="folder for the committed JSON/CSV records")
+    d.add_argument("--site", default="_site", help="folder for the generated web page")
+    d.add_argument("--no-cache", action="store_true")
+
     u = sub.add_parser("zooniverse-upload", help="upload an exported folder to a Zooniverse project")
     u.add_argument("folder", help="folder written by --zooniverse (contains manifest.csv)")
     u.add_argument("--project", type=int, required=True, help="Zooniverse project id")
@@ -44,7 +51,8 @@ def main(argv: list[str] | None = None) -> int:
     args = p.parse_args(argv)
     pd.set_option("display.width", 160)
     pd.set_option("display.max_colwidth", 60)
-    return {"object": _object, "nuclear": _nuclear, "zooniverse-upload": _upload}[args.command](args, p)
+    commands = {"object": _object, "nuclear": _nuclear, "digest": _digest, "zooniverse-upload": _upload}
+    return commands[args.command](args, p)
 
 
 def _object(args, p) -> int:
@@ -112,6 +120,17 @@ def _nuclear(args, p) -> int:
         path = export_subjects(search, args.zooniverse, use_cache=not args.no_cache)
         print(f"\nWrote Zooniverse subjects to {path}")
         print(f"Upload: nucleuswatch zooniverse-upload {args.zooniverse} --project ID --subject-set NAME")
+    return 0
+
+
+def _digest(args, p) -> int:
+    from . import digest
+
+    record, search = digest.build(args.days, use_cache=not args.no_cache)
+    path = digest.write_data(record, args.data)
+    page = digest.render_site(record, args.data, args.site, search, use_cache=not args.no_cache)
+    print(f"{record['n_candidates']} candidates ({record['n_disagree']} disagree)")
+    print(f"Wrote {path} and {page}")
     return 0
 
 

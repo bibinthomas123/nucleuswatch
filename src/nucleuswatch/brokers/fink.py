@@ -116,7 +116,7 @@ def parse(object_id: str, rows: list[dict]) -> BrokerResult:
         classifications=classification_frame(classes, NAME),
         extra={
             "simbad": latest.get("d:cdsxmatch"),
-            "tns": latest.get("d:tns") or None,
+            "tns_type": latest.get("d:tns") or None,  # TNS classification, not the name
         },
         url=f"https://fink-portal.org/{object_id}",
     )

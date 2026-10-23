@@ -8,3 +8,4 @@ dist/
 *.png
 .env
 !docs/images/*.png
+_site/

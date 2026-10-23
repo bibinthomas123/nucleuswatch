@@ -1,0 +1,62 @@
+name: Weekly digest
+
+# Every Monday: search the last 7 days, commit the small JSON/CSV record to
+# digest/, and publish the web page (with plots and stamps) to GitHub Pages.
+#
+# One-time setup:
+#   Settings -> Pages -> Source: "GitHub Actions"
+#   Settings -> Secrets and variables -> Actions -> New repository secret
+#     LASAIR_TOKEN  (optional; without it Lasair is skipped)
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"
+  workflow_dispatch:
+    inputs:
+      days:
+        description: "Look-back window in days"
+        default: "7"
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: weekly-digest
+  cancel-in-progress: false
+
+jobs:
+  digest:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - run: pip install -e ".[plot]"
+
+      - name: Build digest and site
+        env:
+          LASAIR_TOKEN: ${{ secrets.LASAIR_TOKEN }}
+        run: nucleuswatch digest --days "${{ github.event.inputs.days || '7' }}" --data digest --site _site
+
+      - name: Commit the record
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add digest/
+          git diff --cached --quiet || git commit -m "digest: $(date -u +%Y-%m-%d)"
+          git push
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deploy
+        uses: actions/deploy-pages@v4
