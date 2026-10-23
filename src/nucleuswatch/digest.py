@@ -174,6 +174,15 @@ def _num(v):
     return None if v is None or pd.isna(v) else float(v)
 
 
+# Plots on the page match its typography: serif text, quiet axes.
+_PLOT_STYLE = {
+    "font.family": "serif", "font.serif": ["Source Serif 4", "STIXGeneral", "DejaVu Serif"],
+    "mathtext.fontset": "stix", "font.size": 9.5, "axes.edgecolor": "#55514a", "axes.linewidth": 0.7,
+    "xtick.color": "#55514a", "ytick.color": "#55514a", "xtick.direction": "in", "ytick.direction": "in",
+    "axes.titlesize": 9.5, "legend.frameon": False,
+}
+
+
 def _write_images(obj: MergedObject, img_dir: Path, *, use_cache: bool) -> dict:
     import matplotlib
     matplotlib.use("Agg")
@@ -182,27 +191,28 @@ def _write_images(obj: MergedObject, img_dir: Path, *, use_cache: bool) -> dict:
     from .zooniverse import draw_stamps
 
     images = {}
-    ax = obj.plot()
-    ax.figure.set_size_inches(7.5, 4)
-    ax.figure.tight_layout()
-    name = f"{obj.object_id}_lc.png"
-    ax.figure.savefig(img_dir / name, dpi=100)
-    plt.close(ax.figure)
-    images["lightcurve"] = f"img/{name}"
+    with plt.rc_context(_PLOT_STYLE):
+        ax = obj.plot()
+        ax.figure.set_size_inches(7.5, 4)
+        ax.figure.tight_layout()
+        name = f"{obj.object_id}_lc.png"
+        ax.figure.savefig(img_dir / name, dpi=150)
+        plt.close(ax.figure)
+        images["lightcurve"] = f"img/{name}"
 
-    if obj.survey == "ztf":
-        try:
-            stamps = {k: fink.cutout(obj.object_id, k, use_cache=use_cache) for k in fink.CUTOUT_KINDS}
-        except BrokerError:
-            stamps = None
-        if stamps:
-            fig, axes = plt.subplots(1, 3, figsize=(6.6, 2.5))
-            draw_stamps(axes, stamps)
-            fig.tight_layout()
-            name = f"{obj.object_id}_stamps.png"
-            fig.savefig(img_dir / name, dpi=100)
-            plt.close(fig)
-            images["stamps"] = f"img/{name}"
+        if obj.survey == "ztf":
+            try:
+                stamps = {k: fink.cutout(obj.object_id, k, use_cache=use_cache) for k in fink.CUTOUT_KINDS}
+            except BrokerError:
+                stamps = None
+            if stamps:
+                fig, axes = plt.subplots(1, 3, figsize=(6.6, 2.5))
+                draw_stamps(axes, stamps)
+                fig.tight_layout()
+                name = f"{obj.object_id}_stamps.png"
+                fig.savefig(img_dir / name, dpi=150)
+                plt.close(fig)
+                images["stamps"] = f"img/{name}"
     return images
 
 
@@ -221,54 +231,93 @@ def _legacy_viewer(ra, dec) -> str | None:
 
 # ------------------------------------------------------------------ HTML
 
+_FONTS = ("https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500"
+          "&family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&display=swap")
+
 _CSS = """
-:root { --bg:#ffffff; --fg:#1f2328; --muted:#59636e; --line:#d1d9e0; --card:#f6f8fa; --bar:#d0d7de;
-        --agree:#1a7f37; --disagree:#bc4c00; --insufficient:#9a6700; --link:#0969da; --known:#8c959f; }
-@media (prefers-color-scheme: dark) {
-  :root { --bg:#0d1117; --fg:#e6edf3; --muted:#9198a1; --line:#30363d; --card:#151b23; --bar:#30363d;
-          --agree:#3fb950; --disagree:#f0883e; --insufficient:#d29922; --link:#4493f8; --known:#6e7681; } }
+:root {
+  --bg:#f7f5ef; --fg:#1c1a16; --muted:#6a645a; --line:#ddd6c8; --rule:#1c1a16; --link:#1d5872;
+  --bar:#3d4f5c; --agree:#3b6e3f; --disagree:#b4501f; --insufficient:#9b7a1b; --known:#a39d91; --plate:#ffffff;
+  --serif:"Source Serif 4", "Source Serif Pro", Charter, "Iowan Old Style", Georgia, serif;
+  --mono:"IBM Plex Mono", ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+}
+@media (prefers-color-scheme: dark) { :root {
+  --bg:#10141c; --fg:#e6e1d6; --muted:#9a958a; --line:#2a313d; --rule:#e6e1d6; --link:#8ec3d6;
+  --bar:#8ea4b3; --agree:#84b98a; --disagree:#e3895a; --insufficient:#d6b65a; --known:#59606b; --plate:#f2efe8; } }
 * { box-sizing:border-box; }
-body { margin:0; background:var(--bg); color:var(--fg);
-       font:15px/1.55 -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif; }
-main { max-width:1120px; margin:0 auto; padding:24px 16px 64px; }
-a { color:var(--link); text-decoration:none; } a:hover { text-decoration:underline; }
-h1 { font-size:30px; margin:0 0 4px; } h2 { font-size:21px; margin:44px 0 12px; padding-top:8px; }
-h3 { font-size:17px; margin:0 0 6px; }
-nav { display:flex; gap:14px; flex-wrap:wrap; margin:14px 0 4px; font-size:14px; }
-.muted { color:var(--muted); } .small { font-size:13px; }
-.stats { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); gap:12px; margin:20px 0; }
-.stat { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:12px 16px; }
-.stat b { display:block; font-size:26px; line-height:1.2; }
-.grid2 { display:grid; grid-template-columns:repeat(auto-fit, minmax(300px, 1fr)); gap:16px; }
-.panel { background:var(--card); border:1px solid var(--line); border-radius:10px; padding:14px 16px; }
-.bars div { display:grid; grid-template-columns: 9em 1fr 3em; gap:8px; align-items:center; margin:4px 0; font-size:14px; }
-.bars span.b { height:12px; border-radius:6px; background:var(--link); display:block; }
-.bars span.n { text-align:right; font-variant-numeric:tabular-nums; }
-.table-wrap { overflow-x:auto; }
-table { border-collapse:collapse; width:100%; font-size:14px; }
-th, td { border-bottom:1px solid var(--line); padding:7px 10px; text-align:left; white-space:nowrap; }
-th { color:var(--muted); font-weight:600; }
-td.num { text-align:right; font-variant-numeric:tabular-nums; }
-.badge { display:inline-block; padding:0 8px; border-radius:999px; font-size:12px; font-weight:600; border:1px solid currentColor; }
+html { -webkit-text-size-adjust:100%; }
+body { margin:0; background:var(--bg); color:var(--fg); font:17px/1.6 var(--serif);
+       font-feature-settings:"onum" 1, "kern" 1; }
+main { max-width:1080px; margin:0 auto; padding:40px 20px 80px; }
+a { color:var(--link); text-decoration:underline; text-decoration-thickness:1px; text-underline-offset:2px; }
+a:hover { text-decoration-thickness:2px; }
+.masthead { border-top:3px solid var(--rule); border-bottom:1px solid var(--rule); padding:14px 0 18px; }
+.kicker { font:500 12px/1.4 var(--mono); letter-spacing:.08em; text-transform:uppercase; color:var(--muted); }
+h1 { font-size:46px; line-height:1.05; font-weight:700; letter-spacing:-.015em; margin:6px 0 10px; }
+.dek { font-size:20px; line-height:1.45; margin:0 0 10px; max-width:46em; }
+.meta { font:13px/1.5 var(--mono); color:var(--muted); }
+nav { display:flex; gap:22px; flex-wrap:wrap; padding:10px 0; border-bottom:1px solid var(--line);
+      font:500 13px/1.4 var(--mono); text-transform:uppercase; letter-spacing:.06em; }
+nav a { color:var(--fg); text-decoration:none; } nav a:hover { color:var(--link); }
+h2 { font-size:26px; font-weight:600; margin:56px 0 14px; padding-top:12px; border-top:1px solid var(--rule);
+     display:flex; gap:14px; align-items:baseline; }
+h2 .num { font:500 13px var(--mono); color:var(--muted); }
+h3 { font-size:15px; font-weight:600; margin:0 0 8px; font-variant:small-caps; letter-spacing:.04em; }
+p { margin:0 0 12px; }
+.muted { color:var(--muted); } .small { font-size:14px; line-height:1.5; }
+.mono, td.num, .id { font-family:var(--mono); font-feature-settings:"tnum" 1; }
+.figures { display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr)); margin:26px 0 8px; }
+.figures div { padding:4px 18px 8px; border-left:1px solid var(--line); }
+.figures div:first-child { border-left:0; padding-left:0; }
+.figures dd { margin:0; font-size:44px; line-height:1.1; font-weight:600; font-feature-settings:"lnum" 1; }
+.figures dt { font-size:14px; color:var(--muted); line-height:1.35; }
+.cols { display:grid; grid-template-columns:repeat(auto-fit, minmax(290px, 1fr)); gap:28px; }
+.col { border-top:1px solid var(--line); padding-top:12px; }
+.bars div { display:grid; grid-template-columns:10.5em 1fr 3.2em; gap:10px; align-items:center; margin:5px 0;
+            font-size:14px; }
+.bars span.b { height:6px; background:var(--bar); display:block; }
+.bars span.n { text-align:right; font:13px var(--mono); }
+.table-wrap { overflow-x:auto; border-top:1px solid var(--rule); border-bottom:1px solid var(--rule); }
+table { border-collapse:collapse; width:100%; font-size:14.5px; }
+th, td { padding:7px 12px 7px 0; text-align:left; white-space:nowrap; border-bottom:1px solid var(--line); }
+tbody tr:last-child td { border-bottom:0; }
+th { font:500 11.5px/1.3 var(--mono); text-transform:uppercase; letter-spacing:.07em; color:var(--muted); }
+td.num, th.num { text-align:right; }
+td a.id { text-decoration:none; }
+.status { white-space:nowrap; font-size:14px; }
+.status::before { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px;
+                  background:currentColor; vertical-align:1px; }
 .agree { color:var(--agree); } .disagree { color:var(--disagree); } .insufficient { color:var(--insufficient); }
-.tier { color:var(--muted); }
-.card { border:1px solid var(--line); border-radius:10px; padding:16px; margin:16px 0; background:var(--card); }
-.card img { max-width:100%; height:auto; border-radius:6px; background:#fff; display:block; }
-.imgs { display:grid; grid-template-columns: 160px minmax(0,1.5fr) minmax(0,1fr); gap:12px; align-items:start; margin-top:12px; }
-.host { width:160px; } .host img { width:160px; height:160px; background:#000; }
-@media (max-width: 860px) { .imgs { grid-template-columns: 1fr; } .host img { width:160px; } }
-ul.votes { margin:6px 0; padding-left:18px; }
-svg text { fill:var(--muted); font-size:11px; }
+.tier { font:12px var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
+.entry { border-top:1px solid var(--line); padding:22px 0 8px; }
+.entry h3 { font:600 19px var(--mono); font-variant:normal; letter-spacing:0; display:flex; gap:14px;
+            align-items:baseline; flex-wrap:wrap; margin-bottom:4px; }
+.entry .facts { font:13px/1.6 var(--mono); color:var(--muted); }
+.entry .links { font-size:14px; margin:4px 0 8px; }
+.entry .spec { font-style:italic; }
+ul.votes { margin:6px 0 10px; padding-left:20px; font-size:15px; }
+.imgs { display:grid; grid-template-columns:160px minmax(0,1.5fr) minmax(0,1fr); gap:14px; align-items:start; margin-top:12px; }
+.imgs img { max-width:100%; height:auto; display:block; background:var(--plate); padding:4px; }
+.host img { width:160px; height:160px; background:#000; padding:0; }
+/* fixed columns, so a host image that fails to load leaves a gap instead of reflowing */
+.imgs .host { grid-column:1; } .imgs img.lightcurve { grid-column:2; } .imgs img.stamps { grid-column:3; }
+.host .small { margin-top:4px; font:12px var(--mono); }
+@media (max-width:860px) {
+  .imgs { grid-template-columns:1fr; } .imgs .host, .imgs img.lightcurve, .imgs img.stamps { grid-column:1; }
+  h1 { font-size:36px; } .dek { font-size:18px; } }
+figure { margin:0; }
+figcaption { font-size:14px; color:var(--muted); margin-top:6px; }
+svg text { fill:var(--muted); font:11px var(--mono); }
 svg .grid { stroke:var(--line); stroke-width:1; fill:none; }
-details { margin:8px 0; } summary { cursor:pointer; color:var(--link); }
-footer { margin-top:56px; font-size:13px; }
-code { font-size:13px; }
+details { margin:6px 0; font-size:14px; } summary { cursor:pointer; color:var(--link); }
+footer { margin-top:64px; padding-top:12px; border-top:3px solid var(--rule); font-size:14px; color:var(--muted); }
+code { font:14px var(--mono); }
 """
 
 
 def _badge(status: str | None) -> str:
     status = status or "insufficient"
-    return f'<span class="badge {escape(status)}">{escape(status)}</span>'
+    return f'<span class="status {escape(status)}">{escape(status)}</span>'
 
 
 def _fmt(v, digits=2) -> str:
@@ -277,17 +326,21 @@ def _fmt(v, digits=2) -> str:
     return f"{v:.{digits}f}" if isinstance(v, float) else escape(str(v))
 
 
-def _bars(counts: dict, colour_classes: dict | None = None, *, keep_order: bool = False) -> str:
+def _bars(counts: dict, colour_classes: dict | None = None, *, keep_order: bool = False,
+          log: bool = False) -> str:
+    """Horizontal bar list. ``log=True`` for quantities spanning decades (a funnel)."""
     if not counts:
         return "<p class='muted small'>none</p>"
-    top = max(counts.values()) or 1
+    scale = (lambda n: math.log10(n + 1)) if log else (lambda n: n)
+    top = scale(max(counts.values())) or 1
     rows = []
     items = counts.items() if keep_order else sorted(counts.items(), key=lambda kv: -kv[1])
     for label, n in items:
         cls = (colour_classes or {}).get(label, "")
         style = "background:currentColor" if cls else ""
+        width = max(100 * scale(n) / top, 1.5 if n else 0)
         rows.append(f"<div class='{escape(cls)}'><span>{escape(str(label))}</span>"
-                    f"<span class='b' style='width:{100 * n / top:.0f}%;{style}'></span><span class='n'>{n}</span></div>")
+                    f"<span class='b' style='width:{width:.0f}%;{style}'></span><span class='n'>{n}</span></div>")
     return "<div class='bars'>" + "".join(rows) + "</div>"
 
 
@@ -349,7 +402,7 @@ def _validation_panel(val: dict | None) -> str:
     all_n = sum(c["total"] for c in comp.values()) or 1
     pass_n = sum(c["passed"] for c in comp.values()) or 1
     before, after = 100 * comp["TDE"]["total"] / all_n, 100 * comp["TDE"]["passed"] / pass_n
-    return f"""<div class="panel"><h3>How good are the cuts?</h3>
+    return f"""<div class="col"><h3>How good are the cuts?</h3>
 <p>Tested on {t['total']} spectroscopically confirmed TDEs ({escape(val['window'][0])} → {escape(val['window'][1])}):
 <b>{t['passed']} ({100 * t['passed'] / t['total']:.0f}%)</b> pass at mag ≤ {val['cuts']['mag_max']}.
 Recovery by magnitude limit: {curve}.</p>
@@ -365,7 +418,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
     funnel = record.get("funnel", {})
 
     rows = "".join(
-        f"<tr><td><a href='#{escape(c['object_id'])}'>{escape(c['object_id'])}</a></td>"
+        f"<tr><td><a class='id' href='#{escape(c['object_id'])}'>{escape(c['object_id'])}</a></td>"
         f"<td class='num'>{_fmt(c.get('mag'))}</td><td>{_fmt(c.get('band'))}</td>"
         f"<td class='tier'>{escape(c.get('tier', ''))}</td>"
         f"<td class='num'>{_fmt(c.get('age_days'), 0) if c.get('first_seen_mjd') else '–'}</td>"
@@ -385,7 +438,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
     tns_typed = [c for c in cands if c.get("tns_type")]
 
     known_rows = "".join(
-        f"<tr><td><a href='https://lasair-ztf.lsst.ac.uk/objects/{escape(k['object_id'])}/'>{escape(k['object_id'])}</a></td>"
+        f"<tr><td><a class='id' href='https://lasair-ztf.lsst.ac.uk/objects/{escape(k['object_id'])}/'>{escape(k['object_id'])}</a></td>"
         f"<td class='num'>{_fmt(k.get('mag'))}</td><td>{_fmt(k.get('band'))}</td>"
         f"<td class='num'>{_fmt(k.get('ra'), 4)}</td><td class='num'>{_fmt(k.get('dec'), 4)}</td>"
         f"<td class='small'>{escape(k.get('sources') or '')}</td></tr>"
@@ -396,7 +449,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
                   f"<a href='data/{escape(stamp)}_known.csv'>Download all (CSV)</a>.</p>") if len(known) > 100 else ""
 
     archive_rows = "".join(
-        f"<tr><td>{escape(a['date'])}</td><td class='num'>{a['n']}</td><td class='num'>{a['disagree']}</td>"
+        f"<tr><td class='mono'>{escape(a['date'])}</td><td class='num'>{a['n']}</td><td class='num'>{a['disagree']}</td>"
         f"<td class='num'>{_fmt(a.get('known'))}</td><td class='small'>{escape(', '.join(a['sources']))}</td>"
         f"<td><a href='data/{escape(a['date'])}.json'>json</a> · <a href='data/{escape(a['date'])}.csv'>csv</a></td></tr>"
         for a in archive
@@ -405,102 +458,118 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
     errors = "".join(f"<li>{escape(e)}</li>" for e in record.get("errors", []))
     empty = "<p class='muted'>No new candidates passed the cuts in this window.</p>" if not cands else ""
 
+    gen = datetime.fromisoformat(record["generated"])
+    iso_year, iso_week, _ = gen.isocalendar()
+    sources = ", ".join(q.get("sources", [])) or "fink"
+
     return f"""<!doctype html>
 <html lang="en"><head><meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>nucleuswatch weekly</title>
-<meta name="description" content="Nuclear transients from the ZTF alert stream, with ALeRCE / Fink / Lasair consensus.">
+<title>nucleuswatch — week {iso_week}, {iso_year}</title>
+<meta name="description" content="Nuclear transients in the ZTF alert stream, with ALeRCE, Fink and Lasair classifications compared.">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="{_FONTS}">
 <style>{_CSS}</style></head>
 <body><main>
-<h1>nucleuswatch weekly</h1>
-<p class="muted">New transients at the centres of galaxies (tidal disruption events, AGN flares, nuclear
-supernovae) found in the ZTF alert stream, and whether the ALeRCE, Fink and Lasair brokers agree on what
-they are. Window <b>{escape(q.get('startdate', ''))} → {escape(q.get('stopdate', ''))}</b>, generated
-{escape(record['generated'])} with nucleuswatch {escape(record['nucleuswatch_version'])}.</p>
-<nav><a href="#candidates">Candidates</a><a href="#details">Details</a><a href="#known">Known sources</a>
-<a href="#history">History</a><a href="#method">Method</a><a href="#archive">Archive</a><a href="{REPO_URL}">Code</a></nav>
+<header class="masthead">
+ <div class="kicker">Weekly bulletin · Week {iso_week}, {iso_year}</div>
+ <h1>nucleuswatch</h1>
+ <p class="dek">New transients at the centres of galaxies in the ZTF alert stream (tidal disruption events,
+ AGN flares, nuclear supernovae), and whether the ALeRCE, Fink and Lasair brokers agree on what they are.</p>
+ <div class="meta">{escape(q.get('startdate', ''))} – {escape(q.get('stopdate', ''))} · sources: {escape(sources)} ·
+ mag ≤ {_fmt(cuts.get('mag_max'), 1)} · nucleuswatch {escape(record['nucleuswatch_version'])}</div>
+</header>
+<nav><a href="#candidates">Candidates</a><a href="#details">Entries</a><a href="#known">Known sources</a>
+<a href="#history">History</a><a href="#method">Method</a><a href="#archive">Archive</a><a href="{REPO_URL}">Source code</a></nav>
 
-<div class="stats">
- <div class="stat"><b>{record['n_candidates']}</b>new nuclear candidates</div>
- <div class="stat"><b>{record.get('n_bright', 0)}</b>bright (mag ≤ {_fmt(q.get('bright_mag'), 0)})</div>
- <div class="stat"><b class="disagree">{record['n_disagree']}</b>brokers disagree</div>
- <div class="stat"><b class="agree">{record.get('n_agree', 0)}</b>brokers agree</div>
- <div class="stat"><b>{len(tns_typed)}</b>with a spectroscopic type</div>
- <div class="stat"><b>{record.get('n_known', 0)}</b>known nuclear sources active</div>
-</div>
+<dl class="figures">
+ <div><dd>{record['n_candidates']}</dd><dt>new nuclear candidates</dt></div>
+ <div><dd>{record.get('n_bright', 0)}</dd><dt>brighter than mag {_fmt(q.get('bright_mag'), 0)}</dt></div>
+ <div><dd class="disagree">{record['n_disagree']}</dd><dt>brokers disagree</dt></div>
+ <div><dd class="agree">{record.get('n_agree', 0)}</dd><dt>brokers agree</dt></div>
+ <div><dd>{len(tns_typed)}</dd><dt>with a spectroscopic type</dt></div>
+ <div><dd>{record.get('n_known', 0)}</dd><dt>known nuclear sources active</dt></div>
+</dl>
 
-<div class="grid2">
- <div class="panel"><h3>Funnel</h3>{_bars({
+<h2><span class="num">01</span>The week in numbers</h2>
+<div class="cols">
+ <div class="col"><h3>Selection funnel</h3>{_bars({
      "alerts scanned": funnel.get("alerts_scanned", 0),
      "objects scanned": funnel.get("objects_scanned", 0),
      "passed cuts": funnel.get("passed_cuts", 0),
      "known sources": funnel.get("known", 0),
-     "new candidates": funnel.get("new", 0)}, keep_order=True)}
-  <p class="muted small">Alerts come from Fink's streams; objects also include Lasair's Sherlock "nuclear transient" list.</p></div>
- <div class="panel"><h3>Consensus</h3>{_bars(dict(consensus_counts), {"agree": "agree", "disagree": "disagree", "insufficient": "insufficient"})}
-  <h3 style="margin-top:12px">Broker categories</h3>{_bars(dict(category_counts))}</div>
- <div class="panel"><h3>Where candidates came from</h3>{_bars(dict(source_counts))}
-  <h3 style="margin-top:12px">Fink streams</h3>{_bars(dict(stream_counts))}</div>
+     "new candidates": funnel.get("new", 0)}, keep_order=True, log=True)}
+  <p class="muted small">Logarithmic bars. Alerts come from Fink's streams; objects also include Lasair's
+  list of Sherlock "nuclear transients".</p></div>
+ <div class="col"><h3>Consensus</h3>{_bars(dict(consensus_counts), {"agree": "agree", "disagree": "disagree", "insufficient": "insufficient"})}
+  <h3 style="margin-top:16px">Broker categories</h3>{_bars(dict(category_counts))}</div>
+ <div class="col"><h3>Where candidates came from</h3>{_bars(dict(source_counts))}
+  <h3 style="margin-top:16px">Fink streams</h3>{_bars(dict(stream_counts))}</div>
 </div>
 
-<h2>Sky positions</h2>
-<div class="panel">{_sky_map(cands, known)}
-<p class="muted small">Large dots: new candidates (green agree, orange disagree, yellow insufficient). Small grey dots:
-known nuclear sources active this week. Click a dot to jump to its details.</p></div>
+<h2><span class="num">02</span>Sky positions</h2>
+<figure>{_sky_map(cands, known)}
+<figcaption>Large points are new candidates, coloured by consensus (green agree, rust disagree, ochre
+insufficient). Small grey points are known nuclear sources active in the same window. RA increases to the left.
+Select a point to jump to its entry.</figcaption></figure>
 
-<h2 id="candidates">New candidates</h2>{empty}
+<h2 id="candidates"><span class="num">03</span>New candidates</h2>{empty}
 <div class="table-wrap"><table>
-<thead><tr><th>object</th><th>mag</th><th>band</th><th>tier</th><th>age (d)</th><th>consensus</th><th>categories</th>
-<th>TNS</th><th>TNS type</th><th>found via</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p class="muted small">Age: days since first detection, where Fink reports it. Bright: mag ≤ {_fmt(q.get('bright_mag'), 0)};
-faint: up to {_fmt(cuts.get('mag_max'), 0)}. <a href="data/{escape(stamp)}.csv">Download (CSV)</a>.</p>
+<thead><tr><th>object</th><th class="num">mag</th><th>band</th><th>tier</th><th class="num">age (d)</th><th>consensus</th>
+<th>categories</th><th>TNS</th><th>TNS type</th><th>found via</th></tr></thead><tbody>{rows}</tbody></table></div>
+<p class="muted small">Age is the number of days since first detection, where Fink reports it. Bright means
+mag ≤ {_fmt(q.get('bright_mag'), 0)}; faint goes down to {_fmt(cuts.get('mag_max'), 0)}.
+<a href="data/{escape(stamp)}.csv">Download the table (CSV)</a>.</p>
 
-<h2 id="details">Candidate details</h2>{cards}
+<h2 id="details"><span class="num">04</span>Entries</h2>{cards}
 
-<h2 id="known">Known nuclear sources active this window</h2>
-<p class="muted">Objects that pass the nuclear cuts but were first detected more than {_fmt(q.get('new_within_days'), 0)}
-days ago, mostly AGN that vary all the time. A sudden flare in one of these can still be interesting, but they are
-too many to compare across brokers every week, so they're listed here without consensus.</p>
-<div class="table-wrap"><table><thead><tr><th>object</th><th>mag</th><th>band</th><th>RA</th><th>Dec</th><th>found via</th></tr></thead>
+<h2 id="known"><span class="num">05</span>Known nuclear sources active this window</h2>
+<p>These objects pass the nuclear cuts but were first detected more than {_fmt(q.get('new_within_days'), 0)}
+days ago. Most are AGN, which vary all the time. A sudden flare in one of them can still matter, but there are
+too many to compare across brokers every week, so they're listed without consensus.</p>
+<div class="table-wrap"><table><thead><tr><th>object</th><th class="num">mag</th><th>band</th><th class="num">RA</th>
+<th class="num">Dec</th><th>found via</th></tr></thead>
 <tbody>{known_rows}</tbody></table></div>{known_more}
 
-<h2 id="history">History</h2>
-<div class="panel">{_history_chart(archive)}</div>
+<h2 id="history"><span class="num">06</span>History</h2>
+<figure>{_history_chart(archive)}</figure>
 
-<h2 id="method">How this works</h2>
-<div class="grid2">
- <div class="panel"><h3>Selection</h3>
+<h2 id="method"><span class="num">07</span>Method</h2>
+<div class="cols">
+ <div class="col"><h3>Selection</h3>
  <p>Alerts from Fink's classifier streams ({escape(', '.join(q.get('fink_classes', [])))}) must be brighter than
  mag {_fmt(cuts.get('mag_max'), 1)}, lie within {_fmt(cuts.get('distnr_max'), 1)}″ of a source in the ZTF reference
  image and within {_fmt(cuts.get('distpsnr1_max'), 1)}″ of a galaxy-like Pan-STARRS1 source (star/galaxy score ≤
- {_fmt(cuts.get('sgscore1_max'), 1)}), be detected at least {_fmt(cuts.get('ndethist_min'))} times and be brightening.
- Lasair objects that Sherlock classifies as nuclear transients (within 1″ of the host core) are added too.</p></div>
- <div class="panel"><h3>Consensus</h3>
- <p>Each new candidate is looked up in ALeRCE, Fink and Lasair, and each broker casts <b>one vote</b>: ALeRCE's
- light-curve classifier (or its stamp classifier early on), Fink's classification, and Lasair's Sherlock context. Votes
- are mapped to coarse categories such as SN, AGN or variable star. Sherlock's "nuclear transient" label abstains,
- because every candidate here is nuclear by selection. <b>agree</b>: all votes land in one category.
- <b>disagree</b>: they don't. <b>insufficient</b>: fewer than two brokers voted. Disagreements are often the most
- informative cases. One example is a broker calling the source an artefact ("Bogus") while another calls it a supernova.</p></div>
+ {_fmt(cuts.get('sgscore1_max'), 1)}), have at least {_fmt(cuts.get('ndethist_min'))} detections, and be brightening.
+ Lasair objects that Sherlock places within 1″ of a galaxy core are added as well.</p></div>
+ <div class="col"><h3>Consensus</h3>
+ <p>Each new candidate is looked up in ALeRCE, Fink and Lasair, and each broker casts one vote: ALeRCE's
+ light-curve classifier (its stamp classifier early on), Fink's classification, and Lasair's Sherlock context.
+ Votes are mapped to coarse categories such as SN, AGN or variable star. Sherlock's "nuclear transient" label
+ abstains, because every candidate is nuclear by selection. The brokers <i>agree</i> when all votes land in one
+ category, <i>disagree</i> when they don't, and the result is <i>insufficient</i> with fewer than two votes. The
+ disagreements tend to be the interesting cases, such as one broker calling a source an artefact while another
+ calls it a supernova.</p></div>
  {_validation_panel(val)}
 </div>
 
-<h2 id="archive">Archive</h2>
-<div class="table-wrap"><table><thead><tr><th>date</th><th>new</th><th>disagree</th><th>known</th><th>sources</th><th>data</th></tr></thead>
+<h2 id="archive"><span class="num">08</span>Archive</h2>
+<div class="table-wrap"><table><thead><tr><th>week ending</th><th class="num">new</th><th class="num">disagree</th>
+<th class="num">known</th><th>sources</th><th>data</th></tr></thead>
 <tbody>{archive_rows}</tbody></table></div>
-{"<h2>Notes from this run</h2><ul class='small'>" + errors + "</ul>" if errors else ""}
-<footer class="muted">Data: <a href="https://alerce.online">ALeRCE</a>, <a href="https://fink-portal.org">Fink</a>,
-<a href="https://lasair-ztf.lsst.ac.uk">Lasair</a>, ZTF; host images from the
-<a href="https://www.legacysurvey.org">DESI Legacy Imaging Surveys</a>. Broker data belongs to the broker teams; please cite
-them. Built with <a href="{REPO_URL}">nucleuswatch</a>.</footer>
+{"<h2><span class='num'>—</span>Notes from this run</h2><ul class='small'>" + errors + "</ul>" if errors else ""}
+<footer>Data from <a href="https://alerce.online">ALeRCE</a>, <a href="https://fink-portal.org">Fink</a>,
+<a href="https://lasair-ztf.lsst.ac.uk">Lasair</a> and the Zwicky Transient Facility. Host images from the
+<a href="https://www.legacysurvey.org">DESI Legacy Imaging Surveys</a>. The broker data belongs to the broker
+teams; please cite them if you use it. Compiled with <a href="{REPO_URL}">nucleuswatch</a>.</footer>
 </main></body></html>
 """
 
 
 def _card(c: dict) -> str:
     oid = escape(c["object_id"])
-    votes = "".join(f"<li><b>{escape(v['broker'])}</b> {escape(v['classifier'])}: {escape(str(v['label']))}"
-                    f" → {escape(str(v['category']))}</li>" for v in c.get("votes", []))
+    votes = "".join(f"<li><b>{escape(v['broker'])}</b> <span class='muted'>{escape(v['classifier'])}</span>"
+                    f" {escape(str(v['label']))} → {escape(str(v['category']))}</li>" for v in c.get("votes", []))
     links = [f"<a href='{escape(u)}'>{escape(b)}</a>" for b, u in c.get("links", {}).items()]
     viewer = _legacy_viewer(c.get("ra"), c.get("dec"))
     if viewer:
@@ -511,22 +580,22 @@ def _card(c: dict) -> str:
     host = _legacy_survey(c.get("ra"), c.get("dec"))
     host_html = (f"<div class='host'><img src='{escape(host)}' alt='Legacy Survey image around {oid}' loading='lazy' "
                  f"width='160' height='160' onerror=\"this.parentNode.style.display='none'\">"
-                 f"<div class='muted small'>host, 42″ wide</div></div>") if host else ""
-    imgs = "".join(f"<img src='{escape(src)}' alt='{oid} {escape(kind)}' loading='lazy'>"
+                 f"<div class='muted small'>host galaxy, 42″</div></div>") if host else ""
+    imgs = "".join(f"<img class='{escape(kind)}' src='{escape(src)}' alt='{oid} {escape(kind)}' loading='lazy'>"
                    for kind, src in c.get("_images", {}).items())
     spec = ""
     if c.get("tns_type"):
-        spec = (f"<p><b>Spectroscopic (TNS): {escape(str(c['tns_type']))}</b> → "
-                f"{escape(str(categorize(c['tns_type'])))}</p>")
+        spec = (f"<p class='spec'>Spectroscopically classified as {escape(str(c['tns_type']))} on TNS"
+                f" ({escape(str(categorize(c['tns_type'])))}).</p>")
     sherlock = f"<p class='muted small'>Sherlock: {escape(c['sherlock'])}</p>" if c.get("sherlock") else ""
     skipped = "".join(f"<li>{escape(b)}: {escape(e)}</li>" for b, e in (c.get("broker_errors") or {}).items())
     skipped = f"<details class='small'><summary>brokers skipped</summary><ul>{skipped}</ul></details>" if skipped else ""
     age = f" · first seen {_fmt(c.get('age_days'), 0)} d ago" if c.get("first_seen_mjd") else ""
-    return f"""<div class="card" id="{oid}">
-<h3>{oid} {_badge(c.get('consensus'))} <span class="badge tier">{escape(c.get('tier', ''))}</span></h3>
-<div class="muted small">mag {_fmt(c.get('mag'))} ({_fmt(c.get('band'))}) · distnr {_fmt(c.get('distnr'))}″ ·
-sgscore1 {_fmt(c.get('sgscore1'))} · {c.get('n_detections', 0)} detections{age} · RA {_fmt(c.get('ra'), 5)}
-Dec {_fmt(c.get('dec'), 5)} · found via {escape(c.get('sources') or '')}</div>
-<div class="small">{' · '.join(links)}</div>
+    return f"""<article class="entry" id="{oid}">
+<h3>{oid} {_badge(c.get('consensus'))} <span class="tier">{escape(c.get('tier', ''))}</span></h3>
+<div class="facts">{_fmt(c.get('mag'))} mag ({_fmt(c.get('band'))}) · distnr {_fmt(c.get('distnr'))}″ ·
+sgscore1 {_fmt(c.get('sgscore1'))} · {c.get('n_detections', 0)} detections{age}<br>
+RA {_fmt(c.get('ra'), 5)} · Dec {_fmt(c.get('dec'), 5)} · via {escape(c.get('sources') or '')}</div>
+<div class="links">{' · '.join(links)}</div>
 {spec}<ul class="votes">{votes}</ul>{sherlock}{skipped}
-<div class="imgs">{host_html}{imgs}</div></div>"""
+<div class="imgs">{host_html}{imgs}</div></article>"""
