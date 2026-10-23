@@ -1,0 +1,1125 @@
+{
+ "generated": "2026-09-11T23:59:00+00:00",
+ "created": "2026-10-23T20:06:54+00:00",
+ "backfill": true,
+ "nucleuswatch_version": "1.0.0",
+ "query": {
+  "recipe": "nuclear_transients",
+  "days": 7.0,
+  "startdate": "2026-09-04",
+  "stopdate": "2026-09-12",
+  "sources": [
+   "fink",
+   "lasair"
+  ],
+  "fink_classes": [
+   "SN candidate",
+   "Early SN Ia candidate",
+   "SLSN candidate",
+   "Ambiguous",
+   "(TNS) TDE",
+   "(TNS) AGN",
+   "(SIMBAD) AGN",
+   "(SIMBAD) QSO",
+   "(SIMBAD) Seyfert1"
+  ],
+  "new_within_days": 365,
+  "cuts": {
+   "mag_max": 20.0,
+   "distnr_max": 0.5,
+   "distpsnr1_max": 1.0,
+   "sgscore1_max": 0.5,
+   "ndethist_min": 2
+  },
+  "bright_mag": 19.0,
+  "brokers": [
+   "alerce",
+   "fink"
+  ]
+ },
+ "errors": [
+  "lasair source skipped: its query API only searches up to now, not past windows"
+ ],
+ "funnel": {
+  "alerts_scanned": 3139,
+  "objects_scanned": 2561,
+  "passed_cuts": 83,
+  "by_source": {
+   "fink": 83
+  },
+  "new": 7,
+  "known": 76
+ },
+ "n_candidates": 7,
+ "n_disagree": 2,
+ "n_agree": 3,
+ "n_bright": 1,
+ "n_known": 76,
+ "candidates": [
+  {
+   "object_id": "ZTF26abqbnht",
+   "ra": 325.2453396,
+   "dec": -12.2411311,
+   "mag": 18.291075,
+   "band": "r",
+   "mjd": 61294.198368099984,
+   "distnr": 0.2290809,
+   "distpsnr1": 0.23383746,
+   "sgscore1": 0.0,
+   "ndethist": 25,
+   "fink_class": "SN candidate",
+   "first_seen_mjd": 61274.359525499865,
+   "sources": "fink:SN candidate",
+   "age_days": 20.63978005568788,
+   "consensus": "disagree",
+   "categories": "Microlensing, SN",
+   "broker_labels": "alerce:SNIa; fink:Microlensing candidate",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "fink",
+     "classifier": "fink_classification",
+     "label": "Microlensing candidate",
+     "category": "Microlensing"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abqbnht",
+    "fink": "https://fink-portal.org/ZTF26abqbnht"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": "SN Ia",
+   "sherlock": null,
+   "n_detections": 66,
+   "first_mjd": 61274.359525499865,
+   "peak_mag": 18.189863,
+   "tier": "bright"
+  },
+  {
+   "object_id": "ZTF26abpsgoi",
+   "ra": 12.4308185,
+   "dec": -19.7356269,
+   "mag": 19.476156,
+   "band": "g",
+   "mjd": 61294.35262730019,
+   "distnr": 0.3768051,
+   "distpsnr1": 0.45443842,
+   "sgscore1": 0.000833333,
+   "ndethist": 40,
+   "fink_class": "Ambiguous",
+   "first_seen_mjd": 61271.38012730004,
+   "sources": "fink:Ambiguous",
+   "age_days": 23.619178255510633,
+   "consensus": "disagree",
+   "categories": "Microlensing, SN",
+   "broker_labels": "alerce:SNIa; fink:Microlensing candidate",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "fink",
+     "classifier": "fink_classification",
+     "label": "Microlensing candidate",
+     "category": "Microlensing"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abpsgoi",
+    "fink": "https://fink-portal.org/ZTF26abpsgoi"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": "SN Ia-91T-like",
+   "sherlock": null,
+   "n_detections": 77,
+   "first_mjd": 61271.38012730004,
+   "peak_mag": 18.851768,
+   "tier": "faint"
+  },
+  {
+   "object_id": "ZTF26abrsivd",
+   "ra": 325.5932554,
+   "dec": -6.0201614,
+   "mag": 19.67647,
+   "band": "r",
+   "mjd": 61294.199780100025,
+   "distnr": 0.22976713,
+   "distpsnr1": 0.12746008,
+   "sgscore1": 0.044,
+   "ndethist": 6,
+   "fink_class": "SN candidate",
+   "first_seen_mjd": 61285.262060199864,
+   "sources": "fink:SN candidate",
+   "age_days": 9.737245355689083,
+   "consensus": "agree",
+   "categories": "SN",
+   "broker_labels": "alerce:SNIa; fink:SN candidate",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "fink",
+     "classifier": "fink_classification",
+     "label": "SN candidate",
+     "category": "SN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abrsivd",
+    "fink": "https://fink-portal.org/ZTF26abrsivd"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": null,
+   "sherlock": null,
+   "n_detections": 15,
+   "first_mjd": 61284.25240739994,
+   "peak_mag": 19.556177,
+   "tier": "faint"
+  },
+  {
+   "object_id": "ZTF26abrxpch",
+   "ra": 337.7079851,
+   "dec": -1.0383005,
+   "mag": 19.771303,
+   "band": "g",
+   "mjd": 61294.27562499978,
+   "distnr": 0.20514797,
+   "distpsnr1": 0.29353556,
+   "sgscore1": 0.0,
+   "ndethist": 6,
+   "fink_class": "SN candidate",
+   "first_seen_mjd": 61286.333460600115,
+   "sources": "fink:SN candidate",
+   "age_days": 8.665844955437933,
+   "consensus": "agree",
+   "categories": "SN",
+   "broker_labels": "alerce:SNIa; fink:SN candidate",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "SNIa",
+     "category": "SN"
+    },
+    {
+     "broker": "fink",
+     "classifier": "fink_classification",
+     "label": "SN candidate",
+     "category": "SN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abrxpch",
+    "fink": "https://fink-portal.org/ZTF26abrxpch"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": null,
+   "sherlock": null,
+   "n_detections": 21,
+   "first_mjd": 61286.333460600115,
+   "peak_mag": 19.695122,
+   "tier": "faint"
+  },
+  {
+   "object_id": "ZTF26abhmfni",
+   "ra": 331.3110628,
+   "dec": -13.3133924,
+   "mag": 19.91216,
+   "band": "g",
+   "mjd": 61287.31398149999,
+   "distnr": 0.26973924,
+   "distpsnr1": 0.14056899,
+   "sgscore1": 0.0148333,
+   "ndethist": 46,
+   "fink_class": "SN candidate",
+   "first_seen_mjd": 61205.45549769979,
+   "sources": "fink:SN candidate",
+   "age_days": 89.54380785576359,
+   "consensus": "insufficient",
+   "categories": "AGN",
+   "broker_labels": "alerce:AGN",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "AGN",
+     "category": "AGN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abhmfni",
+    "fink": "https://fink-portal.org/ZTF26abhmfni"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": null,
+   "sherlock": null,
+   "n_detections": 101,
+   "first_mjd": 61208.43086809991,
+   "peak_mag": 18.78343,
+   "tier": "faint"
+  },
+  {
+   "object_id": "ZTF26abgnvhi",
+   "ra": 34.1524996,
+   "dec": 14.5129281,
+   "mag": 19.969751,
+   "band": "r",
+   "mjd": 61292.439074099995,
+   "distnr": 0.2404644,
+   "distpsnr1": 0.5895256,
+   "sgscore1": 0.300786,
+   "ndethist": 12,
+   "fink_class": "SN candidate",
+   "first_seen_mjd": 61232.47258100007,
+   "sources": "fink:SN candidate",
+   "age_days": 62.526724555486,
+   "consensus": "insufficient",
+   "categories": "AGN",
+   "broker_labels": "alerce:QSO",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "QSO",
+     "category": "AGN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abgnvhi",
+    "fink": "https://fink-portal.org/ZTF26abgnvhi"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": null,
+   "sherlock": null,
+   "n_detections": 37,
+   "first_mjd": 61232.47258100007,
+   "peak_mag": 19.6651,
+   "tier": "faint"
+  },
+  {
+   "object_id": "ZTF26abbhjsx",
+   "ra": 336.8381088,
+   "dec": 1.2393277,
+   "mag": 19.99271,
+   "band": "r",
+   "mjd": 61294.36702550016,
+   "distnr": 0.15401511,
+   "distpsnr1": 0.1973466,
+   "sgscore1": 0.258982,
+   "ndethist": 95,
+   "fink_class": "QSO",
+   "first_seen_mjd": 61171.48074069992,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 123.51856485563621,
+   "consensus": "agree",
+   "categories": "AGN",
+   "broker_labels": "alerce:AGN; fink:QSO",
+   "votes": [
+    {
+     "broker": "alerce",
+     "classifier": "lc_classifier",
+     "label": "AGN",
+     "category": "AGN"
+    },
+    {
+     "broker": "fink",
+     "classifier": "fink_classification",
+     "label": "QSO",
+     "category": "AGN"
+    }
+   ],
+   "links": {
+    "alerce": "https://alerce.online/object/ZTF26abbhjsx",
+    "fink": "https://fink-portal.org/ZTF26abbhjsx"
+   },
+   "broker_errors": {},
+   "tns_name": null,
+   "tns_type": null,
+   "sherlock": null,
+   "n_detections": 148,
+   "first_mjd": 61185.46263890015,
+   "peak_mag": 19.6246,
+   "tier": "faint"
+  }
+ ],
+ "known": [
+  {
+   "object_id": "ZTF18abudtyr",
+   "ra": 295.6691726,
+   "dec": -10.3236128,
+   "mag": 16.428967,
+   "band": "g",
+   "mjd": 61288.16827550018,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 3032.5607060556795
+  },
+  {
+   "object_id": "ZTF20aanlygx",
+   "ra": 56.0120977,
+   "dec": -18.6246548,
+   "mag": 17.421907,
+   "band": "r",
+   "mjd": 61287.45516199991,
+   "sources": "fink:(TNS) AGN",
+   "age_days": 2564.521168955558
+  },
+  {
+   "object_id": "ZTF18abvpnnb",
+   "ra": 338.2297914,
+   "dec": -3.04727,
+   "mag": 17.53467,
+   "band": "g",
+   "mjd": 61287.31946759997,
+   "sources": "fink:(SIMBAD) QSO; fink:(TNS) AGN",
+   "age_days": 3193.9118865555647
+  },
+  {
+   "object_id": "ZTF18abudwyg",
+   "ra": 317.0369546,
+   "dec": -3.5508409,
+   "mag": 17.72044,
+   "band": "g",
+   "mjd": 61287.321909700055,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2925.723645855629
+  },
+  {
+   "object_id": "ZTF18abufihd",
+   "ra": 351.4887656,
+   "dec": -24.6905344,
+   "mag": 17.804718,
+   "band": "g",
+   "mjd": 61294.29498839984,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2947.623298655686
+  },
+  {
+   "object_id": "ZTF24aaasgqf",
+   "ra": 343.2946451,
+   "dec": -4.1468418,
+   "mag": 17.835175,
+   "band": "r",
+   "mjd": 61287.23445599992,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2595.578877355394
+  },
+  {
+   "object_id": "ZTF18abrxxhw",
+   "ra": 318.9635655,
+   "dec": -10.6894619,
+   "mag": 17.8881,
+   "band": "r",
+   "mjd": 61293.23115740018,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2934.7072569555166
+  },
+  {
+   "object_id": "ZTF22aaqccka",
+   "ra": 6.1696319,
+   "dec": -0.505472,
+   "mag": 17.99585,
+   "band": "g",
+   "mjd": 61294.35121530015,
+   "sources": "fink:(TNS) AGN",
+   "age_days": 2521.73409725535
+  },
+  {
+   "object_id": "ZTF18acsvozo",
+   "ra": 297.3071875,
+   "dec": -18.7876288,
+   "mag": 18.087166,
+   "band": "r",
+   "mjd": 61288.21072919993,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2838.9278472554433
+  },
+  {
+   "object_id": "ZTF19aaueksg",
+   "ra": 323.2013319,
+   "dec": -2.3307496,
+   "mag": 18.199013,
+   "band": "r",
+   "mjd": 61294.199780100025,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 3003.537430555516
+  },
+  {
+   "object_id": "ZTF19aazdikv",
+   "ra": 350.1136222,
+   "dec": -11.2128317,
+   "mag": 18.24426,
+   "band": "g",
+   "mjd": 61294.295925899874,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2932.613518555605
+  },
+  {
+   "object_id": "ZTF18aceiqif",
+   "ra": 348.4880798,
+   "dec": -11.5051447,
+   "mag": 18.532372,
+   "band": "g",
+   "mjd": 61288.3602661998,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2943.6633911556128
+  },
+  {
+   "object_id": "ZTF18accpmtg",
+   "ra": 327.2806705,
+   "dec": -17.8664966,
+   "mag": 18.706612,
+   "band": "g",
+   "mjd": 61294.25182869984,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2952.6420833556476
+  },
+  {
+   "object_id": "ZTF22aapjrzm",
+   "ra": 0.3410841,
+   "dec": -0.0575072,
+   "mag": 18.727776,
+   "band": "r",
+   "mjd": 61287.399664400145,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2600.540567155418
+  },
+  {
+   "object_id": "ZTF18abvdlzi",
+   "ra": 6.819833,
+   "dec": -21.2072441,
+   "mag": 18.763172,
+   "band": "g",
+   "mjd": 61287.356076399796,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2922.6247685555863
+  },
+  {
+   "object_id": "ZTF18adolaxz",
+   "ra": 2.5414933,
+   "dec": -4.7104738,
+   "mag": 18.784147,
+   "band": "g",
+   "mjd": 61288.40020829998,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 3199.9106712555076
+  },
+  {
+   "object_id": "ZTF22abuhxen",
+   "ra": 7.4032094,
+   "dec": -17.6416681,
+   "mag": 18.784895,
+   "band": "g",
+   "mjd": 61288.35543979984,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2925.670821755615
+  },
+  {
+   "object_id": "ZTF19aaweqnm",
+   "ra": 311.0923299,
+   "dec": -9.9597998,
+   "mag": 18.836199,
+   "band": "g",
+   "mjd": 61294.23179400014,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2865.9048263555887
+  },
+  {
+   "object_id": "ZTF18abuvtlx",
+   "ra": 22.4445891,
+   "dec": 15.082634,
+   "mag": 18.903965,
+   "band": "g",
+   "mjd": 61294.328020799905,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2932.526701355775
+  },
+  {
+   "object_id": "ZTF18accputw",
+   "ra": 338.9244814,
+   "dec": 1.6593292,
+   "mag": 18.904316,
+   "band": "g",
+   "mjd": 61288.336678199936,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 3189.8132407557714
+  },
+  {
+   "object_id": "ZTF19abucmuw",
+   "ra": 57.5134338,
+   "dec": 31.075748,
+   "mag": 18.930325,
+   "band": "r",
+   "mjd": 61292.4216781999,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2839.668136555658
+  },
+  {
+   "object_id": "ZTF18aczuvpl",
+   "ra": 74.7891192,
+   "dec": 4.9751088,
+   "mag": 18.974577,
+   "band": "g",
+   "mjd": 61291.50344910007,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 3129.880601855417
+  },
+  {
+   "object_id": "ZTF19acgkxnn",
+   "ra": 325.5612297,
+   "dec": -16.4966026,
+   "mag": 19.043709,
+   "band": "g",
+   "mjd": 61287.29261570005,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2520.81660875534
+  },
+  {
+   "object_id": "ZTF19abotqmy",
+   "ra": 352.9225705,
+   "dec": -13.7008844,
+   "mag": 19.134914,
+   "band": "g",
+   "mjd": 61287.3636690001,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2866.8124421555112
+  },
+  {
+   "object_id": "ZTF19aayikck",
+   "ra": 344.3799893,
+   "dec": -6.2450641,
+   "mag": 19.138416,
+   "band": "r",
+   "mjd": 61294.36230320018,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2652.57866895567
+  },
+  {
+   "object_id": "ZTF21aaqvaog",
+   "ra": 39.237302,
+   "dec": 24.420805,
+   "mag": 19.161188,
+   "band": "g",
+   "mjd": 61287.389594899956,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2129.804490755734
+  },
+  {
+   "object_id": "ZTF18abvfhgn",
+   "ra": 34.1406877,
+   "dec": 15.9887755,
+   "mag": 19.181276,
+   "band": "g",
+   "mjd": 61288.38046299992,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2925.5487962555635
+  },
+  {
+   "object_id": "ZTF19abpgtnp",
+   "ra": 25.629152,
+   "dec": 11.2161575,
+   "mag": 19.197292,
+   "band": "g",
+   "mjd": 61294.328020799905,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2780.8463078555214
+  },
+  {
+   "object_id": "ZTF19aayikkg",
+   "ra": 0.6466388,
+   "dec": 10.8670277,
+   "mag": 19.200115,
+   "band": "g",
+   "mjd": 61294.333240699954,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2981.5382638554584
+  },
+  {
+   "object_id": "ZTF18acbxpyb",
+   "ra": 356.1070431,
+   "dec": -12.281057,
+   "mag": 19.205704,
+   "band": "g",
+   "mjd": 61288.36121529993,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2932.6130671556602
+  },
+  {
+   "object_id": "ZTF20abrcmfa",
+   "ra": 0.3867865,
+   "dec": 14.9356044,
+   "mag": 19.238384,
+   "band": "g",
+   "mjd": 61294.333240699954,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2617.553055555516
+  },
+  {
+   "object_id": "ZTF20abgdqug",
+   "ra": 347.6176671,
+   "dec": 3.1975221,
+   "mag": 19.275316,
+   "band": "g",
+   "mjd": 61287.31994209997,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2931.6325925555575
+  },
+  {
+   "object_id": "ZTF19abegnmx",
+   "ra": 340.1180647,
+   "dec": 0.7803912,
+   "mag": 19.320347,
+   "band": "r",
+   "mjd": 61294.365601900034,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2653.5582175557065
+  },
+  {
+   "object_id": "ZTF19abdbtss",
+   "ra": 343.0275461,
+   "dec": 2.8338884,
+   "mag": 19.358274,
+   "band": "g",
+   "mjd": 61294.29781250004,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2658.5772106553923
+  },
+  {
+   "object_id": "ZTF18acdwwql",
+   "ra": 310.5191639,
+   "dec": -19.2625083,
+   "mag": 19.413609,
+   "band": "g",
+   "mjd": 61294.25324069988,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2922.7054629553604
+  },
+  {
+   "object_id": "ZTF18abvsqjj",
+   "ra": 29.2183622,
+   "dec": -0.2060855,
+   "mag": 19.416046,
+   "band": "g",
+   "mjd": 61288.419305600226,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2925.6002430556837
+  },
+  {
+   "object_id": "ZTF20acqqcxg",
+   "ra": 26.9415026,
+   "dec": 15.8732076,
+   "mag": 19.417412,
+   "band": "r",
+   "mjd": 61292.414467600174,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2962.5088773555617
+  },
+  {
+   "object_id": "ZTF21abxmews",
+   "ra": 357.1088244,
+   "dec": -8.7990808,
+   "mag": 19.461452,
+   "band": "g",
+   "mjd": 61294.314375000075,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2212.6053935554373
+  },
+  {
+   "object_id": "ZTF21abxegsw",
+   "ra": 32.20909,
+   "dec": 1.1533622,
+   "mag": 19.492352,
+   "band": "r",
+   "mjd": 61294.39328699978,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2598.554444455498
+  },
+  {
+   "object_id": "ZTF21abycgve",
+   "ra": 355.4047433,
+   "dec": -6.47376,
+   "mag": 19.4936,
+   "band": "g",
+   "mjd": 61287.36224539997,
+   "sources": "fink:(TNS) AGN",
+   "age_days": 2632.557719955643
+  },
+  {
+   "object_id": "ZTF23aatkynt",
+   "ra": 352.9127929,
+   "dec": 2.5328641,
+   "mag": 19.495207,
+   "band": "r",
+   "mjd": 61294.361828700174,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2153.819826355626
+  },
+  {
+   "object_id": "ZTF21abbliim",
+   "ra": 313.2728703,
+   "dec": -4.729677,
+   "mag": 19.551409,
+   "band": "r",
+   "mjd": 61293.255381899886,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 1952.5530324554566
+  },
+  {
+   "object_id": "ZTF18abtjqye",
+   "ra": 304.4101431,
+   "dec": 4.1438567,
+   "mag": 19.571012,
+   "band": "r",
+   "mjd": 61288.21214119997,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2934.726597255518
+  },
+  {
+   "object_id": "ZTF21aazmqhz",
+   "ra": 297.4030039,
+   "dec": -16.8951823,
+   "mag": 19.592995,
+   "band": "r",
+   "mjd": 61293.21061340021,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 1954.5600231554854
+  },
+  {
+   "object_id": "ZTF18abtyudj",
+   "ra": 21.2597169,
+   "dec": 2.2973502,
+   "mag": 19.596664,
+   "band": "g",
+   "mjd": 61294.32895829994,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 3193.893321755764
+  },
+  {
+   "object_id": "ZTF18acdyyxk",
+   "ra": 12.3787393,
+   "dec": 15.5379692,
+   "mag": 19.606236,
+   "band": "g",
+   "mjd": 61288.37903939979,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2866.7638425556506
+  },
+  {
+   "object_id": "ZTF25abqyzlf",
+   "ra": 4.4337644,
+   "dec": 7.1359071,
+   "mag": 19.60944,
+   "band": "g",
+   "mjd": 61294.35075230012,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 1864.5704513554956
+  },
+  {
+   "object_id": "ZTF19abjfzan",
+   "ra": 309.8005537,
+   "dec": 2.5067547,
+   "mag": 19.61925,
+   "band": "r",
+   "mjd": 61293.2129861,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2923.7471759556356
+  },
+  {
+   "object_id": "ZTF19aawfwzw",
+   "ra": 320.5985054,
+   "dec": 1.1905472,
+   "mag": 19.62084,
+   "band": "g",
+   "mjd": 61287.32143520005,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2693.5086226556014
+  },
+  {
+   "object_id": "ZTF18acsllgd",
+   "ra": 56.4394976,
+   "dec": 22.3995878,
+   "mag": 19.626892,
+   "band": "r",
+   "mjd": 61292.42072919989,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 3190.6621180553484
+  },
+  {
+   "object_id": "ZTF22abzcyay",
+   "ra": 27.2561591,
+   "dec": 11.5305126,
+   "mag": 19.662374,
+   "band": "r",
+   "mjd": 61292.4395486,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2601.5454282555293
+  },
+  {
+   "object_id": "ZTF19abuomnw",
+   "ra": 341.7390339,
+   "dec": -3.7681418,
+   "mag": 19.677896,
+   "band": "g",
+   "mjd": 61288.3343055998,
+   "sources": "fink:(TNS) AGN",
+   "age_days": 3193.9118865555647
+  },
+  {
+   "object_id": "ZTF18abxfgde",
+   "ra": 20.3821523,
+   "dec": -3.46282,
+   "mag": 19.685867,
+   "band": "g",
+   "mjd": 61294.329432900064,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 3193.7689004553977
+  },
+  {
+   "object_id": "ZTF24aauhayb",
+   "ra": 6.1777317,
+   "dec": 16.3254003,
+   "mag": 19.701323,
+   "band": "r",
+   "mjd": 61292.40524310013,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2185.6772916554037
+  },
+  {
+   "object_id": "ZTF21abfybla",
+   "ra": 345.2625485,
+   "dec": -1.3110303,
+   "mag": 19.706312,
+   "band": "g",
+   "mjd": 61294.29733800003,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2105.8894444554608
+  },
+  {
+   "object_id": "ZTF18abtmngq",
+   "ra": 33.5955252,
+   "dec": 3.0400131,
+   "mag": 19.713718,
+   "band": "g",
+   "mjd": 61288.40753469989,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2928.569594955494
+  },
+  {
+   "object_id": "ZTF26abmpysg",
+   "ra": 343.8763369,
+   "dec": -22.0467912,
+   "mag": 19.718588,
+   "band": "r",
+   "mjd": 61294.35618059989,
+   "sources": "fink:SLSN candidate",
+   "age_days": 2619.5556828556146
+  },
+  {
+   "object_id": "ZTF21acmawik",
+   "ra": 311.0814186,
+   "dec": -10.9386322,
+   "mag": 19.723143,
+   "band": "g",
+   "mjd": 61287.2745254999,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 1952.536898155653
+  },
+  {
+   "object_id": "ZTF19abfiepy",
+   "ra": 18.0340896,
+   "dec": 8.9861548,
+   "mag": 19.728277,
+   "band": "g",
+   "mjd": 61294.3275462999,
+   "sources": "fink:SLSN candidate",
+   "age_days": 2800.8407175554457
+  },
+  {
+   "object_id": "ZTF19abkgtka",
+   "ra": 60.6759811,
+   "dec": 2.0019426,
+   "mag": 19.735489,
+   "band": "g",
+   "mjd": 61288.42214119993,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 3199.701840255366
+  },
+  {
+   "object_id": "ZTF26aaktiyh",
+   "ra": 312.0277973,
+   "dec": 0.1899822,
+   "mag": 19.744164,
+   "band": "g",
+   "mjd": 61292.23807869991,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 1854.7028472553502
+  },
+  {
+   "object_id": "ZTF23abcxdxr",
+   "ra": 23.3225779,
+   "dec": 8.0701157,
+   "mag": 19.7467,
+   "band": "g",
+   "mjd": 61288.379513899796,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2807.8541203555214
+  },
+  {
+   "object_id": "ZTF19aawtgib",
+   "ra": 315.8412514,
+   "dec": -19.8424421,
+   "mag": 19.76009,
+   "band": "g",
+   "mjd": 61287.32284720009,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2658.5295254555094
+  },
+  {
+   "object_id": "ZTF18abxozft",
+   "ra": 15.3560092,
+   "dec": 0.0076968,
+   "mag": 19.806866,
+   "band": "g",
+   "mjd": 61287.37768519996,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2914.666249955495
+  },
+  {
+   "object_id": "ZTF23abcigzf",
+   "ra": 10.9001891,
+   "dec": 6.3620269,
+   "mag": 19.828457,
+   "band": "g",
+   "mjd": 61294.33178240014,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 1147.5849768556218
+  },
+  {
+   "object_id": "ZTF26abcbxnp",
+   "ra": 0.3306868,
+   "dec": 1.0902691,
+   "mag": 19.856749,
+   "band": "r",
+   "mjd": 61287.41335650021,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 380.6699536554079
+  },
+  {
+   "object_id": "ZTF24abvihxk",
+   "ra": 343.1682366,
+   "dec": 1.1663662,
+   "mag": 19.88516,
+   "band": "g",
+   "mjd": 61287.31994209997,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 1535.5597106557834
+  },
+  {
+   "object_id": "ZTF20acppzbl",
+   "ra": 24.7544287,
+   "dec": -11.579734,
+   "mag": 19.890732,
+   "band": "g",
+   "mjd": 61294.32989579998,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2926.595405055632
+  },
+  {
+   "object_id": "ZTF19ablfcmi",
+   "ra": 353.3224547,
+   "dec": -0.3843024,
+   "mag": 19.894485,
+   "band": "g",
+   "mjd": 61288.36313659977,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 3189.812152755403
+  },
+  {
+   "object_id": "ZTF20acdnwpu",
+   "ra": 352.5907468,
+   "dec": 15.1099703,
+   "mag": 19.918238,
+   "band": "g",
+   "mjd": 61288.36407409981,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2904.692187455439
+  },
+  {
+   "object_id": "ZTF21abwysdj",
+   "ra": 333.1155264,
+   "dec": 0.8613076,
+   "mag": 19.925676,
+   "band": "r",
+   "mjd": 61294.20119210007,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2621.626504655418
+  },
+  {
+   "object_id": "ZTF19abgfegc",
+   "ra": 358.3589991,
+   "dec": 11.0395214,
+   "mag": 19.932262,
+   "band": "g",
+   "mjd": 61294.34876159998,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 2653.553981455465
+  },
+  {
+   "object_id": "ZTF22aavugjg",
+   "ra": 345.7608797,
+   "dec": -22.6388304,
+   "mag": 19.93345,
+   "band": "g",
+   "mjd": 61294.285370400175,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 2603.540185155769
+  },
+  {
+   "object_id": "ZTF23abtaurc",
+   "ra": 9.4001559,
+   "dec": 17.3853887,
+   "mag": 19.935106,
+   "band": "g",
+   "mjd": 61288.3525231001,
+   "sources": "fink:(SIMBAD) QSO",
+   "age_days": 1126.5959953553538
+  },
+  {
+   "object_id": "ZTF18adcbfig",
+   "ra": 319.7206227,
+   "dec": -7.5409028,
+   "mag": 19.953728,
+   "band": "r",
+   "mjd": 61294.198368099984,
+   "sources": "fink:(SIMBAD) Seyfert1",
+   "age_days": 2811.908680555367
+  },
+  {
+   "object_id": "ZTF21abscyof",
+   "ra": 309.5162125,
+   "dec": -16.1067584,
+   "mag": 19.96476,
+   "band": "g",
+   "mjd": 61294.25324069988,
+   "sources": "fink:(SIMBAD) AGN",
+   "age_days": 1868.6638310555863
+  }
+ ]
+}
