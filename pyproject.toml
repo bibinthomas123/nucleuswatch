@@ -1,0 +1,43 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "nucleuswatch"
+dynamic = ["version"]
+description = "One view of a transient across the ALeRCE, Fink and Lasair alert brokers."
+readme = "README.md"
+license = "MIT"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.28",
+    "pandas>=1.5",
+    "numpy>=1.23",
+]
+keywords = ["astronomy", "transients", "alert brokers", "ZTF", "LSST", "Rubin"]
+classifiers = [
+    "Intended Audience :: Science/Research",
+    "Topic :: Scientific/Engineering :: Astronomy",
+    "Programming Language :: Python :: 3",
+]
+
+[project.optional-dependencies]
+plot = ["matplotlib>=3.6"]
+zooniverse = ["matplotlib>=3.6", "panoptes-client>=1.6"]
+dev = ["pytest>=7", "ruff", "matplotlib>=3.6"]
+
+[project.scripts]
+nucleuswatch = "nucleuswatch.cli:main"
+
+[tool.hatch.version]
+path = "src/nucleuswatch/__init__.py"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+markers = ["live: hits the real broker APIs (deselect with -m 'not live')"]
+addopts = "-m 'not live'"
+
+[tool.ruff]
+line-length = 110
+src = ["src"]
+extend-exclude = ["notebooks"]
