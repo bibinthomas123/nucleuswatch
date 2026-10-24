@@ -66,6 +66,30 @@ def months(start: date, stop: date) -> list[date]:
     return out + [stop]
 
 
+def load_truth(start: date, stop: date, *, verbose: bool = True) -> dict[str, dict[str, list[dict]]]:
+    """TNS-classified objects with ZTF alerts in [start, stop), grouped by type.
+
+    Returns {group: {object_id: [alert rows]}}. An object carries one TNS
+    type; if it appears in two streams, the first group in CLASSES wins.
+    """
+    by_group: dict[str, dict[str, list[dict]]] = {}
+    for cls, group in CLASSES.items():
+        rows = []
+        for a, b in zip(months(start, stop), months(start, stop)[1:]):
+            rows += fetch_all(cls, a, b)
+        objs = by_group.setdefault(group, {})
+        for r in rows:
+            objs.setdefault(r["i:objectId"], []).append(r)
+        if verbose:
+            print(f"{cls:24s} {len(rows):6d} alerts", flush=True)
+
+    seen: set[str] = set()
+    for group in list(by_group):
+        by_group[group] = {o: a for o, a in by_group[group].items() if o not in seen}
+        seen |= set(by_group[group])
+    return by_group
+
+
 def first_failing_cut(alert: dict, cuts: NuclearCuts) -> str | None:
     """Name of the first cut this alert fails (in the order the recipe applies them)."""
     order = [
@@ -107,22 +131,7 @@ def main() -> int:
         return 0
     start, stop = date.fromisoformat(args.start), date.fromisoformat(args.stop)
     cuts = NuclearCuts()
-
-    by_group: dict[str, dict[str, list[dict]]] = {}
-    for cls, group in CLASSES.items():
-        rows = []
-        for a, b in zip(months(start, stop), months(start, stop)[1:]):
-            rows += fetch_all(cls, a, b)
-        objs = by_group.setdefault(group, {})
-        for r in rows:
-            objs.setdefault(r["i:objectId"], []).append(r)
-        print(f"{cls:24s} {len(rows):6d} alerts", flush=True)
-
-    # An object can carry only one TNS type; if it shows up twice, keep the first group.
-    seen: set[str] = set()
-    for group in list(by_group):
-        by_group[group] = {o: a for o, a in by_group[group].items() if o not in seen}
-        seen |= set(by_group[group])
+    by_group = load_truth(start, stop)
 
     tde = by_group["TDE"]
     passed_tde, lost_tde = evaluate(tde, cuts)
