@@ -1,8 +1,8 @@
 {
- "generated": "2026-10-24T18:49:52+00:00",
- "created": "2026-10-24T18:51:22+00:00",
+ "generated": "2026-10-24T19:04:42+00:00",
+ "created": "2026-10-24T19:06:08+00:00",
  "backfill": false,
- "nucleuswatch_version": "1.1.0",
+ "nucleuswatch_version": "1.2.0",
  "query": {
   "recipe": "nuclear_transients",
   "days": 7.0,
@@ -41,7 +41,8 @@
   "brokers": [
    "alerce",
    "fink",
-   "lasair"
+   "lasair",
+   "antares"
   ]
  },
  "errors": [],
@@ -58,10 +59,11 @@
  },
  "n_candidates": 54,
  "n_disagree": 10,
- "n_agree": 14,
+ "n_agree": 15,
  "n_bright": 19,
  "n_tde_like": 1,
  "n_known": 332,
+ "n_volunteer": 0,
  "candidates": [
   {
    "object_id": "ZTF26acaaupe",
@@ -78,7 +80,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -95,19 +97,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26acaaupe",
     "fink": "https://fink-portal.org/ZTF26acaaupe",
+    "antares": "https://antares.noirlab.edu/loci/ANT20233vzjxm0gul4p",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acaaupe/"
    },
    "broker_errors": {},
    "tns_name": "2026aerr",
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ01424796-1107182; a G=19.35 mag galaxy found in the NED/GAIA catalogues. Its located 0.8\" from the galaxy core.",
-   "n_detections": 27,
-   "first_mjd": 61292.48231479991,
-   "peak_mag": 19.2861,
+   "n_detections": 64,
+   "first_mjd": 60224.28988429997,
+   "peak_mag": 19.234699249267578,
    "tier": "faint",
    "tde_score": 0.612,
    "host": {
-    "sep": 0.77,
+    "sep": 0.766,
     "type": "SER",
     "shape_r": 7.774424,
     "mag_g": 15.922153463195553,
@@ -136,7 +139,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108,
+   "age_days": 2853.794935427766,
    "flare_onset_mjd": 61307.51995369978,
    "prior_alerts": 0,
    "consensus": "disagree",
@@ -159,6 +162,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF19aagodxe",
     "fink": "https://fink-portal.org/ZTF19aagodxe",
+    "antares": "https://antares.noirlab.edu/loci/ANT2019hc2vc",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF19aagodxe/"
    },
    "broker_errors": {},
@@ -200,7 +204,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -223,6 +227,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26acbvbhf",
     "fink": "https://fink-portal.org/ZTF26acbvbhf",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026szg3bi6zf2n5",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acbvbhf/"
    },
    "broker_errors": {},
@@ -235,7 +240,7 @@
    "tier": "faint",
    "tde_score": 0.172,
    "host": {
-    "sep": 0.235,
+    "sep": 0.226,
     "type": "REX",
     "shape_r": 0.961212,
     "mag_g": 19.024390674400884,
@@ -264,7 +269,7 @@
    "first_seen_mjd": 61320.35653939983,
    "first_pass_mjd": 61333.39462959999,
    "sources": "fink:SN candidate",
-   "age_days": 17.428095254879736,
+   "age_days": 17.438396027937415,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -293,6 +298,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26acakche",
     "fink": "https://fink-portal.org/ZTF26acakche",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026v7bzxhlhrhwy",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acakche/"
    },
    "broker_errors": {},
@@ -301,11 +307,11 @@
    "sherlock": "The transient is synonymous with SDSS J024102.90-072958.9; an r=19.94 mag stellar source found in the SDSS catalogue. Its located 0.4\" from the stellar source core.",
    "n_detections": 21,
    "first_mjd": 61320.35653939983,
-   "peak_mag": 17.57149,
+   "peak_mag": 17.571489334106445,
    "tier": "bright",
    "tde_score": 0.168,
    "host": {
-    "sep": 0.516,
+    "sep": 0.522,
     "type": "REX",
     "shape_r": 0.392707,
     "mag_g": 19.81652924116746,
@@ -334,7 +340,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108,
+   "age_days": 3583.794935427766,
    "flare_onset_mjd": 60989.18630790012,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -351,6 +357,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF17aaaykvi",
     "fink": "https://fink-portal.org/ZTF17aaaykvi",
+    "antares": "https://antares.noirlab.edu/loci/ANT2020nj6om",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF17aaaykvi/"
    },
    "broker_errors": {},
@@ -363,7 +370,7 @@
    "tier": "faint",
    "tde_score": 0.165,
    "host": {
-    "sep": 0.37,
+    "sep": 0.304,
     "type": "SER",
     "shape_r": 8.087139,
     "mag_g": 15.912274343392948,
@@ -392,7 +399,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108,
+   "age_days": 3218.794935427766,
    "flare_onset_mjd": 61285.40287039988,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -409,6 +416,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18aceaukz",
     "fink": "https://fink-portal.org/ZTF18aceaukz",
+    "antares": "https://antares.noirlab.edu/loci/ANT2019fs6jq",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18aceaukz/"
    },
    "broker_errors": {},
@@ -417,11 +425,11 @@
    "sherlock": "The transient is synonymous with 2MASXJ01304247-2335382; a G=17.97 mag galaxy found in the NED/GAIA catalogues. Its located 0.4\" (0.8 Kpc) from the galaxy core. A host z=0.108 implies a m - M = 38.49.",
    "n_detections": 145,
    "first_mjd": 58425.335138900205,
-   "peak_mag": 18.74487,
+   "peak_mag": 18.744869232177734,
    "tier": "faint",
    "tde_score": 0.117,
    "host": {
-    "sep": 0.401,
+    "sep": 0.342,
     "type": "SER",
     "shape_r": 2.357437,
     "mag_g": 16.88721802500534,
@@ -450,7 +458,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108,
+   "age_days": 2853.794935427766,
    "flare_onset_mjd": 61314.51440969994,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -467,6 +475,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF19acfqnyr",
     "fink": "https://fink-portal.org/ZTF19acfqnyr",
+    "antares": "https://antares.noirlab.edu/loci/ANT20262cpcdc27atye",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF19acfqnyr/"
    },
    "broker_errors": {},
@@ -479,7 +488,7 @@
    "tier": "bright",
    "tde_score": 0.099,
    "host": {
-    "sep": 0.407,
+    "sep": 0.461,
     "type": "DEV",
     "shape_r": 6.851287,
     "mag_g": 15.51524134503537,
@@ -508,7 +517,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -527,7 +536,9 @@
     "fink": "https://fink-portal.org/ZTF26abwshzc",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abwshzc/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF26abwshzc not found"
+   },
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with SDSS J025648.84+022507.7; a G=18.92 mag galaxy found in the SDSS/GAIA catalogues. Its located 0.3\" (0.4 Kpc) from the galaxy core. A host z=0.067 implies a m - M = 37.38.",
@@ -566,7 +577,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -589,6 +600,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abidbmw",
     "fink": "https://fink-portal.org/ZTF26abidbmw",
+    "antares": "https://antares.noirlab.edu/loci/ANT20260dute03lodzf",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abidbmw/"
    },
    "broker_errors": {},
@@ -597,11 +609,11 @@
    "sherlock": "The transient is synonymous with APMUKS(BJ)B000454.29-175142.8; a G=19.63 mag galaxy found in the NED/GAIA catalogues. Its located 0.9\" from the galaxy core.",
    "n_detections": 83,
    "first_mjd": 61240.4383911998,
-   "peak_mag": 18.885035,
+   "peak_mag": 18.885034561157227,
    "tier": "faint",
    "tde_score": 0.073,
    "host": {
-    "sep": 0.302,
+    "sep": 0.294,
     "type": "SER",
     "shape_r": 2.243893,
     "mag_g": null,
@@ -629,7 +641,7 @@
    "first_seen_mjd": 61016.173726900015,
    "first_pass_mjd": 61333.293854199816,
    "sources": "fink:SLSN candidate",
-   "age_days": 321.61090775469347,
+   "age_days": 321.62120852775115,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -652,6 +664,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF25acggpbd",
     "fink": "https://fink-portal.org/ZTF25acggpbd",
+    "antares": "https://antares.noirlab.edu/loci/ANT20257q6lq66vlclg",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF25acggpbd/"
    },
    "broker_errors": {},
@@ -660,11 +673,11 @@
    "sherlock": "The transient is possibly associated with SDSS J015054.91-035543.8; an r=18.91 mag galaxy found in the SDSS/PS1 catalogues. Its located 0.71\" S, 0.33\" W from the galaxy centre.",
    "n_detections": 98,
    "first_mjd": 61016.173726900015,
-   "peak_mag": 16.880293,
+   "peak_mag": 16.880292892456055,
    "tier": "faint",
    "tde_score": 0.065,
    "host": {
-    "sep": 0.555,
+    "sep": 0.551,
     "type": "SER",
     "shape_r": 1.371802,
     "mag_g": 19.025926233895692,
@@ -693,7 +706,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -716,6 +729,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abzjzcp",
     "fink": "https://fink-portal.org/ZTF26abzjzcp",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026e69yctq5z59p",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abzjzcp/"
    },
    "broker_errors": {},
@@ -724,11 +738,11 @@
    "sherlock": "The transient is synonymous with 2MASXJ00222637%2B1627546; a G=18.28 mag galaxy found in the NED/SDSS/GAIA catalogues. Its located 0.7\" (1.1 Kpc) from the galaxy core. A host z=0.094 implies a m - M = 38.17.",
    "n_detections": 19,
    "first_mjd": 61318.27608799981,
-   "peak_mag": 18.554665,
+   "peak_mag": 18.554664611816406,
    "tier": "bright",
    "tde_score": 0.059,
    "host": {
-    "sep": 0.714,
+    "sep": 0.694,
     "type": "DUP",
     "shape_r": 0.0,
     "mag_g": null,
@@ -756,7 +770,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -775,7 +789,9 @@
     "fink": "https://fink-portal.org/ZTF26acbuano",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acbuano/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF26acbuano not found"
+   },
    "tns_name": "2026afqw",
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ04490060-2022297; a G=19.42 mag galaxy found in the NED/GAIA catalogues. Its located 0.7\" (1.0 Kpc) from the galaxy core. A host z=0.073 implies a m - M = 37.60.",
@@ -814,7 +830,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108,
+   "age_days": 3218.794935427766,
    "flare_onset_mjd": 61294.41325230012,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -831,6 +847,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18abxaihn",
     "fink": "https://fink-portal.org/ZTF18abxaihn",
+    "antares": "https://antares.noirlab.edu/loci/ANT2018omfzg",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18abxaihn/"
    },
    "broker_errors": {},
@@ -839,11 +856,11 @@
    "sherlock": "The transient is synonymous with SDSS J024437.15-052525.4; a G=19.64 mag galaxy found in the SDSS/GAIA catalogues. Its located 0.6\" (1.5 Kpc) from the galaxy core. A host z=0.136 implies a m - M = 39.03.",
    "n_detections": 8,
    "first_mjd": 58378.43313660007,
-   "peak_mag": 19.117764,
+   "peak_mag": 19.11776351928711,
    "tier": "faint",
    "tde_score": 0.057,
    "host": {
-    "sep": 0.403,
+    "sep": 0.4,
     "type": "SER",
     "shape_r": 3.142941,
     "mag_g": 17.604229896995633,
@@ -872,7 +889,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108,
+   "age_days": 2488.794935427766,
    "flare_onset_mjd": 61332.53524310002,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -889,6 +906,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF20abpjtmh",
     "fink": "https://fink-portal.org/ZTF20abpjtmh",
+    "antares": "https://antares.noirlab.edu/loci/ANT2022cjuyimi1uy4a",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF20abpjtmh/"
    },
    "broker_errors": {},
@@ -901,7 +919,7 @@
    "tier": "bright",
    "tde_score": 0.055,
    "host": {
-    "sep": 0.459,
+    "sep": 0.255,
     "type": "SER",
     "shape_r": 17.173359,
     "mag_g": 13.715344310615691,
@@ -930,7 +948,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -947,6 +965,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abapcdo",
     "fink": "https://fink-portal.org/ZTF26abapcdo",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026cq73x1k4s5v6",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abapcdo/"
    },
    "broker_errors": {},
@@ -955,11 +974,11 @@
    "sherlock": "The transient is synonymous with 2MASXJ00432638-0350585; a G=18.93 mag galaxy found in the NED/GAIA catalogues. Its located 0.2\" from the galaxy core.",
    "n_detections": 182,
    "first_mjd": 61199.46870370023,
-   "peak_mag": 17.830103,
+   "peak_mag": 17.830102920532227,
    "tier": "bright",
    "tde_score": 0.05,
    "host": {
-    "sep": 0.24,
+    "sep": 0.23,
     "type": "SER",
     "shape_r": 13.035139,
     "mag_g": 16.66657441536186,
@@ -988,16 +1007,22 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105,
+   "age_days": 1757.7949354277662,
    "flare_onset_mjd": 61287.47571759997,
    "prior_alerts": 0,
-   "consensus": "insufficient",
+   "consensus": "agree",
    "categories": "AGN",
-   "broker_labels": "alerce:AGN",
+   "broker_labels": "alerce:AGN; antares:AGN",
    "votes": [
     {
      "broker": "alerce",
      "classifier": "lc_classifier_BHRF_forced_phot",
+     "label": "AGN",
+     "category": "AGN"
+    },
+    {
+     "broker": "antares",
+     "classifier": "catalog_agn",
      "label": "AGN",
      "category": "AGN"
     }
@@ -1005,19 +1030,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF22abgoqqe",
     "fink": "https://fink-portal.org/ZTF22abgoqqe",
+    "antares": "https://antares.noirlab.edu/loci/ANT2022azuku",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF22abgoqqe/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASSJ04070213-1727506; a G=18.55 mag galaxy found in the NED/GAIA catalogues. Its located 0.3\" from the galaxy core.",
-   "n_detections": 33,
-   "first_mjd": 59819.444594900124,
-   "peak_mag": 19.1548,
+   "n_detections": 34,
+   "first_mjd": 59631.13278939994,
+   "peak_mag": 19.15477180480957,
    "tier": "faint",
    "tde_score": 0.046,
    "host": {
-    "sep": 0.406,
+    "sep": 0.379,
     "type": "SER",
     "shape_r": 0.647909,
     "mag_g": 18.056909683504223,
@@ -1046,7 +1072,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108,
+   "age_days": 2488.794935427766,
    "flare_onset_mjd": 61287.47571759997,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1065,7 +1091,9 @@
     "fink": "https://fink-portal.org/ZTF20acniuph",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF20acniuph/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF20acniuph not found"
+   },
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASSJ04070213-1727506; a G=18.55 mag galaxy found in the NED/GAIA catalogues. Its located 0.3\" from the galaxy core.",
@@ -1104,7 +1132,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1121,6 +1149,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abvuqgg",
     "fink": "https://fink-portal.org/ZTF26abvuqgg",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026fy4jhxptitvn",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abvuqgg/"
    },
    "broker_errors": {},
@@ -1133,7 +1162,7 @@
    "tier": "faint",
    "tde_score": 0.041,
    "host": {
-    "sep": 0.254,
+    "sep": 0.247,
     "type": "SER",
     "shape_r": 0.451535,
     "mag_g": 20.09497003031835,
@@ -1162,7 +1191,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1179,15 +1208,16 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26acbqtzw",
     "fink": "https://fink-portal.org/ZTF26acbqtzw",
+    "antares": "https://antares.noirlab.edu/loci/ANT2019dgepa",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acbqtzw/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ00303018%2B1834583; a G=18.01 mag galaxy found in the NED/SDSS/GAIA catalogues. Its located 1.0\" (1.0 Kpc) from the galaxy core. A host z=0.052 implies a m - M = 36.83.",
-   "n_detections": 2,
-   "first_mjd": 61315.29621529998,
-   "peak_mag": 19.70223,
+   "n_detections": 30,
+   "first_mjd": 58379.40229169978,
+   "peak_mag": 17.406099319458008,
    "tier": "faint",
    "tde_score": 0.036,
    "host": {
@@ -1220,7 +1250,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1239,7 +1269,9 @@
     "fink": "https://fink-portal.org/ZTF26aaarszn",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26aaarszn/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF26aaarszn not found"
+   },
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ01083872-1106306; a G=18.04 mag galaxy found in the NED/GAIA catalogues. Its located 0.5\" from the galaxy core.",
@@ -1278,7 +1310,7 @@
    "first_seen_mjd": 61304.50782410009,
    "first_pass_mjd": 61333.41178240022,
    "sources": "fink:Ambiguous",
-   "age_days": 33.27681055462017,
+   "age_days": 33.28711132767785,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -1301,6 +1333,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abwqfcv",
     "fink": "https://fink-portal.org/ZTF26abwqfcv",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026rcyhsx1h2953",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abwqfcv/"
    },
    "broker_errors": {},
@@ -1331,7 +1364,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -1354,6 +1387,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abyovks",
     "fink": "https://fink-portal.org/ZTF26abyovks",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026q0optkc8ktlm",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abyovks/"
    },
    "broker_errors": {},
@@ -1366,7 +1400,7 @@
    "tier": "faint",
    "tde_score": 0.033,
    "host": {
-    "sep": 0.174,
+    "sep": 0.188,
     "type": "SER",
     "shape_r": 1.739491,
     "mag_g": 18.850573849718185,
@@ -1395,7 +1429,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1412,19 +1446,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26aaxgwxv",
     "fink": "https://fink-portal.org/ZTF26aaxgwxv",
+    "antares": "https://antares.noirlab.edu/loci/ANT2019al5om",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26aaxgwxv/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with IC3194; a G=17.57 mag galaxy found in the NED_D/SDSS/GAIA catalogues. Its located 0.6\" (0.6 Kpc) from the galaxy core. A host distance of 190.0 Mpc(z=0.051) implies a m - M = 36.39.",
-   "n_detections": 2,
-   "first_mjd": 61333.53915510001,
+   "n_detections": 8,
+   "first_mjd": 58846.54798609996,
    "peak_mag": 18.621454,
    "tier": "bright",
    "tde_score": 0.032,
    "host": {
-    "sep": 0.904,
+    "sep": 0.749,
     "type": "SER",
     "shape_r": 3.893992,
     "mag_g": 15.918509454402637,
@@ -1453,7 +1488,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1472,7 +1507,8 @@
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abyjxvu/"
    },
    "broker_errors": {
-    "fink": "object not found"
+    "fink": "object not found",
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF26abyjxvu not found"
    },
    "tns_name": null,
    "tns_type": null,
@@ -1512,7 +1548,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1529,6 +1565,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26accolcf",
     "fink": "https://fink-portal.org/ZTF26accolcf",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026m6n6fm7ult8d",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26accolcf/"
    },
    "broker_errors": {},
@@ -1537,11 +1574,11 @@
    "sherlock": "The transient is synonymous with 2MASXiJ0754542%2B295148; a G=18.19 mag galaxy found in the NED/SDSS/GAIA catalogues. Its located 0.1\" (0.2 Kpc) from the galaxy core. A host z=0.081 implies a m - M = 37.83.",
    "n_detections": 2,
    "first_mjd": 61333.49253469985,
-   "peak_mag": 19.200375,
+   "peak_mag": 19.200374603271484,
    "tier": "faint",
    "tde_score": 0.027,
    "host": {
-    "sep": 0.155,
+    "sep": 0.247,
     "type": "SER",
     "shape_r": 0.609731,
     "mag_g": 17.687764393729303,
@@ -1570,7 +1607,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105,
+   "age_days": 1757.7949354277662,
    "flare_onset_mjd": 61313.526481499895,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1587,19 +1624,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF22aagbwvs",
     "fink": "https://fink-portal.org/ZTF22aagbwvs",
+    "antares": "https://antares.noirlab.edu/loci/ANT2022b5uoo",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF22aagbwvs/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ10265637%2B2820278; a G=19.77 mag galaxy found in the NED/SDSS/GAIA catalogues. Its located 0.1\" (0.2 Kpc) from the galaxy core. A host z=0.207 implies a m - M = 40.04.",
-   "n_detections": 24,
+   "n_detections": 31,
    "first_mjd": 59671.33903940022,
-   "peak_mag": 19.3422,
+   "peak_mag": 19.342199325561523,
    "tier": "faint",
    "tde_score": 0.027,
    "host": {
-    "sep": 0.215,
+    "sep": 0.212,
     "type": "SER",
     "shape_r": 1.776053,
     "mag_g": 18.796553547798126,
@@ -1628,7 +1666,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108,
+   "age_days": 3218.794935427766,
    "flare_onset_mjd": 61313.46634260006,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1645,13 +1683,14 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18abxvybe",
     "fink": "https://fink-portal.org/ZTF18abxvybe",
+    "antares": "https://antares.noirlab.edu/loci/ANT2020rfrmi",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18abxvybe/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with CGCG421-009; a G=16.98 mag galaxy found in the NED/GAIA/LASR catalogues. Its located 0.4\" (0.1 Kpc) from the galaxy core. A host z=0.015 implies a m - M = 34.06.",
-   "n_detections": 45,
+   "n_detections": 46,
    "first_mjd": 58434.35329859983,
    "peak_mag": 17.1473,
    "tier": "bright",
@@ -1675,7 +1714,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105,
+   "age_days": 1392.7949354277662,
    "flare_onset_mjd": 61314.37797449995,
    "prior_alerts": 0,
    "consensus": "disagree",
@@ -1698,6 +1737,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF23aaosgcu",
     "fink": "https://fink-portal.org/ZTF23aaosgcu",
+    "antares": "https://antares.noirlab.edu/loci/ANT2023qbxm73ti73i7",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF23aaosgcu/"
    },
    "broker_errors": {},
@@ -1706,11 +1746,11 @@
    "sherlock": "The transient is synonymous with 2MASXJ01504264+2323576; a W1=13.79 mag galaxy found in the LASR catalogue. Its located 0.8\" (0.3 Kpc) from the galaxy core. A host z=0.019 implies a m - M = 34.61.",
    "n_detections": 6,
    "first_mjd": 60113.46263890015,
-   "peak_mag": 19.615742,
+   "peak_mag": 19.615741729736328,
    "tier": "faint",
    "tde_score": 0.024,
    "host": {
-    "sep": 0.707,
+    "sep": 0.638,
     "type": "SER",
     "shape_r": 5.427619,
     "mag_g": 15.979993879444725,
@@ -1739,7 +1779,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108,
+   "age_days": 3218.794935427766,
    "flare_onset_mjd": 61322.53065969981,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1756,6 +1796,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18aavhpsq",
     "fink": "https://fink-portal.org/ZTF18aavhpsq",
+    "antares": "https://antares.noirlab.edu/loci/ANT20262h8gwnzugvyl",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18aavhpsq/"
    },
    "broker_errors": {},
@@ -1768,7 +1809,7 @@
    "tier": "bright",
    "tde_score": 0.013,
    "host": {
-    "sep": 0.603,
+    "sep": 0.617,
     "type": "SER",
     "shape_r": 1.711107,
     "mag_g": 17.66910790181699,
@@ -1797,7 +1838,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105,
+   "age_days": 1757.7949354277662,
    "flare_onset_mjd": 61322.53065969981,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1816,7 +1857,9 @@
     "fink": "https://fink-portal.org/ZTF22aazfglb",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF22aazfglb/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF22aazfglb not found"
+   },
    "tns_name": "2026aeyn",
    "tns_type": null,
    "sherlock": "The transient is synonymous with SDSS J115121.09+285031.2; an r=17.31 mag galaxy found in the SDSS catalogue. Its located 0.5\" (0.5 Kpc) from the galaxy core. A host z=0.045 implies a m - M = 36.50.",
@@ -1855,7 +1898,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -1880,7 +1923,9 @@
     "fink": "https://fink-portal.org/ZTF26aaaacnb",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26aaaacnb/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF26aaaacnb not found"
+   },
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ23465308-1249482; a G=17.27 mag galaxy found in the NED/GAIA catalogues. Its located 0.7\" (1.1 Kpc) from the galaxy core. A host z=0.076 implies a m - M = 37.68.",
@@ -1918,7 +1963,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -1941,6 +1986,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abziszp",
     "fink": "https://fink-portal.org/ZTF26abziszp",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026qu6z6447hnpq",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abziszp/"
    },
    "broker_errors": {},
@@ -1949,11 +1995,11 @@
    "sherlock": "The transient is synonymous with GALEXASCJ215544.24-120910.7; a 18.99 mag galaxy found in the NED catalogue. Its located 0.3\" from the galaxy core.",
    "n_detections": 25,
    "first_mjd": 61318.20864580013,
-   "peak_mag": 18.558306,
+   "peak_mag": 18.558305740356445,
    "tier": "bright",
    "tde_score": 0.012,
    "host": {
-    "sep": 0.279,
+    "sep": 0.295,
     "type": "SER",
     "shape_r": 2.208964,
     "mag_g": 18.348547070644027,
@@ -1982,7 +2028,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1999,6 +2045,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abvtunp",
     "fink": "https://fink-portal.org/ZTF26abvtunp",
+    "antares": "https://antares.noirlab.edu/loci/ANT202682gf0ebopwpv",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abvtunp/"
    },
    "broker_errors": {},
@@ -2011,7 +2058,7 @@
    "tier": "faint",
    "tde_score": 0.011,
    "host": {
-    "sep": 0.706,
+    "sep": 0.674,
     "type": "SER",
     "shape_r": 2.061957,
     "mag_g": 18.98633232506375,
@@ -2040,7 +2087,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108,
+   "age_days": 2488.794935427766,
    "flare_onset_mjd": 61329.52181709977,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2057,19 +2104,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF20acywpmu",
     "fink": "https://fink-portal.org/ZTF20acywpmu",
+    "antares": "https://antares.noirlab.edu/loci/ANT2018ht6em",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF20acywpmu/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ07503193%2B0933321; a G=17.99 mag galaxy found in the NED/GAIA catalogues. Its located 0.6\" from the galaxy core.",
-   "n_detections": 36,
-   "first_mjd": 59199.423449099995,
-   "peak_mag": 18.853237,
+   "n_detections": 118,
+   "first_mjd": 58370.50462959986,
+   "peak_mag": 18.566999435424805,
    "tier": "faint",
    "tde_score": 0.011,
    "host": {
-    "sep": 0.111,
+    "sep": 0.058,
     "type": "SER",
     "shape_r": 1.99329,
     "mag_g": 17.114632974451776,
@@ -2098,7 +2146,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -2115,6 +2163,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26aakoryz",
     "fink": "https://fink-portal.org/ZTF26aakoryz",
+    "antares": "https://antares.noirlab.edu/loci/ANT20268t7l4hhr0htm",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26aakoryz/"
    },
    "broker_errors": {},
@@ -2123,11 +2172,11 @@
    "sherlock": "The transient is synonymous with SDSSJ091702.96%2B244534.1; a 19.40 mag galaxy found in the NED catalogue. Its located 0.5\" from the galaxy core.",
    "n_detections": 20,
    "first_mjd": 61094.266319400165,
-   "peak_mag": 19.846634,
+   "peak_mag": 19.846633911132812,
    "tier": "faint",
    "tde_score": 0.011,
    "host": {
-    "sep": 0.311,
+    "sep": 0.317,
     "type": "REX",
     "shape_r": 0.932765,
     "mag_g": 19.43019817462083,
@@ -2156,7 +2205,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108,
+   "age_days": 2488.794935427766,
    "flare_onset_mjd": 61209.46524310019,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2172,6 +2221,7 @@
    ],
    "links": {
     "alerce": "https://alerce.online/object/ZTF20adefrqt",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026oscktseuugec",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF20adefrqt/"
    },
    "broker_errors": {
@@ -2204,7 +2254,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108,
+   "age_days": 3218.794935427766,
    "flare_onset_mjd": 61223.44446759997,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2221,6 +2271,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18acahynn",
     "fink": "https://fink-portal.org/ZTF18acahynn",
+    "antares": "https://antares.noirlab.edu/loci/ANT2020et2dk",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18acahynn/"
    },
    "broker_errors": {},
@@ -2229,11 +2280,11 @@
    "sherlock": "The transient is synonymous with GALEXASCJ003738.87-050513.6; a B=18.67 mag galaxy found in the NED/GSC/GAIA catalogues. Its located 0.1\" from the galaxy core.",
    "n_detections": 631,
    "first_mjd": 58472.10696760006,
-   "peak_mag": 18.64367,
+   "peak_mag": 18.64366912841797,
    "tier": "faint",
    "tde_score": 0.007,
    "host": {
-    "sep": 0.076,
+    "sep": 0.029,
     "type": "DEV",
     "shape_r": 0.17356,
     "mag_g": 18.389570330231177,
@@ -2262,7 +2313,7 @@
    "first_seen_mjd": 61297.31478009978,
    "first_pass_mjd": 61331.2097800998,
    "sources": "fink:Ambiguous",
-   "age_days": 40.469854554925405,
+   "age_days": 40.480155327983084,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -2285,6 +2336,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18abxnydk",
     "fink": "https://fink-portal.org/ZTF18abxnydk",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026lpcsemkwo23q",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18abxnydk/"
    },
    "broker_errors": {},
@@ -2293,11 +2345,11 @@
    "sherlock": "The transient is synonymous with 2420947342472989952; a G=19.68 mag stellar source found in the GAIA catalogue. Its located 0.2\" from the stellar source core.",
    "n_detections": 64,
    "first_mjd": 61297.31478009978,
-   "peak_mag": 17.486147,
+   "peak_mag": 17.486146926879883,
    "tier": "bright",
    "tde_score": 0.006,
    "host": {
-    "sep": 0.189,
+    "sep": 0.198,
     "type": "SER",
     "shape_r": 1.365488,
     "mag_g": 17.8889526064166,
@@ -2326,7 +2378,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -2342,6 +2394,7 @@
    ],
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abzsybd",
+    "antares": "https://antares.noirlab.edu/loci/ANT20263msux73qz17y",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abzsybd/"
    },
    "broker_errors": {
@@ -2350,13 +2403,13 @@
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ03582008-0532062; a G=16.61 mag galaxy found in the NED/GAIA catalogues. Its located 0.5\" (0.6 Kpc) from the galaxy core. A host z=0.062 implies a m - M = 37.23.",
-   "n_detections": 9,
-   "first_mjd": 61300.40247689979,
+   "n_detections": 10,
+   "first_mjd": 61280.4970602002,
    "peak_mag": 17.7851,
    "tier": "bright",
    "tde_score": 0.006,
    "host": {
-    "sep": 0.21,
+    "sep": 0.202,
     "type": "DUP",
     "shape_r": 0.0,
     "mag_g": null,
@@ -2384,7 +2437,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2407,6 +2460,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26accgokk",
     "fink": "https://fink-portal.org/ZTF26accgokk",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026i4kquchlj4ur",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26accgokk/"
    },
    "broker_errors": {},
@@ -2419,7 +2473,7 @@
    "tier": "faint",
    "tde_score": 0.006,
    "host": {
-    "sep": 0.448,
+    "sep": 0.477,
     "type": "SER",
     "shape_r": 2.51939,
     "mag_g": 18.65506305979217,
@@ -2448,7 +2502,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 661.7846346547107,
+   "age_days": 661.7949354277663,
    "flare_onset_mjd": 61329.33755790023,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2464,6 +2518,7 @@
    ],
    "links": {
     "alerce": "https://alerce.online/object/ZTF25aacxtsp",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026pgpgl1bxj7rl",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF25aacxtsp/"
    },
    "broker_errors": {
@@ -2474,7 +2529,7 @@
    "sherlock": "The transient is synonymous with IC1697; a G=17.23 mag galaxy found in the NED/SDSS/GAIA catalogues. Its located 0.7\" (0.4 Kpc) from the galaxy core. A host z=0.029 implies a m - M = 35.50.",
    "n_detections": 2,
    "first_mjd": 61329.33755790023,
-   "peak_mag": 18.038012,
+   "peak_mag": 18.03801155090332,
    "tier": "bright",
    "tde_score": 0.005,
    "host": {
@@ -2506,7 +2561,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -2529,6 +2584,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26acbwxdi",
     "fink": "https://fink-portal.org/ZTF26acbwxdi",
+    "antares": "https://antares.noirlab.edu/loci/ANT20267duii53fcznl",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26acbwxdi/"
    },
    "broker_errors": {},
@@ -2537,7 +2593,7 @@
    "sherlock": "The transient is synonymous with SDSS J114907.41+202826.5; an r=16.13 mag galaxy found in the SDSS catalogue. Its located 0.5\" (0.4 Kpc) from the galaxy core. A host z=0.036 implies a m - M = 35.99.",
    "n_detections": 3,
    "first_mjd": 61331.5415856,
-   "peak_mag": 19.00249,
+   "peak_mag": 19.00248908996582,
    "tier": "faint",
    "tde_score": 0.005,
    "host": {
@@ -2570,7 +2626,7 @@
    "first_seen_mjd": 61315.432430599816,
    "first_pass_mjd": 61333.39274309995,
    "sources": "fink:Ambiguous",
-   "age_days": 22.352204054892354,
+   "age_days": 22.362504827950033,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2593,6 +2649,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abyynrs",
     "fink": "https://fink-portal.org/ZTF26abyynrs",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026vv6urhhnfpl5",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abyynrs/"
    },
    "broker_errors": {},
@@ -2601,11 +2658,11 @@
    "sherlock": "The transient is possibly associated with SDSS J023021.13+061728.9; an r=19.53 mag galaxy found in the SDSS/PS1 catalogues. Its located 0.60\" N, 0.13\" E from the galaxy centre.",
    "n_detections": 30,
    "first_mjd": 61315.432430599816,
-   "peak_mag": 19.35895,
+   "peak_mag": 19.358949661254883,
    "tier": "faint",
    "tde_score": 0.005,
    "host": {
-    "sep": 1.081,
+    "sep": 1.082,
     "type": "SER",
     "shape_r": 3.464626,
     "mag_g": 19.13924691806484,
@@ -2634,7 +2691,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108,
+   "age_days": 3583.794935427766,
    "flare_onset_mjd": 61168.48418979999,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2651,19 +2708,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF17aaedpii",
     "fink": "https://fink-portal.org/ZTF17aaedpii",
+    "antares": "https://antares.noirlab.edu/loci/ANT2020bd7km",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF17aaedpii/"
    },
    "broker_errors": {},
    "tns_name": null,
    "tns_type": null,
    "sherlock": "The transient is synonymous with GALEXASCJ223951.54-012729.5; a B=17.88 mag galaxy found in the NED/SDSS/GSC/PS1/GAIA catalogues. Its located 0.2\" from the galaxy core.",
-   "n_detections": 100,
-   "first_mjd": 61168.48418979999,
-   "peak_mag": 17.635735,
+   "n_detections": 598,
+   "first_mjd": 58380.351412000135,
+   "peak_mag": 17.63573455810547,
    "tier": "faint",
    "tde_score": 0.004,
    "host": {
-    "sep": 0.166,
+    "sep": 0.139,
     "type": "PSF",
     "shape_r": 0.0,
     "mag_g": 17.844872739504293,
@@ -2692,12 +2750,12 @@
    "first_seen_mjd": 59074.41749999998,
    "first_pass_mjd": 61333.38017359981,
    "sources": "fink:(SIMBAD) Seyfert1",
-   "age_days": 2263.367134654727,
+   "age_days": 2263.377435427785,
    "flare_onset_mjd": 61213.46826389991,
    "prior_alerts": 0,
    "consensus": "agree",
    "categories": "AGN",
-   "broker_labels": "alerce:AGN; fink:Seyfert1; lasair:AGN",
+   "broker_labels": "alerce:AGN; fink:Seyfert1; antares:AGN; lasair:AGN",
    "votes": [
     {
      "broker": "alerce",
@@ -2712,6 +2770,12 @@
      "category": "AGN"
     },
     {
+     "broker": "antares",
+     "classifier": "catalog_agn",
+     "label": "AGN",
+     "category": "AGN"
+    },
+    {
      "broker": "lasair",
      "classifier": "sherlock",
      "label": "AGN",
@@ -2721,6 +2785,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF21achlikx",
     "fink": "https://fink-portal.org/ZTF21achlikx",
+    "antares": "https://antares.noirlab.edu/loci/ANT202602hryraj4mt6",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF21achlikx/"
    },
    "broker_errors": {},
@@ -2729,11 +2794,11 @@
    "sherlock": "The transient is synonymous with MCG%2B00-04-061; a G=17.99 mag AGN found in the NED/SDSS/MILLIQUAS/GAIA/VERON catalogues. Its located 0.4\" (0.5 Kpc) from the AGN core. A host z=0.064 implies a m - M = 37.29.",
    "n_detections": 30,
    "first_mjd": 61213.46826389991,
-   "peak_mag": 18.707924,
+   "peak_mag": 18.707923889160156,
    "tier": "faint",
    "tde_score": 0.003,
    "host": {
-    "sep": 0.356,
+    "sep": 0.362,
     "type": "DUP",
     "shape_r": 0.0,
     "mag_g": null,
@@ -2761,7 +2826,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1027.7846346547105,
+   "age_days": 1027.7949354277662,
    "flare_onset_mjd": 61214.43402779987,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -2786,7 +2851,9 @@
     "fink": "https://fink-portal.org/ZTF24aaskltj",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF24aaskltj/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF24aaskltj not found"
+   },
    "tns_name": "2022aamy",
    "tns_type": "AGN",
    "sherlock": "The transient is synonymous with 2MASXJ23263506-1223577; a G=18.00 mag galaxy found in the NED/GAIA catalogues. Its located 0.4\" (0.4 Kpc) from the galaxy core. A host z=0.061 implies a m - M = 37.19.",
@@ -2825,7 +2892,7 @@
    "first_seen_mjd": 58773.26379630016,
    "first_pass_mjd": 61332.23231479991,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2564.520838354547,
+   "age_days": 2564.5311391276045,
    "flare_onset_mjd": 61214.43402779987,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -2848,19 +2915,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF23abnyfry",
     "fink": "https://fink-portal.org/ZTF23abnyfry",
+    "antares": "https://antares.noirlab.edu/loci/ANT20224oxt3fi90nz0",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF23abnyfry/"
    },
    "broker_errors": {},
    "tns_name": "2022aamy",
    "tns_type": "AGN",
    "sherlock": "The transient is synonymous with 2MASXJ23263506-1223577; a G=18.00 mag galaxy found in the NED/GAIA catalogues. Its located 0.3\" (0.3 Kpc) from the galaxy core. A host z=0.061 implies a m - M = 37.19.",
-   "n_detections": 70,
-   "first_mjd": 60314.16255789995,
-   "peak_mag": 18.1556,
+   "n_detections": 90,
+   "first_mjd": 59815.42511569988,
+   "peak_mag": 18.15559196472168,
    "tier": "bright",
    "tde_score": 0.001,
    "host": {
-    "sep": 0.349,
+    "sep": 0.334,
     "type": "SER",
     "shape_r": 13.8336,
     "mag_g": 14.891725412548908,
@@ -2889,7 +2957,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -2906,6 +2974,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26accudim",
     "fink": "https://fink-portal.org/ZTF26accudim",
+    "antares": "https://antares.noirlab.edu/loci/ANT20260ycluj31e1sq",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26accudim/"
    },
    "broker_errors": {},
@@ -2914,7 +2983,7 @@
    "sherlock": "The transient is synonymous with SDSSJ101542.77%2B000958.0; a 19.90 mag galaxy found in the NED catalogue. Its located 0.9\" from the galaxy core.",
    "n_detections": 2,
    "first_mjd": 61322.53121529985,
-   "peak_mag": 19.300068,
+   "peak_mag": 19.300067901611328,
    "tier": "faint",
    "tde_score": 0.001,
    "host": {
@@ -2947,7 +3016,7 @@
    "first_seen_mjd": 61293.14579859981,
    "first_pass_mjd": 61331.13570600003,
    "sources": "fink:Ambiguous",
-   "age_days": 44.638836054895364,
+   "age_days": 44.64913682795304,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2976,6 +3045,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26absuzhq",
     "fink": "https://fink-portal.org/ZTF26absuzhq",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026vhl0ucr88a5c",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26absuzhq/"
    },
    "broker_errors": {},
@@ -2984,7 +3054,7 @@
    "sherlock": "The transient is possibly associated with 17580152+1247315; a J=16.10 mag galaxy found in the 2MASS/PS1 catalogues. Its located 0.45\" N, 0.66\" W from the galaxy centre.",
    "n_detections": 48,
    "first_mjd": 61293.14579859981,
-   "peak_mag": 18.486624,
+   "peak_mag": 18.486623764038086,
    "tier": "faint",
    "tde_score": 0.001,
    "host": null,
@@ -3006,7 +3076,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -3029,6 +3099,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abxjooe",
     "fink": "https://fink-portal.org/ZTF26abxjooe",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026dvk0oy55q9xk",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abxjooe/"
    },
    "broker_errors": {},
@@ -3041,7 +3112,7 @@
    "tier": "faint",
    "tde_score": 0.001,
    "host": {
-    "sep": 0.074,
+    "sep": 0.071,
     "type": "SER",
     "shape_r": 0.64418,
     "mag_g": 20.931230403591222,
@@ -3070,7 +3141,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108,
+   "age_days": 3218.794935427766,
    "flare_onset_mjd": 61085.13736109994,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -3093,15 +3164,16 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF18aaemywp",
     "fink": "https://fink-portal.org/ZTF18aaemywp",
+    "antares": "https://antares.noirlab.edu/loci/ANT2020qhc7e",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF18aaemywp/"
    },
    "broker_errors": {},
    "tns_name": "2026ief",
    "tns_type": null,
    "sherlock": "The transient is synonymous with CGCG175-004; a V=11.99 mag galaxy found in the NED/GSC/GAIA/LASR catalogues. Its located 0.2\" (0.1 Kpc) from the galaxy core. A host z=0.018 implies a m - M = 34.48.",
-   "n_detections": 96,
+   "n_detections": 97,
    "first_mjd": 58376.51906249998,
-   "peak_mag": 17.531046,
+   "peak_mag": 17.53104591369629,
    "tier": "bright",
    "tde_score": 0.0,
    "host": null,
@@ -3123,7 +3195,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.78463465471066,
+   "age_days": 296.7949354277662,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -3148,7 +3220,9 @@
     "fink": "https://fink-portal.org/ZTF26aarakwr",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26aarakwr/"
    },
-   "broker_errors": {},
+   "broker_errors": {
+    "antares": "https://api.antares.noirlab.edu/v1/loci: ZTF26aarakwr not found"
+   },
    "tns_name": "2026ief",
    "tns_type": null,
    "sherlock": "The transient is synonymous with CGCG175-004; a V=11.99 mag galaxy found in the NED/GSC/GAIA/LASR catalogues. Its located 0.4\" (0.1 Kpc) from the galaxy core. A host z=0.018 implies a m - M = 34.48.",
@@ -3176,7 +3250,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108,
+   "age_days": 2488.794935427766,
    "flare_onset_mjd": 61286.33252310008,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -3199,19 +3273,20 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF20abgbvlr",
     "fink": "https://fink-portal.org/ZTF20abgbvlr",
+    "antares": "https://antares.noirlab.edu/loci/ANT2020bfrhg",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF20abgbvlr/"
    },
    "broker_errors": {},
    "tns_name": "2019zwx",
    "tns_type": null,
    "sherlock": "The transient is synonymous with 2MASXJ23170090-0259232; a B=17.28 mag galaxy found in the NED/GSC/GAIA catalogues. Its located 0.4\" (1.2 Kpc) from the galaxy core. A host z=0.200 implies a m - M = 39.95.",
-   "n_detections": 159,
-   "first_mjd": 59018.38696759986,
+   "n_detections": 173,
+   "first_mjd": 58456.16312499996,
    "peak_mag": 18.5804,
    "tier": "faint",
    "tde_score": 0.0,
    "host": {
-    "sep": 0.203,
+    "sep": 0.157,
     "type": "PSF",
     "shape_r": 0.0,
     "mag_g": 17.394356669447475,
@@ -3240,7 +3315,7 @@
    "first_seen_mjd": 58431.23288189992,
    "first_pass_mjd": 61333.37969909981,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2906.5517527547854,
+   "age_days": 2906.562053527843,
    "flare_onset_mjd": 61237.42876160005,
    "prior_alerts": 0,
    "consensus": "disagree",
@@ -3269,6 +3344,7 @@
    "links": {
     "alerce": "https://alerce.online/object/ZTF26abhmlft",
     "fink": "https://fink-portal.org/ZTF26abhmlft",
+    "antares": "https://antares.noirlab.edu/loci/ANT2026hy7css950ohw",
     "lasair": "https://lasair-ztf.lsst.ac.uk/objects/ZTF26abhmlft/"
    },
    "broker_errors": {},
@@ -3277,11 +3353,11 @@
    "sherlock": "The transient is synonymous with 2525946236161539072; a G=19.66 mag stellar source found in the GAIA catalogue. Its located 0.2\" from the stellar source core.",
    "n_detections": 73,
    "first_mjd": 61237.42876160005,
-   "peak_mag": 19.585789,
+   "peak_mag": 19.58578872680664,
    "tier": "faint",
    "tde_score": 0.0,
    "host": {
-    "sep": 0.103,
+    "sep": 0.092,
     "type": "PSF",
     "shape_r": 0.0,
     "mag_g": 19.62012326042173,
@@ -3305,7 +3381,7 @@
    "band": "r",
    "mjd": 61333.50783560006,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abxxndf",
@@ -3315,7 +3391,7 @@
    "band": "r",
    "mjd": 61331.10590279987,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acdzeqi",
@@ -3325,7 +3401,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abyzmci",
@@ -3335,7 +3411,7 @@
    "band": "r",
    "mjd": 61333.31675929995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adbcomv",
@@ -3345,7 +3421,7 @@
    "band": "g",
    "mjd": 61337.459965299815,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aadkjmo",
@@ -3355,7 +3431,7 @@
    "band": "r",
    "mjd": 61337.52089119982,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abreeqx",
@@ -3365,7 +3441,7 @@
    "band": "r",
    "mjd": 61334.25425929995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abqhrzu",
@@ -3375,7 +3451,7 @@
    "band": "r",
    "mjd": 61332.54503470007,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF18abvpnnb",
@@ -3385,7 +3461,7 @@
    "band": "g",
    "mjd": 61332.216886600014,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 3236.69721565472
+   "age_days": 3236.7075164277776
   },
   {
    "object_id": "ZTF17aadgjus",
@@ -3395,7 +3471,7 @@
    "band": "r",
    "mjd": 61331.2966781999,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF18accepsl",
@@ -3405,7 +3481,7 @@
    "band": "r",
    "mjd": 61333.245509299915,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abkfppz",
@@ -3415,7 +3491,7 @@
    "band": "r",
    "mjd": 61334.3063542,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abtsuqv",
@@ -3425,7 +3501,7 @@
    "band": "r",
    "mjd": 61337.488842600025,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF21acxnseu",
@@ -3435,7 +3511,7 @@
    "band": "r",
    "mjd": 61333.347615700215,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF20aanlygx",
@@ -3445,7 +3521,7 @@
    "band": "r",
    "mjd": 61332.35910880007,
    "sources": "fink:(TNS) AGN",
-   "age_days": 2607.3064980547133
+   "age_days": 2607.316798827771
   },
   {
    "object_id": "ZTF18aceyscr",
@@ -3455,7 +3531,7 @@
    "band": "r",
    "mjd": 61337.52447920013,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF17aacnyjx",
@@ -3465,7 +3541,7 @@
    "band": "g",
    "mjd": 61334.23112270003,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF18abqsahz",
@@ -3475,7 +3551,7 @@
    "band": "r",
    "mjd": 61334.291527799796,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abomlbu",
@@ -3485,7 +3561,7 @@
    "band": "g",
    "mjd": 61332.25199070014,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abkwfxq",
@@ -3495,7 +3571,7 @@
    "band": "r",
    "mjd": 61334.12783560017,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adkbtan",
@@ -3505,7 +3581,7 @@
    "band": "g",
    "mjd": 61337.52306709997,
    "sources": "fink:(TNS) AGN",
-   "age_days": 3074.608396254778
+   "age_days": 3074.618697027836
   },
   {
    "object_id": "ZTF18acurmpd",
@@ -3515,7 +3591,7 @@
    "band": "r",
    "mjd": 61333.54317130009,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acsvwzc",
@@ -3525,7 +3601,7 @@
    "band": "r",
    "mjd": 61332.241111100186,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aawwbqm",
@@ -3535,7 +3611,7 @@
    "band": "g",
    "mjd": 61332.45226849988,
    "sources": "fink:(TNS) AGN",
-   "age_days": 3074.608396254778
+   "age_days": 3074.618697027836
   },
   {
    "object_id": "ZTF18aahesrm",
@@ -3545,7 +3621,7 @@
    "band": "r",
    "mjd": 61337.44795140019,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acrcuye",
@@ -3555,7 +3631,7 @@
    "band": "r",
    "mjd": 61332.47230320005,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aamfvlm",
@@ -3565,7 +3641,7 @@
    "band": "r",
    "mjd": 61332.510312499944,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abslbyb",
@@ -3575,7 +3651,7 @@
    "band": "r",
    "mjd": 61334.30137730017,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abuamgo",
@@ -3585,7 +3661,7 @@
    "band": "r",
    "mjd": 61333.39510420011,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22aaqccka",
@@ -3595,7 +3671,7 @@
    "band": "g",
    "mjd": 61332.253888899926,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2564.5194263545054
+   "age_days": 2564.529727127563
   },
   {
    "object_id": "ZTF18abtxkaf",
@@ -3605,7 +3681,7 @@
    "band": "r",
    "mjd": 61334.27325229999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aczonqb",
@@ -3615,7 +3691,7 @@
    "band": "g",
    "mjd": 61334.23112270003,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18achhdjq",
@@ -3625,7 +3701,7 @@
    "band": "r",
    "mjd": 61333.205544000026,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18absgmhg",
@@ -3635,7 +3711,7 @@
    "band": "r",
    "mjd": 61334.24428239977,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adsbxqa",
@@ -3645,7 +3721,7 @@
    "band": "g",
    "mjd": 61337.47167820018,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 3172.673349954486
+   "age_days": 3172.683650727544
   },
   {
    "object_id": "ZTF19aavprpp",
@@ -3655,7 +3731,7 @@
    "band": "r",
    "mjd": 61333.230463000014,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF17aacjpoc",
@@ -3665,7 +3741,7 @@
    "band": "r",
    "mjd": 61333.52112270007,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF18aceacqp",
@@ -3675,7 +3751,7 @@
    "band": "r",
    "mjd": 61333.349965299945,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF17aaaqqck",
@@ -3685,7 +3761,7 @@
    "band": "r",
    "mjd": 61337.4328935002,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF18acvwgqy",
@@ -3695,7 +3771,7 @@
    "band": "r",
    "mjd": 61337.457395799924,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abgrbum",
@@ -3705,7 +3781,7 @@
    "band": "r",
    "mjd": 61331.38379629981,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abwkiyp",
@@ -3715,7 +3791,7 @@
    "band": "r",
    "mjd": 61337.47789350012,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abuanlw",
@@ -3725,7 +3801,7 @@
    "band": "r",
    "mjd": 61337.488842600025,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aazdikv",
@@ -3735,7 +3811,7 @@
    "band": "r",
    "mjd": 61334.18869209988,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2975.39884765476
+   "age_days": 2975.409148427818
   },
   {
    "object_id": "ZTF19aajxepz",
@@ -3745,7 +3821,7 @@
    "band": "r",
    "mjd": 61331.30243059993,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF21acnwaqk",
@@ -3755,7 +3831,7 @@
    "band": "r",
    "mjd": 61337.45785879996,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF18actadei",
@@ -3765,7 +3841,7 @@
    "band": "g",
    "mjd": 61337.48554399982,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acvgzab",
@@ -3775,7 +3851,7 @@
    "band": "r",
    "mjd": 61331.54305560002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abgayro",
@@ -3785,7 +3861,7 @@
    "band": "r",
    "mjd": 61331.3346644002,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF19abjpehh",
@@ -3795,7 +3871,7 @@
    "band": "g",
    "mjd": 61334.27325229999,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abzihli",
@@ -3805,7 +3881,7 @@
    "band": "r",
    "mjd": 61333.52112270007,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abtjmns",
@@ -3815,7 +3891,7 @@
    "band": "r",
    "mjd": 61331.10636569979,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abtgrog",
@@ -3825,7 +3901,7 @@
    "band": "r",
    "mjd": 61334.30090280017,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aaeroao",
@@ -3835,7 +3911,7 @@
    "band": "r",
    "mjd": 61333.492071799934,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abufgdj",
@@ -3845,7 +3921,7 @@
    "band": "r",
    "mjd": 61331.31548610004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abuhxen",
@@ -3855,7 +3931,7 @@
    "band": "r",
    "mjd": 61333.26500000013,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF17aaclzao",
@@ -3865,7 +3941,7 @@
    "band": "g",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF19aadalaz",
@@ -3875,7 +3951,7 @@
    "band": "r",
    "mjd": 61334.21143520018,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19aaiqmgl",
@@ -3885,7 +3961,7 @@
    "band": "r",
    "mjd": 61337.45692129992,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19aajyqqu",
@@ -3895,7 +3971,7 @@
    "band": "r",
    "mjd": 61337.455972199794,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acuavan",
@@ -3905,7 +3981,7 @@
    "band": "r",
    "mjd": 61331.37673609983,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abmdrlh",
@@ -3915,7 +3991,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF19abfvefc",
@@ -3925,7 +4001,7 @@
    "band": "r",
    "mjd": 61332.2960994998,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aafagvo",
@@ -3935,7 +4011,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adolaxz",
@@ -3945,7 +4021,7 @@
    "band": "r",
    "mjd": 61334.21094910009,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaeycah",
@@ -3955,7 +4031,7 @@
    "band": "r",
    "mjd": 61337.5327198999,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abpfnyu",
@@ -3965,7 +4041,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18adkbtie",
@@ -3975,7 +4051,7 @@
    "band": "r",
    "mjd": 61337.449826399796,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abvdlzi",
@@ -3985,7 +4061,7 @@
    "band": "r",
    "mjd": 61334.27277779998,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18absohws",
@@ -3995,7 +4071,7 @@
    "band": "r",
    "mjd": 61332.30178239988,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abuyhea",
@@ -4005,7 +4081,7 @@
    "band": "r",
    "mjd": 61337.525925899856,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20aambnyh",
@@ -4015,7 +4091,7 @@
    "band": "r",
    "mjd": 61331.318784699775,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18abvgkcg",
@@ -4025,7 +4101,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaagbln",
@@ -4035,7 +4111,7 @@
    "band": "r",
    "mjd": 61331.295231500175,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19acidatw",
@@ -4045,7 +4121,7 @@
    "band": "r",
    "mjd": 61333.39665509993,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abrbgvm",
@@ -4055,7 +4131,7 @@
    "band": "r",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abceihx",
@@ -4065,7 +4141,7 @@
    "band": "r",
    "mjd": 61334.21001160005,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acxxizh",
@@ -4075,7 +4151,7 @@
    "band": "r",
    "mjd": 61337.539467600174,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acejejm",
@@ -4085,7 +4161,7 @@
    "band": "g",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abbxvyc",
@@ -4095,7 +4171,7 @@
    "band": "r",
    "mjd": 61331.23746530013,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acpdqwg",
@@ -4105,7 +4181,7 @@
    "band": "r",
    "mjd": 61333.46369209979,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aabkrcp",
@@ -4115,7 +4191,7 @@
    "band": "g",
    "mjd": 61331.33366899984,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF22abcrxba",
@@ -4125,7 +4201,7 @@
    "band": "r",
    "mjd": 61331.2743286998,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF25acgcyig",
@@ -4135,7 +4211,7 @@
    "band": "r",
    "mjd": 61331.314074099995,
    "sources": "lasair:NT",
-   "age_days": 661.7846346547107
+   "age_days": 661.7949354277663
   },
   {
    "object_id": "ZTF20acqtmmx",
@@ -4145,7 +4221,7 @@
    "band": "r",
    "mjd": 61333.438194400165,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18actzyzv",
@@ -4155,7 +4231,7 @@
    "band": "r",
    "mjd": 61337.47693290003,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF21acmtqef",
@@ -4165,7 +4241,7 @@
    "band": "r",
    "mjd": 61332.28799769981,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF18abqwyml",
@@ -4175,7 +4251,7 @@
    "band": "r",
    "mjd": 61334.3003934999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abiqifg",
@@ -4185,7 +4261,7 @@
    "band": "g",
    "mjd": 61333.31488429988,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abpgtid",
@@ -4195,7 +4271,7 @@
    "band": "r",
    "mjd": 61334.30185189983,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aafagim",
@@ -4205,7 +4281,7 @@
    "band": "r",
    "mjd": 61337.45456020022,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acyxjok",
@@ -4215,7 +4291,7 @@
    "band": "r",
    "mjd": 61333.53313660016,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20acwqjze",
@@ -4225,7 +4301,7 @@
    "band": "r",
    "mjd": 61337.53106479999,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF17aaajlbz",
@@ -4235,7 +4311,7 @@
    "band": "r",
    "mjd": 61333.531134299934,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF19aaemifu",
@@ -4245,7 +4321,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abiqmdc",
@@ -4255,7 +4331,7 @@
    "band": "g",
    "mjd": 61334.30090280017,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF23aablzds",
@@ -4265,7 +4341,7 @@
    "band": "r",
    "mjd": 61334.21094910009,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF19aatelvq",
@@ -4275,7 +4351,7 @@
    "band": "r",
    "mjd": 61333.5386806,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acekvbw",
@@ -4285,7 +4361,7 @@
    "band": "g",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abqwixr",
@@ -4295,7 +4371,7 @@
    "band": "g",
    "mjd": 61333.29432869982,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaflnoi",
@@ -4305,7 +4381,7 @@
    "band": "r",
    "mjd": 61337.530520800035,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18adamyqb",
@@ -4315,7 +4391,7 @@
    "band": "r",
    "mjd": 61331.45438659983,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF21acpuopd",
@@ -4325,7 +4401,7 @@
    "band": "r",
    "mjd": 61337.48931710003,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF20acygbyw",
@@ -4335,7 +4411,7 @@
    "band": "r",
    "mjd": 61332.41577549977,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18abrbgjw",
@@ -4345,7 +4421,7 @@
    "band": "r",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acessji",
@@ -4355,7 +4431,7 @@
    "band": "g",
    "mjd": 61330.2057523001,
    "sources": "fink:(TNS) AGN",
-   "age_days": 3090.2898314546983
+   "age_days": 3090.300132227756
   },
   {
    "object_id": "ZTF18acalfiy",
@@ -4365,7 +4441,7 @@
    "band": "g",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aabvpeg",
@@ -4375,7 +4451,7 @@
    "band": "r",
    "mjd": 61332.48875000002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abjmnlw",
@@ -4385,7 +4461,7 @@
    "band": "g",
    "mjd": 61331.10495370021,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abdyntb",
@@ -4395,7 +4471,7 @@
    "band": "g",
    "mjd": 61332.23875000002,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abkhpwo",
@@ -4405,7 +4481,7 @@
    "band": "r",
    "mjd": 61333.347615700215,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abxsmlf",
@@ -4415,7 +4491,7 @@
    "band": "r",
    "mjd": 61334.27025459986,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aaemnhk",
@@ -4425,7 +4501,7 @@
    "band": "r",
    "mjd": 61337.44559030002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF23aaxufzm",
@@ -4435,7 +4511,7 @@
    "band": "r",
    "mjd": 61333.36725689983,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF22abxzvrs",
@@ -4445,7 +4521,7 @@
    "band": "r",
    "mjd": 61332.36438659998,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF18abuwxii",
@@ -4455,7 +4531,7 @@
    "band": "g",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18actagcl",
@@ -4465,7 +4541,7 @@
    "band": "r",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abxrsjb",
@@ -4475,7 +4551,7 @@
    "band": "r",
    "mjd": 61334.30185189983,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acwrtza",
@@ -4485,7 +4561,7 @@
    "band": "r",
    "mjd": 61334.11126160016,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acajeca",
@@ -4495,7 +4571,7 @@
    "band": "r",
    "mjd": 61332.30699069984,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aceirak",
@@ -4505,7 +4581,7 @@
    "band": "r",
    "mjd": 61331.2738541998,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abxnben",
@@ -4515,7 +4591,7 @@
    "band": "r",
    "mjd": 61334.252847199794,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acnolrf",
@@ -4525,7 +4601,7 @@
    "band": "r",
    "mjd": 61333.52956019994,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aabluez",
@@ -4535,7 +4611,7 @@
    "band": "r",
    "mjd": 61333.39415509999,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18accptqo",
@@ -4545,7 +4621,7 @@
    "band": "r",
    "mjd": 61333.21457180008,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aczdtac",
@@ -4555,7 +4631,7 @@
    "band": "r",
    "mjd": 61333.53218750004,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acuspbi",
@@ -4565,7 +4641,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF23aacfgpn",
@@ -4575,7 +4651,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF21aaqvaog",
@@ -4585,7 +4661,7 @@
    "band": "r",
    "mjd": 61333.28258100012,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2172.5898198548894
+   "age_days": 2172.600120627947
   },
   {
    "object_id": "ZTF18acrxiod",
@@ -4595,7 +4671,7 @@
    "band": "r",
    "mjd": 61337.525925899856,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20abubztz",
@@ -4605,7 +4681,7 @@
    "band": "r",
    "mjd": 61334.18869209988,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18abskvkh",
@@ -4615,7 +4691,7 @@
    "band": "r",
    "mjd": 61331.28562500002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19adlxcwn",
@@ -4625,7 +4701,7 @@
    "band": "r",
    "mjd": 61337.530520800035,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aagdopl",
@@ -4635,7 +4711,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acakxfh",
@@ -4645,7 +4721,7 @@
    "band": "r",
    "mjd": 61337.48790509999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aceeoip",
@@ -4655,7 +4731,7 @@
    "band": "g",
    "mjd": 61337.525925899856,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abzkhfk",
@@ -4665,7 +4741,7 @@
    "band": "r",
    "mjd": 61333.31629629992,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abjgazt",
@@ -4675,7 +4751,7 @@
    "band": "r",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19aaaomyx",
@@ -4685,7 +4761,7 @@
    "band": "r",
    "mjd": 61333.536296300124,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF22abcdrab",
@@ -4695,7 +4771,7 @@
    "band": "r",
    "mjd": 61332.303669000044,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF19abyrajk",
@@ -4705,7 +4781,7 @@
    "band": "r",
    "mjd": 61331.285150500014,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF23aaykpej",
@@ -4715,7 +4791,7 @@
    "band": "r",
    "mjd": 61333.320081000216,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18acnaiuq",
@@ -4725,7 +4801,7 @@
    "band": "g",
    "mjd": 61337.48554399982,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abdkaon",
@@ -4735,7 +4811,7 @@
    "band": "g",
    "mjd": 61333.22994210012,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abwnmnc",
@@ -4745,7 +4821,7 @@
    "band": "g",
    "mjd": 61331.23699070001,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19acjqnbr",
@@ -4755,7 +4831,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19acbsvdf",
@@ -4765,7 +4841,7 @@
    "band": "r",
    "mjd": 61332.30601850012,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abwckas",
@@ -4775,7 +4851,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aaeynun",
@@ -4785,7 +4861,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaapcbi",
@@ -4795,7 +4871,7 @@
    "band": "r",
    "mjd": 61333.536296300124,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abegxiq",
@@ -4805,7 +4881,7 @@
    "band": "r",
    "mjd": 61333.379236099776,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF17aadgdie",
@@ -4815,7 +4891,7 @@
    "band": "r",
    "mjd": 61333.481608800124,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF19aboyptg",
@@ -4825,7 +4901,7 @@
    "band": "r",
    "mjd": 61331.28278939985,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF20aclkylf",
@@ -4835,7 +4911,7 @@
    "band": "r",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF22aavuqgd",
@@ -4845,7 +4921,7 @@
    "band": "r",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF18abupsrv",
@@ -4855,7 +4931,7 @@
    "band": "r",
    "mjd": 61333.39462959999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aceigby",
@@ -4865,7 +4941,7 @@
    "band": "r",
    "mjd": 61332.239699100144,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acvgufq",
@@ -4875,7 +4951,7 @@
    "band": "r",
    "mjd": 61333.53313660016,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18accdvng",
@@ -4885,7 +4961,7 @@
    "band": "g",
    "mjd": 61332.4527431,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2913.243164754771
+   "age_days": 2913.2534655278287
   },
   {
    "object_id": "ZTF18acuavde",
@@ -4895,7 +4971,7 @@
    "band": "g",
    "mjd": 61331.35528940009,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2948.303882354703
+   "age_days": 2948.3141831277608
   },
   {
    "object_id": "ZTF25abbydin",
@@ -4905,7 +4981,7 @@
    "band": "r",
    "mjd": 61332.30271989992,
    "sources": "lasair:NT",
-   "age_days": 661.7846346547107
+   "age_days": 661.7949354277663
   },
   {
    "object_id": "ZTF18abxbkaj",
@@ -4915,7 +4991,7 @@
    "band": "r",
    "mjd": 61331.46958329994,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abxrpqf",
@@ -4925,7 +5001,7 @@
    "band": "g",
    "mjd": 61333.39321759995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaplozm",
@@ -4935,7 +5011,7 @@
    "band": "r",
    "mjd": 61332.5347684999,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF22aatkfrj",
@@ -4945,7 +5021,7 @@
    "band": "r",
    "mjd": 61331.384733799845,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF23abnbnpm",
@@ -4955,7 +5031,7 @@
    "band": "r",
    "mjd": 61337.5048727002,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18abqzpru",
@@ -4965,7 +5041,7 @@
    "band": "r",
    "mjd": 61333.33620369993,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF21abqqbhl",
@@ -4975,7 +5051,7 @@
    "band": "g",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF20ablxste",
@@ -4985,7 +5061,7 @@
    "band": "r",
    "mjd": 61334.14666670002,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF20adabyqq",
@@ -4995,7 +5071,7 @@
    "band": "r",
    "mjd": 61331.1901273001,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18abobufq",
@@ -5005,7 +5081,7 @@
    "band": "g",
    "mjd": 61331.105428200215,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acbxjaa",
@@ -5015,7 +5091,7 @@
    "band": "r",
    "mjd": 61333.21317130001,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acwwkyv",
@@ -5025,7 +5101,7 @@
    "band": "r",
    "mjd": 61337.45503470022,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abtljvq",
@@ -5035,7 +5111,7 @@
    "band": "g",
    "mjd": 61334.231597200036,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abhchdd",
@@ -5045,7 +5121,7 @@
    "band": "r",
    "mjd": 61331.4193171002,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF19aabjxza",
@@ -5055,7 +5131,7 @@
    "band": "r",
    "mjd": 61333.42212959984,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19aazdlgz",
@@ -5065,7 +5141,7 @@
    "band": "r",
    "mjd": 61331.286562500056,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aafkseq",
@@ -5075,7 +5151,7 @@
    "band": "r",
    "mjd": 61333.50831020018,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aahpisp",
@@ -5085,7 +5161,7 @@
    "band": "r",
    "mjd": 61337.44841440022,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acxhnxa",
@@ -5095,7 +5171,7 @@
    "band": "r",
    "mjd": 61333.213634300046,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aceirmv",
@@ -5105,7 +5181,7 @@
    "band": "g",
    "mjd": 61334.231597200036,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adcbbhf",
@@ -5115,7 +5191,7 @@
    "band": "r",
    "mjd": 61331.12185190013,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaufqeh",
@@ -5125,7 +5201,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abssvho",
@@ -5135,7 +5211,7 @@
    "band": "r",
    "mjd": 61334.14760420006,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF21aazoibe",
@@ -5145,7 +5221,7 @@
    "band": "r",
    "mjd": 61333.5386806,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF18adbckwd",
@@ -5155,7 +5231,7 @@
    "band": "r",
    "mjd": 61334.27072919998,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aabtxvd",
@@ -5165,7 +5241,7 @@
    "band": "r",
    "mjd": 61337.5087036998,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22aavtese",
@@ -5175,7 +5251,7 @@
    "band": "r",
    "mjd": 61332.305081000086,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF23aawqqhh",
@@ -5185,7 +5261,7 @@
    "band": "r",
    "mjd": 61334.11233799998,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF21abvuiwj",
@@ -5195,7 +5271,7 @@
    "band": "r",
    "mjd": 61332.23922450002,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF23abryizu",
@@ -5205,7 +5281,7 @@
    "band": "r",
    "mjd": 61332.215474499855,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18abtmtit",
@@ -5215,7 +5291,7 @@
    "band": "r",
    "mjd": 61333.39321759995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abpeybr",
@@ -5225,7 +5301,7 @@
    "band": "r",
    "mjd": 61331.28043980012,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF17aaafwbf",
@@ -5235,7 +5311,7 @@
    "band": "r",
    "mjd": 61333.36013890011,
    "sources": "lasair:NT",
-   "age_days": 3583.7846346547108
+   "age_days": 3583.794935427766
   },
   {
    "object_id": "ZTF21abrfbic",
@@ -5245,7 +5321,7 @@
    "band": "r",
    "mjd": 61331.377199099865,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2169.574426354673
+   "age_days": 2169.5847271277307
   },
   {
    "object_id": "ZTF18abwbqga",
@@ -5255,7 +5331,7 @@
    "band": "r",
    "mjd": 61333.2966781999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF25acerpxu",
@@ -5265,7 +5341,7 @@
    "band": "g",
    "mjd": 61332.25340279983,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2908.553917054851
+   "age_days": 2908.5642178279086
   },
   {
    "object_id": "ZTF19abwscyv",
@@ -5275,7 +5351,7 @@
    "band": "r",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acbwxwy",
@@ -5285,17 +5361,7 @@
    "band": "g",
    "mjd": 61331.236516200006,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
-  },
-  {
-   "object_id": "ZTF18acdvqrq",
-   "ra": 132.15574204444445,
-   "dec": 14.486952033333333,
-   "mag": 19.2241,
-   "band": "r",
-   "mjd": 61337.45218749996,
-   "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abyezrj",
@@ -5305,7 +5371,17 @@
    "band": "g",
    "mjd": 61337.48649309995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
+  },
+  {
+   "object_id": "ZTF18acdvqrq",
+   "ra": 132.15574204444445,
+   "dec": 14.486952033333333,
+   "mag": 19.2241,
+   "band": "r",
+   "mjd": 61337.45218749996,
+   "sources": "lasair:NT",
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acetuzs",
@@ -5315,7 +5391,7 @@
    "band": "r",
    "mjd": 61334.147141200025,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acsllgd",
@@ -5325,7 +5401,7 @@
    "band": "r",
    "mjd": 61333.308807900175,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 3233.4474471545036
+   "age_days": 3233.4577479275613
   },
   {
    "object_id": "ZTF18acbxpyb",
@@ -5335,7 +5411,7 @@
    "band": "r",
    "mjd": 61333.20937500009,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2975.3983962548155
+   "age_days": 2975.408697027873
   },
   {
    "object_id": "ZTF18abuffsu",
@@ -5345,7 +5421,7 @@
    "band": "g",
    "mjd": 61334.231597200036,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abxvmib",
@@ -5355,7 +5431,7 @@
    "band": "r",
    "mjd": 61337.48554399982,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18actadvo",
@@ -5365,7 +5441,7 @@
    "band": "r",
    "mjd": 61332.3980556,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaajcbz",
@@ -5375,7 +5451,7 @@
    "band": "r",
    "mjd": 61332.376794000156,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19aaxbzza",
@@ -5385,7 +5461,7 @@
    "band": "r",
    "mjd": 61331.23746530013,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aaevkxn",
@@ -5395,7 +5471,7 @@
    "band": "r",
    "mjd": 61333.492071799934,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19acglgvt",
@@ -5405,7 +5481,7 @@
    "band": "r",
    "mjd": 61334.21047449997,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abuomnw",
@@ -5415,7 +5491,7 @@
    "band": "g",
    "mjd": 61331.2699190001,
    "sources": "fink:(SIMBAD) AGN; fink:(TNS) AGN",
-   "age_days": 3236.69721565472
+   "age_days": 3236.7075164277776
   },
   {
    "object_id": "ZTF23abchgjn",
@@ -5425,7 +5501,7 @@
    "band": "r",
    "mjd": 61332.21594909998,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18abolqfl",
@@ -5435,7 +5511,7 @@
    "band": "r",
    "mjd": 61332.27120369999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abhchde",
@@ -5445,7 +5521,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF23aaaamzz",
@@ -5455,7 +5531,7 @@
    "band": "r",
    "mjd": 61333.39462959999,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18absqhci",
@@ -5465,7 +5541,7 @@
    "band": "g",
    "mjd": 61333.37876159977,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abjgbet",
@@ -5475,7 +5551,7 @@
    "band": "g",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19aaiprwg",
@@ -5485,7 +5561,7 @@
    "band": "r",
    "mjd": 61332.52509259991,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aalmtum",
@@ -5495,7 +5571,7 @@
    "band": "r",
    "mjd": 61333.524120400194,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acalqbv",
@@ -5505,7 +5581,7 @@
    "band": "r",
    "mjd": 61333.39274309995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF24abmbold",
@@ -5515,7 +5591,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 1027.7846346547105
+   "age_days": 1027.7949354277662
   },
   {
    "object_id": "ZTF18adblaze",
@@ -5525,7 +5601,7 @@
    "band": "g",
    "mjd": 61337.52306709997,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abviyvv",
@@ -5535,7 +5611,7 @@
    "band": "r",
    "mjd": 61331.28703700006,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acrexje",
@@ -5545,7 +5621,7 @@
    "band": "r",
    "mjd": 61337.48649309995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acuefxg",
@@ -5555,7 +5631,7 @@
    "band": "r",
    "mjd": 61337.531643500086,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20aakykcy",
@@ -5565,7 +5641,7 @@
    "band": "r",
    "mjd": 61332.47760420013,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF19abdktcl",
@@ -5575,7 +5651,7 @@
    "band": "g",
    "mjd": 61333.21268519992,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acuserk",
@@ -5585,7 +5661,7 @@
    "band": "r",
    "mjd": 61333.529050900135,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acdxrnk",
@@ -5595,7 +5671,7 @@
    "band": "r",
    "mjd": 61332.272743099835,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aarrufq",
@@ -5605,7 +5681,7 @@
    "band": "r",
    "mjd": 61333.53313660016,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF21acetwav",
@@ -5615,7 +5691,7 @@
    "band": "r",
    "mjd": 61331.235104199965,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF19abpuibm",
@@ -5625,7 +5701,7 @@
    "band": "g",
    "mjd": 61332.25151620014,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF20aafxzej",
@@ -5635,7 +5711,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF23aaqiwle",
@@ -5645,7 +5721,7 @@
    "band": "g",
    "mjd": 61334.252847199794,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF20aazrccu",
@@ -5655,7 +5731,7 @@
    "band": "r",
    "mjd": 61333.527974499855,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18abxmpia",
@@ -5665,7 +5741,7 @@
    "band": "r",
    "mjd": 61333.20891200006,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18admvfgr",
@@ -5675,7 +5751,7 @@
    "band": "r",
    "mjd": 61332.272743099835,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF23abeotpl",
@@ -5685,7 +5761,7 @@
    "band": "r",
    "mjd": 61331.49907410005,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18acvcgor",
@@ -5695,7 +5771,7 @@
    "band": "r",
    "mjd": 61334.257094900124,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF21abycgve",
@@ -5705,7 +5781,7 @@
    "band": "r",
    "mjd": 61333.20937500009,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2675.343049054798
+   "age_days": 2675.3533498278557
   },
   {
    "object_id": "ZTF20acmmejw",
@@ -5715,7 +5791,7 @@
    "band": "r",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF23aatpzpf",
@@ -5725,7 +5801,7 @@
    "band": "g",
    "mjd": 61331.10495370021,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF21acjguwu",
@@ -5735,7 +5811,7 @@
    "band": "r",
    "mjd": 61331.31548610004,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF20ablxssr",
@@ -5745,7 +5821,7 @@
    "band": "g",
    "mjd": 61333.21268519992,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF19adlxdte",
@@ -5755,7 +5831,7 @@
    "band": "r",
    "mjd": 61332.528807899915,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abomlme",
@@ -5765,7 +5841,7 @@
    "band": "r",
    "mjd": 61333.27407409996,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abyfbhl",
@@ -5775,7 +5851,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aagqcqd",
@@ -5785,7 +5861,7 @@
    "band": "r",
    "mjd": 61333.49300929997,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abdkdda",
@@ -5795,7 +5871,7 @@
    "band": "g",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abvgiug",
@@ -5805,7 +5881,7 @@
    "band": "r",
    "mjd": 61337.45313660009,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abcextb",
@@ -5815,7 +5891,7 @@
    "band": "g",
    "mjd": 61332.24016200006,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19acbolha",
@@ -5825,7 +5901,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF23aapmwer",
@@ -5835,7 +5911,7 @@
    "band": "g",
    "mjd": 61334.225763900205,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18abvfpbt",
@@ -5845,7 +5921,7 @@
    "band": "r",
    "mjd": 61334.26978009986,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20adbfmca",
@@ -5855,7 +5931,7 @@
    "band": "g",
    "mjd": 61332.41984950006,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18acchyke",
@@ -5865,7 +5941,7 @@
    "band": "r",
    "mjd": 61331.29423609981,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acdzehd",
@@ -5875,7 +5951,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abtyudj",
@@ -5885,7 +5961,7 @@
    "band": "g",
    "mjd": 61331.3327314998,
    "sources": "fink:(SIMBAD) QSO",
-   "age_days": 3236.6786508549194
+   "age_days": 3236.688951627977
   },
   {
    "object_id": "ZTF19aabysko",
@@ -5895,7 +5971,7 @@
    "band": "r",
    "mjd": 61332.533819399774,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abspzcb",
@@ -5905,7 +5981,7 @@
    "band": "r",
    "mjd": 61333.24120370019,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abegxty",
@@ -5915,7 +5991,7 @@
    "band": "g",
    "mjd": 61333.275011599995,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18abxetfg",
@@ -5925,7 +6001,7 @@
    "band": "g",
    "mjd": 61333.37876159977,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abjbcsv",
@@ -5935,7 +6011,7 @@
    "band": "g",
    "mjd": 61333.438194400165,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF19abxvrlu",
@@ -5945,7 +6021,7 @@
    "band": "r",
    "mjd": 61332.42417819984,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19acvrogx",
@@ -5955,7 +6031,7 @@
    "band": "g",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acwxxrm",
@@ -5965,7 +6041,7 @@
    "band": "r",
    "mjd": 61337.531643500086,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20aanbjvm",
@@ -5975,7 +6051,7 @@
    "band": "r",
    "mjd": 61331.4109259001,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF19adcbzqs",
@@ -5985,7 +6061,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acebkqw",
@@ -5995,7 +6071,7 @@
    "band": "r",
    "mjd": 61333.41369209997,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abhlywi",
@@ -6005,7 +6081,7 @@
    "band": "g",
    "mjd": 61332.24063660018,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF18abuanby",
@@ -6015,7 +6091,7 @@
    "band": "r",
    "mjd": 61332.42032410018,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20acgcnjt",
@@ -6025,7 +6101,7 @@
    "band": "r",
    "mjd": 61333.50831020018,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18aceestx",
@@ -6035,7 +6111,7 @@
    "band": "r",
    "mjd": 61333.45093750022,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF20acqkuzp",
@@ -6045,7 +6121,7 @@
    "band": "r",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF18adodisr",
@@ -6055,7 +6131,7 @@
    "band": "g",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abtjqye",
@@ -6065,7 +6141,7 @@
    "band": "g",
    "mjd": 61330.2057523001,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2977.511926354673
+   "age_days": 2977.5222271277307
   },
   {
    "object_id": "ZTF23abfmnkh",
@@ -6075,7 +6151,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF19abbxuiv",
@@ -6085,7 +6161,7 @@
    "band": "r",
    "mjd": 61332.241111100186,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abqrxzm",
@@ -6095,7 +6171,7 @@
    "band": "r",
    "mjd": 61332.3348842999,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abyjcne",
@@ -6105,7 +6181,7 @@
    "band": "g",
    "mjd": 61333.380636599846,
    "sources": "fink:(SIMBAD) QSO",
-   "age_days": 2664.310838354584
+   "age_days": 2664.321139127642
   },
   {
    "object_id": "ZTF18abtmqfh",
@@ -6115,7 +6191,7 @@
    "band": "r",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aafbfpe",
@@ -6125,7 +6201,7 @@
    "band": "g",
    "mjd": 61331.52194439992,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18aboebum",
@@ -6135,7 +6211,7 @@
    "band": "r",
    "mjd": 61333.25201389985,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adamifw",
@@ -6145,7 +6221,7 @@
    "band": "r",
    "mjd": 61332.3958796002,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19ablpwgx",
@@ -6155,7 +6231,7 @@
    "band": "g",
    "mjd": 61333.38945600018,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 3232.6647040548924
+   "age_days": 3232.67500482795
   },
   {
    "object_id": "ZTF25ackfphr",
@@ -6165,7 +6241,7 @@
    "band": "r",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 661.7846346547107
+   "age_days": 661.7949354277663
   },
   {
    "object_id": "ZTF18aakawwr",
@@ -6175,7 +6251,7 @@
    "band": "r",
    "mjd": 61333.53365739994,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19abujsxr",
@@ -6185,7 +6261,7 @@
    "band": "g",
    "mjd": 61334.275659699924,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF22abftsrx",
@@ -6195,7 +6271,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF18abotdzb",
@@ -6205,7 +6281,7 @@
    "band": "g",
    "mjd": 61331.33130790014,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19aaiohno",
@@ -6215,7 +6291,7 @@
    "band": "r",
    "mjd": 61333.30736109987,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF22aaxqzvs",
@@ -6225,7 +6301,7 @@
    "band": "r",
    "mjd": 61333.24025460007,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF18acaiygp",
@@ -6235,7 +6311,7 @@
    "band": "g",
    "mjd": 61331.377199099865,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18accceaa",
@@ -6245,7 +6321,7 @@
    "band": "g",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF23abudayy",
@@ -6255,7 +6331,7 @@
    "band": "r",
    "mjd": 61331.48950230004,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18aabwlyz",
@@ -6265,7 +6341,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18abzhrem",
@@ -6275,7 +6351,7 @@
    "band": "r",
    "mjd": 61333.47957180021,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18acvhjkh",
@@ -6285,7 +6361,7 @@
    "band": "r",
    "mjd": 61333.48923610011,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF21acgzwys",
@@ -6295,7 +6371,7 @@
    "band": "g",
    "mjd": 61333.46038189996,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF19aczmpfz",
@@ -6305,7 +6381,7 @@
    "band": "r",
    "mjd": 61332.337245400064,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18aauhjhz",
@@ -6315,7 +6391,7 @@
    "band": "r",
    "mjd": 61332.528807899915,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF19acgtbxh",
@@ -6325,7 +6401,7 @@
    "band": "g",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18acsyall",
@@ -6335,7 +6411,7 @@
    "band": "r",
    "mjd": 61334.25519679999,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF23abueqzu",
@@ -6345,7 +6421,7 @@
    "band": "g",
    "mjd": 61333.49347219989,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF21abajwrd",
@@ -6355,7 +6431,7 @@
    "band": "r",
    "mjd": 61332.528807899915,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF22abgayqv",
@@ -6365,7 +6441,7 @@
    "band": "r",
    "mjd": 61332.42032410018,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF23abezwqk",
@@ -6375,7 +6451,7 @@
    "band": "r",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF20abgdrsk",
@@ -6385,7 +6461,7 @@
    "band": "r",
    "mjd": 61331.27040510019,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF20acjctdz",
@@ -6395,7 +6471,7 @@
    "band": "g",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF20acjdhgg",
@@ -6405,7 +6481,7 @@
    "band": "g",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF21abzcpdd",
@@ -6415,7 +6491,7 @@
    "band": "g",
    "mjd": 61333.4202430998,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2202.361174054742
+   "age_days": 2202.3714748278
   },
   {
    "object_id": "ZTF23absgbyu",
@@ -6425,7 +6501,7 @@
    "band": "g",
    "mjd": 61331.31501160003,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18adbkrql",
@@ -6435,7 +6511,7 @@
    "band": "r",
    "mjd": 61333.492071799934,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF18adbkqur",
@@ -6445,7 +6521,7 @@
    "band": "r",
    "mjd": 61331.48760419991,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF23aaxtonp",
@@ -6455,7 +6531,7 @@
    "band": "r",
    "mjd": 61332.3348842999,
    "sources": "lasair:NT",
-   "age_days": 1392.7846346547105
+   "age_days": 1392.7949354277662
   },
   {
    "object_id": "ZTF18aahrepa",
@@ -6465,7 +6541,7 @@
    "band": "r",
    "mjd": 61333.49300929997,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF22abnyylw",
@@ -6475,7 +6551,7 @@
    "band": "r",
    "mjd": 61332.33771990007,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF21abxndsz",
@@ -6485,7 +6561,7 @@
    "band": "g",
    "mjd": 61331.33655089978,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF25abnravh",
@@ -6495,7 +6571,7 @@
    "band": "r",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 661.7846346547107
+   "age_days": 661.7949354277663
   },
   {
    "object_id": "ZTF21acljgyp",
@@ -6505,7 +6581,7 @@
    "band": "r",
    "mjd": 61332.53134260001,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF19aburscg",
@@ -6515,7 +6591,7 @@
    "band": "r",
    "mjd": 61332.42417819984,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF19abgmmfu",
@@ -6525,7 +6601,7 @@
    "band": "g",
    "mjd": 61332.216886600014,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF18adbdlvs",
@@ -6535,7 +6611,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 3218.7846346547108
+   "age_days": 3218.794935427766
   },
   {
    "object_id": "ZTF24abueeup",
@@ -6545,7 +6621,7 @@
    "band": "g",
    "mjd": 61332.424652799964,
    "sources": "lasair:NT",
-   "age_days": 1027.7846346547105
+   "age_days": 1027.7949354277662
   },
   {
    "object_id": "ZTF22aaygtsg",
@@ -6555,7 +6631,7 @@
    "band": "r",
    "mjd": 61333.30262729991,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   },
   {
    "object_id": "ZTF21aaebgsn",
@@ -6565,7 +6641,7 @@
    "band": "g",
    "mjd": 61333.38804400014,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF19aafbzah",
@@ -6575,7 +6651,7 @@
    "band": "r",
    "mjd": 61337.52306709997,
    "sources": "lasair:NT",
-   "age_days": 2853.7846346547108
+   "age_days": 2853.794935427766
   },
   {
    "object_id": "ZTF20abodbes",
@@ -6585,7 +6661,7 @@
    "band": "r",
    "mjd": 61333.275011599995,
    "sources": "lasair:NT",
-   "age_days": 2488.7846346547108
+   "age_days": 2488.794935427766
   },
   {
    "object_id": "ZTF21achjcdh",
@@ -6595,7 +6671,7 @@
    "band": "g",
    "mjd": 61337.52259259997,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF21aabxezz",
@@ -6605,7 +6681,7 @@
    "band": "g",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 2122.7846346547108
+   "age_days": 2122.794935427766
   },
   {
    "object_id": "ZTF22abzhrud",
@@ -6615,7 +6691,7 @@
    "band": "r",
    "mjd": 61337.52542820014,
    "sources": "lasair:NT",
-   "age_days": 1757.7846346547105
+   "age_days": 1757.7949354277662
   }
  ],
  "lsst": {
