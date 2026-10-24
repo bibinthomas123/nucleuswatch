@@ -63,12 +63,22 @@ jobs:
         run: python validation/prospective.py
 
       - name: Commit the record
+        # main may have moved while this run was building (another push, or an
+        # earlier queued run committing its record), so rebase before pushing
+        # and retry. On a clash in the same record, this run's copy wins
+        # ("theirs" is the commit being replayed during a rebase).
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git add digest/ validation/prospective.json validation/PROSPECTIVE.md
-          git diff --cached --quiet || git commit -m "digest: $(date -u +%Y-%m-%d)"
-          git push
+          if git diff --cached --quiet; then exit 0; fi
+          git commit -m "digest: $(date -u +%Y-%m-%d)"
+          for attempt in 1 2 3 4 5; do
+            git pull --rebase -X theirs origin main && git push && exit 0
+            echo "push rejected (attempt $attempt); retrying"
+            sleep $((attempt * 5))
+          done
+          exit 1
 
       - uses: actions/upload-pages-artifact@v3
         with:
