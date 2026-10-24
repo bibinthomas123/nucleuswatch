@@ -41,6 +41,15 @@ flares, nuclear supernovae):
 General multi-broker orchestration is Alertissimo's job. nucleuswatch is
 the narrow, science-first layer that sits next to it.
 
+## Documentation
+
+| | |
+|---|---|
+| 📖 [How it works](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/how-it-works.md) | The pipeline end to end: adapters, consensus, the nuclear search, new vs known, the TDE score, Rubin, caching |
+| 🐍 [Python API](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/python-api.md) | Every public function and class, with parameters and defaults |
+| ⌨️ [Command line](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/cli.md) | Every command and flag, and the environment variables |
+| 📅 [Weekly digest and alerts](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/weekly-digest.md) | Workflow setup, Slack/Discord alerts, the Atom feed, the data file format |
+
 ## Quick start
 
 ```bash
@@ -246,11 +255,31 @@ runs it every Monday and deploys the page to GitHub Pages:
   chart, the method and validation summary, and an archive.
 - **Data:** `digest/<date>.json`, `.csv` and `_known.csv` are committed, so
   the history stays in the repo.
-- **Alerts:** the site has an Atom feed (`feed.xml`) of TDE-like
-  candidates: TDE score ≥ 0.5, a TDE vote from any broker, or a TDE type on
-  TNS. Set a `NUCLEUSWATCH_WEBHOOK` repository secret (a Slack or Discord
-  incoming-webhook URL) and the Monday run posts them there too; run
-  `nucleuswatch notify` to see the message.
+- **Alerts:** TDE-like candidates (TDE score ≥ 0.5, a TDE vote from any
+  broker, or a TDE type on TNS) go to an
+  [Atom feed](https://bibinthomas123.github.io/nucleuswatch/feed.xml) and,
+  optionally, to Slack or Discord (below).
+
+### Get the weekly candidates in Slack or Discord
+
+1. **Create an incoming webhook.**
+   - *Slack:* <https://api.slack.com/apps> → **Create New App → From
+     scratch** → **Incoming Webhooks** → switch it on → **Add New Webhook to
+     Workspace** → pick a channel → copy the `https://hooks.slack.com/services/…` URL.
+   - *Discord:* channel settings → **Integrations → Webhooks → New Webhook**
+     → **Copy Webhook URL**.
+2. **Test it locally** (`--always` posts even in a quiet week):
+   ```bash
+   NUCLEUSWATCH_WEBHOOK='<your URL>' nucleuswatch notify --data digest --always
+   ```
+3. **Add it to GitHub:** **Settings → Secrets and variables → Actions → New
+   repository secret**, name `NUCLEUSWATCH_WEBHOOK`, value the URL.
+
+From then on, each scheduled Monday run posts that week's TDE-like
+candidates. Code pushes don't post, and weeks with none post nothing. Keep
+the URL secret, since anyone holding it can post to your channel. No webhook?
+In Slack, `/feed subscribe https://bibinthomas123.github.io/nucleuswatch/feed.xml`
+works too. Full details are in [weekly-digest.md](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/weekly-digest.md#chat-alerts-slack-or-discord).
 
 Backfill past weeks with `nucleuswatch digest --until 2026-10-16`. Lasair's
 query API can't search the past, so backfilled weeks use Fink candidates only.
