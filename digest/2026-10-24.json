@@ -1,6 +1,6 @@
 {
- "generated": "2026-10-24T18:11:10+00:00",
- "created": "2026-10-24T18:12:30+00:00",
+ "generated": "2026-10-24T18:41:12+00:00",
+ "created": "2026-10-24T18:42:32+00:00",
  "backfill": false,
  "nucleuswatch_version": "1.1.0",
  "query": {
@@ -46,8 +46,8 @@
  },
  "errors": [],
  "funnel": {
-  "alerts_scanned": 1215,
-  "objects_scanned": 1336,
+  "alerts_scanned": 1253,
+  "objects_scanned": 1362,
   "passed_cuts": 386,
   "by_source": {
    "fink": 31,
@@ -78,7 +78,7 @@
    "first_seen_mjd": 61320.35653939983,
    "first_pass_mjd": 61333.39462959999,
    "sources": "fink:SN candidate",
-   "age_days": 17.401221072774206,
+   "age_days": 17.422075441136258,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -117,7 +117,9 @@
    "first_mjd": 61320.35653939983,
    "peak_mag": 17.57149,
    "tier": "bright",
-   "tde_score": 0.633
+   "tde_score": 0.633,
+   "first_listed": "2026-10-23",
+   "returning": true
   },
   {
    "object_id": "ZTF26acbvbhf",
@@ -134,7 +136,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -167,7 +169,9 @@
    "first_mjd": 61315.4465855998,
    "peak_mag": 19.443382,
    "tier": "faint",
-   "tde_score": 0.507
+   "tde_score": 0.507,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF19aagodxe",
@@ -184,7 +188,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043,
+   "age_days": 2853.778614840961,
    "flare_onset_mjd": 61307.51995369978,
    "prior_alerts": 0,
    "consensus": "disagree",
@@ -217,7 +221,9 @@
    "first_mjd": 58523.21002310002,
    "peak_mag": 18.66917,
    "tier": "bright",
-   "tde_score": 0.502
+   "tde_score": 0.502,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF17aaedpii",
@@ -234,7 +240,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604,
+   "age_days": 3583.778614840961,
    "flare_onset_mjd": 61168.48418979999,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -261,7 +267,9 @@
    "first_mjd": 61168.48418979999,
    "peak_mag": 17.635735,
    "tier": "faint",
-   "tde_score": 0.311
+   "tde_score": 0.311,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF20acniuph",
@@ -278,7 +286,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043,
+   "age_days": 2488.778614840961,
    "flare_onset_mjd": 61287.47571759997,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -305,7 +313,9 @@
    "first_mjd": 59631.13278939994,
    "peak_mag": 19.154772,
    "tier": "faint",
-   "tde_score": 0.281
+   "tde_score": 0.281,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abidbmw",
@@ -322,7 +332,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -355,7 +365,9 @@
    "first_mjd": 61240.4383911998,
    "peak_mag": 18.885035,
    "tier": "faint",
-   "tde_score": 0.253
+   "tde_score": 0.253,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF22abgoqqe",
@@ -372,7 +384,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043,
+   "age_days": 1757.7786148409607,
    "flare_onset_mjd": 61287.47571759997,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -399,7 +411,9 @@
    "first_mjd": 59819.444594900124,
    "peak_mag": 19.1548,
    "tier": "faint",
-   "tde_score": 0.211
+   "tde_score": 0.211,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26acaaupe",
@@ -416,7 +430,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -443,7 +457,9 @@
    "first_mjd": 61292.48231479991,
    "peak_mag": 19.2861,
    "tier": "faint",
-   "tde_score": 0.189
+   "tde_score": 0.189,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF18aceaukz",
@@ -460,7 +476,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604,
+   "age_days": 3218.778614840961,
    "flare_onset_mjd": 61285.40287039988,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -487,7 +503,9 @@
    "first_mjd": 58425.335138900205,
    "peak_mag": 18.74487,
    "tier": "faint",
-   "tde_score": 0.099
+   "tde_score": 0.099,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abzjzcp",
@@ -504,7 +522,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -537,7 +555,9 @@
    "first_mjd": 61318.27608799981,
    "peak_mag": 18.554665,
    "tier": "bright",
-   "tde_score": 0.094
+   "tde_score": 0.094,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abwqfcv",
@@ -554,7 +574,7 @@
    "first_seen_mjd": 61304.50782410009,
    "first_pass_mjd": 61333.41178240022,
    "sources": "fink:Ambiguous",
-   "age_days": 33.24993637251464,
+   "age_days": 33.27079074087669,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -587,7 +607,9 @@
    "first_mjd": 61304.50782410009,
    "peak_mag": 18.200426,
    "tier": "faint",
-   "tde_score": 0.08
+   "tde_score": 0.08,
+   "first_listed": "2026-10-23",
+   "returning": true
   },
   {
    "object_id": "ZTF26abyovks",
@@ -604,7 +626,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -637,7 +659,9 @@
    "first_mjd": 61314.52104170015,
    "peak_mag": 19.172,
    "tier": "faint",
-   "tde_score": 0.067
+   "tde_score": 0.067,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abapcdo",
@@ -654,7 +678,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -681,7 +705,9 @@
    "first_mjd": 61199.46870370023,
    "peak_mag": 17.830103,
    "tier": "bright",
-   "tde_score": 0.062
+   "tde_score": 0.062,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF18acahynn",
@@ -698,7 +724,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604,
+   "age_days": 3218.778614840961,
    "flare_onset_mjd": 61223.44446759997,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -725,7 +751,9 @@
    "first_mjd": 58472.10696760006,
    "peak_mag": 18.64367,
    "tier": "faint",
-   "tde_score": 0.057
+   "tde_score": 0.057,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF25acggpbd",
@@ -742,7 +770,7 @@
    "first_seen_mjd": 61016.173726900015,
    "first_pass_mjd": 61333.293854199816,
    "sources": "fink:SLSN candidate",
-   "age_days": 321.58403357258794,
+   "age_days": 321.60488794095,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -775,7 +803,9 @@
    "first_mjd": 61016.173726900015,
    "peak_mag": 16.880293,
    "tier": "faint",
-   "tde_score": 0.052
+   "tde_score": 0.052,
+   "first_listed": "2026-10-23",
+   "returning": true
   },
   {
    "object_id": "ZTF26aaarszn",
@@ -792,7 +822,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -819,7 +849,9 @@
    "first_mjd": 61027.11682870006,
    "peak_mag": 18.834,
    "tier": "faint",
-   "tde_score": 0.048
+   "tde_score": 0.048,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abhmlft",
@@ -836,7 +868,7 @@
    "first_seen_mjd": 58431.23288189992,
    "first_pass_mjd": 61333.37969909981,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2906.52487857268,
+   "age_days": 2906.545732941042,
    "flare_onset_mjd": 61237.42876160005,
    "prior_alerts": 0,
    "consensus": "disagree",
@@ -875,7 +907,9 @@
    "first_mjd": 61237.42876160005,
    "peak_mag": 19.585789,
    "tier": "faint",
-   "tde_score": 0.046
+   "tde_score": 0.046,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF19acfqnyr",
@@ -892,7 +926,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043,
+   "age_days": 2853.778614840961,
    "flare_onset_mjd": 61314.51440969994,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -919,7 +953,9 @@
    "first_mjd": 61162.2667129999,
    "peak_mag": 18.071184,
    "tier": "bright",
-   "tde_score": 0.036
+   "tde_score": 0.036,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abziszp",
@@ -936,7 +972,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -969,7 +1005,9 @@
    "first_mjd": 61318.20864580013,
    "peak_mag": 18.558306,
    "tier": "bright",
-   "tde_score": 0.023
+   "tde_score": 0.023,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF18abxvybe",
@@ -986,7 +1024,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604,
+   "age_days": 3218.778614840961,
    "flare_onset_mjd": 61313.46634260006,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1013,7 +1051,9 @@
    "first_mjd": 58434.35329859983,
    "peak_mag": 17.1473,
    "tier": "bright",
-   "tde_score": 0.022
+   "tde_score": 0.022,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF18aavhpsq",
@@ -1030,7 +1070,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604,
+   "age_days": 3218.778614840961,
    "flare_onset_mjd": 61322.53065969981,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1057,7 +1097,9 @@
    "first_mjd": 61322.53065969981,
    "peak_mag": 17.183092,
    "tier": "bright",
-   "tde_score": 0.018
+   "tde_score": 0.018,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF22aazfglb",
@@ -1074,7 +1116,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043,
+   "age_days": 1757.7786148409607,
    "flare_onset_mjd": 61322.53065969981,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1101,7 +1143,9 @@
    "first_mjd": 61322.53065969981,
    "peak_mag": 17.2423,
    "tier": "bright",
-   "tde_score": 0.018
+   "tde_score": 0.018,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abyjxvu",
@@ -1118,7 +1162,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1146,7 +1190,9 @@
    "first_mjd": 61312.386713000014,
    "peak_mag": 18.259842,
    "tier": "bright",
-   "tde_score": 0.018
+   "tde_score": 0.018,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26acbwxdi",
@@ -1163,7 +1209,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -1196,7 +1242,9 @@
    "first_mjd": 61331.5415856,
    "peak_mag": 19.00249,
    "tier": "faint",
-   "tde_score": 0.016
+   "tde_score": 0.016,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF22aagbwvs",
@@ -1213,7 +1261,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043,
+   "age_days": 1757.7786148409607,
    "flare_onset_mjd": 61313.526481499895,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1240,7 +1288,9 @@
    "first_mjd": 59671.33903940022,
    "peak_mag": 19.3422,
    "tier": "faint",
-   "tde_score": 0.015
+   "tde_score": 0.015,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF20abgbvlr",
@@ -1257,7 +1307,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043,
+   "age_days": 2488.778614840961,
    "flare_onset_mjd": 61286.33252310008,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -1290,7 +1340,9 @@
    "first_mjd": 59018.38696759986,
    "peak_mag": 18.5804,
    "tier": "faint",
-   "tde_score": 0.014
+   "tde_score": 0.014,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abwshzc",
@@ -1307,7 +1359,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1334,7 +1386,9 @@
    "first_mjd": 61305.32910879981,
    "peak_mag": 19.689548,
    "tier": "faint",
-   "tde_score": 0.014
+   "tde_score": 0.014,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF20abpjtmh",
@@ -1351,7 +1405,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043,
+   "age_days": 2488.778614840961,
    "flare_onset_mjd": 61332.53524310002,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1378,7 +1432,9 @@
    "first_mjd": 59733.21424769983,
    "peak_mag": 17.374271,
    "tier": "bright",
-   "tde_score": 0.013
+   "tde_score": 0.013,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26aaxgwxv",
@@ -1395,7 +1451,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1422,7 +1478,9 @@
    "first_mjd": 61333.53915510001,
    "peak_mag": 18.621454,
    "tier": "bright",
-   "tde_score": 0.012
+   "tde_score": 0.012,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26accolcf",
@@ -1439,7 +1497,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1466,7 +1524,9 @@
    "first_mjd": 61333.49253469985,
    "peak_mag": 19.200375,
    "tier": "faint",
-   "tde_score": 0.012
+   "tde_score": 0.012,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF17aaaykvi",
@@ -1483,7 +1543,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604,
+   "age_days": 3583.778614840961,
    "flare_onset_mjd": 60989.18630790012,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1510,7 +1570,9 @@
    "first_mjd": 58462.274965300225,
    "peak_mag": 18.256569,
    "tier": "faint",
-   "tde_score": 0.012
+   "tde_score": 0.012,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26acbuano",
@@ -1527,7 +1589,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1554,7 +1616,9 @@
    "first_mjd": 61328.41979169985,
    "peak_mag": 19.675217,
    "tier": "faint",
-   "tde_score": 0.011
+   "tde_score": 0.011,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abxjooe",
@@ -1571,7 +1635,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -1604,7 +1668,9 @@
    "first_mjd": 61307.5249073999,
    "peak_mag": 19.156116,
    "tier": "faint",
-   "tde_score": 0.011
+   "tde_score": 0.011,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26aakoryz",
@@ -1621,7 +1687,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1648,7 +1714,9 @@
    "first_mjd": 61094.266319400165,
    "peak_mag": 19.846634,
    "tier": "faint",
-   "tde_score": 0.01
+   "tde_score": 0.01,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF25aacxtsp",
@@ -1665,7 +1733,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 661.7577604726041,
+   "age_days": 661.7786148409607,
    "flare_onset_mjd": 61329.33755790023,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1693,7 +1761,9 @@
    "first_mjd": 61329.33755790023,
    "peak_mag": 18.038012,
    "tier": "bright",
-   "tde_score": 0.009
+   "tde_score": 0.009,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abzsybd",
@@ -1710,7 +1780,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1738,7 +1808,9 @@
    "first_mjd": 61300.40247689979,
    "peak_mag": 17.7851,
    "tier": "bright",
-   "tde_score": 0.008
+   "tde_score": 0.008,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26aaaacnb",
@@ -1755,7 +1827,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -1788,7 +1860,9 @@
    "first_mjd": 61021.20547450008,
    "peak_mag": 18.447649,
    "tier": "bright",
-   "tde_score": 0.008
+   "tde_score": 0.008,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26accudim",
@@ -1805,7 +1879,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1832,7 +1906,9 @@
    "first_mjd": 61322.53121529985,
    "peak_mag": 19.300068,
    "tier": "faint",
-   "tde_score": 0.008
+   "tde_score": 0.008,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abvtunp",
@@ -1849,7 +1925,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1876,7 +1952,9 @@
    "first_mjd": 61298.315520800184,
    "peak_mag": 18.813667,
    "tier": "faint",
-   "tde_score": 0.007
+   "tde_score": 0.007,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF20adefrqt",
@@ -1893,7 +1971,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043,
+   "age_days": 2488.778614840961,
    "flare_onset_mjd": 61209.46524310019,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -1921,7 +1999,9 @@
    "first_mjd": 61209.46524310019,
    "peak_mag": 18.842325,
    "tier": "faint",
-   "tde_score": 0.006
+   "tde_score": 0.006,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26acbqtzw",
@@ -1938,7 +2018,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -1965,7 +2045,9 @@
    "first_mjd": 61315.29621529998,
    "peak_mag": 19.70223,
    "tier": "faint",
-   "tde_score": 0.006
+   "tde_score": 0.006,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF23aaosgcu",
@@ -1982,7 +2064,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604,
+   "age_days": 1392.7786148409605,
    "flare_onset_mjd": 61314.37797449995,
    "prior_alerts": 0,
    "consensus": "disagree",
@@ -2015,7 +2097,9 @@
    "first_mjd": 60113.46263890015,
    "peak_mag": 19.615742,
    "tier": "faint",
-   "tde_score": 0.006
+   "tde_score": 0.006,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF21achlikx",
@@ -2032,7 +2116,7 @@
    "first_seen_mjd": 59074.41749999998,
    "first_pass_mjd": 61333.38017359981,
    "sources": "fink:(SIMBAD) Seyfert1",
-   "age_days": 2263.3402604726216,
+   "age_days": 2263.3611148409836,
    "flare_onset_mjd": 61213.46826389991,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -2071,7 +2155,9 @@
    "first_mjd": 61213.46826389991,
    "peak_mag": 18.707924,
    "tier": "faint",
-   "tde_score": 0.005
+   "tde_score": 0.005,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26accgokk",
@@ -2088,7 +2174,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2121,7 +2207,9 @@
    "first_mjd": 61331.53108800016,
    "peak_mag": 19.626314,
    "tier": "faint",
-   "tde_score": 0.005
+   "tde_score": 0.005,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abvuqgg",
@@ -2138,7 +2226,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "insufficient",
@@ -2165,7 +2253,9 @@
    "first_mjd": 61273.38109950023,
    "peak_mag": 19.6716,
    "tier": "faint",
-   "tde_score": 0.005
+   "tde_score": 0.005,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF18abxnydk",
@@ -2182,7 +2272,7 @@
    "first_seen_mjd": 61297.31478009978,
    "first_pass_mjd": 61331.2097800998,
    "sources": "fink:Ambiguous",
-   "age_days": 40.442980372819875,
+   "age_days": 40.46383474118193,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "disagree",
@@ -2215,7 +2305,9 @@
    "first_mjd": 61297.31478009978,
    "peak_mag": 17.486147,
    "tier": "bright",
-   "tde_score": 0.004
+   "tde_score": 0.004,
+   "first_listed": "2026-09-18",
+   "returning": true
   },
   {
    "object_id": "ZTF18abxaihn",
@@ -2232,7 +2324,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604,
+   "age_days": 3218.778614840961,
    "flare_onset_mjd": 61294.41325230012,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2259,7 +2351,9 @@
    "first_mjd": 58378.43313660007,
    "peak_mag": 19.117764,
    "tier": "faint",
-   "tde_score": 0.004
+   "tde_score": 0.004,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26abyynrs",
@@ -2276,7 +2370,7 @@
    "first_seen_mjd": 61315.432430599816,
    "first_pass_mjd": 61333.39274309995,
    "sources": "fink:Ambiguous",
-   "age_days": 22.325329872786824,
+   "age_days": 22.346184241148876,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2309,7 +2403,9 @@
    "first_mjd": 61315.432430599816,
    "peak_mag": 19.35895,
    "tier": "faint",
-   "tde_score": 0.003
+   "tde_score": 0.003,
+   "first_listed": "2026-10-09",
+   "returning": true
   },
   {
    "object_id": "ZTF20acywpmu",
@@ -2326,7 +2422,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043,
+   "age_days": 2488.778614840961,
    "flare_onset_mjd": 61329.52181709977,
    "prior_alerts": 0,
    "consensus": "insufficient",
@@ -2353,7 +2449,9 @@
    "first_mjd": 59199.423449099995,
    "peak_mag": 18.853237,
    "tier": "faint",
-   "tde_score": 0.003
+   "tde_score": 0.003,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF24aaskltj",
@@ -2370,7 +2468,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 1027.757760472604,
+   "age_days": 1027.7786148409605,
    "flare_onset_mjd": 61214.43402779987,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -2403,7 +2501,9 @@
    "first_mjd": 60479.45949070016,
    "peak_mag": 18.155592,
    "tier": "bright",
-   "tde_score": 0.002
+   "tde_score": 0.002,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF23abnyfry",
@@ -2420,7 +2520,7 @@
    "first_seen_mjd": 58773.26379630016,
    "first_pass_mjd": 61332.23231479991,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2564.4939641724413,
+   "age_days": 2564.5148185408034,
    "flare_onset_mjd": 61214.43402779987,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -2453,7 +2553,9 @@
    "first_mjd": 60314.16255789995,
    "peak_mag": 18.1556,
    "tier": "bright",
-   "tde_score": 0.001
+   "tde_score": 0.001,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF18aaemywp",
@@ -2470,7 +2572,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604,
+   "age_days": 3218.778614840961,
    "flare_onset_mjd": 61085.13736109994,
    "prior_alerts": 0,
    "consensus": "agree",
@@ -2503,7 +2605,9 @@
    "first_mjd": 58376.51906249998,
    "peak_mag": 17.531046,
    "tier": "bright",
-   "tde_score": 0.0
+   "tde_score": 0.0,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26aarakwr",
@@ -2520,7 +2624,7 @@
    "first_seen_mjd": null,
    "first_pass_mjd": null,
    "sources": "lasair:NT",
-   "age_days": 296.75776047260416,
+   "age_days": 296.77861484096064,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2553,7 +2657,9 @@
    "first_mjd": 61105.175162000116,
    "peak_mag": 17.531,
    "tier": "faint",
-   "tde_score": 0.0
+   "tde_score": 0.0,
+   "first_listed": "2026-10-24",
+   "returning": false
   },
   {
    "object_id": "ZTF26absuzhq",
@@ -2570,7 +2676,7 @@
    "first_seen_mjd": 61293.14579859981,
    "first_pass_mjd": 61331.13570600003,
    "sources": "fink:Ambiguous",
-   "age_days": 44.611961872789834,
+   "age_days": 44.632816241151886,
    "flare_onset_mjd": null,
    "prior_alerts": null,
    "consensus": "agree",
@@ -2609,7 +2715,9 @@
    "first_mjd": 61293.14579859981,
    "peak_mag": 18.486624,
    "tier": "faint",
-   "tde_score": 0.0
+   "tde_score": 0.0,
+   "first_listed": "2026-09-18",
+   "returning": true
   }
  ],
  "known": [
@@ -2621,7 +2729,7 @@
    "band": "r",
    "mjd": 61333.50783560006,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abxxndf",
@@ -2631,7 +2739,7 @@
    "band": "r",
    "mjd": 61331.10590279987,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acdzeqi",
@@ -2641,7 +2749,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abyzmci",
@@ -2651,7 +2759,7 @@
    "band": "r",
    "mjd": 61333.31675929995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18adbcomv",
@@ -2661,7 +2769,7 @@
    "band": "g",
    "mjd": 61337.459965299815,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aadkjmo",
@@ -2671,7 +2779,7 @@
    "band": "r",
    "mjd": 61337.52089119982,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abreeqx",
@@ -2681,7 +2789,7 @@
    "band": "r",
    "mjd": 61334.25425929995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abqhrzu",
@@ -2691,7 +2799,7 @@
    "band": "r",
    "mjd": 61332.54503470007,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF18abvpnnb",
@@ -2701,7 +2809,7 @@
    "band": "g",
    "mjd": 61332.216886600014,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 3236.6703414726144
+   "age_days": 3236.6911958409764
   },
   {
    "object_id": "ZTF17aadgjus",
@@ -2711,7 +2819,7 @@
    "band": "r",
    "mjd": 61331.2966781999,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF18accepsl",
@@ -2721,7 +2829,7 @@
    "band": "r",
    "mjd": 61333.245509299915,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abkfppz",
@@ -2731,7 +2839,7 @@
    "band": "r",
    "mjd": 61334.3063542,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abtsuqv",
@@ -2741,7 +2849,7 @@
    "band": "r",
    "mjd": 61337.488842600025,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF21acxnseu",
@@ -2751,7 +2859,7 @@
    "band": "r",
    "mjd": 61333.347615700215,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF20aanlygx",
@@ -2761,7 +2869,7 @@
    "band": "r",
    "mjd": 61332.35910880007,
    "sources": "fink:(TNS) AGN",
-   "age_days": 2607.2796238726078
+   "age_days": 2607.30047824097
   },
   {
    "object_id": "ZTF18aceyscr",
@@ -2771,7 +2879,7 @@
    "band": "r",
    "mjd": 61337.52447920013,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF17aacnyjx",
@@ -2781,7 +2889,7 @@
    "band": "g",
    "mjd": 61334.23112270003,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF18abqsahz",
@@ -2791,7 +2899,7 @@
    "band": "r",
    "mjd": 61334.291527799796,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abomlbu",
@@ -2801,7 +2909,7 @@
    "band": "g",
    "mjd": 61332.25199070014,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abkwfxq",
@@ -2811,7 +2919,7 @@
    "band": "r",
    "mjd": 61334.12783560017,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acurmpd",
@@ -2821,7 +2929,7 @@
    "band": "r",
    "mjd": 61333.54317130009,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acsvwzc",
@@ -2831,7 +2939,7 @@
    "band": "r",
    "mjd": 61332.241111100186,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aawwbqm",
@@ -2841,7 +2949,7 @@
    "band": "g",
    "mjd": 61332.45226849988,
    "sources": "fink:(TNS) AGN",
-   "age_days": 3074.5815220726727
+   "age_days": 3074.6023764410347
   },
   {
    "object_id": "ZTF18adkbtan",
@@ -2851,7 +2959,7 @@
    "band": "g",
    "mjd": 61333.4523494998,
    "sources": "fink:(TNS) AGN",
-   "age_days": 3074.5815220726727
+   "age_days": 3074.6023764410347
   },
   {
    "object_id": "ZTF18aahesrm",
@@ -2861,7 +2969,7 @@
    "band": "r",
    "mjd": 61337.44795140019,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acrcuye",
@@ -2871,7 +2979,7 @@
    "band": "r",
    "mjd": 61332.47230320005,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aamfvlm",
@@ -2881,7 +2989,7 @@
    "band": "r",
    "mjd": 61332.510312499944,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abslbyb",
@@ -2891,7 +2999,7 @@
    "band": "r",
    "mjd": 61334.30137730017,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abuamgo",
@@ -2901,7 +3009,7 @@
    "band": "r",
    "mjd": 61333.39510420011,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22aaqccka",
@@ -2911,7 +3019,7 @@
    "band": "g",
    "mjd": 61332.253888899926,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2564.4925521724
+   "age_days": 2564.513406540762
   },
   {
    "object_id": "ZTF18abtxkaf",
@@ -2921,7 +3029,7 @@
    "band": "r",
    "mjd": 61334.27325229999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aczonqb",
@@ -2931,7 +3039,7 @@
    "band": "g",
    "mjd": 61334.23112270003,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18achhdjq",
@@ -2941,7 +3049,7 @@
    "band": "r",
    "mjd": 61333.205544000026,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18absgmhg",
@@ -2951,7 +3059,7 @@
    "band": "r",
    "mjd": 61334.24428239977,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18adsbxqa",
@@ -2961,7 +3069,7 @@
    "band": "g",
    "mjd": 61337.47167820018,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 3172.6464757723807
+   "age_days": 3172.6673301407427
   },
   {
    "object_id": "ZTF19aavprpp",
@@ -2971,7 +3079,7 @@
    "band": "r",
    "mjd": 61333.230463000014,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF17aacjpoc",
@@ -2981,7 +3089,7 @@
    "band": "r",
    "mjd": 61333.52112270007,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF18aceacqp",
@@ -2991,7 +3099,7 @@
    "band": "r",
    "mjd": 61333.349965299945,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF17aaaqqck",
@@ -3001,7 +3109,7 @@
    "band": "r",
    "mjd": 61337.4328935002,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF18acvwgqy",
@@ -3011,7 +3119,7 @@
    "band": "r",
    "mjd": 61337.457395799924,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abgrbum",
@@ -3021,7 +3129,7 @@
    "band": "r",
    "mjd": 61331.38379629981,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abwkiyp",
@@ -3031,7 +3139,7 @@
    "band": "r",
    "mjd": 61337.47789350012,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abuanlw",
@@ -3041,7 +3149,7 @@
    "band": "r",
    "mjd": 61337.488842600025,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aazdikv",
@@ -3051,7 +3159,7 @@
    "band": "r",
    "mjd": 61334.18869209988,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2975.3719734726546
+   "age_days": 2975.3928278410167
   },
   {
    "object_id": "ZTF19aajxepz",
@@ -3061,7 +3169,7 @@
    "band": "r",
    "mjd": 61331.30243059993,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF21acnwaqk",
@@ -3071,7 +3179,7 @@
    "band": "r",
    "mjd": 61337.45785879996,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF18actadei",
@@ -3081,7 +3189,7 @@
    "band": "g",
    "mjd": 61337.48554399982,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acvgzab",
@@ -3091,7 +3199,7 @@
    "band": "r",
    "mjd": 61331.54305560002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abgayro",
@@ -3101,7 +3209,7 @@
    "band": "r",
    "mjd": 61331.3346644002,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF19abjpehh",
@@ -3111,7 +3219,7 @@
    "band": "g",
    "mjd": 61334.27325229999,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abzihli",
@@ -3121,7 +3229,7 @@
    "band": "r",
    "mjd": 61333.52112270007,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abtjmns",
@@ -3131,7 +3239,7 @@
    "band": "r",
    "mjd": 61331.10636569979,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abtgrog",
@@ -3141,7 +3249,7 @@
    "band": "r",
    "mjd": 61334.30090280017,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aaeroao",
@@ -3151,7 +3259,7 @@
    "band": "r",
    "mjd": 61333.492071799934,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abufgdj",
@@ -3161,7 +3269,7 @@
    "band": "r",
    "mjd": 61331.31548610004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abuhxen",
@@ -3171,7 +3279,7 @@
    "band": "r",
    "mjd": 61333.26500000013,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF17aaclzao",
@@ -3181,7 +3289,7 @@
    "band": "g",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF19aadalaz",
@@ -3191,7 +3299,7 @@
    "band": "r",
    "mjd": 61334.21143520018,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19aaiqmgl",
@@ -3201,7 +3309,7 @@
    "band": "r",
    "mjd": 61337.45692129992,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19aajyqqu",
@@ -3211,7 +3319,7 @@
    "band": "r",
    "mjd": 61337.455972199794,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acuavan",
@@ -3221,7 +3329,7 @@
    "band": "r",
    "mjd": 61331.37673609983,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abmdrlh",
@@ -3231,7 +3339,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF19abfvefc",
@@ -3241,7 +3349,7 @@
    "band": "r",
    "mjd": 61332.2960994998,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aafagvo",
@@ -3251,7 +3359,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18adolaxz",
@@ -3261,7 +3369,7 @@
    "band": "r",
    "mjd": 61334.21094910009,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaeycah",
@@ -3271,7 +3379,7 @@
    "band": "r",
    "mjd": 61337.5327198999,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abpfnyu",
@@ -3281,7 +3389,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18adkbtie",
@@ -3291,7 +3399,7 @@
    "band": "r",
    "mjd": 61337.449826399796,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abvdlzi",
@@ -3301,7 +3409,7 @@
    "band": "r",
    "mjd": 61334.27277779998,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18absohws",
@@ -3311,7 +3419,7 @@
    "band": "r",
    "mjd": 61332.30178239988,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abuyhea",
@@ -3321,7 +3429,7 @@
    "band": "r",
    "mjd": 61337.525925899856,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20aambnyh",
@@ -3331,7 +3439,7 @@
    "band": "r",
    "mjd": 61331.318784699775,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18abvgkcg",
@@ -3341,7 +3449,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaagbln",
@@ -3351,7 +3459,7 @@
    "band": "r",
    "mjd": 61331.295231500175,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19acidatw",
@@ -3361,7 +3469,7 @@
    "band": "r",
    "mjd": 61333.39665509993,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abrbgvm",
@@ -3371,7 +3479,7 @@
    "band": "r",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abceihx",
@@ -3381,7 +3489,7 @@
    "band": "r",
    "mjd": 61334.21001160005,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acxxizh",
@@ -3391,7 +3499,7 @@
    "band": "r",
    "mjd": 61337.539467600174,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acejejm",
@@ -3401,7 +3509,7 @@
    "band": "g",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abbxvyc",
@@ -3411,7 +3519,7 @@
    "band": "r",
    "mjd": 61331.23746530013,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acpdqwg",
@@ -3421,7 +3529,7 @@
    "band": "r",
    "mjd": 61333.46369209979,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aabkrcp",
@@ -3431,7 +3539,7 @@
    "band": "g",
    "mjd": 61331.33366899984,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF22abcrxba",
@@ -3441,7 +3549,7 @@
    "band": "r",
    "mjd": 61331.2743286998,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF25acgcyig",
@@ -3451,7 +3559,7 @@
    "band": "r",
    "mjd": 61331.314074099995,
    "sources": "lasair:NT",
-   "age_days": 661.7577604726041
+   "age_days": 661.7786148409607
   },
   {
    "object_id": "ZTF20acqtmmx",
@@ -3461,7 +3569,7 @@
    "band": "r",
    "mjd": 61333.438194400165,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18actzyzv",
@@ -3471,7 +3579,7 @@
    "band": "r",
    "mjd": 61337.47693290003,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF21acmtqef",
@@ -3481,7 +3589,7 @@
    "band": "r",
    "mjd": 61332.28799769981,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF18abqwyml",
@@ -3491,7 +3599,7 @@
    "band": "r",
    "mjd": 61334.3003934999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abiqifg",
@@ -3501,7 +3609,7 @@
    "band": "g",
    "mjd": 61333.31488429988,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abpgtid",
@@ -3511,7 +3619,7 @@
    "band": "r",
    "mjd": 61334.30185189983,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aafagim",
@@ -3521,7 +3629,7 @@
    "band": "r",
    "mjd": 61337.45456020022,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acyxjok",
@@ -3531,7 +3639,7 @@
    "band": "r",
    "mjd": 61333.53313660016,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20acwqjze",
@@ -3541,7 +3649,7 @@
    "band": "r",
    "mjd": 61337.53106479999,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF17aaajlbz",
@@ -3551,7 +3659,7 @@
    "band": "r",
    "mjd": 61333.531134299934,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF19aaemifu",
@@ -3561,7 +3669,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abiqmdc",
@@ -3571,7 +3679,7 @@
    "band": "g",
    "mjd": 61334.30090280017,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF23aablzds",
@@ -3581,7 +3689,7 @@
    "band": "r",
    "mjd": 61334.21094910009,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF19aatelvq",
@@ -3591,7 +3699,7 @@
    "band": "r",
    "mjd": 61333.5386806,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acekvbw",
@@ -3601,7 +3709,7 @@
    "band": "g",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abqwixr",
@@ -3611,7 +3719,7 @@
    "band": "g",
    "mjd": 61333.29432869982,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaflnoi",
@@ -3621,7 +3729,7 @@
    "band": "r",
    "mjd": 61337.530520800035,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18adamyqb",
@@ -3631,7 +3739,7 @@
    "band": "r",
    "mjd": 61331.45438659983,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF21acpuopd",
@@ -3641,7 +3749,7 @@
    "band": "r",
    "mjd": 61337.48931710003,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF20acygbyw",
@@ -3651,7 +3759,7 @@
    "band": "r",
    "mjd": 61332.41577549977,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18abrbgjw",
@@ -3661,7 +3769,7 @@
    "band": "r",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acessji",
@@ -3671,7 +3779,7 @@
    "band": "g",
    "mjd": 61330.2057523001,
    "sources": "fink:(TNS) AGN",
-   "age_days": 3090.2629572725928
+   "age_days": 3090.283811640955
   },
   {
    "object_id": "ZTF18acalfiy",
@@ -3681,7 +3789,7 @@
    "band": "g",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aabvpeg",
@@ -3691,7 +3799,7 @@
    "band": "r",
    "mjd": 61332.48875000002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abjmnlw",
@@ -3701,7 +3809,7 @@
    "band": "g",
    "mjd": 61331.10495370021,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abdyntb",
@@ -3711,7 +3819,7 @@
    "band": "g",
    "mjd": 61332.23875000002,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abkhpwo",
@@ -3721,7 +3829,7 @@
    "band": "r",
    "mjd": 61333.347615700215,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abxsmlf",
@@ -3731,7 +3839,7 @@
    "band": "r",
    "mjd": 61334.27025459986,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aaemnhk",
@@ -3741,7 +3849,7 @@
    "band": "r",
    "mjd": 61337.44559030002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF23aaxufzm",
@@ -3751,7 +3859,7 @@
    "band": "r",
    "mjd": 61333.36725689983,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF22abxzvrs",
@@ -3761,7 +3869,7 @@
    "band": "r",
    "mjd": 61332.36438659998,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF18abuwxii",
@@ -3771,7 +3879,7 @@
    "band": "g",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18actagcl",
@@ -3781,7 +3889,7 @@
    "band": "r",
    "mjd": 61334.29252310004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abxrsjb",
@@ -3791,7 +3899,7 @@
    "band": "r",
    "mjd": 61334.30185189983,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acwrtza",
@@ -3801,7 +3909,7 @@
    "band": "r",
    "mjd": 61334.11126160016,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acajeca",
@@ -3811,7 +3919,7 @@
    "band": "r",
    "mjd": 61332.30699069984,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aceirak",
@@ -3821,7 +3929,7 @@
    "band": "r",
    "mjd": 61331.2738541998,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abxnben",
@@ -3831,7 +3939,7 @@
    "band": "r",
    "mjd": 61334.252847199794,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acnolrf",
@@ -3841,7 +3949,7 @@
    "band": "r",
    "mjd": 61333.52956019994,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aabluez",
@@ -3851,7 +3959,7 @@
    "band": "r",
    "mjd": 61333.39415509999,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18accptqo",
@@ -3861,7 +3969,7 @@
    "band": "r",
    "mjd": 61333.21457180008,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aczdtac",
@@ -3871,7 +3979,7 @@
    "band": "r",
    "mjd": 61333.53218750004,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acuspbi",
@@ -3881,7 +3989,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF23aacfgpn",
@@ -3891,7 +3999,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF21aaqvaog",
@@ -3901,7 +4009,7 @@
    "band": "r",
    "mjd": 61333.28258100012,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2172.562945672784
+   "age_days": 2172.583800041146
   },
   {
    "object_id": "ZTF18acrxiod",
@@ -3911,7 +4019,7 @@
    "band": "r",
    "mjd": 61337.525925899856,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20abubztz",
@@ -3921,7 +4029,7 @@
    "band": "r",
    "mjd": 61334.18869209988,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18abskvkh",
@@ -3931,7 +4039,7 @@
    "band": "r",
    "mjd": 61331.28562500002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19adlxcwn",
@@ -3941,7 +4049,7 @@
    "band": "r",
    "mjd": 61337.530520800035,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aagdopl",
@@ -3951,7 +4059,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acakxfh",
@@ -3961,7 +4069,7 @@
    "band": "r",
    "mjd": 61337.48790509999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aceeoip",
@@ -3971,7 +4079,7 @@
    "band": "g",
    "mjd": 61337.525925899856,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abzkhfk",
@@ -3981,7 +4089,7 @@
    "band": "r",
    "mjd": 61333.31629629992,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abjgazt",
@@ -3991,7 +4099,7 @@
    "band": "r",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19aaaomyx",
@@ -4001,7 +4109,7 @@
    "band": "r",
    "mjd": 61333.536296300124,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF22abcdrab",
@@ -4011,7 +4119,7 @@
    "band": "r",
    "mjd": 61332.303669000044,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF19abyrajk",
@@ -4021,7 +4129,7 @@
    "band": "r",
    "mjd": 61331.285150500014,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF23aaykpej",
@@ -4031,7 +4139,7 @@
    "band": "r",
    "mjd": 61333.320081000216,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18acnaiuq",
@@ -4041,7 +4149,7 @@
    "band": "g",
    "mjd": 61337.48554399982,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abdkaon",
@@ -4051,7 +4159,7 @@
    "band": "g",
    "mjd": 61333.22994210012,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abwnmnc",
@@ -4061,7 +4169,7 @@
    "band": "g",
    "mjd": 61331.23699070001,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19acjqnbr",
@@ -4071,7 +4179,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19acbsvdf",
@@ -4081,7 +4189,7 @@
    "band": "r",
    "mjd": 61332.30601850012,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abwckas",
@@ -4091,7 +4199,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aaeynun",
@@ -4101,7 +4209,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaapcbi",
@@ -4111,7 +4219,7 @@
    "band": "r",
    "mjd": 61333.536296300124,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abegxiq",
@@ -4121,7 +4229,7 @@
    "band": "r",
    "mjd": 61333.379236099776,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF17aadgdie",
@@ -4131,7 +4239,7 @@
    "band": "r",
    "mjd": 61333.481608800124,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF19aboyptg",
@@ -4141,7 +4249,7 @@
    "band": "r",
    "mjd": 61331.28278939985,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF20aclkylf",
@@ -4151,7 +4259,7 @@
    "band": "r",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF22aavuqgd",
@@ -4161,7 +4269,7 @@
    "band": "r",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF18abupsrv",
@@ -4171,7 +4279,7 @@
    "band": "r",
    "mjd": 61333.39462959999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aceigby",
@@ -4181,7 +4289,7 @@
    "band": "r",
    "mjd": 61332.239699100144,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acvgufq",
@@ -4191,7 +4299,7 @@
    "band": "r",
    "mjd": 61333.53313660016,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18accdvng",
@@ -4201,7 +4309,7 @@
    "band": "g",
    "mjd": 61332.4527431,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2913.2162905726655
+   "age_days": 2913.2371449410275
   },
   {
    "object_id": "ZTF18acuavde",
@@ -4211,7 +4319,7 @@
    "band": "g",
    "mjd": 61331.35528940009,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2948.2770081725976
+   "age_days": 2948.2978625409596
   },
   {
    "object_id": "ZTF25abbydin",
@@ -4221,7 +4329,7 @@
    "band": "r",
    "mjd": 61332.30271989992,
    "sources": "lasair:NT",
-   "age_days": 661.7577604726041
+   "age_days": 661.7786148409607
   },
   {
    "object_id": "ZTF18abxbkaj",
@@ -4231,7 +4339,7 @@
    "band": "r",
    "mjd": 61331.46958329994,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abxrpqf",
@@ -4241,7 +4349,7 @@
    "band": "g",
    "mjd": 61333.39321759995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaplozm",
@@ -4251,7 +4359,7 @@
    "band": "r",
    "mjd": 61332.5347684999,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF22aatkfrj",
@@ -4261,7 +4369,7 @@
    "band": "r",
    "mjd": 61331.384733799845,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF23abnbnpm",
@@ -4271,7 +4379,7 @@
    "band": "r",
    "mjd": 61337.5048727002,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18abqzpru",
@@ -4281,7 +4389,7 @@
    "band": "r",
    "mjd": 61333.33620369993,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF21abqqbhl",
@@ -4291,7 +4399,7 @@
    "band": "g",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF20ablxste",
@@ -4301,7 +4409,7 @@
    "band": "r",
    "mjd": 61334.14666670002,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF20adabyqq",
@@ -4311,7 +4419,7 @@
    "band": "r",
    "mjd": 61331.1901273001,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18abobufq",
@@ -4321,7 +4429,7 @@
    "band": "g",
    "mjd": 61331.105428200215,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acbxjaa",
@@ -4331,7 +4439,7 @@
    "band": "r",
    "mjd": 61333.21317130001,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acwwkyv",
@@ -4341,7 +4449,7 @@
    "band": "r",
    "mjd": 61337.45503470022,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abtljvq",
@@ -4351,7 +4459,7 @@
    "band": "g",
    "mjd": 61334.231597200036,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abhchdd",
@@ -4361,7 +4469,7 @@
    "band": "r",
    "mjd": 61331.4193171002,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF19aabjxza",
@@ -4371,7 +4479,7 @@
    "band": "r",
    "mjd": 61333.42212959984,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19aazdlgz",
@@ -4381,7 +4489,7 @@
    "band": "r",
    "mjd": 61331.286562500056,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aafkseq",
@@ -4391,7 +4499,7 @@
    "band": "r",
    "mjd": 61333.50831020018,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aahpisp",
@@ -4401,7 +4509,7 @@
    "band": "r",
    "mjd": 61337.44841440022,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acxhnxa",
@@ -4411,7 +4519,7 @@
    "band": "r",
    "mjd": 61333.213634300046,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aceirmv",
@@ -4421,7 +4529,7 @@
    "band": "g",
    "mjd": 61334.231597200036,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18adcbbhf",
@@ -4431,7 +4539,7 @@
    "band": "r",
    "mjd": 61331.12185190013,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaufqeh",
@@ -4441,7 +4549,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abssvho",
@@ -4451,7 +4559,7 @@
    "band": "r",
    "mjd": 61334.14760420006,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF21aazoibe",
@@ -4461,7 +4569,7 @@
    "band": "r",
    "mjd": 61333.5386806,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF18adbckwd",
@@ -4471,7 +4579,7 @@
    "band": "r",
    "mjd": 61334.27072919998,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aabtxvd",
@@ -4481,7 +4589,7 @@
    "band": "r",
    "mjd": 61337.5087036998,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22aavtese",
@@ -4491,7 +4599,7 @@
    "band": "r",
    "mjd": 61332.305081000086,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF23aawqqhh",
@@ -4501,7 +4609,7 @@
    "band": "r",
    "mjd": 61334.11233799998,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF21abvuiwj",
@@ -4511,7 +4619,7 @@
    "band": "r",
    "mjd": 61332.23922450002,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF23abryizu",
@@ -4521,7 +4629,7 @@
    "band": "r",
    "mjd": 61332.215474499855,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18abtmtit",
@@ -4531,7 +4639,7 @@
    "band": "r",
    "mjd": 61333.39321759995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abpeybr",
@@ -4541,7 +4649,7 @@
    "band": "r",
    "mjd": 61331.28043980012,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF17aaafwbf",
@@ -4551,7 +4659,7 @@
    "band": "r",
    "mjd": 61333.36013890011,
    "sources": "lasair:NT",
-   "age_days": 3583.757760472604
+   "age_days": 3583.778614840961
   },
   {
    "object_id": "ZTF21abrfbic",
@@ -4561,7 +4669,7 @@
    "band": "r",
    "mjd": 61331.377199099865,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2169.5475521725675
+   "age_days": 2169.5684065409296
   },
   {
    "object_id": "ZTF18abwbqga",
@@ -4571,7 +4679,7 @@
    "band": "r",
    "mjd": 61333.2966781999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF25acerpxu",
@@ -4581,7 +4689,7 @@
    "band": "g",
    "mjd": 61332.25340279983,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2908.5270428727454
+   "age_days": 2908.5478972411074
   },
   {
    "object_id": "ZTF19abwscyv",
@@ -4591,7 +4699,7 @@
    "band": "r",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acbwxwy",
@@ -4601,7 +4709,7 @@
    "band": "g",
    "mjd": 61331.236516200006,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acdvqrq",
@@ -4611,7 +4719,7 @@
    "band": "r",
    "mjd": 61337.45218749996,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abyezrj",
@@ -4621,7 +4729,7 @@
    "band": "g",
    "mjd": 61337.48649309995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acetuzs",
@@ -4631,7 +4739,7 @@
    "band": "r",
    "mjd": 61334.147141200025,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acsllgd",
@@ -4641,7 +4749,7 @@
    "band": "r",
    "mjd": 61333.308807900175,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 3233.420572972398
+   "age_days": 3233.44142734076
   },
   {
    "object_id": "ZTF18acbxpyb",
@@ -4651,7 +4759,7 @@
    "band": "r",
    "mjd": 61333.20937500009,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2975.37152207271
+   "age_days": 2975.392376441072
   },
   {
    "object_id": "ZTF18abuffsu",
@@ -4661,7 +4769,7 @@
    "band": "g",
    "mjd": 61334.231597200036,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abxvmib",
@@ -4671,7 +4779,7 @@
    "band": "r",
    "mjd": 61337.48554399982,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18actadvo",
@@ -4681,7 +4789,7 @@
    "band": "r",
    "mjd": 61332.3980556,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaajcbz",
@@ -4691,7 +4799,7 @@
    "band": "r",
    "mjd": 61332.376794000156,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19aaxbzza",
@@ -4701,7 +4809,7 @@
    "band": "r",
    "mjd": 61331.23746530013,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aaevkxn",
@@ -4711,7 +4819,7 @@
    "band": "r",
    "mjd": 61333.492071799934,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19acglgvt",
@@ -4721,7 +4829,7 @@
    "band": "r",
    "mjd": 61334.21047449997,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abuomnw",
@@ -4731,7 +4839,7 @@
    "band": "g",
    "mjd": 61331.2699190001,
    "sources": "fink:(SIMBAD) AGN; fink:(TNS) AGN",
-   "age_days": 3236.6703414726144
+   "age_days": 3236.6911958409764
   },
   {
    "object_id": "ZTF23abchgjn",
@@ -4741,7 +4849,7 @@
    "band": "r",
    "mjd": 61332.21594909998,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18abolqfl",
@@ -4751,7 +4859,7 @@
    "band": "r",
    "mjd": 61332.27120369999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abhchde",
@@ -4761,7 +4869,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF23aaaamzz",
@@ -4771,7 +4879,7 @@
    "band": "r",
    "mjd": 61333.39462959999,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18absqhci",
@@ -4781,7 +4889,7 @@
    "band": "g",
    "mjd": 61333.37876159977,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abjgbet",
@@ -4791,7 +4899,7 @@
    "band": "g",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19aaiprwg",
@@ -4801,7 +4909,7 @@
    "band": "r",
    "mjd": 61332.52509259991,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aalmtum",
@@ -4811,7 +4919,7 @@
    "band": "r",
    "mjd": 61333.524120400194,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acalqbv",
@@ -4821,7 +4929,7 @@
    "band": "r",
    "mjd": 61333.39274309995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF24abmbold",
@@ -4831,7 +4939,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 1027.757760472604
+   "age_days": 1027.7786148409605
   },
   {
    "object_id": "ZTF18adblaze",
@@ -4841,7 +4949,7 @@
    "band": "g",
    "mjd": 61337.52306709997,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abviyvv",
@@ -4851,7 +4959,7 @@
    "band": "r",
    "mjd": 61331.28703700006,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acrexje",
@@ -4861,7 +4969,7 @@
    "band": "r",
    "mjd": 61337.48649309995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acuefxg",
@@ -4871,7 +4979,7 @@
    "band": "r",
    "mjd": 61337.531643500086,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20aakykcy",
@@ -4881,7 +4989,7 @@
    "band": "r",
    "mjd": 61332.47760420013,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF19abdktcl",
@@ -4891,7 +4999,7 @@
    "band": "g",
    "mjd": 61333.21268519992,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acuserk",
@@ -4901,7 +5009,7 @@
    "band": "r",
    "mjd": 61333.529050900135,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acdxrnk",
@@ -4911,7 +5019,7 @@
    "band": "r",
    "mjd": 61332.272743099835,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aarrufq",
@@ -4921,7 +5029,7 @@
    "band": "r",
    "mjd": 61333.53313660016,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF21acetwav",
@@ -4931,7 +5039,7 @@
    "band": "r",
    "mjd": 61331.235104199965,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF19abpuibm",
@@ -4941,7 +5049,7 @@
    "band": "g",
    "mjd": 61332.25151620014,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF20aafxzej",
@@ -4951,7 +5059,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF23aaqiwle",
@@ -4961,7 +5069,7 @@
    "band": "g",
    "mjd": 61334.252847199794,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF20aazrccu",
@@ -4971,7 +5079,7 @@
    "band": "r",
    "mjd": 61333.527974499855,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18abxmpia",
@@ -4981,7 +5089,7 @@
    "band": "r",
    "mjd": 61333.20891200006,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18admvfgr",
@@ -4991,7 +5099,7 @@
    "band": "r",
    "mjd": 61332.272743099835,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF23abeotpl",
@@ -5001,7 +5109,7 @@
    "band": "r",
    "mjd": 61331.49907410005,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18acvcgor",
@@ -5011,7 +5119,7 @@
    "band": "r",
    "mjd": 61334.257094900124,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF21abycgve",
@@ -5021,7 +5129,7 @@
    "band": "r",
    "mjd": 61333.20937500009,
    "sources": "fink:(TNS) AGN; lasair:NT",
-   "age_days": 2675.3161748726925
+   "age_days": 2675.3370292410546
   },
   {
    "object_id": "ZTF20acmmejw",
@@ -5031,7 +5139,7 @@
    "band": "r",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF23aatpzpf",
@@ -5041,7 +5149,7 @@
    "band": "g",
    "mjd": 61331.10495370021,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF21acjguwu",
@@ -5051,7 +5159,7 @@
    "band": "r",
    "mjd": 61331.31548610004,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF20ablxssr",
@@ -5061,7 +5169,7 @@
    "band": "g",
    "mjd": 61333.21268519992,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF19adlxdte",
@@ -5071,7 +5179,7 @@
    "band": "r",
    "mjd": 61332.528807899915,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abomlme",
@@ -5081,7 +5189,7 @@
    "band": "r",
    "mjd": 61333.27407409996,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abyfbhl",
@@ -5091,7 +5199,7 @@
    "band": "r",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aagqcqd",
@@ -5101,7 +5209,7 @@
    "band": "r",
    "mjd": 61333.49300929997,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abdkdda",
@@ -5111,7 +5219,7 @@
    "band": "g",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abvgiug",
@@ -5121,7 +5229,7 @@
    "band": "r",
    "mjd": 61337.45313660009,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abcextb",
@@ -5131,7 +5239,7 @@
    "band": "g",
    "mjd": 61332.24016200006,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19acbolha",
@@ -5141,7 +5249,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF23aapmwer",
@@ -5151,7 +5259,7 @@
    "band": "g",
    "mjd": 61334.225763900205,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18abvfpbt",
@@ -5161,7 +5269,7 @@
    "band": "r",
    "mjd": 61334.26978009986,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20adbfmca",
@@ -5171,7 +5279,7 @@
    "band": "g",
    "mjd": 61332.41984950006,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18acchyke",
@@ -5181,7 +5289,7 @@
    "band": "r",
    "mjd": 61331.29423609981,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acdzehd",
@@ -5191,7 +5299,7 @@
    "band": "g",
    "mjd": 61333.3778241002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abtyudj",
@@ -5201,7 +5309,7 @@
    "band": "g",
    "mjd": 61331.3327314998,
    "sources": "fink:(SIMBAD) QSO",
-   "age_days": 3236.651776672814
+   "age_days": 3236.672631041176
   },
   {
    "object_id": "ZTF19aabysko",
@@ -5211,7 +5319,7 @@
    "band": "r",
    "mjd": 61332.533819399774,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abspzcb",
@@ -5221,7 +5329,7 @@
    "band": "r",
    "mjd": 61333.24120370019,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abegxty",
@@ -5231,7 +5339,7 @@
    "band": "g",
    "mjd": 61333.275011599995,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18abxetfg",
@@ -5241,7 +5349,7 @@
    "band": "g",
    "mjd": 61333.37876159977,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abjbcsv",
@@ -5251,7 +5359,7 @@
    "band": "g",
    "mjd": 61333.438194400165,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF19abxvrlu",
@@ -5261,7 +5369,7 @@
    "band": "r",
    "mjd": 61332.42417819984,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19acvrogx",
@@ -5271,7 +5379,7 @@
    "band": "g",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acwxxrm",
@@ -5281,7 +5389,7 @@
    "band": "r",
    "mjd": 61337.531643500086,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20aanbjvm",
@@ -5291,7 +5399,7 @@
    "band": "r",
    "mjd": 61331.4109259001,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF19adcbzqs",
@@ -5301,7 +5409,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acebkqw",
@@ -5311,7 +5419,7 @@
    "band": "r",
    "mjd": 61333.41369209997,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abhlywi",
@@ -5321,7 +5429,7 @@
    "band": "g",
    "mjd": 61332.24063660018,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF18abuanby",
@@ -5331,7 +5439,7 @@
    "band": "r",
    "mjd": 61332.42032410018,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20acgcnjt",
@@ -5341,7 +5449,7 @@
    "band": "r",
    "mjd": 61333.50831020018,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18aceestx",
@@ -5351,7 +5459,7 @@
    "band": "r",
    "mjd": 61333.45093750022,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF20acqkuzp",
@@ -5361,7 +5469,7 @@
    "band": "r",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF18adodisr",
@@ -5371,7 +5479,7 @@
    "band": "g",
    "mjd": 61333.37734950008,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abtjqye",
@@ -5381,7 +5489,7 @@
    "band": "g",
    "mjd": 61330.2057523001,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2977.4850521725675
+   "age_days": 2977.5059065409296
   },
   {
    "object_id": "ZTF23abfmnkh",
@@ -5391,7 +5499,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF19abbxuiv",
@@ -5401,7 +5509,7 @@
    "band": "r",
    "mjd": 61332.241111100186,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abqrxzm",
@@ -5411,7 +5519,7 @@
    "band": "r",
    "mjd": 61332.3348842999,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abyjcne",
@@ -5421,7 +5529,7 @@
    "band": "g",
    "mjd": 61333.380636599846,
    "sources": "fink:(SIMBAD) QSO",
-   "age_days": 2664.2839641724786
+   "age_days": 2664.3048185408406
   },
   {
    "object_id": "ZTF18abtmqfh",
@@ -5431,7 +5539,7 @@
    "band": "r",
    "mjd": 61332.252465299796,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aafbfpe",
@@ -5441,7 +5549,7 @@
    "band": "g",
    "mjd": 61331.52194439992,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18aboebum",
@@ -5451,7 +5559,7 @@
    "band": "r",
    "mjd": 61333.25201389985,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18adamifw",
@@ -5461,7 +5569,7 @@
    "band": "r",
    "mjd": 61332.3958796002,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19ablpwgx",
@@ -5471,7 +5579,7 @@
    "band": "g",
    "mjd": 61333.38945600018,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 3232.637829872787
+   "age_days": 3232.658684241149
   },
   {
    "object_id": "ZTF25ackfphr",
@@ -5481,7 +5589,7 @@
    "band": "r",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 661.7577604726041
+   "age_days": 661.7786148409607
   },
   {
    "object_id": "ZTF18aakawwr",
@@ -5491,7 +5599,7 @@
    "band": "r",
    "mjd": 61333.53365739994,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19abujsxr",
@@ -5501,7 +5609,7 @@
    "band": "g",
    "mjd": 61334.275659699924,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF22abftsrx",
@@ -5511,7 +5619,7 @@
    "band": "r",
    "mjd": 61337.522129599936,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF18abotdzb",
@@ -5521,7 +5629,7 @@
    "band": "g",
    "mjd": 61331.33130790014,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19aaiohno",
@@ -5531,7 +5639,7 @@
    "band": "r",
    "mjd": 61333.30736109987,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF22aaxqzvs",
@@ -5541,7 +5649,7 @@
    "band": "r",
    "mjd": 61333.24025460007,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF18acaiygp",
@@ -5551,7 +5659,7 @@
    "band": "g",
    "mjd": 61331.377199099865,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18accceaa",
@@ -5561,7 +5669,7 @@
    "band": "g",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF23abudayy",
@@ -5571,7 +5679,7 @@
    "band": "r",
    "mjd": 61331.48950230004,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18aabwlyz",
@@ -5581,7 +5689,7 @@
    "band": "r",
    "mjd": 61333.53012729995,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18abzhrem",
@@ -5591,7 +5699,7 @@
    "band": "r",
    "mjd": 61333.47957180021,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18acvhjkh",
@@ -5601,7 +5709,7 @@
    "band": "r",
    "mjd": 61333.48923610011,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF21acgzwys",
@@ -5611,7 +5719,7 @@
    "band": "g",
    "mjd": 61333.46038189996,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF19aczmpfz",
@@ -5621,7 +5729,7 @@
    "band": "r",
    "mjd": 61332.337245400064,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18aauhjhz",
@@ -5631,7 +5739,7 @@
    "band": "r",
    "mjd": 61332.528807899915,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF19acgtbxh",
@@ -5641,7 +5749,7 @@
    "band": "g",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18acsyall",
@@ -5651,7 +5759,7 @@
    "band": "r",
    "mjd": 61334.25519679999,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF23abueqzu",
@@ -5661,7 +5769,7 @@
    "band": "g",
    "mjd": 61333.49347219989,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF21abajwrd",
@@ -5671,7 +5779,7 @@
    "band": "r",
    "mjd": 61332.528807899915,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF22abgayqv",
@@ -5681,7 +5789,7 @@
    "band": "r",
    "mjd": 61332.42032410018,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF23abezwqk",
@@ -5691,7 +5799,7 @@
    "band": "r",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF20abgdrsk",
@@ -5701,7 +5809,7 @@
    "band": "r",
    "mjd": 61331.27040510019,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF20acjctdz",
@@ -5711,7 +5819,7 @@
    "band": "g",
    "mjd": 61333.376875000075,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF20acjdhgg",
@@ -5721,7 +5829,7 @@
    "band": "g",
    "mjd": 61332.39756939979,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF21abzcpdd",
@@ -5731,7 +5839,7 @@
    "band": "g",
    "mjd": 61333.4202430998,
    "sources": "fink:(SIMBAD) AGN",
-   "age_days": 2202.3342998726366
+   "age_days": 2202.3551542409987
   },
   {
    "object_id": "ZTF23absgbyu",
@@ -5741,7 +5849,7 @@
    "band": "g",
    "mjd": 61331.31501160003,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18adbkrql",
@@ -5751,7 +5859,7 @@
    "band": "r",
    "mjd": 61333.492071799934,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF18adbkqur",
@@ -5761,7 +5869,7 @@
    "band": "r",
    "mjd": 61331.48760419991,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF23aaxtonp",
@@ -5771,7 +5879,7 @@
    "band": "r",
    "mjd": 61332.3348842999,
    "sources": "lasair:NT",
-   "age_days": 1392.757760472604
+   "age_days": 1392.7786148409605
   },
   {
    "object_id": "ZTF18aahrepa",
@@ -5781,7 +5889,7 @@
    "band": "r",
    "mjd": 61333.49300929997,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF22abnyylw",
@@ -5791,7 +5899,7 @@
    "band": "r",
    "mjd": 61332.33771990007,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF21abxndsz",
@@ -5801,7 +5909,7 @@
    "band": "g",
    "mjd": 61331.33655089978,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF25abnravh",
@@ -5811,7 +5919,7 @@
    "band": "r",
    "mjd": 61333.390393500216,
    "sources": "lasair:NT",
-   "age_days": 661.7577604726041
+   "age_days": 661.7786148409607
   },
   {
    "object_id": "ZTF21acljgyp",
@@ -5821,7 +5929,7 @@
    "band": "r",
    "mjd": 61332.53134260001,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF19aburscg",
@@ -5831,7 +5939,7 @@
    "band": "r",
    "mjd": 61332.42417819984,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF19abgmmfu",
@@ -5841,7 +5949,7 @@
    "band": "g",
    "mjd": 61332.216886600014,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF18adbdlvs",
@@ -5851,7 +5959,7 @@
    "band": "r",
    "mjd": 61333.480138900224,
    "sources": "lasair:NT",
-   "age_days": 3218.757760472604
+   "age_days": 3218.778614840961
   },
   {
    "object_id": "ZTF24abueeup",
@@ -5861,7 +5969,7 @@
    "band": "g",
    "mjd": 61332.424652799964,
    "sources": "lasair:NT",
-   "age_days": 1027.757760472604
+   "age_days": 1027.7786148409605
   },
   {
    "object_id": "ZTF22aaygtsg",
@@ -5871,7 +5979,7 @@
    "band": "r",
    "mjd": 61333.30262729991,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   },
   {
    "object_id": "ZTF21aaebgsn",
@@ -5881,7 +5989,7 @@
    "band": "g",
    "mjd": 61333.38804400014,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF19aafbzah",
@@ -5891,7 +5999,7 @@
    "band": "r",
    "mjd": 61337.52306709997,
    "sources": "lasair:NT",
-   "age_days": 2853.7577604726043
+   "age_days": 2853.778614840961
   },
   {
    "object_id": "ZTF20abodbes",
@@ -5901,7 +6009,7 @@
    "band": "r",
    "mjd": 61333.275011599995,
    "sources": "lasair:NT",
-   "age_days": 2488.7577604726043
+   "age_days": 2488.778614840961
   },
   {
    "object_id": "ZTF21achjcdh",
@@ -5911,7 +6019,7 @@
    "band": "g",
    "mjd": 61337.52259259997,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF21aabxezz",
@@ -5921,7 +6029,7 @@
    "band": "g",
    "mjd": 61337.523541700095,
    "sources": "lasair:NT",
-   "age_days": 2122.7577604726043
+   "age_days": 2122.778614840961
   },
   {
    "object_id": "ZTF22abzhrud",
@@ -5931,7 +6039,7 @@
    "band": "r",
    "mjd": 61337.52542820014,
    "sources": "lasair:NT",
-   "age_days": 1757.7577604726043
+   "age_days": 1757.7786148409607
   }
  ],
  "lsst": {
@@ -5956,5 +6064,6 @@
   },
   "errors": [],
   "candidates": []
- }
+ },
+ "n_new_this_week": 48
 }
