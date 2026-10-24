@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use nucleuswatch, please cite it as below, and cite the ALeRCE, Fink and Lasair brokers whose data it uses."
+title: "nucleuswatch: nuclear transients and cross-broker consensus for ZTF and Rubin/LSST alerts"
+type: software
+authors:
+  - given-names: Bibin
+    family-names: Thomas
+version: 1.1.0
+date-released: 2026-10-24
+license: MIT
+repository-code: "https://github.com/bibinthomas123/nucleuswatch"
+url: "https://bibinthomas123.github.io/nucleuswatch/"
+keywords:
+  - astronomy
+  - transients
+  - tidal disruption events
+  - alert brokers
+  - ZTF
+  - Rubin Observatory
+  - LSST

@@ -8,6 +8,7 @@ dynamic = ["version"]
 description = "One view of a transient across the ALeRCE, Fink and Lasair alert brokers."
 readme = "README.md"
 license = "MIT"
+authors = [{ name = "Bibin Thomas" }]
 requires-python = ">=3.10"
 dependencies = [
     "requests>=2.28",

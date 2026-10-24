@@ -105,6 +105,32 @@ def _lsst_record(days: float, mag_max: float, now: datetime, use_cache: bool) ->
     return {"query": search.query, "funnel": search.funnel, "errors": search.errors, "candidates": candidates}
 
 
+def mark_returning(record: dict, data_dir: str | Path) -> dict:
+    """Tag each candidate with the week it was first listed, from earlier records.
+
+    Sets ``first_listed`` (a date) and ``returning`` on every candidate, and
+    ``n_new_this_week`` on the record. Most weekly candidates are still
+    active from earlier weeks; this lets the page, the feed and the chat
+    alerts point out the ones that are new.
+    """
+    stamp = record["generated"][:10]
+    first: dict[str, str] = {}
+    for path in sorted(Path(data_dir).glob("20*.json")):
+        if path.stem >= stamp:
+            continue
+        try:
+            earlier = json.loads(path.read_text())
+        except (OSError, ValueError):
+            continue
+        for c in earlier.get("candidates", []):
+            first.setdefault(c["object_id"], path.stem)
+    for c in record["candidates"]:
+        c["first_listed"] = first.get(c["object_id"], stamp)
+        c["returning"] = c["object_id"] in first
+    record["n_new_this_week"] = sum(not c["returning"] for c in record["candidates"])
+    return record
+
+
 def write_data(record: dict, data_dir: str | Path) -> Path:
     """Write <date>.json, <date>.csv and latest.json; return the dated JSON path."""
     data_dir = Path(data_dir)
@@ -315,6 +341,12 @@ td a.id { text-decoration:none; }
 .status::before { content:""; display:inline-block; width:8px; height:8px; border-radius:50%; margin-right:6px;
                   background:currentColor; vertical-align:1px; }
 .agree { color:var(--agree); } .disagree { color:var(--disagree); } .insufficient { color:var(--insufficient); }
+.fresh { font:600 11px var(--mono); color:var(--plate); background:var(--disagree); border-radius:3px;
+  padding:1px 5px; margin-left:6px; text-transform:uppercase; letter-spacing:.05em; vertical-align:1px; }
+.obs-bar { margin:8px 0 10px; font-size:14px; display:flex; flex-wrap:wrap; gap:8px; align-items:center; }
+.obs-bar select { font:inherit; color:var(--fg); background:var(--bg); border:1px solid var(--line); border-radius:4px;
+  padding:3px 6px; max-width:100%; }
+.obs-up { color:var(--agree); } .obs-low { color:var(--muted); }
 .tier { font:12px var(--mono); color:var(--muted); text-transform:uppercase; letter-spacing:.06em; }
 .entry { border-top:1px solid var(--line); padding:22px 0 8px; }
 .entry h3 { font:600 18px var(--mono); display:flex; gap:14px;
@@ -340,6 +372,11 @@ details { margin:6px 0; font-size:14px; } summary { cursor:pointer; color:var(--
 footer { margin-top:64px; padding-top:12px; border-top:1px solid var(--line); font-size:14px; color:var(--muted); }
 code { font:14px var(--mono); }
 """
+
+
+def _fresh(c: dict) -> str:
+    """A "new" tag for candidates first listed this week (records before 1.2 have no tag)."""
+    return "<span class='fresh'>new</span>" if c.get("returning") is False else ""
 
 
 def _badge(status: str | None) -> str:
@@ -375,6 +412,10 @@ SKY_IMAGE = "sky_equatorial.jpg"
 SKY_CREDIT = ("Background: Gaia EDR3 all-sky map, ESA/Gaia/DPAC (CC BY-SA 3.0 IGO), "
               "re-projected to equatorial coordinates.")
 # Brighter status colours for points drawn on the dark sky image (both themes).
+def _obs_js() -> str:
+    return files("nucleuswatch").joinpath("assets", "observability.js").read_text()
+
+
 _SKY_COLOURS = {"agree": "#7ddc8c", "disagree": "#ff8f52", "insufficient": "#ffd166"}
 
 
@@ -462,9 +503,10 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
     funnel = record.get("funnel", {})
 
     rows = "".join(
-        f"<tr><td><a class='id' href='#{escape(c['object_id'])}'>{escape(c['object_id'])}</a></td>"
+        f"<tr><td><a class='id' href='#{escape(c['object_id'])}'>{escape(c['object_id'])}</a>{_fresh(c)}</td>"
         f"<td class='num'>{_fmt(c.get('mag'))}</td><td>{_fmt(c.get('band'))}</td>"
         f"<td class='num'>{_fmt(c.get('tde_score'), 2)}</td>"
+        f"<td class='num obs' data-obs data-ra='{_fmt(c.get('ra'), 5)}' data-dec='{_fmt(c.get('dec'), 5)}'>–</td>"
         f"<td class='tier'>{escape(c.get('tier', ''))}</td>"
         f"<td class='num'>{_fmt(c.get('age_days'), 0) if c.get('first_seen_mjd') else '–'}</td>"
         f"<td>{_badge(c.get('consensus'))}</td><td>{_fmt(c.get('categories'))}</td>"
@@ -532,6 +574,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
 <dl class="figures">
  <div><dd>{record['n_candidates']}</dd><dt>new nuclear candidates</dt></div>
  <div><dd>{record.get('n_bright', 0)}</dd><dt>brighter than mag {_fmt(q.get('bright_mag'), 0)}</dt></div>
+ <div><dd>{record.get('n_new_this_week', record['n_candidates'])}</dd><dt>first listed this week</dt></div>
  <div><dd>{record.get('n_tde_like', 0)}</dd><dt>TDE score ≥ {TDE_LIKE}</dt></div>
  <div><dd class="disagree">{record['n_disagree']}</dd><dt>brokers disagree</dt></div>
  <div><dd class="agree">{record.get('n_agree', 0)}</dd><dt>brokers agree</dt></div>
@@ -563,11 +606,17 @@ The bright band is the Milky Way, where dust and crowded star fields keep extrag
 point to jump to its entry. {escape(SKY_CREDIT)}</figcaption></figure>
 
 <h2 id="candidates"><span class="num">03</span>New candidates</h2>{empty}
+<div class="obs-bar"><label for="obs-site">Observability tonight from</label> <select id="obs-site"></select>
+<span id="obs-note" class="muted small"></span></div>
 <div class="table-wrap"><table>
-<thead><tr><th>object</th><th class="num">mag</th><th>band</th><th class="num">TDE score</th><th>tier</th><th class="num">age (d)</th><th>consensus</th>
+<thead><tr><th>object</th><th class="num">mag</th><th>band</th><th class="num">TDE score</th>
+<th class="num" title="Highest altitude while dark tonight · hours above 30°">tonight</th><th>tier</th><th class="num">age (d)</th><th>consensus</th>
 <th>categories</th><th>TNS</th><th>TNS type</th><th>found via</th></tr></thead><tbody>{rows}</tbody></table></div>
 <p class="muted small">Sorted by TDE score, a ranking from a small model fitted on spectroscopically classified
-nuclear transients (<a href="#method">method</a>). Age is the number of days since first detection, where Fink reports it. Bright means
+nuclear transients (<a href="#method">method</a>). <span class='fresh'>new</span> marks objects first listed
+this week; the rest were already on an earlier week's list and are still active. "Tonight" is the highest altitude while the Sun is
+below −12° and the hours above 30°, for the site you pick, computed in your browser; hover for the Moon's
+distance. Age is the number of days since first detection, where Fink reports it. Bright means
 mag ≤ {_fmt(q.get('bright_mag'), 0)}; faint goes down to {_fmt(cuts.get('mag_max'), 0)}.
 <a href="data/{escape(stamp)}.csv">Download the table (CSV)</a>.</p>
 
@@ -626,7 +675,7 @@ every week, so they're listed without consensus.</p>
 <a href="https://www.esa.int/ESA_Multimedia/Images/2020/12/The_colour_of_the_sky_from_Gaia_s_Early_Data_Release_3">ESA/Gaia/DPAC</a>
 (<a href="https://creativecommons.org/licenses/by-sa/3.0/igo/">CC BY-SA 3.0 IGO</a>). The broker data belongs to the broker
 teams; please cite them if you use it. Compiled with <a href="{REPO_URL}">nucleuswatch</a>.</footer>
-</main></body></html>
+</main><script>{_obs_js()}</script></body></html>
 """
 
 
@@ -693,12 +742,13 @@ def _card(c: dict) -> str:
     skipped = "".join(f"<li>{escape(b)}: {escape(e)}</li>" for b, e in (c.get("broker_errors") or {}).items())
     skipped = f"<details class='small'><summary>brokers skipped</summary><ul>{skipped}</ul></details>" if skipped else ""
     age = f" · first seen {_fmt(c.get('age_days'), 0)} d ago" if c.get("first_seen_mjd") else ""
+    listed = f" · on this list since {escape(c['first_listed'])}" if c.get("returning") else ""
     score = (f" <span class='tier'>TDE score {_fmt(c['tde_score'], 2)}</span>"
              if c.get("tde_score") is not None else "")
     return f"""<article class="entry" id="{oid}">
-<h3>{oid} {_badge(c.get('consensus'))} <span class="tier">{escape(c.get('tier', ''))}</span>{score}</h3>
+<h3>{oid}{_fresh(c)} {_badge(c.get('consensus'))} <span class="tier">{escape(c.get('tier', ''))}</span>{score}</h3>
 <div class="facts">{_fmt(c.get('mag'))} mag ({_fmt(c.get('band'))}) · distnr {_fmt(c.get('distnr'))}″ ·
-sgscore1 {_fmt(c.get('sgscore1'))} · {c.get('n_detections', 0)} detections{age}<br>
+sgscore1 {_fmt(c.get('sgscore1'))} · {c.get('n_detections', 0)} detections{age}{listed}<br>
 RA {_fmt(c.get('ra'), 5)} · Dec {_fmt(c.get('dec'), 5)} · via {escape(c.get('sources') or '')}</div>
 <div class="links">{' · '.join(links)}</div>
 {spec}<ul class="votes">{votes}</ul>{sherlock}{skipped}

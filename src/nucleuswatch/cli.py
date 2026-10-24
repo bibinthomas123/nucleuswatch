@@ -167,6 +167,7 @@ def _digest(args, p) -> int:
            if args.until else None)
     record, search = digest.build(args.days, args.mag_max, brokers=args.brokers, now=now,
                                   use_cache=not args.no_cache)
+    digest.mark_returning(record, args.data)
     path = digest.write_data(record, args.data)
     page = digest.render_site(record, args.data, args.site, search, use_cache=not args.no_cache)
     print(f"{record['n_candidates']} candidates ({record['n_disagree']} disagree)")
@@ -187,8 +188,8 @@ def _notify(args, p) -> int:
     if not url:
         print(text)
         return 0
-    if not notify.notable(record) and not args.always:
-        print("Nothing TDE-like this week; not posting (use --always to post anyway).")
+    if not notify.has_news(record) and not args.always:
+        print("No new TDE-like candidate this week; not posting (use --always to post anyway).")
         return 0
     notify.post(url, text)
     print("Posted to the webhook.")

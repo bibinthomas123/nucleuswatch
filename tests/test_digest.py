@@ -96,7 +96,10 @@ def test_site_escapes_broker_text(offline_digest, tmp_path):
     record, _ = digest.build(14, now=NOW)
     record["candidates"][0]["sherlock"] = "<script>alert(1)</script>"
     page = digest.render_site(record, tmp_path, tmp_path / "site")
-    assert "<script>" not in page.read_text()
+    html = page.read_text()
+    assert "<script>alert(1)" not in html
+    assert "&lt;script&gt;alert(1)" in html
+    assert html.count("<script>") == 1  # only the page's own observability script
 
 
 def test_empty_week_renders(tmp_path):
@@ -105,3 +108,26 @@ def test_empty_week_renders(tmp_path):
               "n_candidates": 0, "n_disagree": 0, "candidates": []}
     page = digest.render_site(record, tmp_path, tmp_path / "site")
     assert "No new candidates" in page.read_text()
+
+
+def test_citation_version_matches_package():
+    from pathlib import Path
+
+    import nucleuswatch
+
+    cff = (Path(__file__).parents[1] / "CITATION.cff").read_text()
+    assert f"version: {nucleuswatch.__version__}\n" in cff
+
+
+def test_mark_returning(tmp_path):
+    (tmp_path / "2026-10-12.json").write_text(json.dumps({"candidates": [{"object_id": "A"}]}))
+    (tmp_path / "2026-10-19.json").write_text(json.dumps({"candidates": [{"object_id": "A"}, {"object_id": "B"}]}))
+    (tmp_path / "2026-10-26.json").write_text(json.dumps({"candidates": [{"object_id": "C"}]}))  # this week's
+    record = {"generated": "2026-10-26T06:00:00+00:00",
+              "candidates": [{"object_id": "A"}, {"object_id": "B"}, {"object_id": "C"}]}
+    digest.mark_returning(record, tmp_path)
+    by = {c["object_id"]: c for c in record["candidates"]}
+    assert by["A"]["first_listed"] == "2026-10-12" and by["A"]["returning"]
+    assert by["B"]["first_listed"] == "2026-10-19"
+    assert by["C"]["first_listed"] == "2026-10-26" and not by["C"]["returning"]
+    assert record["n_new_this_week"] == 1

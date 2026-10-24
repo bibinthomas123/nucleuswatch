@@ -7,7 +7,9 @@
 
 A candidate is notable when it looks like a TDE by any of the measures the
 page shows: TDE score >= digest.TDE_LIKE, a TDE vote from any broker, or a
-TDE type on TNS.
+TDE type on TNS. Objects stay on the weekly list for as long as they are
+active, so the feed and the chat message announce each one in the week it
+was first listed, and only mention returning ones briefly.
 """
 
 from __future__ import annotations
@@ -30,6 +32,11 @@ def is_notable(c: dict, threshold: float) -> bool:
     return ((c.get("tde_score") or 0) >= threshold
             or any(v.get("category") == "TDE" for v in c.get("votes", []))
             or categorize(c.get("tns_type")) == "TDE")
+
+
+def has_news(record: dict) -> bool:
+    """Whether this week has a TDE-like candidate that wasn't listed before."""
+    return any(not c.get("returning") for c in notable(record))
 
 
 def notable(record: dict) -> list[dict]:
@@ -56,6 +63,8 @@ def atom_feed(records: list[dict]) -> str:
     for rec in records:
         week = rec["generated"][:10]
         for c in notable(rec):
+            if c.get("returning"):
+                continue  # announced in the week it was first listed
             oid = c["object_id"]
             mag = f"{c['mag']:.2f}" if isinstance(c.get("mag"), (int, float)) else "?"
             entries.append(f"""<entry>
@@ -91,10 +100,15 @@ def write_feed(data_dir: str | Path, site_dir: str | Path) -> Path:
 def message(record: dict) -> str:
     """Plain-text chat message for one digest (Slack and Discord both render it)."""
     picks = notable(record)
-    head = (f"Nucleus Watch, week ending {record['generated'][:10]}: {record['n_candidates']} new nuclear "
-            f"candidates, {len(picks)} TDE-like. {SITE_URL}")
+    fresh = [c for c in picks if not c.get("returning")]
+    still = [c for c in picks if c.get("returning")]
+    n_new = record.get("n_new_this_week", record["n_candidates"])
+    head = (f"Nucleus Watch, week ending {record['generated'][:10]}: {record['n_candidates']} nuclear "
+            f"candidates ({n_new} first listed this week), {len(fresh)} new TDE-like. {SITE_URL}")
     lines = [f"• {c['object_id']} (mag {c['mag']:.1f}): {_why(c)} {SITE_URL}#{c['object_id']}"
-             for c in picks if isinstance(c.get("mag"), (int, float))]
+             for c in fresh if isinstance(c.get("mag"), (int, float))]
+    if still:
+        lines.append("Still TDE-like from earlier weeks: " + ", ".join(c["object_id"] for c in still))
     return "\n".join([head, *lines])
 
 

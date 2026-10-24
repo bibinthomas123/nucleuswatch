@@ -44,4 +44,17 @@ def test_cli_prints_without_webhook(tmp_path, capsys, monkeypatch):
     (tmp_path / "latest.json").write_text(json.dumps(RECORD))
     assert cli.main(["notify", "--data", str(tmp_path)]) == 0
     out = capsys.readouterr().out
-    assert "2 TDE-like" in out and "ZTF26aaaaaab" in out and "ZTF26aaaaaac" not in out
+    assert "2 new TDE-like" in out and "ZTF26aaaaaab" in out and "ZTF26aaaaaac" not in out
+
+
+def test_returning_candidates_are_announced_once():
+    rec = json.loads(json.dumps(RECORD))
+    rec["candidates"][0]["returning"] = True     # listed in an earlier week
+    rec["candidates"][1]["returning"] = False
+    doc = xml.dom.minidom.parseString(notify.atom_feed([rec]))
+    assert len(doc.getElementsByTagName("entry")) == 1
+    text = notify.message(rec)
+    assert "1 new TDE-like" in text
+    assert text.splitlines()[-1] == "Still TDE-like from earlier weeks: ZTF26aaaaaaa"
+    rec["candidates"][1]["returning"] = True
+    assert not notify.has_news(rec)
