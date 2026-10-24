@@ -1,0 +1,3384 @@
+{
+ "nucleuswatch_version": "1.0.0",
+ "generated": "2026-10-24T08:17:10+00:00",
+ "window": [
+  "2024-01-01",
+  "2026-01-01"
+ ],
+ "seed": 20261024,
+ "n_sample": 402,
+ "sample_counts": {
+  "TDE": 34,
+  "SN Ia": 150,
+  "SN II": 85,
+  "SN IIn": 26,
+  "SN Ibc": 25,
+  "SLSN": 10,
+  "AGN/QSO": 72
+ },
+ "confusion": {
+  "ALeRCE": {
+   "TDE": {
+    "TDE": 0,
+    "SN": 24,
+    "AGN": 9,
+    "other": 1,
+    "no vote": 0
+   },
+   "SN": {
+    "TDE": 0,
+    "SN": 264,
+    "AGN": 20,
+    "other": 12,
+    "no vote": 0
+   },
+   "AGN": {
+    "TDE": 0,
+    "SN": 7,
+    "AGN": 62,
+    "other": 2,
+    "no vote": 1
+   }
+  },
+  "ALeRCE (forced phot.)": {
+   "TDE": {
+    "TDE": 11,
+    "SN": 1,
+    "AGN": 3,
+    "other": 0,
+    "no vote": 19
+   },
+   "SN": {
+    "TDE": 9,
+    "SN": 88,
+    "AGN": 12,
+    "other": 0,
+    "no vote": 187
+   },
+   "AGN": {
+    "TDE": 5,
+    "SN": 2,
+    "AGN": 56,
+    "other": 3,
+    "no vote": 6
+   }
+  },
+  "Fink (science modules)": {
+   "TDE": {
+    "TDE": 0,
+    "SN": 1,
+    "AGN": 4,
+    "other": 0,
+    "no vote": 29
+   },
+   "SN": {
+    "TDE": 0,
+    "SN": 114,
+    "AGN": 9,
+    "other": 0,
+    "no vote": 173
+   },
+   "AGN": {
+    "TDE": 0,
+    "SN": 0,
+    "AGN": 33,
+    "other": 0,
+    "no vote": 39
+   }
+  },
+  "Fink (served)": {
+   "TDE": {
+    "TDE": 0,
+    "SN": 7,
+    "AGN": 4,
+    "other": 0,
+    "no vote": 23
+   },
+   "SN": {
+    "TDE": 0,
+    "SN": 121,
+    "AGN": 9,
+    "other": 3,
+    "no vote": 163
+   },
+   "AGN": {
+    "TDE": 0,
+    "SN": 0,
+    "AGN": 33,
+    "other": 0,
+    "no vote": 39
+   }
+  },
+  "Lasair Sherlock": {
+   "TDE": {
+    "NT": 11,
+    "SN": 10,
+    "AGN": 2,
+    "VS": 11,
+    "other": 0,
+    "no vote": 0
+   },
+   "SN": {
+    "NT": 9,
+    "SN": 23,
+    "AGN": 2,
+    "VS": 5,
+    "other": 1,
+    "no vote": 0
+   },
+   "AGN": {
+    "NT": 14,
+    "SN": 9,
+    "AGN": 22,
+    "VS": 27,
+    "other": 0,
+    "no vote": 0
+   }
+  }
+ },
+ "lasair_n": 146,
+ "lasair_columns": [
+  "NT",
+  "SN",
+  "AGN",
+  "VS",
+  "other",
+  "no vote"
+ ],
+ "status_by_truth": {
+  "agree": {
+   "TDE": 12,
+   "SN": 123,
+   "AGN": 31
+  },
+  "disagree": {
+   "TDE": 13,
+   "SN": 16,
+   "AGN": 35
+  },
+  "insufficient": {
+   "TDE": 9,
+   "SN": 157,
+   "AGN": 6
+  }
+ },
+ "kappa_alerce_fink": 0.751335599805731,
+ "votes": {
+  "ZTF17aaazdba": {
+   "truth": "TDE",
+   "alerce": "other",
+   "alerce_bhrf": "TDE",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF18aabdajx": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF18aaxqitv": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18abxnvoz": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18acecugr": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF18acmqevd": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "AGN"
+  },
+  "ZTF19abzrhgq": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF19accskvu": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20aahmtso": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20abwtifz": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "VS"
+  },
+  "ZTF20accxwrk": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF21aanxhjv": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF22aadesap": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF22aafujzv": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF22abegjtx": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF23abvzeqp": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24aaahxwr": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF24aaecooj": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF24aaoxmyb": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF24aatxshz": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24aazlori": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24abfuwbm": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF24abiqyej": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF24abjfuew": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24abmybnp": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF24abmzcpa": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24abyhjvc": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF25aafwfzz": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "VS"
+  },
+  "ZTF25aagevje": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF25aagfhmz": {
+   "truth": "TDE",
+   "alerce": "AGN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF25aajfjhm": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "NT"
+  },
+  "ZTF25aaptkov": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF25aaymnha": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF25abwvuln": {
+   "truth": "TDE",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF17aacldgo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18aaiualk": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18aaizgoq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18aaqljfc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF18abdnihj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF18abfcsjs": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18abquopi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18acdvmdk": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18acllbhl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18acqugen": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF18adkqdgj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19aabgncx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19aalpoff": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF19aanevcu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19aaprygi": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19aauaaxi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19ablekwo": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF19adfuzrc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF20aaispgr": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF20aayclod": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF20aclddpv": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF20aclpdmt": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF21aajvvbn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF21abetapt": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22aahgxbx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22aaxfesc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22abmtnaw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22abxdrsl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aalfofn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF23abryfmg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF23abscruh": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "other"
+  },
+  "ZTF24aaagezy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24aaahxph": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaammxh": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaeeoku": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaeikvz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaekobc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aagktjv": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aagkwfe": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24aagomqx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24aaguabz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aahaajg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aahmgvr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaihwaq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaistkr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24aajgwdv": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aajhxqs": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aajxpmq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaosmwq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaoxbth": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aatdjua": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aatrvwr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaugavy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aauuybw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aavovrp": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aawktlo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aawyrsn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaxizpd": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaxzjdt": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaywvsf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aazkvzi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aazkzkl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aazlmpe": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abboumm": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abbrcrq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abcnnlb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abcrgam": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abfnkzm": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abiiabk": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24abiihsz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abiltvb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abizbpc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24ablnstl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF24abltxth": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abojqpw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abqkkqz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abqpshs": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abqqoxy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abqvdnb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abrezqh": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abrhwmu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abriexo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24abtddls": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abuddym": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF24abuyefl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abvtoyo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abxvoop": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abxyalj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abyeoec": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abyizjg": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF24abyssre": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "NT"
+  },
+  "ZTF25aaaawig": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaakjsi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aaapgir": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aafvaqf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aafvrmz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aafwfof": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aagbkad": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaggpqs": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "VS"
+  },
+  "ZTF25aaiitra": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaipveb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aajqkss": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aakhogj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aalughb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aanellf": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aanfaxg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aanztch": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaplvcg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaqbshw": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaqkhyr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaqyygm": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aarodyp": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aasfkmy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aaspxly": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aasrzlo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aatkuvd": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aatxsfd": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aavivut": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aavpdlj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aavsycu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aawterb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaylgpw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aaysvaj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF25aayxghj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aazuxfi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25ababepu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abfnszm": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abigqxj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abikagm": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abimrij": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abimrke": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "NT"
+  },
+  "ZTF25abkopax": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abkprmd": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abkpyds": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "other",
+   "lasair": null
+  },
+  "ZTF25abmnhes": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abmvvxh": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abpdxzo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF25abpfatp": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abqzeqy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF25abuzfte": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "other",
+   "lasair": null
+  },
+  "ZTF25abwlscr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abwnnkt": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abyqaky": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acamzgr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acdesme": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acelamc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acelvvz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF25acfgohg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acgqggy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acgqhjx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF18aaqjtti": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18aawpfpp": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18abtjmns": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF18abwisaz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18adowxvg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19aawlgne": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF19aazpzuh": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF19abegzry": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF21aasyjxq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF21abiolfh": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF21abouxex": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aabkxss": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aakanao": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF23aamskdj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abhyroo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abhyssf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "other",
+   "lasair": null
+  },
+  "ZTF23abiewbt": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abqkppm": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abrqyby": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abshiqq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF23absjgxb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abvnmam": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24aaegbrh": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaekccp": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24aagjqcx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aahalmb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aahxgoa": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aahxmmu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24aakghyl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aapebzb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aapexhw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aarxxmm": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aascytf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aasigoj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aasvdze": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aatieok": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aatytqv": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aawakwl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaxhomn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF24aaxlnut": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaxqoeo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abavoif": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abdbdhr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abdtszn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abdumvs": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abffaqw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abihsvi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24ablflur": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24ablvshn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aboqfdy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abrfiya": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abtbalq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abtdiyv": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abugkym": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abzsuck": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF25aaawpmf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aabaanf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aacjgut": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aadlhzw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aagzocg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aajfyvr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aakcynb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aalbnkr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aalyfoi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF25aapvkmi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF25aasfogb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aatclux": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aatxryo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aawdzpn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aawngni": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abajquu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abcjnkx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abeefof": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF25abfmbhf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abghdgt": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abjeuls": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aboqxdx": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25absqinr": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25abwjtwc": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abwkieo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abzklfa": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25acberoe": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25acegaon": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25acftcra": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25ackyfnb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF18aakycpv": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF18aaoskkx": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22abizuah": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22ablxfkb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22abzgbtq": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aaabzea": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aadchqd": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aalgqsq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF23aavmthe": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abkhwgb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23abomtge": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aaabljq": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aahdfdo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaifila": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aayqrow": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24abpiwwi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abpxbbk": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abymeet": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aafofmu": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aagbrpb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aankyog": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aapsisw": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF25abbzfjz": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF25abcznka": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25abeldua": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25acgorke": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18abqtnbk": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF18adhshnn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF22abbtqnp": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF23aaxuvkn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aabuaij": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aabvdxj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aagkjca": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aahuzig": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24aawtoiv": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24aaxdooe": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaztbct": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abajmau": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abhsqly": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abnsght": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24absrpsn": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24absznoi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF24abyqzpi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25aaadytl": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aacdjzo": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aajuqtp": {
+   "truth": "SN",
+   "alerce": "other",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aaovvcg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": null
+  },
+  "ZTF25abecvml": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25ablgkgi": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF25ablulax": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF25abmpngy": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "SN",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF19aatubsj": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": "SN"
+  },
+  "ZTF19abclykm": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "SN",
+   "lasair": null
+  },
+  "ZTF20aacbwbm": {
+   "truth": "SN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF22aakyeps": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aadfmaf": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaizdbb": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24aaouput": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF24abtmueg": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25aaqvqvd": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF25acemaph": {
+   "truth": "SN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": null
+  },
+  "ZTF18aaadtdc": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aagfjja": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aagkxhb": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18aahzyhn": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aailsee": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aakaajs": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aakpnyt": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aaqzhib": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18aawwbqm": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF18abcdzte": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18abnuhuy": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18abrzevn": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18abtgnxs": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "VS"
+  },
+  "ZTF18abuxiwj": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF18abvpnnb": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF18acessji": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18acqzdbs": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "SN"
+  },
+  "ZTF18acuavde": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF18acwyvak": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF18adbzccu": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "AGN"
+  },
+  "ZTF18adkbtan": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF19aaapljd": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF19aadkzep": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "VS"
+  },
+  "ZTF19aagzanb": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19aalfyyn": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19aaodsna": {
+   "truth": "AGN",
+   "alerce": "other",
+   "alerce_bhrf": "other",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19aaoiawb": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF19aayiili": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19abcegcy": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19abcsyho": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19abcudso": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19abmmksy": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF19abuomnw": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF19adddxxc": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF19admhfcq": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "VS"
+  },
+  "ZTF20aanlygx": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20aasivtu": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "VS"
+  },
+  "ZTF20abbfgpw": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20abbhlct": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF20acczeov": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "other",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20acgcnjt": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF20achxjie": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF20acirhrj": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF20ackgsov": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20acngcej": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF20acwyoqx": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF21aagtqkc": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF21aaihchs": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF21aaltbzp": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "VS"
+  },
+  "ZTF21aalxxzn": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF21aaqqwsa": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF21aatlewl": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF21abxowzx": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF21abycgve": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF21achafqr": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF21acnwaqk": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF22aabwxtw": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF22aaqccka": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF23aabfdgi": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "NT"
+  },
+  "ZTF23aahbtjx": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "AGN"
+  },
+  "ZTF23aaslxmh": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF23abbzfyu": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF23abihmun": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "AGN"
+  },
+  "ZTF23abikzfr": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF23abqkwzr": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "no vote",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "NT"
+  },
+  "ZTF23absjgzg": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF24aalnrat": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24aapsitb": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "VS"
+  },
+  "ZTF24ablzlmw": {
+   "truth": "AGN",
+   "alerce": "other",
+   "alerce_bhrf": "other",
+   "fink_science": "no vote",
+   "fink_served": "no vote",
+   "lasair": "SN"
+  },
+  "ZTF24abwsyas": {
+   "truth": "AGN",
+   "alerce": "AGN",
+   "alerce_bhrf": "AGN",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF24abwywkf": {
+   "truth": "AGN",
+   "alerce": "SN",
+   "alerce_bhrf": "TDE",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  },
+  "ZTF25aagqeks": {
+   "truth": "AGN",
+   "alerce": "no vote",
+   "alerce_bhrf": "no vote",
+   "fink_science": "AGN",
+   "fink_served": "AGN",
+   "lasair": "AGN"
+  }
+ }
+}
