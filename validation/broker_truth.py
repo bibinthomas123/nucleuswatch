@@ -10,7 +10,8 @@ otherwise dominate the run time.
 Votes are made leakage-free, because a classifier that has already read the
 TNS answer can't be scored against it:
 
-- ALeRCE: the vote nucleuswatch uses (lc_classifier, else stamp_classifier).
+- ALeRCE: the vote nucleuswatch uses (forced-photometry classifier, else
+  lc_classifier, else stamp_classifier).
   ALeRCE's classifiers don't use TNS.
 - Fink: the served `v:classification` copies the TNS type once one exists.
   It is reported for reference, but scored separately ("Fink, science
@@ -66,17 +67,39 @@ def predicted(category: str | None) -> str:
     return category if category in ("TDE", "SN", "AGN") else "other"
 
 
-def build_sample(start: date, stop: date) -> list[dict]:
+def build_sample(start: date, stop: date) -> tuple[list[dict], dict[str, int]]:
+    """The sample, and the size of each group before subsampling."""
     rng = random.Random(SEED)
     by_group = load_truth(start, stop, verbose=False)
     cuts = NuclearCuts(mag_max=20.0)
-    sample = []
+    sample, pool = [], {}
     for group, objs in by_group.items():
         ids = sorted(o for o, alerts in objs.items() if any(cuts.passes(a) for a in alerts))
+        pool[group] = len(ids)
         if group in SUBSAMPLE and len(ids) > SUBSAMPLE[group]:
             ids = sorted(rng.sample(ids, SUBSAMPLE[group]))
         sample += [{"object_id": o, "group": group, "truth": truth_class(group)} for o in ids]
-    return sample
+    return sample, pool
+
+
+def weighted(r: dict) -> dict:
+    """Undo the SN subsampling: each object counts as pool/sample of its group.
+
+    Returns P(TDE | status) and the purity of ALeRCE's TDE votes, as they
+    would be in the full nuclear stream rather than in the subsample.
+    """
+    w = {g: r["pool_counts"][g] / n for g, n in r["sample_counts"].items()}
+    status, tde_votes = {}, [0.0, 0.0]
+    for v in r["votes"].values():
+        wt = w[v["group"]]
+        n, k = status.get(v["status"], (0.0, 0.0))
+        status[v["status"]] = (n + wt, k + wt * (v["truth"] == "TDE"))
+        if v["alerce"] == "TDE":
+            tde_votes[0] += wt
+            tde_votes[1] += wt * (v["truth"] == "TDE")
+    pool = r["pool_counts"]
+    return {"status": status, "alerce_tde_votes": tde_votes,
+            "base_rate": pool.get("TDE", 0) / sum(pool.values())}
 
 
 def fink_science_vote(obj: nw.MergedObject) -> str | None:
@@ -234,6 +257,25 @@ def _pint(k: int, n: int) -> str:
     return f"{100 * p:.0f}% ({100 * lo:.0f}–{100 * hi:.0f}%)"
 
 
+def _weighted_lines(r: dict) -> list[str]:
+    wt = weighted(r)
+    n, k = wt["alerce_tde_votes"]
+    return [
+        "### Weighted to the full nuclear stream",
+        "",
+        "The sample keeps fewer SNe than the stream contains. Weighting each object by",
+        "(group size before subsampling) / (group size in the sample):",
+        "",
+        "| status | P(TDE \\| status) |",
+        "|---|---|",
+        *(f"| {s} | {100 * kk / nn:.1f}% |" for s, (nn, kk) in wt["status"].items() if nn),
+        "",
+        (f"An ALeRCE TDE vote is right {100 * k / n:.0f}% of the time ({k:.0f} of {n:.1f} weighted objects), "
+         f"against a TDE base rate of {100 * wt['base_rate']:.1f}%."),
+        "",
+    ]
+
+
 def render(r: dict) -> str:
     def table(name, cols):
         m = r["confusion"][name]
@@ -253,11 +295,13 @@ def render(r: dict) -> str:
         "",
         (f"Sample: {r['n_sample']} TNS-classified objects passing the nuclear cuts at mag ≤ 20, "
         f"{r['window'][0]} → {r['window'][1]}"),
-        f"({', '.join(f'{k}: {v}' for k, v in r['sample_counts'].items())}). SNe Ia and II are randomly subsampled",
+        f"({', '.join(f'{k}: {v}' for k, v in r['sample_counts'].items())}). "
+        + "; ".join(f"{g} randomly subsampled from {r['pool_counts'][g]}" for g, n in r["sample_counts"].items()
+                    if r["pool_counts"][g] > n),
         (f"(seed {SEED}). nucleuswatch {r['nucleuswatch_version']}, generated {r['generated']} by "
         "`validation/broker_truth.py`."),
         "",
-        "## ALeRCE (light-curve classifier, else stamp classifier)",
+        "## ALeRCE, the vote nucleuswatch casts (forced-photometry classifier, else light curve, else stamp)",
         "",
         table("ALeRCE", PRED_ORDER),
         "",
@@ -286,6 +330,7 @@ def render(r: dict) -> str:
         "",
         f"Cohen's κ, ALeRCE vs Fink (science modules), where both voted: **{r['kappa_alerce_fink']:.2f}**",
         "",
+        *_weighted_lines(r),
         "![confusion](figures/broker_confusion.png)",
         "",
         "![status](figures/consensus_vs_truth.png)",
@@ -317,7 +362,7 @@ def main() -> int:
         return 0
     start, stop = date.fromisoformat(args.start), date.fromisoformat(args.stop)
 
-    sample = build_sample(start, stop)
+    sample, pool = build_sample(start, stop)
     counts = Counter(s["group"] for s in sample)
     print(f"sample: {len(sample)} objects {dict(counts)}", flush=True)
     objects = lookup(sample)
@@ -344,12 +389,14 @@ def main() -> int:
         columns["Lasair Sherlock"] = lcols
 
     status_by_truth: dict[str, Counter] = {"agree": Counter(), "disagree": Counter(), "insufficient": Counter()}
+    status = {}
     for s in sample:
         o = s["object_id"]
         vs = [al[o], fs[o]]
         if o in ls:  # Sherlock: only physical labels vote, as in nucleuswatch
             vs.append(predicted(categorize(ls[o])) if ls[o] not in ("no vote", "other", "NT") else "no vote")
-        status_by_truth[consensus_status(vs)][s["truth"]] += 1
+        status[o] = consensus_status(vs)
+        status_by_truth[status[o]][s["truth"]] += 1
 
     order = [s["object_id"] for s in sample]
     result = {
@@ -359,12 +406,13 @@ def main() -> int:
         "seed": SEED,
         "n_sample": len(sample),
         "sample_counts": dict(counts),
+        "pool_counts": pool,
         "confusion": matrices,
         "lasair_n": len(ls),
         "lasair_columns": columns.get("Lasair Sherlock"),
         "status_by_truth": {k: dict(v) for k, v in status_by_truth.items()},
         "kappa_alerce_fink": kappa([al[o] for o in order], [fs[o] for o in order]),
-        "votes": {o: {"truth": s["truth"], "alerce": al[o], "alerce_bhrf": ab[o], "fink_science": fs[o],
+        "votes": {o: {"group": s["group"], "truth": s["truth"], "status": status[o], "alerce": al[o], "alerce_bhrf": ab[o], "fink_science": fs[o],
                       "fink_served": fv[o],
                       "lasair": ls.get(o)} for s in sample for o in [s["object_id"]]},
     }

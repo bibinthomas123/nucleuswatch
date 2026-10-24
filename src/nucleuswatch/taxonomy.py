@@ -23,12 +23,15 @@ BOGUS = "Bogus"
 
 # Classifiers whose output is a single best-guess label for the whole object,
 # per broker, in order of preference. Each broker casts ONE vote: the first
-# classifier in its list that gave a usable label. ALeRCE's light-curve
-# classifier uses the whole light curve, so it is preferred over the stamp
-# classifier, which only sees the first images. Binary scores (e.g. Fink's
-# SNIa-vs-non-Ia) and ALeRCE's conditional sub-classifiers never vote.
+# classifier in its list that gave a usable label. ALeRCE's forced-photometry
+# classifier comes first because it is the only broker classifier with a TDE
+# class (validation/BROKER_TRUTH.md: 11 of the 15 TDEs it votes on); it only
+# answers once forced photometry exists, so the alert light-curve classifier
+# and then the stamp classifier (first images only) are the fallbacks.
+# Binary scores (e.g. Fink's SNIa-vs-non-Ia) and ALeRCE's conditional
+# sub-classifiers never vote.
 VOTE_PRIORITY = {
-    "alerce": ("lc_classifier", "stamp_classifier"),
+    "alerce": ("lc_classifier_BHRF_forced_phot", "lc_classifier", "stamp_classifier"),
     "fink": ("fink_classification", "cats"),  # cats: Rubin/LSST
     "lasair": ("sherlock",),
 }

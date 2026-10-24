@@ -179,6 +179,11 @@ TNS spectroscopic classification in 2024–2025
   share **4.9×** (1.2% → 6.0%). Nuclear SNe Ia and SNe II remain the majority.
   That's expected, and it tells you how much follow-up a nuclear sample costs.
 - This measures the cuts, not the selection from Fink's classifier streams.
+- **Broker disagreement flags TDEs.** Among 402 classified nuclear objects,
+  weighted to the real SN mix, 21% of those where brokers *disagree* are TDEs,
+  against 3% where they agree. An ALeRCE TDE vote is right 35% of the time
+  (base rate 5.8%)
+  ([details](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/BROKER_TRUTH.md)).
 
 ## Rubin/LSST
 
@@ -229,9 +234,12 @@ query API can't search the past, so backfilled weeks use Fink candidates only.
 **Each broker casts one vote**, from its preferred whole-object classifier
 (see `taxonomy.VOTE_PRIORITY`):
 
-- **ALeRCE:** `lc_classifier`, falling back to `stamp_classifier`. The
-  light-curve classifier sees the whole light curve; the stamp classifier only
-  sees the first images.
+- **ALeRCE:** the forced-photometry classifier
+  (`lc_classifier_BHRF_forced_phot`), falling back to `lc_classifier` and then
+  `stamp_classifier`. The forced-photometry model is the only broker
+  classifier with a TDE class; in the validation set its TDE votes are right
+  about a third of the time, six times the base rate. The stamp classifier
+  only sees the first images.
 - **Fink:** `v:classification` (ZTF) or CATS (Rubin).
 - **Lasair:** Sherlock.
 

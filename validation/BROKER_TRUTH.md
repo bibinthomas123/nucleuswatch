@@ -1,16 +1,16 @@
 # Broker classifications vs spectroscopic truth
 
 Sample: 402 TNS-classified objects passing the nuclear cuts at mag ≤ 20, 2024-01-01 → 2026-01-01
-(TDE: 34, SN Ia: 150, SN II: 85, SN IIn: 26, SN Ibc: 25, SLSN: 10, AGN/QSO: 72). SNe Ia and II are randomly subsampled
-(seed 20261024). nucleuswatch 1.0.0, generated 2026-10-24T08:17:10+00:00 by `validation/broker_truth.py`.
+(TDE: 34, SN Ia: 150, SN II: 85, SN IIn: 26, SN Ibc: 25, SLSN: 10, AGN/QSO: 72). SN Ia randomly subsampled from 339
+(seed 20261024). nucleuswatch 1.0.0, generated 2026-10-24T10:46:35+00:00 by `validation/broker_truth.py`.
 
-## ALeRCE (light-curve classifier, else stamp classifier)
+## ALeRCE, the vote nucleuswatch casts (forced-photometry classifier, else light curve, else stamp)
 
 | truth \ vote | TDE | SN | AGN | other | no vote | correct |
 |---|---|---|---|---|---|---|
-| TDE (34) | 0 | 24 | 9 | 1 | 0 | 0/34 of those voting |
-| SN (296) | 0 | 264 | 20 | 12 | 0 | 264/296 of those voting |
-| AGN (72) | 0 | 7 | 62 | 2 | 1 | 62/71 of those voting |
+| TDE (34) | 11 | 17 | 6 | 0 | 0 | 11/34 of those voting |
+| SN (296) | 9 | 259 | 21 | 7 | 0 | 259/296 of those voting |
+| AGN (72) | 5 | 2 | 62 | 3 | 0 | 62/72 of those voting |
 
 ## ALeRCE forced-photometry classifier (`lc_classifier_BHRF_forced_phot`, has a TDE class)
 
@@ -18,7 +18,7 @@ Sample: 402 TNS-classified objects passing the nuclear cuts at mag ≤ 20, 2024-
 |---|---|---|---|---|---|---|
 | TDE (34) | 11 | 1 | 3 | 0 | 19 | 11/15 of those voting |
 | SN (296) | 9 | 88 | 12 | 0 | 187 | 88/109 of those voting |
-| AGN (72) | 5 | 2 | 56 | 3 | 6 | 56/66 of those voting |
+| AGN (72) | 5 | 2 | 57 | 3 | 5 | 57/67 of those voting |
 
 ## Fink, alert-time science modules only (SIMBAD crossmatch + SuperNNova)
 
@@ -48,11 +48,24 @@ Sample: 402 TNS-classified objects passing the nuclear cuts at mag ≤ 20, 2024-
 
 | status | objects | TDE | SN | AGN | P(TDE \| status), 68% interval |
 |---|---|---|---|---|---|
-| agree | 166 | 12 | 123 | 31 | 7% (5–10%) |
-| disagree | 64 | 13 | 16 | 35 | 20% (16–26%) |
+| agree | 159 | 8 | 121 | 30 | 5% (4–7%) |
+| disagree | 71 | 17 | 18 | 36 | 24% (19–29%) |
 | insufficient | 172 | 9 | 157 | 6 | 5% (4–7%) |
 
-Cohen's κ, ALeRCE vs Fink (science modules), where both voted: **0.75**
+Cohen's κ, ALeRCE vs Fink (science modules), where both voted: **0.74**
+
+### Weighted to the full nuclear stream
+
+The sample keeps fewer SNe than the stream contains. Weighting each object by
+(group size before subsampling) / (group size in the sample):
+
+| status | P(TDE \| status) |
+|---|---|
+| disagree | 20.6% |
+| insufficient | 3.6% |
+| agree | 3.1% |
+
+An ALeRCE TDE vote is right 35% of the time (11 of 31.3 weighted objects), against a TDE base rate of 5.8%.
 
 ![confusion](figures/broker_confusion.png)
 

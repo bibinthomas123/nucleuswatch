@@ -95,8 +95,10 @@ def test_duplicate_classifier_versions_vote_once(offline_brokers, monkeypatch):
     obj = bm.get_object(OBJECT_ID)
     cls = obj.classifications
     assert (cls["classifier"] == "lc_classifier").sum() == 2  # both versions kept
-    votes = [v for v in obj.consensus()["votes"] if v["classifier"] == "lc_classifier"]
+    votes = [v for v in obj.consensus()["votes"] if v["broker"] == "alerce"]
     assert len(votes) == 1
+    # The forced-photometry classifier answered, so it casts ALeRCE's vote.
+    assert votes[0]["classifier"] == "lc_classifier_BHRF_forced_phot"
 
 
 def test_scores_get_no_category(offline_brokers):
@@ -117,7 +119,8 @@ def test_disagreement(offline_brokers, monkeypatch):
     assert c["categories"] == ["AGN", "SN"]
 
 
-def test_one_vote_per_broker_prefers_light_curve_classifier(offline_brokers):
+def test_one_vote_per_broker_falls_back_to_light_curve_classifier(offline_brokers):
+    # No forced-photometry classification yet: the alert light curve votes.
     votes = bm.get_object(OBJECT_ID).consensus()["votes"]
     assert sorted(v["broker"] for v in votes) == ["alerce", "fink", "lasair"]
     assert next(v for v in votes if v["broker"] == "alerce")["classifier"] == "lc_classifier"
