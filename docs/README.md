@@ -11,6 +11,7 @@ reports whether they agree.
 | [Python API](python-api.md) | Every public function and class, with parameters, defaults and return values |
 | [Command line](cli.md) | `nucleuswatch object / nuclear / digest / notify / zooniverse-upload`, every flag, and the environment variables |
 | [Weekly digest and alerts](weekly-digest.md) | The GitHub Actions workflow, repository secrets, Slack/Discord alerts, the Atom feed, and the format of the files in `digest/` |
+| [Sherlock note](sherlock-note.md) | Why Lasair's Sherlock calls some galaxy nuclei variable stars, with examples and a suggested fix |
 | [Alertissimo notes](alertissimo.md) | How nucleuswatch relates to Alertissimo, and what we found while integrating it |
 
 Validation results live next to the scripts that produce them:
