@@ -8,7 +8,9 @@ from nucleuswatch.brokers import fink
 
 from .conftest import load
 
-NOW = datetime(2026, 10, 23, tzinfo=timezone.utc)
+# "Now", not a fixed date: the Lasair source only searches windows ending today.
+NOW = datetime.now(timezone.utc)
+STAMP = NOW.date().isoformat()
 
 
 LASAIR_NT = [
@@ -59,8 +61,8 @@ def test_tiers_follow_bright_mag(offline_digest):
 def test_write_data_keeps_history(offline_digest, tmp_path):
     record, _ = digest.build(14, now=NOW)
     path = digest.write_data(record, tmp_path)
-    assert path.name == "2026-10-23.json"
-    assert (tmp_path / "2026-10-23.csv").exists()
+    assert path.name == f"{STAMP}.json"
+    assert (tmp_path / f"{STAMP}.csv").exists()
     assert json.loads((tmp_path / "latest.json").read_text()) == json.loads(path.read_text())
 
 
@@ -68,17 +70,19 @@ def test_render_site(offline_digest, tmp_path):
     record, search = digest.build(14, now=NOW)
     digest.write_data(record, tmp_path / "data")
     # an older run already in the history
-    old = {**record, "generated": "2026-10-16T00:00:00+00:00", "n_candidates": 0, "candidates": []}
-    (tmp_path / "data" / "2026-10-16.json").write_text(json.dumps(old))
+    old = {**record, "generated": "2020-01-01T00:00:00+00:00", "n_candidates": 0, "candidates": []}
+    (tmp_path / "data" / "2020-01-01.json").write_text(json.dumps(old))
 
     page = digest.render_site(record, tmp_path / "data", tmp_path / "site", search)
     html = page.read_text()
     assert "ZTF26acakche" in html and "ZTF26aaaaaaa" in html and "ZTF18bbbbbbb" in html
     assert "<svg" in html  # sky map
-    assert html.index("2026-10-23") < html.index("2026-10-16")  # newest first in archive
+    assert html.index(STAMP) < html.index("2020-01-01")  # newest first in archive
     assert (tmp_path / "site" / "img" / "ZTF26acakche_lc.png").exists()
     assert (tmp_path / "site" / "img" / "ZTF26acakche_stamps.png").exists()
-    assert (tmp_path / "site" / "data" / "2026-10-16.json").exists()
+    assert (tmp_path / "site" / "data" / "2020-01-01.json").exists()
+    assert (tmp_path / "site" / "img" / "sky_equatorial.jpg").exists()
+    assert 'href="img/sky_equatorial.jpg"' in html and "ESA/Gaia/DPAC" in html
     assert (tmp_path / "site" / ".nojekyll").exists()
 
 

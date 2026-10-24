@@ -22,6 +22,7 @@ import math
 from collections import Counter
 from datetime import datetime, timedelta, timezone
 from html import escape
+from importlib.resources import files
 from pathlib import Path
 from urllib.parse import urlencode
 
@@ -126,6 +127,9 @@ def render_site(record: dict, data_dir: str | Path, site_dir: str | Path,
     if validation and Path(validation).exists():
         val = json.loads(Path(validation).read_text())
 
+    sky = files("nucleuswatch").joinpath("assets", SKY_IMAGE)
+    if sky.is_file():
+        (site / "img" / SKY_IMAGE).write_bytes(sky.read_bytes())
     (site / "index.html").write_text(_page(record, archive, val))
     (site / ".nojekyll").write_text("")
     return site / "index.html"
@@ -343,30 +347,47 @@ def _bars(counts: dict, colour_classes: dict | None = None, *, keep_order: bool 
     return "<div class='bars'>" + "".join(rows) + "</div>"
 
 
-def _sky_map(cands: list[dict], known: list[dict]) -> str:
-    """Equirectangular RA/Dec map; RA increases to the left, as on the sky."""
-    w, h, pad = 720, 340, 30
+SKY_IMAGE = "sky_equatorial.jpg"
+SKY_CREDIT = ("Background: Gaia EDR3 all-sky map, ESA/Gaia/DPAC (CC BY-SA 3.0 IGO), "
+              "re-projected to equatorial coordinates.")
+# Brighter status colours for points drawn on the dark sky image (both themes).
+_SKY_COLOURS = {"agree": "#7ddc8c", "disagree": "#ff8f52", "insufficient": "#ffd166"}
+
+
+def _sky_map(cands: list[dict], known: list[dict], *, background: bool = True) -> str:
+    """Equirectangular RA/Dec map over the Gaia sky; RA increases to the left.
+
+    The plot area is exactly 2:1 so the re-projected all-sky image isn't stretched.
+    """
+    w, pad = 720, 30
+    h = pad * 2 + (w - 2 * pad) // 2
     x = lambda ra: pad + (360 - ra) / 360 * (w - 2 * pad)
     y = lambda dec: pad + (90 - dec) / 180 * (h - 2 * pad)
-    parts = [f'<svg viewBox="0 0 {w} {h}" width="100%" role="img" aria-label="Sky positions of candidates">',
-             f'<rect class="grid" x="{pad}" y="{pad}" width="{w - 2 * pad}" height="{h - 2 * pad}"/>']
+    parts = [f'<svg viewBox="0 0 {w} {h}" width="100%" role="img" aria-label="Sky positions of candidates">']
+    if background:
+        parts.append(f'<image href="img/{SKY_IMAGE}" x="{pad}" y="{pad}" width="{w - 2 * pad}" '
+                     f'height="{h - 2 * pad}" preserveAspectRatio="none"/>')
+    grid = 'stroke="#ffffff" stroke-opacity=".18" stroke-width="1" fill="none"' if background else 'class="grid"'
+    parts.append(f'<rect {grid} x="{pad}" y="{pad}" width="{w - 2 * pad}" height="{h - 2 * pad}"/>')
     for ra in range(0, 361, 60):
-        parts.append(f'<line class="grid" x1="{x(ra):.1f}" y1="{pad}" x2="{x(ra):.1f}" y2="{h - pad}"/>'
+        parts.append(f'<line {grid} x1="{x(ra):.1f}" y1="{pad}" x2="{x(ra):.1f}" y2="{h - pad}"/>'
                      f'<text x="{x(ra):.1f}" y="{h - pad + 14}" text-anchor="middle">{ra}°</text>')
     for dec in range(-60, 91, 30):
-        parts.append(f'<line class="grid" x1="{pad}" y1="{y(dec):.1f}" x2="{w - pad}" y2="{y(dec):.1f}"/>'
+        parts.append(f'<line {grid} x1="{pad}" y1="{y(dec):.1f}" x2="{w - pad}" y2="{y(dec):.1f}"/>'
                      f'<text x="{pad - 4}" y="{y(dec) + 4:.1f}" text-anchor="end">{dec}°</text>')
+    known_fill = '#e8edf5" opacity=".55' if background else 'var(--known)" opacity=".6'
     for k in known:
         if k.get("ra") is not None and k.get("dec") is not None:
-            parts.append(f'<circle cx="{x(k["ra"]):.1f}" cy="{y(k["dec"]):.1f}" r="2" fill="var(--known)" opacity=".6">'
+            parts.append(f'<circle cx="{x(k["ra"]):.1f}" cy="{y(k["dec"]):.1f}" r="1.8" fill="{known_fill}">'
                          f'<title>{escape(k["object_id"])} (known)</title></circle>')
-    colour = {"agree": "var(--agree)", "disagree": "var(--disagree)"}
     for c in cands:
         if c.get("ra") is not None and c.get("dec") is not None:
-            fill = colour.get(c.get("consensus"), "var(--insufficient)")
+            status = c.get("consensus") or "insufficient"
+            fill = _SKY_COLOURS.get(status, _SKY_COLOURS["insufficient"]) if background else f"var(--{status})"
+            stroke = "#0b0f17" if background else "var(--bg)"
             parts.append(f'<a href="#{escape(c["object_id"])}"><circle cx="{x(c["ra"]):.1f}" cy="{y(c["dec"]):.1f}" r="5" '
-                         f'fill="{fill}" stroke="var(--bg)" stroke-width="1.5"><title>{escape(c["object_id"])} '
-                         f'({escape(str(c.get("consensus")))})</title></circle></a>')
+                         f'fill="{fill}" stroke="{stroke}" stroke-width="1.5"><title>{escape(c["object_id"])} '
+                         f'({escape(status)})</title></circle></a>')
     parts.append("</svg>")
     return "".join(parts)
 
@@ -508,9 +529,10 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
 
 <h2><span class="num">02</span>Sky positions</h2>
 <figure>{_sky_map(cands, known)}
-<figcaption>Large points are new candidates, coloured by consensus (green agree, rust disagree, ochre
-insufficient). Small grey points are known nuclear sources active in the same window. RA increases to the left.
-Select a point to jump to its entry.</figcaption></figure>
+<figcaption>Large points are new candidates, coloured by consensus (green agree, orange disagree, yellow
+insufficient). Small white points are known nuclear sources active in the same window. RA increases to the left.
+The bright band is the Milky Way, where dust and crowded star fields keep extragalactic searches away. Select a
+point to jump to its entry. {escape(SKY_CREDIT)}</figcaption></figure>
 
 <h2 id="candidates"><span class="num">03</span>New candidates</h2>{empty}
 <div class="table-wrap"><table>
@@ -559,7 +581,9 @@ too many to compare across brokers every week, so they're listed without consens
 {"<h2><span class='num'>—</span>Notes from this run</h2><ul class='small'>" + errors + "</ul>" if errors else ""}
 <footer>Data from <a href="https://alerce.online">ALeRCE</a>, <a href="https://fink-portal.org">Fink</a>,
 <a href="https://lasair-ztf.lsst.ac.uk">Lasair</a> and the Zwicky Transient Facility. Host images from the
-<a href="https://www.legacysurvey.org">DESI Legacy Imaging Surveys</a>. The broker data belongs to the broker
+<a href="https://www.legacysurvey.org">DESI Legacy Imaging Surveys</a>. Sky map background from
+<a href="https://www.esa.int/ESA_Multimedia/Images/2020/12/The_colour_of_the_sky_from_Gaia_s_Early_Data_Release_3">ESA/Gaia/DPAC</a>
+(<a href="https://creativecommons.org/licenses/by-sa/3.0/igo/">CC BY-SA 3.0 IGO</a>). The broker data belongs to the broker
 teams; please cite them if you use it. Compiled with <a href="{REPO_URL}">nucleuswatch</a>.</footer>
 </main></body></html>
 """
