@@ -31,7 +31,7 @@ flares, nuclear supernovae):
 |---|---|
 | 🔭 **Search** | recent ZTF transients sitting on galaxy nuclei, using the standard positional cuts |
 | ⚖️ **Consensus** | every candidate is looked up in ALeRCE, Fink and Lasair, and the result is **agree / disagree / insufficient** |
-| 🎯 **TDE score** | candidates are ranked by a small cross-validated model; the top 10% holds 76% of TDEs ([details](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/TDE_SCORE.md)) |
+| 🎯 **TDE score** | candidates are ranked from their light curve and host galaxy; when first picked, the top 10% holds 56% of TDEs, and 75% two months later ([details](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/TDE_SCORE.md)) |
 | ✅ **Validated** | recovers 51% of spectroscopically confirmed TDEs at mag ≤ 19 (72% at ≤ 20) and raises their share 4.9× ([results](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/RESULTS.md)) |
 | 🌌 **ZTF + Rubin** | ZTF names and Rubin/LSST `diaObjectId`s both work, through the same API |
 | 📅 **Weekly** | a scheduled job publishes a digest page, an [Atom feed](https://bibinthomas123.github.io/nucleuswatch/feed.xml) and optional Slack/Discord posts, and keeps the history in the repo |
@@ -194,10 +194,12 @@ TNS spectroscopic classification in 2024–2025
   share **4.9×** (1.2% → 6.0%). Nuclear SNe Ia and SNe II remain the majority.
   That's expected, and it tells you how much follow-up a nuclear sample costs.
 - This measures the cuts, not the selection from Fink's classifier streams.
-- **TDE score.** A ten-feature logistic model (colour, colour change, rise
-  time, amplitude and broker outputs) ranks candidates. Cross-validated on
-  the same objects, the top 10% of the ranked list holds 76% of TDEs at 43%
-  purity, against a 5.8% base rate. Colour carries most of the weight
+- **TDE score.** A logistic model ranks candidates from the light curve so
+  far and the host galaxy (Legacy Surveys colour, size, redshift). It was
+  tested on light curves as they looked when the weekly search first picked
+  each object. There, the top 10% of the ranked list holds 56% of TDEs at 32%
+  purity, against a 5.8% base rate, and two months later 75% at 42%. Colour
+  carries most of the weight; broker labels aren't inputs
   ([details](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/TDE_SCORE.md)).
 - **Live picks.** `validation/prospective.py` checks each week's picks
   against TNS classifications that arrive later, using only what the digest

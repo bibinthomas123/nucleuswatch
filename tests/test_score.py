@@ -22,7 +22,7 @@ def test_stored_model_matches_features():
 
 
 def test_score_is_a_fraction(offline_brokers):
-    s = score.tde_score(bm.get_object(OBJECT_ID))
+    s = score.tde_score(bm.get_object(OBJECT_ID), lookup_host=False)
     assert 0 <= s <= 1
 
 
@@ -49,3 +49,27 @@ def test_blue_constant_colour_ranks_above_reddening():
     red = {**base, "g_r": 0.4, "g_r_slope": 1.0}
     tde_like, sn_like = score.apply(model, [blue, red])
     assert tde_like > sn_like
+
+
+def test_features_respect_the_cutoff(offline_brokers):
+    obj = bm.get_object(OBJECT_ID)
+    lc = score.light_curve(obj)
+    early = score.features(obj, at=float(lc["mjd"].min()) + 1)
+    late = score.features(obj)
+    assert early["log_ndet"] < late["log_ndet"]
+
+
+def test_host_features():
+    host = {"type": "SER", "shape_r": 1.0, "mag_g": 18.0, "mag_r": 17.3, "z": 0.1}
+    from nucleuswatch.core import MergedObject
+    f = score.features(MergedObject("ZTF00aaaaaaa", results={}, errors={}), host)
+    assert abs(f["host_g_r"] - 0.7) < 1e-9
+    assert abs(f["host_abs_r"] - (17.3 - 38.315)) < 0.01
+    assert f["host_point"] == 0.0 and f["host_log_size"] == 0.0
+
+
+def test_distance_modulus_matches_astropy_values():
+    # astropy FlatLambdaCDM(H0=70, Om0=0.3).distmod
+    assert abs(score.distance_modulus(0.05) - 36.735) < 0.005
+    assert abs(score.distance_modulus(1.0) - 44.100) < 0.005
+    assert math.isnan(score.distance_modulus(0))

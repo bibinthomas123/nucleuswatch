@@ -182,12 +182,15 @@ alerts.
 
 ## TDE score
 
-`from nucleuswatch.score import tde_score, features, FEATURES`
+`from nucleuswatch.score import tde_score, tde_scores, features, FEATURES`
 
 | Function | Returns | Description |
 |---|---|---|
-| `tde_score(obj)` | `float` or `None` | The model's output, 0–1, for a `MergedObject`. Higher means more TDE-like. `None` if ALeRCE has no data on the object. |
-| `features(obj)` | `dict[str, float]` | The ten inputs ([list](how-it-works.md#4-the-tde-score)); `NaN` where unavailable. |
+| `tde_score(obj, host=None, *, lookup_host=True)` | `float` or `None` | The model's output, 0–1, for a ZTF `MergedObject`. Higher means more TDE-like. Looks up the host unless you pass `host` or `lookup_host=False`. `None` for Rubin objects or an empty light curve. |
+| `tde_scores(objects, *, use_cache=True)` | `(scores, hosts)` | Scores many objects (`{object_id: MergedObject}`) with one host-catalogue query per 25 objects. Returns two dicts keyed by object ID. |
+| `features(obj, host=None, at=None)` | `dict[str, float]` | The twelve inputs ([list](how-it-works.md#4-the-tde-score)) from detections up to MJD `at` (default: all); `NaN` where unavailable. |
+| `hosts_for(objects, *, use_cache=True)` | `dict` | Legacy Surveys host per object (DR9 for ZTF, DR10 for Rubin), or `None`. |
+| `distance_modulus(z)` | `float` | Flat ΛCDM (H0 = 70, Ωm = 0.3) distance modulus. |
 | `FEATURES` | `list[str]` | Feature names, in model order. |
 | `load_model()` | `dict` | The stored model (`features, fill, mean, scale, coef, intercept, n_train, n_tde, fitted`). |
 | `apply(model, rows)` | `ndarray` | Scores for a list of feature dicts with a given model. Useful for refitted models. |
@@ -264,7 +267,7 @@ Setup is in [weekly-digest.md → Chat alerts](weekly-digest.md#chat-alerts-slac
 
 | Function | Description |
 |---|---|
-| `nearest_sources(positions, *, use_cache=True)` | `positions` maps any key to `(ra, dec)` in degrees. Returns, per key, the nearest Legacy Surveys DR10 source within 2″ as `{"sep": arcsec, "type": Tractor model, "shape_r": half-light radius in arcsec}`, or `None`. Queries 25 positions at a time; results are cached for 30 days. |
+| `nearest_sources(positions, *, use_cache=True, release="dr10")` | `positions` maps any key to `(ra, dec)` in degrees; `release` is `"dr10"` (Rubin, deeper, DECam only) or `"dr9"` (ZTF, whole Legacy Surveys sky). Returns, per key, the nearest source within 2″ as `{"sep", "type", "shape_r", "mag_g", "mag_r", "mag_z", "z", "z_err", "z_is_spec"}` (magnitudes dereddened; `z` spectroscopic where known, else photometric), or `None`. Queries 25 positions at a time; results are cached for 30 days. |
 | `is_nuclear(host, max_offset)` | True when `host` is a galaxy model (REX, EXP, DEV, SER) within `max_offset` arcsec. |
 
 ---

@@ -145,34 +145,54 @@ brokers disagree on are TDEs, against 3% of those they agree on
 ## 4. The TDE score
 
 `score.tde_score(obj)` returns a number from 0 to 1 from a logistic model
-over ten features that every candidate has:
+over twelve features, all known when the weekly search picks an object:
 
 | Feature | From |
 |---|---|
-| `alerce_tde` | ALeRCE forced-photometry classifier's top class is TDE |
-| `alerce_transient_tde` | its transient-branch sub-classifier's top class is TDE |
-| `simbad_agn` | Fink's alert-time SIMBAD crossmatch is an AGN/QSO |
-| `snn_sn` | Fink SuperNNova P(SN vs all) |
-| `disagree` | ALeRCE and Fink vote for different categories |
-| `g_r` | median g − r colour (g and r detections within 1 day) |
+| `g_r` | median g − r colour of the transient (g and r detections within 1 day) |
 | `g_r_slope` | change of g − r per 100 days |
 | `log_rise` | log10(1 + days from first detection to peak) |
-| `log_ndet` | log10(number of detections) |
+| `fade_rate` | mag/day after the peak (missing until the peak has passed) |
 | `amplitude` | brightest to faintest detection, in mag |
+| `log_ndet` | log10(number of detections) |
+| `peak_abs_mag` | peak magnitude minus the host's distance modulus |
+| `host_g_r` | host galaxy g − r, corrected for Milky Way dust |
+| `host_abs_r` | host r-band absolute magnitude |
+| `host_log_size` | log10 of the host's half-light radius |
+| `host_point` | the host is a point source (quasar-like) |
+| `simbad_agn` | Fink's alert-time SIMBAD crossmatch is an AGN/QSO |
 
-The weights live in `nucleuswatch/assets/tde_score.json`, fitted by
-`validation/tde_score.py` on 402 spectroscopically classified nuclear
-objects. Missing values are filled with the training medians.
+Host properties come from the Legacy Surveys DR9 catalogue (`hosts.py`). The
+redshift is spectroscopic where the catalogue has one, photometric otherwise,
+and converted to a distance with flat ΛCDM (H0 = 70, Ωm = 0.3). Missing values
+are filled with the training medians, so an object outside the survey
+footprint is scored from its light curve alone.
 
-In cross-validation the top 10% of the ranked list holds 76% of the TDEs
-(43% purity, against a 5.8% base rate). Colour carries most of the weight:
-TDEs stay hot and blue, while supernovae redden as they cool.
+**Training on light curves as they were.** `validation/tde_score.py` fits
+the weights on 402 spectroscopically classified nuclear objects. Each object's
+light curve is cut off at *selection*, meaning its first alert passing the
+nuclear cuts, when the weekly search would first have listed it. It is also
+evaluated 7, 14, 28 and 56 days later, and in full. All snapshots of one object
+stay in the same cross-validation fold.
 
-Treat it as a ranking, not a probability. It was fitted on complete light
-curves, so it is less sure of objects found a few days ago. One feature
-was left out on purpose: whether ALeRCE has a forced-photometry
-classification yet. That correlates with "TDE" in the archive, but in a live
-week it mostly measures how new an object is.
+| Light curve used | TDEs in the top 10% | TDE share of the top 10% |
+|---|---|---|
+| at selection | 56% | 32% |
+| +2 weeks | 68% | 38% |
+| +8 weeks | 75% | 42% |
+
+The base rate is 5.8%. Colour carries most of the weight: TDEs stay hot and
+blue, while supernovae redden as they cool. Host features matter most early
+(AUC 0.90 with them at selection, 0.85 without).
+
+**Why broker labels aren't inputs.** The training set only has today's broker
+classifications, not what the brokers said when each object was picked.
+Adding them anyway barely helps (AUC 0.94 against 0.93 on full light curves),
+and would make the early-time numbers look better than they are. ALeRCE's
+TDE vote is still shown next to the score, and still triggers an alert.
+
+The weights are in `nucleuswatch/assets/tde_score.json`. Treat the score as
+a ranking, not a probability.
 
 ## 5. Rubin/LSST
 

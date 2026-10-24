@@ -34,7 +34,7 @@ from .brokers import fink
 from .core import MergedObject
 from .notify import write_feed
 from .recipes import CandidateSearch, NuclearCuts, lsst_nuclear_transients, nuclear_transients
-from .score import tde_score
+from .score import distance_modulus, tde_scores
 from .taxonomy import categorize
 
 REPO_URL = "https://github.com/bibinthomas123/nucleuswatch"
@@ -63,13 +63,15 @@ def build(
         days, NuclearCuts(mag_max=mag_max), sources=sources, new_within_days=new_within_days,
         brokers=brokers, now=now, use_cache=use_cache,
     )
+    scores, found = tde_scores(search.objects, use_cache=use_cache) if search.objects else ({}, {})
     candidates = []
     for row in search.candidates.to_dict("records"):
         obj = search.objects.get(row["object_id"])
         rec = {**_clean(row), **(_object_record(obj) if obj else {})}
         rec["tier"] = "bright" if (rec.get("mag") or 99) <= bright_mag else "faint"
-        score = tde_score(obj) if obj else None
+        score = scores.get(row["object_id"])
         rec["tde_score"] = round(score, 3) if score is not None else None
+        rec["host"] = _host_record(found.get(row["object_id"]), rec.get("mag"))
         candidates.append(rec)
     # Most TDE-like first; objects without a score (no ALeRCE data) go last.
     candidates.sort(key=lambda c: -1 if c["tde_score"] is None else c["tde_score"], reverse=True)
@@ -222,6 +224,16 @@ def _object_record(obj: MergedObject) -> dict:
         "first_mjd": _num(obj.lightcurve["mjd"].min()) if len(obj.lightcurve) else None,
         "peak_mag": _num(obj.lightcurve["mag"].min()) if len(obj.lightcurve) else None,
     }
+
+
+def _host_record(host: dict | None, mag: float | None) -> dict | None:
+    """The Legacy Surveys host, and the transient's absolute magnitude if there's a redshift."""
+    if not host:
+        return None
+    out = {k: host.get(k) for k in ("sep", "type", "shape_r", "mag_g", "mag_r", "mag_z", "z", "z_err", "z_is_spec")}
+    if host.get("z") and mag is not None:
+        out["abs_mag"] = round(mag - distance_modulus(host["z"]), 2)
+    return out
 
 
 def _num(v):
@@ -656,11 +668,13 @@ every week, so they're listed without consensus.</p>
  disagreements tend to be the interesting cases, such as one broker calling a source an artefact while another
  calls it a supernova.</p></div>
  <div class="col"><h3>TDE score</h3>
- <p>Candidates are ranked by a logistic model over ten broker outputs, fitted on {_score_n()} spectroscopically
- classified nuclear transients from 2024–2025. Colour carries most of the weight: TDEs stay hot and blue, while
- supernovae redden as they cool. In cross-validation the top tenth of the ranked list held three quarters of the
- TDEs, against a 6% base rate. It ranks; it doesn't classify, and it was fitted on complete light curves, so it
- is less sure of objects found a few days ago. <a href="{REPO_URL}/blob/main/validation/TDE_SCORE.md">Details</a>.</p></div>
+ <p>Candidates are ranked by a logistic model over the light curve so far (colour, colour change, rise, fade)
+ and the host galaxy from the Legacy Surveys (colour, size, and the flare's absolute magnitude from the host's
+ redshift), fitted on {_score_n()} spectroscopically classified nuclear transients from 2024–2025. Colour carries
+ most of the weight: TDEs stay hot and blue, while supernovae redden as they cool. Tested on light curves as they
+ looked when the search first picked each object, the top tenth of the ranked list held 56% of the TDEs (32% of
+ that tenth were TDEs, against a 6% base rate), rising to three quarters two months later. Broker labels aren't
+ inputs. It ranks; it doesn't classify. <a href="{REPO_URL}/blob/main/validation/TDE_SCORE.md">Details</a>.</p></div>
  {_validation_panel(val)}
 </div>
 
@@ -743,13 +757,19 @@ def _card(c: dict) -> str:
     skipped = f"<details class='small'><summary>brokers skipped</summary><ul>{skipped}</ul></details>" if skipped else ""
     age = f" · first seen {_fmt(c.get('age_days'), 0)} d ago" if c.get("first_seen_mjd") else ""
     listed = f" · on this list since {escape(c['first_listed'])}" if c.get("returning") else ""
+    h = c.get("host") or {}
+    host_fact = ""
+    if h.get("z"):
+        kind = "spectroscopic" if h.get("z_is_spec") else f"photometric ±{_fmt(h.get('z_err'))}"
+        host_fact = (f"<br>Host z = {_fmt(h['z'], 3)} ({kind}) · peak M ≈ {_fmt(h.get('abs_mag'), 1)} · "
+                     f"host g−r {_fmt((h['mag_g'] - h['mag_r']) if h.get('mag_g') and h.get('mag_r') else None)}")
     score = (f" <span class='tier'>TDE score {_fmt(c['tde_score'], 2)}</span>"
              if c.get("tde_score") is not None else "")
     return f"""<article class="entry" id="{oid}">
 <h3>{oid}{_fresh(c)} {_badge(c.get('consensus'))} <span class="tier">{escape(c.get('tier', ''))}</span>{score}</h3>
 <div class="facts">{_fmt(c.get('mag'))} mag ({_fmt(c.get('band'))}) · distnr {_fmt(c.get('distnr'))}″ ·
 sgscore1 {_fmt(c.get('sgscore1'))} · {c.get('n_detections', 0)} detections{age}{listed}<br>
-RA {_fmt(c.get('ra'), 5)} · Dec {_fmt(c.get('dec'), 5)} · via {escape(c.get('sources') or '')}</div>
+RA {_fmt(c.get('ra'), 5)} · Dec {_fmt(c.get('dec'), 5)} · via {escape(c.get('sources') or '')}{host_fact}</div>
 <div class="links">{' · '.join(links)}</div>
 {spec}<ul class="votes">{votes}</ul>{sherlock}{skipped}
 <div class="imgs">{host_html}{imgs}</div></article>"""
