@@ -7,6 +7,8 @@ name: Weekly digest
 #   Settings -> Pages -> Source: "GitHub Actions"
 #   Settings -> Secrets and variables -> Actions -> New repository secret
 #     LASAIR_TOKEN  (optional; without it Lasair is skipped)
+#     NUCLEUSWATCH_WEBHOOK  (optional; Slack or Discord incoming-webhook URL
+#       that gets this week's TDE-like candidates)
 
 on:
   schedule:
@@ -55,11 +57,16 @@ jobs:
           LASAIR_TOKEN: ${{ secrets.LASAIR_TOKEN }}
         run: nucleuswatch digest --days "${{ github.event.inputs.days || '7' }}" --data digest --site _site
 
+      - name: Check earlier picks against new spectra
+        # A broker outage here must not block the weekly page.
+        continue-on-error: true
+        run: python validation/prospective.py
+
       - name: Commit the record
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add digest/
+          git add digest/ validation/prospective.json validation/PROSPECTIVE.md
           git diff --cached --quiet || git commit -m "digest: $(date -u +%Y-%m-%d)"
           git push
 
@@ -69,3 +76,11 @@ jobs:
 
       - id: deploy
         uses: actions/deploy-pages@v4
+
+      - name: Post TDE-like candidates to chat
+        # Only scheduled runs post, so code pushes don't re-announce a week.
+        # Without the secret, notify only prints the message.
+        if: github.event_name == 'schedule'
+        env:
+          NUCLEUSWATCH_WEBHOOK: ${{ secrets.NUCLEUSWATCH_WEBHOOK }}
+        run: nucleuswatch notify --data digest

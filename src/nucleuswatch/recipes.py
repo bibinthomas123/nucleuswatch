@@ -30,6 +30,11 @@ instead of 94% of AGN as known; tuned on 2024-2025, see validation/). Alert
 histories come from ALeRCE, which keeps every public ZTF alert.
 Known objects are listed in ``search.known`` and not looked up in every broker.
 
+``lsst_nuclear_transients`` does the same for Rubin/LSST. Rubin alerts carry
+no host information yet, so the nucleus test uses the Legacy Surveys DR10
+catalogue instead (see :mod:`nucleuswatch.hosts`): the nearest catalogued
+source must be a galaxy within ``max_offset`` arcsec.
+
 All thresholds are parameters; tune them for your science case.
 """
 
@@ -42,9 +47,10 @@ from datetime import datetime, timedelta, timezone
 
 import pandas as pd
 
+from . import hosts
 from ._http import BrokerError
-from .brokers import alerce, fink, lasair
-from .brokers.base import JD_TO_MJD, ZTF_BANDS
+from .brokers import alerce, fink, fink_lsst, lasair
+from .brokers.base import JD_TO_MJD, ZTF_BANDS, flux_to_mag
 from .core import MergedObject, get_object
 
 # Fink streams a nuclear transient can plausibly end up in. TDEs and AGN
@@ -259,6 +265,91 @@ def merge_objects(object_ids: list[str], brokers: list[str] | None = None, *,
     return objects
 
 
+LSST_TAG = "extragalactic_lt20mag_candidate"  # Fink: rising, mag < 20, extragalactic
+LSST_COLUMNS = ["r:diaObjectId", "r:midpointMjdTai", "r:ra", "r:dec", "r:psfFlux", "r:psfFluxErr", "r:band",
+                "f:clf_cats_class"]
+
+
+def lsst_nuclear_transients(
+    days: float = 7,
+    mag_max: float = 20.0,
+    *,
+    max_offset: float = 0.5,
+    tag: str = LSST_TAG,
+    merge: bool = True,
+    use_cache: bool = True,
+    now: datetime | None = None,
+) -> CandidateSearch:
+    """Rubin/LSST transients on a galaxy nucleus with an alert in the last ``days`` days.
+
+    Alerts come from Fink's ``tag`` stream; the brightest alert per object
+    must be brighter than ``mag_max``, and the nearest Legacy Surveys DR10
+    source must be a galaxy within ``max_offset`` arcsec. If the window has no
+    alerts, ``query["latest_alert_mjd"]`` says when the stream last had one.
+    """
+    now = now or datetime.now(timezone.utc)
+    start, stop = (now - timedelta(days=days)).date(), (now + timedelta(days=1)).date()
+    historical = now < datetime.now(timezone.utc) - timedelta(days=2)
+    ttl = HISTORICAL_TTL if historical else 600
+    errors: list[str] = []
+    funnel = {"alerts_scanned": 0, "objects_scanned": 0, "bright": 0, "passed_cuts": 0}
+    query = {"recipe": "lsst_nuclear_transients", "survey": "lsst", "days": days,
+             "startdate": start.isoformat(), "stopdate": stop.isoformat(), "tag": tag,
+             "mag_max": mag_max, "max_offset": max_offset, "host_catalogue": hosts.TABLE}
+    empty = pd.DataFrame(columns=LSST_CANDIDATE_COLUMNS)
+
+    try:
+        alerts = fink_lsst.tags(tag, start.isoformat(), stop.isoformat(), columns=LSST_COLUMNS,
+                                use_cache=use_cache, ttl=ttl)
+    except BrokerError as exc:
+        return CandidateSearch(empty, {}, query, [f"fink lsst tags {tag!r}: {exc}"], funnel=funnel)
+    funnel["alerts_scanned"] = len(alerts)
+    funnel["objects_scanned"] = len({a.get("r:diaObjectId") for a in alerts})
+    if not alerts:
+        try:
+            last = fink_lsst.tags(tag, n=1, columns=["r:midpointMjdTai"], use_cache=use_cache)
+            query["latest_alert_mjd"] = last[0]["r:midpointMjdTai"] if last else None
+        except BrokerError as exc:
+            errors.append(f"fink lsst latest alert: {exc}")
+
+    best: dict[str, dict] = {}
+    for a in alerts:
+        mag, _ = flux_to_mag(a.get("r:psfFlux"), a.get("r:psfFluxErr"))
+        oid = a.get("r:diaObjectId")
+        if mag is None or mag > mag_max or oid is None:
+            continue
+        oid = str(oid)
+        if oid not in best or mag < best[oid]["mag"]:
+            best[oid] = {"object_id": oid, "ra": a.get("r:ra"), "dec": a.get("r:dec"), "mag": mag,
+                         "band": a.get("r:band"), "mjd": a.get("r:midpointMjdTai"),
+                         "sources": f"fink-lsst:{tag}"}
+    funnel["bright"] = len(best)
+
+    try:
+        found = hosts.nearest_sources({o: (r["ra"], r["dec"]) for o, r in best.items()}, use_cache=use_cache)
+    except BrokerError as exc:
+        errors.append(f"host catalogue: {exc}")
+        found = {}
+    rows = []
+    for oid, r in best.items():
+        host = found.get(oid)
+        if hosts.is_nuclear(host, max_offset):
+            rows.append({**r, "host_sep": host["sep"], "host_type": host["type"], "host_r50": host["shape_r"]})
+    table = pd.DataFrame(rows, columns=LSST_CANDIDATE_COLUMNS)
+    funnel["passed_cuts"] = funnel["new"] = len(table)
+
+    objects: dict[str, MergedObject] = {}
+    if merge and len(table):
+        with ThreadPoolExecutor(max_workers=4) as pool:
+            merged = pool.map(lambda o: get_object(o, ["alerce", "fink"], use_cache=use_cache), table["object_id"])
+            objects = {m.object_id: m for m in merged}
+        table = _add_consensus(table, objects)
+    return CandidateSearch(table.sort_values("mag").reset_index(drop=True), objects, query, errors,
+                           funnel=funnel)
+
+
+LSST_CANDIDATE_COLUMNS = ["object_id", "ra", "dec", "mag", "band", "mjd", "host_sep", "host_type", "host_r50",
+                          "sources"]
 CANDIDATE_COLUMNS = [
     "object_id", "ra", "dec", "mag", "band", "mjd", "distnr", "distpsnr1", "sgscore1",
     "ndethist", "fink_class", "first_seen_mjd", "first_pass_mjd", "sources",

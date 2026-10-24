@@ -32,10 +32,13 @@ from . import __version__
 from ._http import BrokerError
 from .brokers import fink
 from .core import MergedObject
-from .recipes import CandidateSearch, NuclearCuts, nuclear_transients
+from .notify import write_feed
+from .recipes import CandidateSearch, NuclearCuts, lsst_nuclear_transients, nuclear_transients
+from .score import tde_score
 from .taxonomy import categorize
 
 REPO_URL = "https://github.com/bibinthomas123/nucleuswatch"
+TDE_LIKE = 0.5  # tde_score at or above this is called "TDE-like" on the page
 KNOWN_FIELDS = ["object_id", "ra", "dec", "mag", "band", "mjd", "sources", "age_days"]
 
 
@@ -49,8 +52,12 @@ def build(
     brokers: list[str] | None = None,
     now: datetime | None = None,
     use_cache: bool = True,
+    lsst: bool = True,
 ) -> tuple[dict, CandidateSearch]:
-    """Run the search and return (JSON-able record, search)."""
+    """Run the search and return (JSON-able record, search).
+
+    With ``lsst=True`` the Rubin/LSST search runs too, into ``record["lsst"]``.
+    """
     now = now or datetime.now(timezone.utc)
     search = nuclear_transients(
         days, NuclearCuts(mag_max=mag_max), sources=sources, new_within_days=new_within_days,
@@ -61,7 +68,11 @@ def build(
         obj = search.objects.get(row["object_id"])
         rec = {**_clean(row), **(_object_record(obj) if obj else {})}
         rec["tier"] = "bright" if (rec.get("mag") or 99) <= bright_mag else "faint"
+        score = tde_score(obj) if obj else None
+        rec["tde_score"] = round(score, 3) if score is not None else None
         candidates.append(rec)
+    # Most TDE-like first; objects without a score (no ALeRCE data) go last.
+    candidates.sort(key=lambda c: -1 if c["tde_score"] is None else c["tde_score"], reverse=True)
     known = [_clean({k: r.get(k) for k in KNOWN_FIELDS}) for r in search.known.to_dict("records")]
     record = {
         "generated": now.isoformat(timespec="seconds"),  # end of the search window
@@ -75,11 +86,23 @@ def build(
         "n_disagree": sum(c.get("consensus") == "disagree" for c in candidates),
         "n_agree": sum(c.get("consensus") == "agree" for c in candidates),
         "n_bright": sum(c["tier"] == "bright" for c in candidates),
+        "n_tde_like": sum((c["tde_score"] or 0) >= TDE_LIKE for c in candidates),
         "n_known": len(known),
         "candidates": candidates,
         "known": known,
     }
+    if lsst:
+        record["lsst"] = _lsst_record(days, mag_max, now, use_cache)
     return record, search
+
+
+def _lsst_record(days: float, mag_max: float, now: datetime, use_cache: bool) -> dict:
+    search = lsst_nuclear_transients(days, mag_max, now=now, use_cache=use_cache)
+    candidates = []
+    for row in search.candidates.to_dict("records"):
+        obj = search.objects.get(row["object_id"])
+        candidates.append({**_clean(row), **(_object_record(obj) if obj else {})})
+    return {"query": search.query, "funnel": search.funnel, "errors": search.errors, "candidates": candidates}
 
 
 def write_data(record: dict, data_dir: str | Path) -> Path:
@@ -131,6 +154,7 @@ def render_site(record: dict, data_dir: str | Path, site_dir: str | Path,
     if sky.is_file():
         (site / "img" / SKY_IMAGE).write_bytes(sky.read_bytes())
     (site / "index.html").write_text(_page(record, archive, val))
+    write_feed(data_dir, site)
     (site / ".nojekyll").write_text("")
     return site / "index.html"
 
@@ -440,6 +464,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
     rows = "".join(
         f"<tr><td><a class='id' href='#{escape(c['object_id'])}'>{escape(c['object_id'])}</a></td>"
         f"<td class='num'>{_fmt(c.get('mag'))}</td><td>{_fmt(c.get('band'))}</td>"
+        f"<td class='num'>{_fmt(c.get('tde_score'), 2)}</td>"
         f"<td class='tier'>{escape(c.get('tier', ''))}</td>"
         f"<td class='num'>{_fmt(c.get('age_days'), 0) if c.get('first_seen_mjd') else '–'}</td>"
         f"<td>{_badge(c.get('consensus'))}</td><td>{_fmt(c.get('categories'))}</td>"
@@ -489,6 +514,7 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
 <meta name="description" content="Nuclear transients in the ZTF alert stream, with ALeRCE, Fink and Lasair classifications compared.">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="{_FONTS}">
+<link rel="alternate" type="application/atom+xml" title="Nucleus Watch: TDE-like candidates" href="feed.xml">
 <style>{_CSS}</style></head>
 <body><main>
 <header class="masthead">
@@ -499,12 +525,14 @@ def _page(record: dict, archive: list[dict], val: dict | None) -> str:
  <div class="meta">{escape(q.get('startdate', ''))} – {escape(q.get('stopdate', ''))} · sources: {escape(sources)} ·
  mag ≤ {_fmt(cuts.get('mag_max'), 1)} · nucleuswatch {escape(record['nucleuswatch_version'])}</div>
 </header>
-<nav><a href="#candidates">Candidates</a><a href="#details">Entries</a><a href="#known">Known sources</a>
-<a href="#history">History</a><a href="#method">Method</a><a href="#archive">Archive</a><a href="{REPO_URL}">Source code</a></nav>
+<nav><a href="#candidates">Candidates</a><a href="#details">Entries</a><a href="#rubin">Rubin</a><a href="#known">Known sources</a>
+<a href="#history">History</a><a href="#method">Method</a><a href="#archive">Archive</a><a href="feed.xml">Feed</a>
+<a href="{REPO_URL}">Source code</a></nav>
 
 <dl class="figures">
  <div><dd>{record['n_candidates']}</dd><dt>new nuclear candidates</dt></div>
  <div><dd>{record.get('n_bright', 0)}</dd><dt>brighter than mag {_fmt(q.get('bright_mag'), 0)}</dt></div>
+ <div><dd>{record.get('n_tde_like', 0)}</dd><dt>TDE score ≥ {TDE_LIKE}</dt></div>
  <div><dd class="disagree">{record['n_disagree']}</dd><dt>brokers disagree</dt></div>
  <div><dd class="agree">{record.get('n_agree', 0)}</dd><dt>brokers agree</dt></div>
  <div><dd>{len(tns_typed)}</dd><dt>with a spectroscopic type</dt></div>
@@ -536,15 +564,19 @@ point to jump to its entry. {escape(SKY_CREDIT)}</figcaption></figure>
 
 <h2 id="candidates"><span class="num">03</span>New candidates</h2>{empty}
 <div class="table-wrap"><table>
-<thead><tr><th>object</th><th class="num">mag</th><th>band</th><th>tier</th><th class="num">age (d)</th><th>consensus</th>
+<thead><tr><th>object</th><th class="num">mag</th><th>band</th><th class="num">TDE score</th><th>tier</th><th class="num">age (d)</th><th>consensus</th>
 <th>categories</th><th>TNS</th><th>TNS type</th><th>found via</th></tr></thead><tbody>{rows}</tbody></table></div>
-<p class="muted small">Age is the number of days since first detection, where Fink reports it. Bright means
+<p class="muted small">Sorted by TDE score, a ranking from a small model fitted on spectroscopically classified
+nuclear transients (<a href="#method">method</a>). Age is the number of days since first detection, where Fink reports it. Bright means
 mag ≤ {_fmt(q.get('bright_mag'), 0)}; faint goes down to {_fmt(cuts.get('mag_max'), 0)}.
 <a href="data/{escape(stamp)}.csv">Download the table (CSV)</a>.</p>
 
 <h2 id="details"><span class="num">04</span>Entries</h2>{cards}
 
-<h2 id="known"><span class="num">05</span>Known nuclear sources active this window</h2>
+<h2 id="rubin"><span class="num">05</span>Rubin/LSST</h2>
+{_lsst_section(record.get("lsst"))}
+
+<h2 id="known"><span class="num">06</span>Known nuclear sources active this window</h2>
 <p>These objects pass the nuclear cuts, were first detected more than {_fmt(q.get('new_within_days'), 0)}
 days ago, and their nucleus was already producing alerts in the two years before the current flare began. Most
 are AGN, which vary all the time. A source that was quiet for years and has just started flaring is listed under
@@ -554,10 +586,10 @@ every week, so they're listed without consensus.</p>
 <th class="num">Dec</th><th>found via</th></tr></thead>
 <tbody>{known_rows}</tbody></table></div>{known_more}
 
-<h2 id="history"><span class="num">06</span>History</h2>
+<h2 id="history"><span class="num">07</span>History</h2>
 <figure>{_history_chart(archive)}</figure>
 
-<h2 id="method"><span class="num">07</span>Method</h2>
+<h2 id="method"><span class="num">08</span>Method</h2>
 <div class="cols">
  <div class="col"><h3>Selection</h3>
  <p>Alerts from Fink's classifier streams ({escape(', '.join(q.get('fink_classes', [])))}) must be brighter than
@@ -567,16 +599,23 @@ every week, so they're listed without consensus.</p>
  Lasair objects that Sherlock places within 1″ of a galaxy core are added as well.</p></div>
  <div class="col"><h3>Consensus</h3>
  <p>Each new candidate is looked up in ALeRCE, Fink and Lasair, and each broker casts one vote: ALeRCE's
- light-curve classifier (its stamp classifier early on), Fink's classification, and Lasair's Sherlock context.
+ forced-photometry classifier (the only one with a TDE class; its alert light-curve or stamp classifier until
+ forced photometry exists), Fink's classification, and Lasair's Sherlock context.
  Votes are mapped to coarse categories such as SN, AGN or variable star. Sherlock's "nuclear transient" label
  abstains, because every candidate is nuclear by selection. The brokers <i>agree</i> when all votes land in one
  category, <i>disagree</i> when they don't, and the result is <i>insufficient</i> with fewer than two votes. The
  disagreements tend to be the interesting cases, such as one broker calling a source an artefact while another
  calls it a supernova.</p></div>
+ <div class="col"><h3>TDE score</h3>
+ <p>Candidates are ranked by a logistic model over ten broker outputs, fitted on {_score_n()} spectroscopically
+ classified nuclear transients from 2024–2025. Colour carries most of the weight: TDEs stay hot and blue, while
+ supernovae redden as they cool. In cross-validation the top tenth of the ranked list held three quarters of the
+ TDEs, against a 6% base rate. It ranks; it doesn't classify, and it was fitted on complete light curves, so it
+ is less sure of objects found a few days ago. <a href="{REPO_URL}/blob/main/validation/TDE_SCORE.md">Details</a>.</p></div>
  {_validation_panel(val)}
 </div>
 
-<h2 id="archive"><span class="num">08</span>Archive</h2>
+<h2 id="archive"><span class="num">09</span>Archive</h2>
 <div class="table-wrap"><table><thead><tr><th>week ending</th><th class="num">new</th><th class="num">disagree</th>
 <th class="num">known</th><th>sources</th><th>data</th></tr></thead>
 <tbody>{archive_rows}</tbody></table></div>
@@ -589,6 +628,44 @@ every week, so they're listed without consensus.</p>
 teams; please cite them if you use it. Compiled with <a href="{REPO_URL}">nucleuswatch</a>.</footer>
 </main></body></html>
 """
+
+
+def _lsst_section(lsst: dict | None) -> str:
+    if not lsst:
+        return "<p class='muted'>The Rubin search didn't run for this week.</p>"
+    q, f = lsst["query"], lsst["funnel"]
+    intro = (f"<p>The same search for the Rubin alert stream: alerts in Fink's "
+             f"<code>{escape(q.get('tag', ''))}</code> stream brighter than mag {_fmt(q.get('mag_max'), 0)}, "
+             f"on a galaxy nucleus. Rubin alerts don't carry host information yet, so the nearest source in the "
+             f"Legacy Surveys DR10 catalogue must be a galaxy within {_fmt(q.get('max_offset'), 1)}″. Votes come "
+             f"from ALeRCE's Rubin stamp classifier and Fink's CATS classes.</p>")
+    errors = "".join(f"<li>{escape(e)}</li>" for e in lsst.get("errors", []))
+    errors = f"<ul class='small muted'>{errors}</ul>" if errors else ""
+    if not f.get("alerts_scanned"):
+        last = q.get("latest_alert_mjd")
+        when = ""
+        if last:
+            date = datetime(1858, 11, 17, tzinfo=timezone.utc) + timedelta(days=last)
+            when = f" The most recent alert in that stream is from {date:%d %B %Y}."
+        return intro + f"<p><b>No Rubin alerts reached the brokers in this window.</b>{when}</p>" + errors
+    rows = "".join(
+        f"<tr><td><a class='id' href='{escape(c.get('links', {}).get('fink', '#'))}'>{escape(c['object_id'])}</a></td>"
+        f"<td class='num'>{_fmt(c.get('mag'))}</td><td>{_fmt(c.get('band'))}</td>"
+        f"<td class='num'>{_fmt(c.get('host_sep'))}</td><td>{_fmt(c.get('host_type'))}</td>"
+        f"<td>{_badge(c.get('consensus'))}</td><td>{_fmt(c.get('categories'))}</td></tr>"
+        for c in lsst["candidates"])
+    summary = (f"<p class='muted small'>{f['alerts_scanned']} alerts from {f['objects_scanned']} objects; "
+               f"{f.get('bright', 0)} bright enough; {f['passed_cuts']} on a galaxy nucleus.</p>")
+    if not rows:
+        return intro + summary + errors
+    return intro + f"""<div class="table-wrap"><table><thead><tr><th>diaObjectId</th><th class="num">mag</th>
+<th>band</th><th class="num">host offset (″)</th><th>host model</th><th>consensus</th><th>categories</th></tr></thead>
+<tbody>{rows}</tbody></table></div>""" + summary + errors
+
+
+def _score_n() -> str:
+    from .score import load_model
+    return str(load_model().get("n_train", ""))
 
 
 def _card(c: dict) -> str:
@@ -616,8 +693,10 @@ def _card(c: dict) -> str:
     skipped = "".join(f"<li>{escape(b)}: {escape(e)}</li>" for b, e in (c.get("broker_errors") or {}).items())
     skipped = f"<details class='small'><summary>brokers skipped</summary><ul>{skipped}</ul></details>" if skipped else ""
     age = f" · first seen {_fmt(c.get('age_days'), 0)} d ago" if c.get("first_seen_mjd") else ""
+    score = (f" <span class='tier'>TDE score {_fmt(c['tde_score'], 2)}</span>"
+             if c.get("tde_score") is not None else "")
     return f"""<article class="entry" id="{oid}">
-<h3>{oid} {_badge(c.get('consensus'))} <span class="tier">{escape(c.get('tier', ''))}</span></h3>
+<h3>{oid} {_badge(c.get('consensus'))} <span class="tier">{escape(c.get('tier', ''))}</span>{score}</h3>
 <div class="facts">{_fmt(c.get('mag'))} mag ({_fmt(c.get('band'))}) · distnr {_fmt(c.get('distnr'))}″ ·
 sgscore1 {_fmt(c.get('sgscore1'))} · {c.get('n_detections', 0)} detections{age}<br>
 RA {_fmt(c.get('ra'), 5)} · Dec {_fmt(c.get('dec'), 5)} · via {escape(c.get('sources') or '')}</div>

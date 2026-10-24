@@ -31,9 +31,10 @@ flares, nuclear supernovae):
 |---|---|
 | 🔭 **Search** | recent ZTF transients sitting on galaxy nuclei, using the standard positional cuts |
 | ⚖️ **Consensus** | every candidate is looked up in ALeRCE, Fink and Lasair, and the result is **agree / disagree / insufficient** |
+| 🎯 **TDE score** | candidates are ranked by a small cross-validated model; the top 10% holds 76% of TDEs ([details](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/TDE_SCORE.md)) |
 | ✅ **Validated** | recovers 51% of spectroscopically confirmed TDEs at mag ≤ 19 (72% at ≤ 20) and raises their share 4.9× ([results](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/RESULTS.md)) |
 | 🌌 **ZTF + Rubin** | ZTF names and Rubin/LSST `diaObjectId`s both work, through the same API |
-| 📅 **Weekly** | a scheduled job publishes a digest page and keeps the history in the repo |
+| 📅 **Weekly** | a scheduled job publishes a digest page, an [Atom feed](https://bibinthomas123.github.io/nucleuswatch/feed.xml) and optional Slack/Discord posts, and keeps the history in the repo |
 | 🧑‍🔬 **Zooniverse** | one flag writes a subject set ready to upload; broker opinions stay out of the volunteers' view |
 | 🔗 **Alertissimo** | works with results from the [Alertissimo](https://github.com/sambolino/alertissimo) orchestration layer |
 
@@ -139,6 +140,11 @@ obj.consensus()              # {'status': 'disagree', 'categories': ['SN', 'VarS
 obj.coverage()               # which broker has which alert, and magnitude spread
 obj.plot()                   # annotated; obj.plot(annotate=False) is the volunteer view
 
+from nucleuswatch.score import tde_score
+tde_score(obj)               # 0-1 ranking score; higher = more TDE-like
+
+rubin = nw.lsst_nuclear_transients(days=7, mag_max=20)   # same search on the Rubin stream
+
 from nucleuswatch.zooniverse import export_subjects
 export_subjects(search, "week43/")
 ```
@@ -179,6 +185,15 @@ TNS spectroscopic classification in 2024–2025
   share **4.9×** (1.2% → 6.0%). Nuclear SNe Ia and SNe II remain the majority.
   That's expected, and it tells you how much follow-up a nuclear sample costs.
 - This measures the cuts, not the selection from Fink's classifier streams.
+- **TDE score.** A ten-feature logistic model (colour, colour change, rise
+  time, amplitude and broker outputs) ranks candidates. Cross-validated on
+  the same objects, the top 10% of the ranked list holds 76% of TDEs at 43%
+  purity, against a 5.8% base rate. Colour carries most of the weight
+  ([details](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/TDE_SCORE.md)).
+- **Live picks.** `validation/prospective.py` checks each week's picks
+  against TNS classifications that arrive later, using only what the digest
+  recorded at the time. It runs weekly and fills
+  [PROSPECTIVE.md](https://github.com/bibinthomas123/nucleuswatch/blob/main/validation/PROSPECTIVE.md).
 - **Broker disagreement flags TDEs.** Among 402 classified nuclear objects,
   weighted to the real SN mix, 21% of those where brokers *disagree* are TDEs,
   against 3% where they agree. An ALeRCE TDE vote is right 35% of the time
@@ -195,7 +210,16 @@ Pass a Rubin `diaObjectId` anywhere a ZTF name works, for example
   `LASAIR_LSST_TOKEN`).
 - Rubin difference fluxes can be negative, so light curves keep `flux` and
   `flux_err` in nJy. `mag` is filled only where flux > 0, and plots use flux.
-- The nuclear search and image stamps are ZTF-only for now.
+- **Nuclear search:** `nucleuswatch nuclear --survey lsst` (or
+  `recipes.lsst_nuclear_transients`) reads Fink's
+  `extragalactic_lt20mag_candidate` stream. Rubin alerts carry no host
+  information yet, so the nucleus test uses the Legacy Surveys DR10
+  catalogue: the nearest source must be a galaxy within 0.5″. In the last
+  week of Rubin alerts (July 2026), 12 of 68 bright objects passed. The
+  weekly page has a Rubin section.
+- As of October 2026 the brokers have received no Rubin alerts since
+  14 July 2026; the search reports this rather than an empty list.
+- Image stamps are ZTF-only for now.
 
 ## Weekly digest
 
@@ -222,6 +246,11 @@ runs it every Monday and deploys the page to GitHub Pages:
   chart, the method and validation summary, and an archive.
 - **Data:** `digest/<date>.json`, `.csv` and `_known.csv` are committed, so
   the history stays in the repo.
+- **Alerts:** the site has an Atom feed (`feed.xml`) of TDE-like
+  candidates: TDE score ≥ 0.5, a TDE vote from any broker, or a TDE type on
+  TNS. Set a `NUCLEUSWATCH_WEBHOOK` repository secret (a Slack or Discord
+  incoming-webhook URL) and the Monday run posts them there too; run
+  `nucleuswatch notify` to see the message.
 
 Backfill past weeks with `nucleuswatch digest --until 2026-10-16`. Lasair's
 query API can't search the past, so backfilled weeks use Fink candidates only.
@@ -274,8 +303,12 @@ for objects, 10 min for streams) to respect rate limits.
 
 ## Known limitations
 
-- The nuclear search and Zooniverse stamps are ZTF-only; Rubin objects work
-  for lookups, consensus and plots.
+- Zooniverse stamps are ZTF-only. The Rubin nuclear search relies on the
+  Legacy Surveys DR10 footprint and hasn't been validated against Rubin
+  spectroscopic classifications yet.
+- The TDE score was fitted on complete light curves of 34 TDEs; it is less
+  reliable for objects found a few days ago, and isn't a calibrated
+  probability.
 - Lasair's Rubin adapter is built against recorded responses and hasn't been
   run live yet (it needs an LSST token).
 - Lasair-sourced candidates don't carry ZTF's alert-level cut fields; they
@@ -305,14 +338,16 @@ builds the package and uploads it to PyPI.
 
 ## Roadmap
 
-- [ ] Lasair Sherlock `NT` (nuclear transient) as a second candidate source
+- [x] Lasair Sherlock `NT` (nuclear transient) as a second candidate source
 - [ ] Fink `latests` recipe upstream in Alertissimo ([notes](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/alertissimo.md))
 - [ ] Merge volunteer classifications back into the consensus table
 - [x] Weekly digest web page
 - [x] Rubin/LSST object IDs
 - [x] Validation against spectroscopically classified objects
-- [ ] Nuclear search on the Rubin stream; ANTARES adapter
-- [ ] Publish on PyPI
+- [x] Nuclear search on the Rubin stream
+- [x] TDE ranking score, Atom feed and chat alerts
+- [x] Publish on PyPI
+- [ ] ANTARES adapter
 
 ## Acknowledgements
 

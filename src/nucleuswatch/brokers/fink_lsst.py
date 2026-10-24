@@ -63,3 +63,19 @@ def parse(object_id: str, sources: list[dict]) -> BrokerResult:
         },
         url=f"https://lsst.fink-portal.org/{object_id}",
     )
+
+
+def tags(tag: str, startdate: str | None = None, stopdate: str | None = None, n: int = 20000,
+         columns: list[str] | None = None, *, use_cache: bool = True, ttl: float = 600) -> list[dict]:
+    """Alerts Fink tagged ``tag`` (see /api/v1/tags for the list), newest first.
+
+    With no dates, returns the latest ``n`` alerts with that tag.
+    """
+    body: dict = {"tag": tag, "n": n, "output-format": "json"}
+    if startdate:
+        body["startdate"] = str(startdate)
+    if stopdate:
+        body["stopdate"] = str(stopdate)
+    if columns:
+        body["columns"] = ",".join(columns)
+    return request_json("POST", f"{API}/tags", json_body=body, use_cache=use_cache, ttl=ttl) or []

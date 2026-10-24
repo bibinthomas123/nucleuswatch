@@ -3,6 +3,7 @@
     nucleuswatch object ZTF21abfmbix [--plot lc.png]
     nucleuswatch nuclear --days 7 --mag-max 19 [--csv out.csv] [--zooniverse DIR]
     nucleuswatch digest --days 7 --data digest --site _site
+    nucleuswatch notify --data digest [--webhook URL]
     nucleuswatch zooniverse-upload DIR --project 1234 --subject-set "Week 43"
 """
 
@@ -29,6 +30,7 @@ def main(argv: list[str] | None = None) -> int:
     o.add_argument("--plot", metavar="FILE", help="save a light-curve plot to FILE (png/pdf)")
 
     n = sub.add_parser("nuclear", help="recent nuclear transients + cross-broker consensus")
+    n.add_argument("--survey", choices=["ztf", "lsst"], default="ztf", help="alert stream to search (default ztf)")
     n.add_argument("--days", type=float, default=7, help="look back this many days (default 7)")
     n.add_argument("--mag-max", type=float, default=19.0, help="faintest magnitude (default 19)")
     n.add_argument("--distnr-max", type=float, default=0.5, help="arcsec to ZTF ref source (default 0.5)")
@@ -46,6 +48,11 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("--site", default="_site", help="folder for the generated web page")
     d.add_argument("--no-cache", action="store_true")
 
+    t = sub.add_parser("notify", help="post the latest digest's TDE-like candidates to a Slack/Discord webhook")
+    t.add_argument("--data", default="digest", help="folder with latest.json")
+    t.add_argument("--webhook", help="incoming-webhook URL (default: $NUCLEUSWATCH_WEBHOOK; none = print only)")
+    t.add_argument("--always", action="store_true", help="post even when nothing is TDE-like")
+
     u = sub.add_parser("zooniverse-upload", help="upload an exported folder to a Zooniverse project")
     u.add_argument("folder", help="folder written by --zooniverse (contains manifest.csv)")
     u.add_argument("--project", type=int, required=True, help="Zooniverse project id")
@@ -54,7 +61,8 @@ def main(argv: list[str] | None = None) -> int:
     args = p.parse_args(argv)
     pd.set_option("display.width", 160)
     pd.set_option("display.max_colwidth", 60)
-    commands = {"object": _object, "nuclear": _nuclear, "digest": _digest, "zooniverse-upload": _upload}
+    commands = {"object": _object, "nuclear": _nuclear, "digest": _digest, "notify": _notify,
+                "zooniverse-upload": _upload}
     return commands[args.command](args, p)
 
 
@@ -97,8 +105,10 @@ def _object(args, p) -> int:
 
 
 def _nuclear(args, p) -> int:
-    from .recipes import NuclearCuts, nuclear_transients
+    from .recipes import NuclearCuts, lsst_nuclear_transients, nuclear_transients
 
+    if args.survey == "lsst":
+        return _nuclear_lsst(args, lsst_nuclear_transients)
     cuts = NuclearCuts(mag_max=args.mag_max, distnr_max=args.distnr_max)
     search = nuclear_transients(args.days, cuts, merge=not args.no_merge, use_cache=not args.no_cache)
     _print_errors(("search", e) for e in search.errors)
@@ -126,6 +136,28 @@ def _nuclear(args, p) -> int:
     return 0
 
 
+def _nuclear_lsst(args, recipe) -> int:
+    from datetime import datetime, timedelta, timezone
+
+    search = recipe(args.days, args.mag_max, max_offset=args.distnr_max, merge=not args.no_merge,
+                    use_cache=not args.no_cache)
+    _print_errors(("search", e) for e in search.errors)
+    last = search.query.get("latest_alert_mjd")
+    if last and not search.funnel.get("alerts_scanned"):
+        when = datetime(1858, 11, 17, tzinfo=timezone.utc) + timedelta(days=last)
+        print(f"\nNo Rubin alerts in the last {args.days:g} days; the latest is from {when:%Y-%m-%d}.")
+    print(f"\n{len(search)} Rubin nuclear candidate(s), last {args.days:g} days, mag <= {args.mag_max:g}\n")
+    if len(search):
+        cols = ["object_id", "mag", "band", "host_sep", "host_type"]
+        if "consensus" in search.candidates:
+            cols += ["consensus", "categories"]
+        print(search.candidates[cols].to_string(index=False, float_format=lambda x: f"{x:.2f}"))
+    if args.csv:
+        search.candidates.to_csv(args.csv, index=False)
+        print(f"\nWrote {args.csv}")
+    return 0
+
+
 def _digest(args, p) -> int:
     from datetime import datetime, timezone
 
@@ -139,6 +171,27 @@ def _digest(args, p) -> int:
     page = digest.render_site(record, args.data, args.site, search, use_cache=not args.no_cache)
     print(f"{record['n_candidates']} candidates ({record['n_disagree']} disagree)")
     print(f"Wrote {path} and {page}")
+    return 0
+
+
+def _notify(args, p) -> int:
+    import json
+    import os
+    from pathlib import Path
+
+    from . import notify
+
+    record = json.loads((Path(args.data) / "latest.json").read_text())
+    text = notify.message(record)
+    url = args.webhook or os.environ.get("NUCLEUSWATCH_WEBHOOK")
+    if not url:
+        print(text)
+        return 0
+    if not notify.notable(record) and not args.always:
+        print("Nothing TDE-like this week; not posting (use --always to post anyway).")
+        return 0
+    notify.post(url, text)
+    print("Posted to the webhook.")
     return 0
 
 
