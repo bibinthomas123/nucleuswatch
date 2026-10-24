@@ -12,6 +12,7 @@ Installing the package adds a `nucleuswatch` command. Run
 | [`digest`](#nucleuswatch-digest) | Build the weekly record and web page |
 | [`notify`](#nucleuswatch-notify) | Post the latest digest's TDE-like candidates to Slack or Discord |
 | [`zooniverse-upload`](#nucleuswatch-zooniverse-upload) | Upload an exported subject set to Zooniverse |
+| [`zooniverse-ingest`](#nucleuswatch-zooniverse-ingest) | Tally a Zooniverse classification export by object |
 
 ---
 
@@ -84,6 +85,7 @@ nucleuswatch digest [--days 7] [--mag-max 20] [--until YYYY-MM-DD] [--brokers ..
 | `--brokers` | all | Brokers used for consensus. |
 | `--data` | `digest` | Folder for the records (`<date>.json`, `.csv`, `_known.csv`, `latest.json`). |
 | `--site` | `_site` | Folder for the generated web page and `feed.xml`. |
+| `--volunteers` | `zooniverse/classifications.csv` | Zooniverse classification export to add as a vote; ignored if the file doesn't exist. |
 | `--no-cache` | off | Refetch instead of using cached responses. |
 
 The run includes the ZTF search with the new/known split, consensus, TDE
@@ -124,6 +126,23 @@ nucleuswatch zooniverse-upload DIR --project ID --subject-set "Week 43"
 
 Needs `pip install "nucleuswatch[zooniverse]"` and the `ZOONIVERSE_USERNAME`
 and `ZOONIVERSE_PASSWORD` environment variables.
+
+## `nucleuswatch zooniverse-ingest`
+
+```bash
+nucleuswatch zooniverse-ingest EXPORT.csv [--task T0] [--workflow ID] [--csv FILE]
+```
+
+| Argument | Default | Meaning |
+|---|---|---|
+| `EXPORT.csv` | | The classification export from the project's *Data Exports* page. |
+| `--task` | `T0` | The workflow task that asks what the object is. |
+| `--workflow` | all | Only count classifications from this workflow ID. |
+| `--csv FILE` | | Write the tally to a CSV file. |
+
+It prints one row per object: the number of volunteers, the top answer and
+its share, the category it maps to, whether the volunteers vote (at least
+5 answers and a majority above 50%), and all answers.
 
 ---
 

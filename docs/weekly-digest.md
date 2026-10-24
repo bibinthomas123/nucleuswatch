@@ -155,6 +155,16 @@ records = [json.loads(p.read_text()) for p in sorted(pathlib.Path("digest").glob
 df = pd.DataFrame([{**c, "week": r["generated"][:10]} for r in records for c in r["candidates"]])
 ```
 
+## Volunteer votes
+
+If `zooniverse/classifications.csv` exists in the repository, the digest
+reads it with `zooniverse.read_classifications`. Every candidate that
+volunteers have classified gets the volunteers' majority answer as an extra
+vote, shown on its card as `zooniverse volunteers`. Refresh the file by
+downloading a new classification export from the project's *Data Exports*
+page and committing it. `record["n_volunteer"]` counts the candidates it
+touched.
+
 ## Backfilling
 
 ```bash

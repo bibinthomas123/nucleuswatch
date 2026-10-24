@@ -245,6 +245,11 @@ when the stream last had one. The brokers have received no Rubin alerts since
   difference stamps, plus `manifest.csv`. Columns starting with `#` are
   hidden from volunteers. Columns starting with `!` appear only in Talk. Broker
   opinions are hidden, so volunteers' votes stay independent.
+- `zooniverse.read_classifications` reads the project's classification export
+  back, matches each answer to its object through `!object_id`, and
+  `add_volunteer_votes` adds the volunteers' majority answer as one more vote
+  in the consensus. It counts only when at least 5 volunteers answered and a
+  majority agree.
 - `alertissimo_bridge.from_alertissimo` turns an Alertissimo
   `DSLExecutionResult` into a `MergedObject`, so consensus, plots and export
   work on Alertissimo results too.

@@ -46,12 +46,20 @@ def main(argv: list[str] | None = None) -> int:
     d.add_argument("--brokers", nargs="+", choices=list(ADAPTERS), help="brokers for consensus (default: all)")
     d.add_argument("--data", default="digest", help="folder for the committed JSON/CSV records")
     d.add_argument("--site", default="_site", help="folder for the generated web page")
+    d.add_argument("--volunteers", default="zooniverse/classifications.csv",
+                   help="Zooniverse classification export to add as a vote (used if the file exists)")
     d.add_argument("--no-cache", action="store_true")
 
     t = sub.add_parser("notify", help="post the latest digest's TDE-like candidates to a Slack/Discord webhook")
     t.add_argument("--data", default="digest", help="folder with latest.json")
     t.add_argument("--webhook", help="incoming-webhook URL (default: $NUCLEUSWATCH_WEBHOOK; none = print only)")
     t.add_argument("--always", action="store_true", help="post even when nothing is TDE-like")
+
+    z = sub.add_parser("zooniverse-ingest", help="tally a Zooniverse classification export by object")
+    z.add_argument("export", help="classification export CSV from the project's Data Exports page")
+    z.add_argument("--task", default="T0", help="workflow task holding the classification (default T0)")
+    z.add_argument("--workflow", type=int, help="only this workflow id")
+    z.add_argument("--csv", metavar="FILE", help="write the tally to FILE")
 
     u = sub.add_parser("zooniverse-upload", help="upload an exported folder to a Zooniverse project")
     u.add_argument("folder", help="folder written by --zooniverse (contains manifest.csv)")
@@ -62,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
     pd.set_option("display.width", 160)
     pd.set_option("display.max_colwidth", 60)
     commands = {"object": _object, "nuclear": _nuclear, "digest": _digest, "notify": _notify,
-                "zooniverse-upload": _upload}
+                "zooniverse-ingest": _ingest, "zooniverse-upload": _upload}
     return commands[args.command](args, p)
 
 
@@ -165,8 +173,11 @@ def _digest(args, p) -> int:
 
     now = (datetime.fromisoformat(args.until).replace(tzinfo=timezone.utc, hour=23, minute=59)
            if args.until else None)
+    from pathlib import Path
+
+    volunteers = args.volunteers if args.volunteers and Path(args.volunteers).exists() else None
     record, search = digest.build(args.days, args.mag_max, brokers=args.brokers, now=now,
-                                  use_cache=not args.no_cache)
+                                  use_cache=not args.no_cache, volunteers=volunteers)
     digest.mark_returning(record, args.data)
     path = digest.write_data(record, args.data)
     page = digest.render_site(record, args.data, args.site, search, use_cache=not args.no_cache)
@@ -193,6 +204,27 @@ def _notify(args, p) -> int:
         return 0
     notify.post(url, text)
     print("Posted to the webhook.")
+    return 0
+
+
+def _ingest(args, p) -> int:
+    from .taxonomy import categorize
+    from .zooniverse import MIN_MAJORITY, MIN_VOLUNTEERS, read_classifications
+
+    tally = read_classifications(args.export, task=args.task, workflow_id=args.workflow)
+    rows = [{"object_id": oid, "volunteers": t["n"], "top_answer": t["label"], "share": t["fraction"],
+             "category": categorize(t["label"]),
+             "votes": t["n"] >= MIN_VOLUNTEERS and t["fraction"] > MIN_MAJORITY,
+             "answers": "; ".join(f"{k}: {v}" for k, v in sorted(t["votes"].items(), key=lambda kv: -kv[1]))}
+            for oid, t in sorted(tally.items())]
+    table = pd.DataFrame(rows)
+    print(f"{len(table)} object(s) classified; {int(table['votes'].sum()) if len(table) else 0} with a decided "
+          f"volunteer vote (>= {MIN_VOLUNTEERS} volunteers, majority > {MIN_MAJORITY:.0%})\n")
+    if len(table):
+        print(table.to_string(index=False, float_format=lambda x: f"{x:.2f}"))
+    if args.csv:
+        table.to_csv(args.csv, index=False)
+        print(f"\nWrote {args.csv}")
     return 0
 
 

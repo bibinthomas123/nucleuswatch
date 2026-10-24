@@ -221,6 +221,7 @@ JSON-ready dict, laid out in
 | `brokers` | all | Brokers for consensus. |
 | `now` | now | End of the window. A window ending more than a day ago is marked `backfill`. |
 | `lsst` | `True` | Also run the Rubin search into `record["lsst"]`. |
+| `volunteers` | `None` | A Zooniverse classification export; classified candidates get the volunteers' vote. |
 
 Candidates are scored with `tde_score` and sorted by it, highest first.
 
@@ -286,7 +287,7 @@ Setup is in [weekly-digest.md → Chat alerts](weekly-digest.md#chat-alerts-slac
 
 ## Zooniverse
 
-`from nucleuswatch.zooniverse import export_subjects, upload_subjects`
+`from nucleuswatch.zooniverse import export_subjects, upload_subjects, read_classifications, add_volunteer_votes`
 
 ### `export_subjects(objects, outdir, *, cutouts=True, use_cache=True)`
 
@@ -310,6 +311,24 @@ the project.
 
 Also available: `subject_metadata(obj)` (one manifest row without images),
 `read_manifest(path)` and `draw_stamps(axes, stamps)`.
+
+### `read_classifications(export, *, task="T0", workflow_id=None)`
+
+Tallies a Zooniverse classification export (the CSV from the project's Data
+Exports page) by object. Answers to `task` are matched to objects through
+the `!object_id` subject metadata that `export_subjects` writes. Each
+logged-in volunteer counts once per subject, with their latest answer.
+Returns `{object_id: {"votes": {answer: n}, "n", "label", "fraction"}}`.
+
+### `add_volunteer_votes(objects, export, **kwargs)`
+
+Adds a `zooniverse` result to each `MergedObject` in `objects` that
+volunteers classified. Its `volunteers` classifier then votes in
+`consensus()` like a broker would, but only when at least `MIN_VOLUNTEERS`
+(5) answered and the top answer has more than `MIN_MAJORITY` (50%). Answers
+are mapped by `categorize`: "Tidal disruption event" → TDE, "Supernova" → SN,
+"Not sure" → abstain, and so on. Returns how many objects got a vote.
+`volunteer_result(object_id, tally)` builds one such result.
 
 ---
 

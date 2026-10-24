@@ -35,6 +35,7 @@ VOTE_PRIORITY = {
     "fink": ("fink_classification", "cats"),  # cats: Rubin/LSST
     "lasair": ("sherlock",),
     "antares": ("catalog_agn",),  # AGN/quasar catalogue match; otherwise abstains
+    "zooniverse": ("volunteers",),  # majority answer of Zooniverse volunteers, when they decided
 }
 VOTING_CLASSIFIERS = {(b, c) for b, names in VOTE_PRIORITY.items() for c in names}
 
@@ -42,6 +43,7 @@ VOTING_CLASSIFIERS = {(b, c) for b, names in VOTE_PRIORITY.items() for c in name
 _RULES: list[tuple[str, str | None]] = [
     # Abstentions first, so "Unknown"/"Ambiguous" never match anything else.
     (r"^(unknown|ambiguous|unclear|orphan|fail.*|none|nan)$", None),
+    (r"not sure|unsure|don.?t know|can.?t tell|^other$", None),  # volunteer answers that abstain
     # Fink CATS (LSST) broad classes that mix several physical types.
     (r"^(fast|long)$", None),
     (r"^non-periodic$", AGN),
@@ -53,7 +55,7 @@ _RULES: list[tuple[str, str | None]] = [
     (r"^bs$", STAR),
     (r"^vs$", VARSTAR),
     (r"^cv$|cv/nova|cataclyv|^nova|^cv\*", CV),
-    (r"tde", TDE),
+    (r"tde|tidal disruption", TDE),
     (r"kilonova|^kn", KILONOVA),
     (r"microlens", MICROLENSING),
     (r"solar system|tracklet|asteroid|^sso", SOLAR_SYSTEM),

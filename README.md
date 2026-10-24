@@ -117,6 +117,19 @@ export ZOONIVERSE_USERNAME=... ZOONIVERSE_PASSWORD=...
 nucleuswatch zooniverse-upload week43/ --project 1234 --subject-set "Nuclear, week 43"
 ```
 
+**Bringing the volunteers' answers back.** Download the project's
+classification export (*Lab → Data Exports → Request new classification
+export*) and tally it:
+
+```bash
+nucleuswatch zooniverse-ingest classifications.csv   # majority answer per object
+```
+
+Commit the export as `zooniverse/classifications.csv` and the weekly digest
+adds the volunteers as one more vote in each candidate's consensus. Each
+volunteer counts once per subject. The volunteers vote only when at least 5
+of them answered and a majority agree. Answers such as "Not sure" abstain.
+
 ## How it works
 
 ```mermaid
@@ -372,7 +385,7 @@ builds the package and uploads it to PyPI.
 
 - [x] Lasair Sherlock `NT` (nuclear transient) as a second candidate source
 - [ ] Fink `latests` recipe upstream in Alertissimo ([notes](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/alertissimo.md))
-- [ ] Merge volunteer classifications back into the consensus table
+- [x] Merge volunteer classifications back into the consensus table
 - [x] Weekly digest web page
 - [x] Rubin/LSST object IDs
 - [x] Validation against spectroscopically classified objects

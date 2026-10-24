@@ -53,16 +53,29 @@ def build(
     now: datetime | None = None,
     use_cache: bool = True,
     lsst: bool = True,
+    volunteers: str | Path | None = None,
 ) -> tuple[dict, CandidateSearch]:
     """Run the search and return (JSON-able record, search).
 
     With ``lsst=True`` the Rubin/LSST search runs too, into ``record["lsst"]``.
+    ``volunteers`` is a Zooniverse classification export; candidates that
+    volunteers have classified get the volunteers' vote in their consensus.
     """
     now = now or datetime.now(timezone.utc)
     search = nuclear_transients(
         days, NuclearCuts(mag_max=mag_max), sources=sources, new_within_days=new_within_days,
         brokers=brokers, now=now, use_cache=use_cache,
     )
+    n_volunteer = 0
+    if volunteers and search.objects:
+        from .recipes import _add_consensus
+        from .zooniverse import add_volunteer_votes
+
+        n_volunteer = add_volunteer_votes(search.objects, volunteers)
+        if n_volunteer:
+            cols = ["consensus", "categories", "broker_labels"]
+            search.candidates = _add_consensus(search.candidates.drop(columns=cols, errors="ignore"),
+                                               search.objects)
     scores, found = tde_scores(search.objects, use_cache=use_cache) if search.objects else ({}, {})
     candidates = []
     for row in search.candidates.to_dict("records"):
@@ -90,6 +103,7 @@ def build(
         "n_bright": sum(c["tier"] == "bright" for c in candidates),
         "n_tde_like": sum((c["tde_score"] or 0) >= TDE_LIKE for c in candidates),
         "n_known": len(known),
+        "n_volunteer": n_volunteer,
         "candidates": candidates,
         "known": known,
     }

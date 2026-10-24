@@ -133,3 +133,16 @@ def test_mark_returning(tmp_path):
     assert by["B"]["first_listed"] == "2026-10-19"
     assert by["C"]["first_listed"] == "2026-10-26" and not by["C"]["returning"]
     assert record["n_new_this_week"] == 1
+
+
+def test_volunteer_votes_reach_the_record(offline_digest, tmp_path):
+    from .test_zooniverse_ingest import _export, _row
+
+    record, _ = digest.build(14, now=NOW)
+    oid = record["candidates"][0]["object_id"]
+    export = _export(tmp_path, [_row(i, str(100 + i), "Tidal disruption event", oid) for i in range(5)])
+    record, _ = digest.build(14, now=NOW, volunteers=export)
+    cand = next(c for c in record["candidates"] if c["object_id"] == oid)
+    assert record["n_volunteer"] == 1
+    assert any(v["broker"] == "zooniverse" and v["category"] == "TDE" for v in cand["votes"])
+    assert "TDE" in cand["categories"]
