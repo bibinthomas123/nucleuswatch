@@ -17,6 +17,8 @@ TNS answer can't be scored against it:
   It is reported for reference, but scored separately ("Fink, science
   modules"), using only alert-time outputs: the SIMBAD crossmatch made when
   the alert was processed (`d:cdsxmatch`) and SuperNNova (`d:snn_sn_vs_all`).
+- ANTARES: votes AGN when the locus matches a quasar/AGN catalogue
+  (Milliquas, Véron-Cetty), otherwise abstains. Catalogue matches don't use TNS.
 - Lasair: Sherlock uses host context only. Its API allows 100 calls per hour,
   so results are cached in broker_truth_lasair.json and the run resumes
   where it stopped. Lasair is queried for all TDEs and AGN and a subsample
@@ -43,7 +45,7 @@ from run_validation import load_truth
 
 import nucleuswatch as nw
 from nucleuswatch import __version__
-from nucleuswatch.brokers import lasair
+from nucleuswatch.brokers import antares, lasair
 from nucleuswatch.recipes import NuclearCuts
 from nucleuswatch.taxonomy import categorize
 
@@ -171,6 +173,18 @@ def lasair_labels(sample: list[dict], pace: float) -> dict[str, str | None]:
     return {o: cache[o] for o in wanted if o in cache}
 
 
+def antares_votes(sample: list[dict]) -> dict[str, str]:
+    def one(oid):
+        try:
+            r = antares.fetch(oid)
+        except nw.BrokerError:
+            return oid, "no vote"
+        return oid, ("AGN" if len(r.classifications) else "no vote")
+
+    with ThreadPoolExecutor(max_workers=4) as pool:
+        return dict(pool.map(one, [s["object_id"] for s in sample]))
+
+
 def confusion(sample: list[dict], votes: dict[str, str | None], columns: list[str]) -> dict:
     m = {t: Counter() for t in TRUTH_ORDER}
     for s in sample:
@@ -186,14 +200,23 @@ def consensus_status(vs: list[str]) -> str:
     return "agree" if len(cats) == 1 else "disagree"
 
 
+SHORT_TITLES = {
+    "ALeRCE": "ALeRCE\n(nucleuswatch vote)",
+    "ALeRCE (forced phot.)": "ALeRCE\nforced phot.",
+    "Fink (science modules)": "Fink\nscience modules",
+    "ANTARES (AGN catalogues)": "ANTARES\nAGN catalogues",
+    "Lasair Sherlock": "Lasair Sherlock\n(subsample)",
+}
+
+
 def figure_confusion(matrices: dict[str, dict], columns: dict[str, list[str]]) -> None:
     import matplotlib.pyplot as plt
 
     plotstyle.setup()
     names = list(matrices)
-    fig, axes = plt.subplots(1, len(names), figsize=(plotstyle.DOUBLE, 2.25),
-                             gridspec_kw={"width_ratios": [len(columns[n]) for n in names]})
-    for ax, name in zip(np.atleast_1d(axes), names):
+    fig, axes = plt.subplots(1, len(names), figsize=(plotstyle.DOUBLE, 2.6),
+                             gridspec_kw={"width_ratios": [len(columns[n]) for n in names], "wspace": 0.12})
+    for k, (ax, name) in enumerate(zip(np.atleast_1d(axes), names)):
         cols = columns[name]
         counts = np.array([[matrices[name][t][c] for c in cols] for t in TRUTH_ORDER], float)
         frac = counts / np.maximum(counts.sum(axis=1, keepdims=True), 1)
@@ -201,17 +224,20 @@ def figure_confusion(matrices: dict[str, dict], columns: dict[str, list[str]]) -
         for i in range(len(TRUTH_ORDER)):
             for j in range(len(cols)):
                 if counts[i, j]:
-                    ax.text(j, i, f"{int(counts[i, j])}", ha="center", va="center", fontsize=7.5,
+                    ax.text(j, i, f"{int(counts[i, j])}", ha="center", va="center", fontsize=6,
                             color="white" if frac[i, j] > 0.55 else "black")
-        ax.set_xticks(range(len(cols)), cols, rotation=35, ha="right")
-        ax.set_yticks(range(len(TRUTH_ORDER)),
-                      [f"{t} ({int(counts[i].sum())})" for i, t in enumerate(TRUTH_ORDER)])
+        ax.set_xticks(range(len(cols)), cols, rotation=55, ha="right", fontsize=7)
+        if k == 0:
+            ax.set_yticks(range(len(TRUTH_ORDER)),
+                          [f"{t} ({int(counts[i].sum())})" for i, t in enumerate(TRUTH_ORDER)])
+            ax.set_ylabel("Spectroscopic class (TNS)")
+        else:
+            ax.set_yticks([])
         ax.minorticks_off()
         ax.tick_params(top=False, right=False, length=0)
-        ax.set_title(name)
-    np.atleast_1d(axes)[0].set_ylabel("Spectroscopic class (TNS)")
-    fig.tight_layout(rect=(0, 0.04, 1, 1))
-    fig.text(0.5, 0.0, "Broker vote", ha="center", va="bottom", fontsize=9)
+        ax.set_title(SHORT_TITLES.get(name, name), fontsize=7.5)
+    fig.subplots_adjust(left=0.1, right=0.995, top=0.84, bottom=0.27)
+    fig.text(0.55, 0.0, "Broker vote (colour: fraction of each class)", ha="center", va="bottom", fontsize=8)
     plotstyle.save(fig, "broker_confusion")
 
 
@@ -317,11 +343,16 @@ def render(r: dict) -> str:
         "",
         table("Fink (served)", PRED_ORDER),
         "",
+        "## ANTARES, AGN/quasar catalogue match (Milliquas, Véron-Cetty)",
+        "",
+        table("ANTARES (AGN catalogues)", PRED_ORDER),
+        "",
     ]
     if r.get("lasair_n"):
         lines += [f"## Lasair Sherlock (raw labels, N = {r['lasair_n']})", "", table("Lasair Sherlock", r["lasair_columns"]), ""]
     lines += [
-        "## Consensus status vs truth (ALeRCE + Fink science modules" + (" + Lasair" if r.get("lasair_n") else "") + ")",
+        ("## Consensus status vs truth (ALeRCE + Fink science modules + ANTARES"
+         + (" + Lasair" if r.get("lasair_n") else "") + ")"),
         "",
         "| status | objects | TDE | SN | AGN | P(TDE \\| status), 68% interval |",
         "|---|---|---|---|---|---|",
@@ -371,11 +402,13 @@ def main() -> int:
     ab = {o: predicted(alerce_bhrf_vote(m)) for o, m in objects.items()}
     fs = {o: predicted(fink_science_vote(m)) for o, m in objects.items()}
     fv = {o: predicted(fink_served_vote(m)) for o, m in objects.items()}
+    an = antares_votes(sample)
     matrices = {
         "ALeRCE": confusion(sample, al, PRED_ORDER),
         "ALeRCE (forced phot.)": confusion(sample, ab, PRED_ORDER),
         "Fink (science modules)": confusion(sample, fs, PRED_ORDER),
         "Fink (served)": confusion(sample, fv, PRED_ORDER),
+        "ANTARES (AGN catalogues)": confusion(sample, an, PRED_ORDER),
     }
     columns = {k: PRED_ORDER for k in matrices}
 
@@ -392,7 +425,7 @@ def main() -> int:
     status = {}
     for s in sample:
         o = s["object_id"]
-        vs = [al[o], fs[o]]
+        vs = [al[o], fs[o], an[o]]
         if o in ls:  # Sherlock: only physical labels vote, as in nucleuswatch
             vs.append(predicted(categorize(ls[o])) if ls[o] not in ("no vote", "other", "NT") else "no vote")
         status[o] = consensus_status(vs)
@@ -413,7 +446,7 @@ def main() -> int:
         "status_by_truth": {k: dict(v) for k, v in status_by_truth.items()},
         "kappa_alerce_fink": kappa([al[o] for o in order], [fs[o] for o in order]),
         "votes": {o: {"group": s["group"], "truth": s["truth"], "status": status[o], "alerce": al[o], "alerce_bhrf": ab[o], "fink_science": fs[o],
-                      "fink_served": fv[o],
+                      "fink_served": fv[o], "antares": an[o],
                       "lasair": ls.get(o)} for s in sample for o in [s["object_id"]]},
     }
     (HERE / "broker_truth.json").write_text(json.dumps(result, indent=1, default=str))

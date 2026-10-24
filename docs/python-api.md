@@ -39,7 +39,7 @@ Ask every broker about one object, in parallel, and merge the answers.
 | Parameter | Type | Default | Meaning |
 |---|---|---|---|
 | `object_id` | `str` or `int` | | A ZTF name (`"ZTF21abfmbix"`) or a Rubin `diaObjectId` (`170587117485817955`). The survey is detected from the ID. |
-| `brokers` | `list[str]` | all | Any of `"alerce"`, `"fink"`, `"lasair"`. |
+| `brokers` | `list[str]` | all | Any of `"alerce"`, `"fink"`, `"lasair"`, and for ZTF `"antares"`. |
 | `use_cache` | `bool` | `True` | Reuse cached responses. |
 | `lasair_token` | `str` | `None` | Overrides `LASAIR_TOKEN` (ZTF) or `LASAIR_LSST_TOKEN` (Rubin). |
 
@@ -331,7 +331,7 @@ obj = from_alertissimo(execute_dsl("objects ZTF26acakche from ztf via alerce\nwi
 
 ## Broker adapters
 
-`from nucleuswatch.brokers import alerce, fink, lasair, alerce_lsst, fink_lsst, lasair_lsst`
+`from nucleuswatch.brokers import alerce, antares, fink, lasair, alerce_lsst, fink_lsst, lasair_lsst`
 
 Every adapter has `fetch(object_id, *, use_cache=True) -> BrokerResult` and
 `parse(object_id, ...raw responses) -> BrokerResult`. The Lasair adapters
@@ -346,6 +346,7 @@ also take `token=`. Extra functions:
 | `fink.cutout(object_id, kind="Science", *, use_cache=True)` | Pixel array (list of lists) of the latest alert's stamp. `kind` is `"Science"`, `"Template"` or `"Difference"`. |
 | `lasair.nuclear_candidates(days=7, mag_max=20.0, max_separation=1.0, *, token=None, use_cache=True, limit=1000)` | Objects Sherlock classes as `NT` within `max_separation`″ of a host core and active in the last `days` days. One Lasair call. |
 | `lasair.batch_results(object_ids, *, token=None, use_cache=True)` | Sherlock class, description and TNS name for many ZTF objects in 2 calls per 100 objects. Returns `dict[object_id, BrokerResult]` for the objects Lasair knows. |
+| `antares.fetch(object_id, *, use_cache=True)` | ANTARES locus for a ZTF object (2 calls): light curve, `extra["antares_tags"]`, `extra["antares_catalogs"]`, `extra["post_starburst_host"]`, and an `AGN` vote (`catalog_agn`) on a quasar/AGN catalogue match. |
 | `fink_lsst.tags(tag, startdate=None, stopdate=None, n=20000, columns=None, *, use_cache=True, ttl=600)` | Rubin alerts with a Fink tag, newest first. With no dates, returns the latest `n`. |
 
 ### `class BrokerResult`

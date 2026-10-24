@@ -239,13 +239,13 @@ def merge_objects(object_ids: list[str], brokers: list[str] | None = None, *,
                   use_cache: bool = True) -> dict[str, MergedObject]:
     """Look many objects up in every broker, economically.
 
-    ALeRCE and Fink are queried per object, in parallel. Lasair is queried in
+    ALeRCE, Fink and ANTARES are queried per object, in parallel. Lasair is queried in
     one batch (see :func:`lasair.batch_results`), because its API allows only
     100 calls per hour and a per-object lookup would exhaust that in a week
     with ~30 candidates. If the batch fails, the reason is recorded on every
     object instead of failing the search.
     """
-    wanted = brokers or ["alerce", "fink", "lasair"]
+    wanted = brokers or ["alerce", "fink", "lasair", "antares"]
     per_object = [b for b in wanted if b != "lasair"]
     with ThreadPoolExecutor(max_workers=4) as pool:
         merged = list(pool.map(lambda oid: get_object(oid, per_object, use_cache=use_cache), object_ids))

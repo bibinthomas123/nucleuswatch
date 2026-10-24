@@ -9,9 +9,9 @@ from .conftest import OBJECT_ID
 
 def test_get_object_merges_all_brokers(offline_brokers):
     obj = bm.get_object(OBJECT_ID)
-    assert obj.brokers == ["alerce", "fink", "lasair"]
+    assert obj.brokers == ["alerce", "fink", "lasair", "antares"]
     assert not obj.errors
-    assert set(obj.lightcurve["broker"]) == {"alerce", "fink", "lasair"}
+    assert set(obj.lightcurve["broker"]) == {"alerce", "fink", "lasair", "antares"}
     assert {"category", "votes"} <= set(obj.classifications.columns)
 
 
@@ -137,3 +137,18 @@ def test_sherlock_nt_abstains(offline_brokers, monkeypatch):
     c = bm.get_object(OBJECT_ID).consensus()
     assert "lasair" not in {v["broker"] for v in c["votes"]}
     assert c["status"] == "agree"  # ALeRCE and Fink still agree on SN
+
+
+def test_antares_votes_agn_only_on_a_catalogue_match():
+    from nucleuswatch.brokers import antares
+
+    from .conftest import load
+
+    listing = load("antares_listing.json")
+    r = antares.parse(OBJECT_ID, listing, load("antares_locus.json"))
+    assert r.classifications.empty  # no AGN catalogue: abstains
+    assert len(r.lightcurve) == 14 and set(r.lightcurve["band"]) <= {"g", "r"}
+    listing["attributes"]["catalogs"] = ["milliquas", "ned"]
+    r = antares.parse(OBJECT_ID, listing, load("antares_locus.json"))
+    assert r.classifications.iloc[0]["label"] == "AGN"
+    assert categorize(r.classifications.iloc[0]["label"]) == "AGN"

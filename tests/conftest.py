@@ -32,7 +32,7 @@ def no_network(request, monkeypatch):
 @pytest.fixture
 def offline_brokers(monkeypatch):
     """Serve recorded API responses instead of calling the brokers."""
-    from nucleuswatch.brokers import alerce, fink, lasair
+    from nucleuswatch.brokers import alerce, antares, fink, lasair
 
     monkeypatch.setattr(
         alerce, "fetch",
@@ -43,5 +43,7 @@ def offline_brokers(monkeypatch):
     )
     monkeypatch.setattr(fink, "fetch", lambda oid, **kw: fink.parse(oid, load("fink_objects.json")))
     monkeypatch.setattr(lasair, "fetch", lambda oid, **kw: lasair.parse(oid, load("lasair_object.json")))
+    monkeypatch.setattr(antares, "fetch",
+                        lambda oid, **kw: antares.parse(oid, load("antares_listing.json"), load("antares_locus.json")))
     monkeypatch.setattr(lasair, "batch_results",
                         lambda ids, **kw: {o: lasair.parse(o, load("lasair_object.json")) for o in ids})

@@ -34,6 +34,7 @@ VOTE_PRIORITY = {
     "alerce": ("lc_classifier_BHRF_forced_phot", "lc_classifier", "stamp_classifier"),
     "fink": ("fink_classification", "cats"),  # cats: Rubin/LSST
     "lasair": ("sherlock",),
+    "antares": ("catalog_agn",),  # AGN/quasar catalogue match; otherwise abstains
 }
 VOTING_CLASSIFIERS = {(b, c) for b, names in VOTE_PRIORITY.items() for c in names}
 

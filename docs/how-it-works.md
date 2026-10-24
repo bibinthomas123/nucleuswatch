@@ -43,6 +43,8 @@ There is one module per broker and survey:
 | ZTF | `brokers/alerce.py` | `brokers/fink.py` | `brokers/lasair.py` (token) |
 | Rubin/LSST | `brokers/alerce_lsst.py` | `brokers/fink_lsst.py` | `brokers/lasair_lsst.py` (LSST token) |
 
+ZTF objects are also looked up in **ANTARES** (`brokers/antares.py`, public).
+
 Every adapter has `fetch(object_id)` → `BrokerResult` and a pure
 `parse(...)` that builds the result from raw API responses. The tests feed
 `parse` recorded responses, so they run offline. A `BrokerResult` holds:
@@ -75,6 +77,7 @@ has no token) goes into `.errors` instead of failing the call.
 | ALeRCE | forced-photometry light-curve classifier (`lc_classifier_BHRF_forced_phot`) → alert light-curve classifier (`lc_classifier`) → stamp classifier |
 | Fink | `v:classification` (ZTF) or CATS broad classes (Rubin) |
 | Lasair | Sherlock |
+| ANTARES | AGN when the locus matches the Milliquas or Véron-Cetty quasar/AGN catalogues; otherwise it abstains (it has no general classifier) |
 
 The first classifier in the list that answered casts the broker's vote. When
 a classifier appears in several model versions, the most confident row
@@ -135,8 +138,8 @@ brokers disagree on are TDEs, against 3% of those they agree on
    years and has just flared, which is what a TDE looks like, comes back as
    new. On 2024–2025 data, this keeps 75% of confirmed TDEs in the new list,
    against 56% with a plain age cut.
-4. **Merge** each new candidate across brokers (`merge_objects`). ALeRCE and
-   Fink are queried per object, in parallel. Lasair is queried in **one
+4. **Merge** each new candidate across brokers (`merge_objects`). ALeRCE,
+   Fink and ANTARES are queried per object, in parallel. Lasair is queried in **one
    batch** of two queries, because its API allows only 100 calls per hour.
 5. **Record** everything needed to reproduce the run in `search.query`
    (window, cuts, the sources actually used) and in `search.funnel` (how

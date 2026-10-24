@@ -24,7 +24,7 @@ nucleuswatch object OBJECT_ID [--brokers alerce fink lasair] [--no-cache] [--plo
 | Argument | Default | Meaning |
 |---|---|---|
 | `OBJECT_ID` | | A ZTF name (`ZTF21abfmbix`) or a Rubin `diaObjectId` (`170587117485817955`). |
-| `--brokers` | all | Brokers to query. |
+| `--brokers` | all | Brokers to query (`alerce fink lasair antares`). |
 | `--no-cache` | off | Refetch everything instead of using cached responses. |
 | `--plot FILE` | | Save the merged light curve to `FILE` (`.png` or `.pdf`). Needs `nucleuswatch[plot]`. |
 

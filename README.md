@@ -324,9 +324,10 @@ issue if a label is mapped wrongly.
 
 | Broker | Access | Used for |
 |---|---|---|
-| [ALeRCE](https://alerce.online) | public | light curve, `stamp_classifier`, `lc_classifier` |
+| [ALeRCE](https://alerce.online) | public | light curve, forced-photometry, light-curve and stamp classifiers |
 | [Fink](https://fink-portal.org) | public | candidate streams, light curve, classification, cutouts |
 | [Lasair](https://lasair-ztf.lsst.ac.uk) | free token (separate one for [Rubin](https://lasair.lsst.ac.uk)) | light curve, Sherlock context, TNS name |
+| [ANTARES](https://antares.noirlab.edu) | public | light curve, filter tags, catalogue crossmatches: an AGN vote when a locus matches the Milliquas or Véron-Cetty quasar/AGN catalogues (right for 29 of 35 in validation) |
 
 A broker that is down, rate-limited or missing a token is reported in
 `obj.errors` and doesn't fail the call. Responses are cached on disk (1 h
@@ -378,7 +379,7 @@ builds the package and uploads it to PyPI.
 - [x] Nuclear search on the Rubin stream
 - [x] TDE ranking score, Atom feed and chat alerts
 - [x] Publish on PyPI
-- [ ] ANTARES adapter
+- [x] ANTARES adapter (ZTF)
 
 ## Acknowledgements
 

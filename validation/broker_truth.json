@@ -1,6 +1,6 @@
 {
- "nucleuswatch_version": "1.0.0",
- "generated": "2026-10-24T10:46:35+00:00",
+ "nucleuswatch_version": "1.1.0",
+ "generated": "2026-10-24T18:57:24+00:00",
  "window": [
   "2024-01-01",
   "2026-01-01"
@@ -43,9 +43,9 @@
    },
    "AGN": {
     "TDE": 5,
-    "SN": 2,
+    "SN": 3,
     "AGN": 62,
-    "other": 3,
+    "other": 2,
     "no vote": 0
    }
   },
@@ -66,9 +66,9 @@
    },
    "AGN": {
     "TDE": 5,
-    "SN": 2,
+    "SN": 3,
     "AGN": 57,
-    "other": 3,
+    "other": 2,
     "no vote": 5
    }
   },
@@ -118,6 +118,29 @@
     "no vote": 39
    }
   },
+  "ANTARES (AGN catalogues)": {
+   "TDE": {
+    "TDE": 0,
+    "SN": 0,
+    "AGN": 1,
+    "other": 0,
+    "no vote": 33
+   },
+   "SN": {
+    "TDE": 0,
+    "SN": 0,
+    "AGN": 5,
+    "other": 0,
+    "no vote": 291
+   },
+   "AGN": {
+    "TDE": 0,
+    "SN": 0,
+    "AGN": 29,
+    "other": 0,
+    "no vote": 43
+   }
+  },
   "Lasair Sherlock": {
    "TDE": {
     "NT": 11,
@@ -158,17 +181,17 @@
   "agree": {
    "TDE": 8,
    "SN": 121,
-   "AGN": 30
+   "AGN": 32
   },
   "disagree": {
    "TDE": 17,
    "SN": 18,
-   "AGN": 36
+   "AGN": 35
   },
   "insufficient": {
    "TDE": 9,
    "SN": 157,
-   "AGN": 6
+   "AGN": 5
   }
  },
  "kappa_alerce_fink": 0.7418032786885246,
@@ -181,6 +204,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18aabdajx": {
@@ -191,6 +215,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18aaxqitv": {
@@ -201,6 +226,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18abxnvoz": {
@@ -211,6 +237,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18acecugr": {
@@ -221,6 +248,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18acmqevd": {
@@ -231,6 +259,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "AGN"
   },
   "ZTF19abzrhgq": {
@@ -241,6 +270,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF19accskvu": {
@@ -251,6 +281,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20aahmtso": {
@@ -261,6 +292,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20abwtifz": {
@@ -271,6 +303,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20accxwrk": {
@@ -281,6 +314,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF21aanxhjv": {
@@ -291,6 +325,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF22aadesap": {
@@ -301,6 +336,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF22aafujzv": {
@@ -311,6 +347,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF22abegjtx": {
@@ -321,6 +358,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF23abvzeqp": {
@@ -331,6 +369,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aaahxwr": {
@@ -341,6 +380,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF24aaecooj": {
@@ -351,6 +391,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF24aaoxmyb": {
@@ -361,6 +402,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF24aatxshz": {
@@ -371,6 +413,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aazlori": {
@@ -381,6 +424,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abfuwbm": {
@@ -391,6 +435,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF24abiqyej": {
@@ -401,6 +446,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF24abjfuew": {
@@ -411,6 +457,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abmybnp": {
@@ -421,6 +468,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF24abmzcpa": {
@@ -431,6 +479,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abyhjvc": {
@@ -441,6 +490,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF25aafwfzz": {
@@ -451,6 +501,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF25aagevje": {
@@ -461,6 +512,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25aagfhmz": {
@@ -471,6 +523,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF25aajfjhm": {
@@ -481,6 +534,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF25aaptkov": {
@@ -491,6 +545,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25aaymnha": {
@@ -501,6 +556,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25abwvuln": {
@@ -511,6 +567,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF17aacldgo": {
@@ -521,6 +578,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18aaiualk": {
@@ -531,6 +589,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18aaizgoq": {
@@ -541,6 +600,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18aaqljfc": {
@@ -551,6 +611,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18abdnihj": {
@@ -561,6 +622,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18abfcsjs": {
@@ -571,6 +633,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18abquopi": {
@@ -581,6 +644,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18acdvmdk": {
@@ -591,6 +655,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18acllbhl": {
@@ -601,6 +666,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18acqugen": {
@@ -611,6 +677,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18adkqdgj": {
@@ -621,6 +688,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aabgncx": {
@@ -631,6 +699,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aalpoff": {
@@ -641,6 +710,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aanevcu": {
@@ -651,6 +721,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aaprygi": {
@@ -661,6 +732,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aauaaxi": {
@@ -671,6 +743,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19ablekwo": {
@@ -681,6 +754,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19adfuzrc": {
@@ -691,6 +765,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF20aaispgr": {
@@ -701,6 +776,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF20aayclod": {
@@ -711,6 +787,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF20aclddpv": {
@@ -721,6 +798,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF20aclpdmt": {
@@ -731,6 +809,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF21aajvvbn": {
@@ -741,6 +820,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF21abetapt": {
@@ -751,6 +831,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22aahgxbx": {
@@ -761,6 +842,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22aaxfesc": {
@@ -771,6 +853,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22abmtnaw": {
@@ -781,6 +864,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22abxdrsl": {
@@ -791,6 +875,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aalfofn": {
@@ -801,6 +886,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF23abryfmg": {
@@ -811,6 +897,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abscruh": {
@@ -821,6 +908,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "other"
   },
   "ZTF24aaagezy": {
@@ -831,6 +919,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aaahxph": {
@@ -841,6 +930,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaammxh": {
@@ -851,6 +941,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaeeoku": {
@@ -861,6 +952,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaeikvz": {
@@ -871,6 +963,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaekobc": {
@@ -881,6 +974,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aagktjv": {
@@ -891,6 +985,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aagkwfe": {
@@ -901,6 +996,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aagomqx": {
@@ -911,6 +1007,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aaguabz": {
@@ -921,6 +1018,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahaajg": {
@@ -931,6 +1029,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahmgvr": {
@@ -941,6 +1040,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaihwaq": {
@@ -951,6 +1051,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaistkr": {
@@ -961,6 +1062,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aajgwdv": {
@@ -971,6 +1073,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aajhxqs": {
@@ -981,6 +1084,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aajxpmq": {
@@ -991,6 +1095,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaosmwq": {
@@ -1001,6 +1106,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaoxbth": {
@@ -1011,6 +1117,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aatdjua": {
@@ -1021,6 +1128,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aatrvwr": {
@@ -1031,6 +1139,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaugavy": {
@@ -1041,6 +1150,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aauuybw": {
@@ -1051,6 +1161,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aavovrp": {
@@ -1061,6 +1172,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aawktlo": {
@@ -1071,6 +1183,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aawyrsn": {
@@ -1081,6 +1194,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaxizpd": {
@@ -1091,6 +1205,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaxzjdt": {
@@ -1101,6 +1216,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaywvsf": {
@@ -1111,6 +1227,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aazkvzi": {
@@ -1121,6 +1238,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aazkzkl": {
@@ -1131,6 +1249,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aazlmpe": {
@@ -1141,6 +1260,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abboumm": {
@@ -1151,6 +1271,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abbrcrq": {
@@ -1161,6 +1282,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abcnnlb": {
@@ -1171,6 +1293,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abcrgam": {
@@ -1181,6 +1304,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abfnkzm": {
@@ -1191,6 +1315,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abiiabk": {
@@ -1201,6 +1326,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abiihsz": {
@@ -1211,6 +1337,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abiltvb": {
@@ -1221,6 +1348,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abizbpc": {
@@ -1231,6 +1359,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24ablnstl": {
@@ -1241,6 +1370,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF24abltxth": {
@@ -1251,6 +1381,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abojqpw": {
@@ -1261,6 +1392,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abqkkqz": {
@@ -1271,6 +1403,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abqpshs": {
@@ -1281,6 +1414,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abqqoxy": {
@@ -1291,6 +1425,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abqvdnb": {
@@ -1301,6 +1436,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abrezqh": {
@@ -1311,6 +1447,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abrhwmu": {
@@ -1321,6 +1458,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abriexo": {
@@ -1331,6 +1469,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abtddls": {
@@ -1341,6 +1480,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abuddym": {
@@ -1351,6 +1491,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF24abuyefl": {
@@ -1361,6 +1502,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abvtoyo": {
@@ -1371,6 +1513,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abxvoop": {
@@ -1381,6 +1524,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abxyalj": {
@@ -1391,6 +1535,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abyeoec": {
@@ -1401,6 +1546,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abyizjg": {
@@ -1411,6 +1557,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF24abyssre": {
@@ -1421,6 +1568,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF25aaaawig": {
@@ -1431,6 +1579,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaakjsi": {
@@ -1441,6 +1590,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaapgir": {
@@ -1451,6 +1601,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aafvaqf": {
@@ -1461,6 +1612,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aafvrmz": {
@@ -1471,6 +1623,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aafwfof": {
@@ -1481,6 +1634,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aagbkad": {
@@ -1491,6 +1645,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaggpqs": {
@@ -1501,6 +1656,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF25aaiitra": {
@@ -1511,6 +1667,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaipveb": {
@@ -1521,6 +1678,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aajqkss": {
@@ -1531,6 +1689,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aakhogj": {
@@ -1541,6 +1700,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aalughb": {
@@ -1551,6 +1711,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aanellf": {
@@ -1561,6 +1722,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aanfaxg": {
@@ -1571,6 +1733,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aanztch": {
@@ -1581,6 +1744,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaplvcg": {
@@ -1591,6 +1755,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaqbshw": {
@@ -1601,6 +1766,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaqkhyr": {
@@ -1611,6 +1777,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaqyygm": {
@@ -1621,6 +1788,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aarodyp": {
@@ -1631,6 +1799,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aasfkmy": {
@@ -1641,6 +1810,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaspxly": {
@@ -1651,6 +1821,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aasrzlo": {
@@ -1661,6 +1832,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aatkuvd": {
@@ -1671,6 +1843,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aatxsfd": {
@@ -1681,6 +1854,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aavivut": {
@@ -1691,6 +1865,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aavpdlj": {
@@ -1701,6 +1876,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aavsycu": {
@@ -1711,6 +1887,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aawterb": {
@@ -1721,6 +1898,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaylgpw": {
@@ -1731,6 +1909,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaysvaj": {
@@ -1741,6 +1920,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25aayxghj": {
@@ -1751,6 +1931,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aazuxfi": {
@@ -1761,6 +1942,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25ababepu": {
@@ -1771,6 +1953,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abfnszm": {
@@ -1781,6 +1964,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abigqxj": {
@@ -1791,6 +1975,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abikagm": {
@@ -1801,6 +1986,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abimrij": {
@@ -1811,6 +1997,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abimrke": {
@@ -1821,6 +2008,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF25abkopax": {
@@ -1831,6 +2019,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abkprmd": {
@@ -1841,6 +2030,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abkpyds": {
@@ -1851,6 +2041,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "other",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abmnhes": {
@@ -1861,6 +2052,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abmvvxh": {
@@ -1871,6 +2063,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abpdxzo": {
@@ -1881,6 +2074,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25abpfatp": {
@@ -1891,6 +2085,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abqzeqy": {
@@ -1901,6 +2096,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF25abuzfte": {
@@ -1911,6 +2107,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "other",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abwlscr": {
@@ -1921,6 +2118,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abwnnkt": {
@@ -1931,6 +2129,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abyqaky": {
@@ -1941,6 +2140,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acamzgr": {
@@ -1951,6 +2151,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acdesme": {
@@ -1961,6 +2162,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acelamc": {
@@ -1971,6 +2173,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acelvvz": {
@@ -1981,6 +2184,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25acfgohg": {
@@ -1991,6 +2195,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acgqggy": {
@@ -2001,6 +2206,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acgqhjx": {
@@ -2011,6 +2217,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18aaqjtti": {
@@ -2021,6 +2228,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18aawpfpp": {
@@ -2031,6 +2239,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18abtjmns": {
@@ -2041,6 +2250,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18abwisaz": {
@@ -2051,6 +2261,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18adowxvg": {
@@ -2061,6 +2272,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aawlgne": {
@@ -2071,6 +2283,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aazpzuh": {
@@ -2081,6 +2294,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": null
   },
   "ZTF19abegzry": {
@@ -2091,6 +2305,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF21aasyjxq": {
@@ -2101,6 +2316,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF21abiolfh": {
@@ -2111,6 +2327,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF21abouxex": {
@@ -2121,6 +2338,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aabkxss": {
@@ -2131,6 +2349,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aakanao": {
@@ -2141,6 +2360,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF23aamskdj": {
@@ -2151,6 +2371,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abhyroo": {
@@ -2161,6 +2382,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abhyssf": {
@@ -2171,6 +2393,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "other",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abiewbt": {
@@ -2181,6 +2404,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abqkppm": {
@@ -2191,6 +2415,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abrqyby": {
@@ -2201,6 +2426,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abshiqq": {
@@ -2211,6 +2437,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23absjgxb": {
@@ -2221,6 +2448,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abvnmam": {
@@ -2231,6 +2459,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aaegbrh": {
@@ -2241,6 +2470,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaekccp": {
@@ -2251,6 +2481,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aagjqcx": {
@@ -2261,6 +2492,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahalmb": {
@@ -2271,6 +2503,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahxgoa": {
@@ -2281,6 +2514,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahxmmu": {
@@ -2291,6 +2525,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aakghyl": {
@@ -2301,6 +2536,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aapebzb": {
@@ -2311,6 +2547,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aapexhw": {
@@ -2321,6 +2558,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aarxxmm": {
@@ -2331,6 +2569,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aascytf": {
@@ -2341,6 +2580,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aasigoj": {
@@ -2351,6 +2591,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aasvdze": {
@@ -2361,6 +2602,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aatieok": {
@@ -2371,6 +2613,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aatytqv": {
@@ -2381,6 +2624,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aawakwl": {
@@ -2391,6 +2635,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaxhomn": {
@@ -2401,6 +2646,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aaxlnut": {
@@ -2411,6 +2657,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaxqoeo": {
@@ -2421,6 +2668,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abavoif": {
@@ -2431,6 +2679,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abdbdhr": {
@@ -2441,6 +2690,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abdtszn": {
@@ -2451,6 +2701,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abdumvs": {
@@ -2461,6 +2712,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abffaqw": {
@@ -2471,6 +2723,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abihsvi": {
@@ -2481,6 +2734,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24ablflur": {
@@ -2491,6 +2745,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24ablvshn": {
@@ -2501,6 +2756,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aboqfdy": {
@@ -2511,6 +2767,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abrfiya": {
@@ -2521,6 +2778,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abtbalq": {
@@ -2531,6 +2789,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abtdiyv": {
@@ -2541,6 +2800,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abugkym": {
@@ -2551,6 +2811,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abzsuck": {
@@ -2561,6 +2822,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25aaawpmf": {
@@ -2571,6 +2833,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aabaanf": {
@@ -2581,6 +2844,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aacjgut": {
@@ -2591,6 +2855,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aadlhzw": {
@@ -2601,6 +2866,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aagzocg": {
@@ -2611,6 +2877,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aajfyvr": {
@@ -2621,6 +2888,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aakcynb": {
@@ -2631,6 +2899,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aalbnkr": {
@@ -2641,6 +2910,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aalyfoi": {
@@ -2651,6 +2921,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aapvkmi": {
@@ -2661,6 +2932,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25aasfogb": {
@@ -2671,6 +2943,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aatclux": {
@@ -2681,6 +2954,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aatxryo": {
@@ -2691,6 +2965,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aawdzpn": {
@@ -2701,6 +2976,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aawngni": {
@@ -2711,6 +2987,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abajquu": {
@@ -2721,6 +2998,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abcjnkx": {
@@ -2731,6 +3009,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abeefof": {
@@ -2741,6 +3020,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25abfmbhf": {
@@ -2751,6 +3031,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abghdgt": {
@@ -2761,6 +3042,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abjeuls": {
@@ -2771,6 +3053,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aboqxdx": {
@@ -2781,6 +3064,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25absqinr": {
@@ -2791,6 +3075,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abwjtwc": {
@@ -2801,6 +3086,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abwkieo": {
@@ -2811,6 +3097,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abzklfa": {
@@ -2821,6 +3108,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acberoe": {
@@ -2831,6 +3119,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acegaon": {
@@ -2841,6 +3130,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acftcra": {
@@ -2851,6 +3141,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25ackyfnb": {
@@ -2861,6 +3152,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF18aakycpv": {
@@ -2871,6 +3163,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": null
   },
   "ZTF18aaoskkx": {
@@ -2881,6 +3174,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22abizuah": {
@@ -2891,6 +3185,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22ablxfkb": {
@@ -2901,6 +3196,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22abzgbtq": {
@@ -2911,6 +3207,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aaabzea": {
@@ -2921,6 +3218,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aadchqd": {
@@ -2931,6 +3229,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aalgqsq": {
@@ -2941,6 +3240,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF23aavmthe": {
@@ -2951,6 +3251,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abkhwgb": {
@@ -2961,6 +3262,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23abomtge": {
@@ -2971,6 +3273,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaabljq": {
@@ -2981,6 +3284,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahdfdo": {
@@ -2991,6 +3295,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaifila": {
@@ -3001,6 +3306,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aayqrow": {
@@ -3011,6 +3317,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abpiwwi": {
@@ -3021,6 +3328,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abpxbbk": {
@@ -3031,6 +3339,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abymeet": {
@@ -3041,6 +3350,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aafofmu": {
@@ -3051,6 +3361,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aagbrpb": {
@@ -3061,6 +3372,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aankyog": {
@@ -3071,6 +3383,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aapsisw": {
@@ -3081,6 +3394,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": null
   },
   "ZTF25abbzfjz": {
@@ -3091,6 +3405,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25abcznka": {
@@ -3101,6 +3416,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abeldua": {
@@ -3111,6 +3427,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acgorke": {
@@ -3121,6 +3438,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18abqtnbk": {
@@ -3131,6 +3449,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18adhshnn": {
@@ -3141,6 +3460,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF22abbtqnp": {
@@ -3151,6 +3471,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF23aaxuvkn": {
@@ -3161,6 +3482,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aabuaij": {
@@ -3171,6 +3493,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aabvdxj": {
@@ -3181,6 +3504,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aagkjca": {
@@ -3191,6 +3515,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aahuzig": {
@@ -3201,6 +3526,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aawtoiv": {
@@ -3211,6 +3537,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aaxdooe": {
@@ -3221,6 +3548,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaztbct": {
@@ -3231,6 +3559,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abajmau": {
@@ -3241,6 +3570,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abhsqly": {
@@ -3251,6 +3581,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abnsght": {
@@ -3261,6 +3592,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24absrpsn": {
@@ -3271,6 +3603,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24absznoi": {
@@ -3281,6 +3614,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abyqzpi": {
@@ -3291,6 +3625,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaadytl": {
@@ -3301,6 +3636,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aacdjzo": {
@@ -3311,6 +3647,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aajuqtp": {
@@ -3321,6 +3658,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaovvcg": {
@@ -3331,6 +3669,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25abecvml": {
@@ -3341,6 +3680,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25ablgkgi": {
@@ -3351,6 +3691,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25ablulax": {
@@ -3361,6 +3702,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF25abmpngy": {
@@ -3371,6 +3713,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "SN",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF19aatubsj": {
@@ -3381,6 +3724,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF19abclykm": {
@@ -3391,6 +3735,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "SN",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF20aacbwbm": {
@@ -3401,6 +3746,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF22aakyeps": {
@@ -3411,6 +3757,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aadfmaf": {
@@ -3421,6 +3768,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaizdbb": {
@@ -3431,6 +3779,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24aaouput": {
@@ -3441,6 +3790,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF24abtmueg": {
@@ -3451,6 +3801,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25aaqvqvd": {
@@ -3461,6 +3812,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF25acemaph": {
@@ -3471,6 +3823,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": null
   },
   "ZTF18aaadtdc": {
@@ -3481,6 +3834,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aagfjja": {
@@ -3491,6 +3845,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aagkxhb": {
@@ -3501,6 +3856,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18aahzyhn": {
@@ -3511,6 +3867,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aailsee": {
@@ -3521,6 +3878,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aakaajs": {
@@ -3531,6 +3889,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aakpnyt": {
@@ -3541,6 +3900,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aaqzhib": {
@@ -3551,6 +3911,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18aawwbqm": {
@@ -3561,6 +3922,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18abcdzte": {
@@ -3571,6 +3933,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18abnuhuy": {
@@ -3581,6 +3944,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18abrzevn": {
@@ -3591,6 +3955,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18abtgnxs": {
@@ -3601,6 +3966,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "VS"
   },
   "ZTF18abuxiwj": {
@@ -3611,6 +3977,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18abvpnnb": {
@@ -3621,6 +3988,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18acessji": {
@@ -3631,6 +3999,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18acqzdbs": {
@@ -3641,6 +4010,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "SN"
   },
   "ZTF18acuavde": {
@@ -3651,6 +4021,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF18acwyvak": {
@@ -3661,6 +4032,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF18adbzccu": {
@@ -3671,6 +4043,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF18adkbtan": {
@@ -3681,6 +4054,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF19aaapljd": {
@@ -3691,6 +4065,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF19aadkzep": {
@@ -3701,6 +4076,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19aagzanb": {
@@ -3711,6 +4087,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19aalfyyn": {
@@ -3721,6 +4098,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19aaodsna": {
@@ -3731,6 +4109,7 @@
    "alerce_bhrf": "other",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19aaoiawb": {
@@ -3741,6 +4120,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF19aayiili": {
@@ -3751,6 +4131,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19abcegcy": {
@@ -3761,6 +4142,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19abcsyho": {
@@ -3771,6 +4153,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF19abcudso": {
@@ -3781,6 +4164,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "AGN",
    "lasair": "VS"
   },
   "ZTF19abmmksy": {
@@ -3791,6 +4175,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF19abuomnw": {
@@ -3801,6 +4186,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF19adddxxc": {
@@ -3811,6 +4197,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "AGN",
    "lasair": "VS"
   },
   "ZTF19admhfcq": {
@@ -3821,6 +4208,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20aanlygx": {
@@ -3831,6 +4219,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20aasivtu": {
@@ -3841,6 +4230,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "VS"
   },
   "ZTF20abbfgpw": {
@@ -3851,6 +4241,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20abbhlct": {
@@ -3861,6 +4252,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF20acczeov": {
@@ -3871,16 +4263,18 @@
    "alerce_bhrf": "other",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20acgcnjt": {
    "group": "AGN/QSO",
    "truth": "AGN",
-   "status": "insufficient",
+   "status": "agree",
    "alerce": "AGN",
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "AGN",
    "lasair": "NT"
   },
   "ZTF20achxjie": {
@@ -3891,6 +4285,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF20acirhrj": {
@@ -3901,6 +4296,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF20ackgsov": {
@@ -3911,6 +4307,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20acngcej": {
@@ -3921,6 +4318,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF20acwyoqx": {
@@ -3931,6 +4329,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF21aagtqkc": {
@@ -3941,6 +4340,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF21aaihchs": {
@@ -3951,6 +4351,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF21aaltbzp": {
@@ -3961,6 +4362,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF21aalxxzn": {
@@ -3971,6 +4373,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF21aaqqwsa": {
@@ -3981,6 +4384,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF21aatlewl": {
@@ -3991,6 +4395,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF21abxowzx": {
@@ -4001,6 +4406,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF21abycgve": {
@@ -4011,6 +4417,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF21achafqr": {
@@ -4021,6 +4428,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF21acnwaqk": {
@@ -4031,6 +4439,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "NT"
   },
   "ZTF22aabwxtw": {
@@ -4041,6 +4450,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "no vote",
    "lasair": "AGN"
   },
   "ZTF22aaqccka": {
@@ -4051,6 +4461,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF23aabfdgi": {
@@ -4061,6 +4472,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "NT"
   },
   "ZTF23aahbtjx": {
@@ -4071,6 +4483,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF23aaslxmh": {
@@ -4081,6 +4494,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF23abbzfyu": {
@@ -4091,6 +4505,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF23abihmun": {
@@ -4101,6 +4516,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF23abikzfr": {
@@ -4111,6 +4527,7 @@
    "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF23abqkwzr": {
@@ -4121,6 +4538,7 @@
    "alerce_bhrf": "no vote",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "NT"
   },
   "ZTF23absjgzg": {
@@ -4131,6 +4549,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF24aalnrat": {
@@ -4141,6 +4560,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24aapsitb": {
@@ -4151,16 +4571,18 @@
    "alerce_bhrf": "AGN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "VS"
   },
   "ZTF24ablzlmw": {
    "group": "AGN/QSO",
    "truth": "AGN",
-   "status": "disagree",
-   "alerce": "other",
-   "alerce_bhrf": "other",
+   "status": "agree",
+   "alerce": "SN",
+   "alerce_bhrf": "SN",
    "fink_science": "no vote",
    "fink_served": "no vote",
+   "antares": "no vote",
    "lasair": "SN"
   },
   "ZTF24abwsyas": {
@@ -4171,6 +4593,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF24abwywkf": {
@@ -4181,6 +4604,7 @@
    "alerce_bhrf": "TDE",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   },
   "ZTF25aagqeks": {
@@ -4191,6 +4615,7 @@
    "alerce_bhrf": "AGN",
    "fink_science": "AGN",
    "fink_served": "AGN",
+   "antares": "AGN",
    "lasair": "AGN"
   }
  }

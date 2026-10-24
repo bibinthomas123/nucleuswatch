@@ -81,7 +81,7 @@ def build(
         "created": datetime.now(timezone.utc).isoformat(timespec="seconds"),  # when this ran
         "backfill": now < datetime.now(timezone.utc) - timedelta(days=1),
         "nucleuswatch_version": __version__,
-        "query": {**search.query, "bright_mag": bright_mag, "brokers": brokers or ["alerce", "fink", "lasair"]},
+        "query": {**search.query, "bright_mag": bright_mag, "brokers": brokers or ["alerce", "fink", "lasair", "antares"]},
         "errors": search.errors,
         "funnel": search.funnel,
         "n_candidates": len(candidates),
