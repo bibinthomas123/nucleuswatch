@@ -70,6 +70,23 @@ def latests_all(fink_class: str, start: date, stop: date, *, use_cache: bool = T
             + latests_all(fink_class, mid, stop, use_cache=use_cache, ttl=ttl))
 
 
+def positive_alert_mjds(object_id: str, *, use_cache: bool = True, ttl: float = 86400) -> list[float]:
+    """MJDs of every positive-subtraction alert Fink holds for an object.
+
+    Only two columns are requested, so this stays cheap even for AGN with
+    hundreds of alerts. Used to date the start of the current flare.
+    """
+    rows = request_json(
+        "POST",
+        f"{API}/objects",
+        json_body={"objectId": object_id, "output-format": "json", "columns": "i:jd,i:isdiffpos"},
+        use_cache=use_cache,
+        ttl=ttl,
+    )
+    return sorted(r["i:jd"] - JD_TO_MJD for r in rows
+                  if r.get("i:jd") and r.get("i:isdiffpos") in ("t", "1", 1, True))
+
+
 CUTOUT_KINDS = ("Science", "Template", "Difference")
 
 

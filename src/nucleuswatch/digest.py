@@ -545,9 +545,11 @@ mag ≤ {_fmt(q.get('bright_mag'), 0)}; faint goes down to {_fmt(cuts.get('mag_m
 <h2 id="details"><span class="num">04</span>Entries</h2>{cards}
 
 <h2 id="known"><span class="num">05</span>Known nuclear sources active this window</h2>
-<p>These objects pass the nuclear cuts but were first detected more than {_fmt(q.get('new_within_days'), 0)}
-days ago. Most are AGN, which vary all the time. A sudden flare in one of them can still matter, but there are
-too many to compare across brokers every week, so they're listed without consensus.</p>
+<p>These objects pass the nuclear cuts, were first detected more than {_fmt(q.get('new_within_days'), 0)}
+days ago, and their nucleus was already producing alerts in the two years before the current flare began. Most
+are AGN, which vary all the time. A source that was quiet for years and has just started flaring is listed under
+new candidates instead, even if its ZTF name is old. There are too many known sources to compare across brokers
+every week, so they're listed without consensus.</p>
 <div class="table-wrap"><table><thead><tr><th>object</th><th class="num">mag</th><th>band</th><th class="num">RA</th>
 <th class="num">Dec</th><th>found via</th></tr></thead>
 <tbody>{known_rows}</tbody></table></div>{known_more}

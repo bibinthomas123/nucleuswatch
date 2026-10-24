@@ -136,6 +136,52 @@ def analyse(truth: list[dict], selected: dict[str, dict]) -> dict:
     return out
 
 
+def new_known_rules(truth: list[dict], selected: dict[str, dict]) -> dict:
+    """Compare the digest's new/known rules on selected TDEs and AGN, at first selection.
+
+    old:   known if Fink's first detection is > NEW_WITHIN days before selection
+    flare: known if old AND (positive alerts in the 730 d before the current flare
+           began, OR the flare itself started > NEW_WITHIN days earlier)
+    Histories are ALeRCE's (complete ZTF alert stream).
+    """
+    from concurrent.futures import ThreadPoolExecutor
+
+    from nucleuswatch.brokers import alerce
+
+    groups = {t["object_id"]: t["group"] for t in truth}
+    objs = [o for o, g in groups.items() if g in ("TDE", "AGN/QSO") and o in selected
+            and selected[o]["mag"] <= 20.0 and math.isfinite(selected[o]["first_pass_mjd"])]
+    with ThreadPoolExecutor(6) as pool:
+        hist = dict(zip(objs, pool.map(lambda o: alerce.positive_alert_mjds(o, ttl=30 * 86400), objs)))
+
+    def is_old(o):
+        sel = selected[o]
+        return sel["first_seen_mjd"] is not None and sel["first_pass_mjd"] - sel["first_seen_mjd"] > NEW_WITHIN
+
+    out = {}
+    for name, known in (
+        ("first detection only", lambda o: is_old(o)),
+        ("pre-flare activity", lambda o: is_old(o) and _flare_known(hist[o], selected[o]["first_pass_mjd"])),
+    ):
+        out[name] = {
+            "TDE new": sum(not known(o) for o in objs if groups[o] == "TDE"),
+            "TDE total": sum(groups[o] == "TDE" for o in objs),
+            "AGN known": sum(known(o) for o in objs if groups[o] != "TDE"),
+            "AGN total": sum(groups[o] != "TDE" for o in objs),
+        }
+    return out
+
+
+def _flare_known(mjds: list[float], at: float, gap: float = 30, lookback: float = 730) -> bool:
+    from nucleuswatch.recipes import flare_onset
+
+    onset = flare_onset(mjds, at, gap)
+    if onset is None:
+        return True
+    prior = sum(1 for m in mjds if onset - lookback <= m < onset)
+    return prior > 0 or at - onset > NEW_WITHIN
+
+
 def figure_completeness(truth: list[dict], selected: dict[str, dict]) -> None:
     import matplotlib.pyplot as plt
 
@@ -226,6 +272,20 @@ def render(r: dict) -> str:
          "detections (nuclear variability or subtraction residuals), so a first-detection age test misfiles "
          "them; the long tail of the latency distribution has the same cause."),
         "",
+        "## New vs known",
+        "",
+        "How the digest's split would file the selected TDEs and AGN at the time they were first selected:",
+        "",
+        "| rule | TDEs kept new | AGN filed as known |",
+        "|---|---|---|",
+        *(f"| {name} | {v['TDE new']}/{v['TDE total']} | {v['AGN known']}/{v['AGN total']} |"
+          for name, v in r["analysis"].get("new_known_rules", {}).items()),
+        "",
+        "*first detection only*: known if Fink's first detection at the position is more than a year old.",
+        "*pre-flare activity* (used by the digest): additionally requires positive alerts in the two years",
+        "before the current flare began (runs of alerts with gaps under 30 d), or a flare older than a year.",
+        "Histories from ALeRCE. The thresholds were tuned on this sample, so they need checking on 2026 data.",
+        "",
         "## Selection by type",
         "",
         "| TNS type | objects | pass alert cuts | " + " | ".join(f"selected ≤ {m}" for m in MAG_LIMITS) + " |",
@@ -271,6 +331,7 @@ def main() -> int:
         selected = replay(start, stop)
 
     analysis = analyse(truth, selected)
+    analysis["new_known_rules"] = new_known_rules(truth, selected)
     sel_json = {o: {**v, "streams": sorted(v["streams"]),
                     "first_pass_mjd": v["first_pass_mjd"] if math.isfinite(v["first_pass_mjd"]) else None}
                 for o, v in selected.items()}

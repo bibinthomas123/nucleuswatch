@@ -52,3 +52,14 @@ def parse(object_id: str, obj: dict, probs: list[dict], lc: dict) -> BrokerResul
         extra={"stellar": obj.get("stellar")},
         url=f"https://alerce.online/object/{object_id}",
     )
+
+
+def positive_alert_mjds(object_id: str, *, use_cache: bool = True, ttl: float = 86400) -> list[float]:
+    """MJDs of every positive-subtraction detection of an object.
+
+    ALeRCE ingests every public ZTF alert, so this history is complete (Fink's
+    keeps only alerts that pass its quality filters). Used to date the start
+    of the current flare.
+    """
+    rows = request_json("GET", f"{API}/objects/{object_id}/detections", use_cache=use_cache, ttl=ttl)
+    return sorted(d["mjd"] for d in rows if d.get("mjd") is not None and d.get("isdiffpos") == 1)

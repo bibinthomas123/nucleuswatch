@@ -79,3 +79,54 @@ def test_query_records_sources_actually_used(fink_stream):
     search = nuclear_transients(7, merge=False, sources=("fink", "lasair"), now=past)
     assert search.query["sources"] == ["fink"]
     assert search.query["sources_requested"] == ["fink", "lasair"]
+
+
+def test_flare_onset_follows_the_latest_run():
+    from nucleuswatch.recipes import flare_onset
+
+    mjds = [100, 110, 500, 510, 520, 530]
+    assert flare_onset(mjds, 600, gap=30) == 500   # gap 110 -> 500 breaks the run
+    assert flare_onset(mjds, 600, gap=400) == 100  # long gap allowed: one run
+    assert flare_onset(mjds, 105, gap=30) == 100   # only alerts up to `at` count
+    assert flare_onset([], 600, gap=30) is None
+
+
+def test_old_object_with_quiet_nucleus_stays_new(monkeypatch):
+    """A TDE in a galaxy with an old detection must not be filed as known."""
+    from nucleuswatch.brokers import alerce, lasair
+
+    old_id = "ZTF18tdeaaaa"
+    rows = [{"objectId": old_id, "ramean": 1.0, "decmean": 2.0, "gmag": 18.0, "rmag": 18.2,
+             "jdmax": 2461330.5, "ncand": 5, "separationArcsec": 0.1},
+            {"objectId": "ZTF18agnbbbb", "ramean": 3.0, "decmean": 4.0, "gmag": 18.0, "rmag": None,
+             "jdmax": 2461330.5, "ncand": 300, "separationArcsec": 0.1}]
+    now = datetime.now(timezone.utc)
+    now_mjd = now.timestamp() / 86400 + 40587
+    histories = {
+        old_id: [now_mjd - 2000, now_mjd - 20, now_mjd - 10, now_mjd - 1],      # quiet for years, new flare
+        "ZTF18agnbbbb": [now_mjd - d for d in range(0, 1500, 15)],              # always active
+    }
+    monkeypatch.setattr(fink, "latests", lambda *a, **kw: [])
+    monkeypatch.setattr(lasair, "nuclear_candidates", lambda *a, **kw: [dict(r) for r in rows])
+    monkeypatch.setattr(alerce, "positive_alert_mjds", lambda oid, **kw: histories[oid])
+    s = nuclear_transients(7, sources=("fink", "lasair"), new_within_days=365, merge=False, now=now)
+    assert list(s.candidates["object_id"]) == [old_id]
+    assert list(s.known["object_id"]) == ["ZTF18agnbbbb"]
+    assert s.candidates.iloc[0]["prior_alerts"] == 0
+
+
+def test_flare_history_falls_back_to_fink_then_files_as_known(monkeypatch):
+    from nucleuswatch.brokers import alerce
+    from nucleuswatch.recipes import _flare_history
+
+    def down(oid, **kw):
+        raise bm.BrokerError("down")
+
+    monkeypatch.setattr(alerce, "positive_alert_mjds", down)
+    monkeypatch.setattr(fink, "positive_alert_mjds", lambda oid, **kw: [100.0, 110.0])
+    errors = []
+    assert _flare_history(["ZTF18aaaaaaa"], 120.0, 30, 730, use_cache=False, errors=errors) == \
+        {"ZTF18aaaaaaa": (100.0, 0)}
+    monkeypatch.setattr(fink, "positive_alert_mjds", down)
+    assert _flare_history(["ZTF18aaaaaaa"], 120.0, 30, 730, use_cache=False, errors=errors) == {}
+    assert "filed as known" in errors[-1]

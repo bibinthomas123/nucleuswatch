@@ -1,7 +1,7 @@
 # End-to-end completeness
 
 The weekly recipe (Fink sources, cuts at `mag_max` ≤ 20.5) is replayed from **2024-01-01 to 2026-01-01** (104 weekly windows). Truth is the TNS
-spectroscopic classification as cross-matched by Fink. nucleuswatch 1.0.0, generated 2026-10-24T04:16:53+00:00 by `validation/end_to_end.py`.
+spectroscopic classification as cross-matched by Fink. nucleuswatch 1.0.0, generated 2026-10-24T07:49:45+00:00 by `validation/end_to_end.py`.
 
 ## Confirmed TDEs
 
@@ -10,6 +10,20 @@ spectroscopic classification as cross-matched by Fink. nucleuswatch 1.0.0, gener
 - At the same limit (mag ≤ 20.5), TDEs with a passing alert that the recipe never selected (stream-selection loss): 0. Selected although no TNS-stream alert passes (the recipe saw a passing alert in another stream): 1. The TNS stream holds only part of each object's alerts, so the two counts use different alert sets.
 - Median latency from the flare's first alert to first selection: **7 d** (16th–84th percentile 0–329 d, N = 35). Flare onset is the earliest alert within a year before selection. Objects with alerts throughout that year (ongoing nuclear activity) have no well-defined onset and pile up near 365 d.
 - Selected TDEs that the digest would file as *known* (Fink's first detection > 365 d before selection): **16**. Their positions have older detections (nuclear variability or subtraction residuals), so a first-detection age test misfiles them; the long tail of the latency distribution has the same cause.
+
+## New vs known
+
+How the digest's split would file the selected TDEs and AGN at the time they were first selected:
+
+| rule | TDEs kept new | AGN filed as known |
+|---|---|---|
+| first detection only | 20/36 | 68/72 |
+| pre-flare activity | 27/36 | 57/72 |
+
+*first detection only*: known if Fink's first detection at the position is more than a year old.
+*pre-flare activity* (used by the digest): additionally requires positive alerts in the two years
+before the current flare began (runs of alerts with gaps under 30 d), or a flare older than a year.
+Histories from ALeRCE. The thresholds were tuned on this sample, so they need checking on 2026 data.
 
 ## Selection by type
 

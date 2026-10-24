@@ -4,7 +4,7 @@ from datetime import datetime, timezone
 import pytest
 
 from nucleuswatch import digest
-from nucleuswatch.brokers import fink
+from nucleuswatch.brokers import alerce, fink
 
 from .conftest import load
 
@@ -31,6 +31,11 @@ def offline_digest(offline_brokers, monkeypatch):
                         lambda cls, *a, **kw: load("fink_latests_sn.json") if cls == "SN candidate" else [])
     monkeypatch.setattr(fink, "cutout", lambda *a, **kw: [[0.0, 1.0], [1.0, 0.0]])
     monkeypatch.setattr(lasair, "nuclear_candidates", lambda *a, **kw: [dict(r) for r in LASAIR_NT])
+    now_mjd = NOW.timestamp() / 86400 + 40587
+    # The old AGN has fired every 10 days for years; everything else has no history.
+    busy = [now_mjd - d for d in range(0, 1500, 10)]
+    monkeypatch.setattr(alerce, "positive_alert_mjds",
+                        lambda oid, **kw: busy if oid == "ZTF18bbbbbbb" else [])
 
 
 def test_build_record_is_json_serialisable(offline_digest):

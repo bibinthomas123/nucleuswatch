@@ -18,9 +18,17 @@ Candidates can come from two sources:
   alert-level cuts can't be applied to these, so they rely on Sherlock's
   association and the magnitude limit.
 
-With ``new_within_days`` set, objects first detected longer ago (mostly AGN
-that vary all the time) are listed separately in ``search.known`` and are not
-looked up in every broker.
+With ``new_within_days`` set, objects are split into *new* and *known*. An
+object first detected less than ``new_within_days`` ago is new. An older one
+is known only if its nucleus was already active before the current flare:
+at least one positive alert in the ``flare_lookback`` days before the flare
+began, where the flare is the run of positive alerts with no gap longer than
+``flare_gap`` days, or a flare that itself started more than
+``new_within_days`` ago. This keeps TDEs in galaxies with old detections in the
+new list (75% of confirmed TDEs instead of 56%, at the cost of filing 79%
+instead of 94% of AGN as known; tuned on 2024-2025, see validation/). Alert
+histories come from ALeRCE, which keeps every public ZTF alert.
+Known objects are listed in ``search.known`` and not looked up in every broker.
 
 All thresholds are parameters; tune them for your science case.
 """
@@ -35,7 +43,7 @@ from datetime import datetime, timedelta, timezone
 import pandas as pd
 
 from ._http import BrokerError
-from .brokers import fink, lasair
+from .brokers import alerce, fink, lasair
 from .brokers.base import JD_TO_MJD, ZTF_BANDS
 from .core import MergedObject, get_object
 
@@ -101,6 +109,8 @@ def nuclear_transients(
     sources: tuple[str, ...] = ("fink",),
     fink_classes: tuple[str, ...] = NUCLEAR_FINK_CLASSES,
     new_within_days: float | None = None,
+    flare_gap: float = 30,
+    flare_lookback: float = 730,
     merge: bool = True,
     brokers: list[str] | None = None,
     use_cache: bool = True,
@@ -181,9 +191,26 @@ def nuclear_transients(
     table["age_days"] = [_age_days(r, now) for r in table.to_dict("records")]
     funnel["passed_cuts"] = len(table)
 
+    table["flare_onset_mjd"] = None
+    table["prior_alerts"] = None
     known = table.iloc[0:0]
     if new_within_days is not None:
-        is_new = table["age_days"].isna() | (table["age_days"] <= new_within_days)
+        old = ~(table["age_days"].isna() | (table["age_days"] <= new_within_days))
+        now_mjd = now.timestamp() / 86400 + 40587
+        history = _flare_history(list(table.loc[old, "object_id"]), now_mjd, flare_gap, flare_lookback,
+                                 use_cache=use_cache, errors=errors)
+        for oid, (onset, prior) in history.items():
+            idx = table.index[table["object_id"] == oid]
+            table.loc[idx, "flare_onset_mjd"] = onset
+            table.loc[idx, "prior_alerts"] = prior
+        # Old objects stay new if the current flare is recent and the nucleus was
+        # quiet before it. A nucleus that never paused (one endless "flare") is known.
+        def quiet_recent_flare(oid):
+            onset, prior = history.get(oid, (None, 1))
+            return onset is not None and prior == 0 and now_mjd - onset <= new_within_days
+
+        quiet = table["object_id"].map(quiet_recent_flare)
+        is_new = ~old | quiet
         known = table[~is_new].sort_values("mag").reset_index(drop=True)
         table = table[is_new]
     funnel["new"], funnel["known"] = len(table), len(known)
@@ -197,7 +224,8 @@ def nuclear_transients(
     query = {"recipe": "nuclear_transients", "days": days, "startdate": start.isoformat(),
              "stopdate": stop.isoformat(), "sources": used, "sources_requested": list(sources),
              "fink_classes": list(fink_classes),
-             "new_within_days": new_within_days, "cuts": asdict(cuts)}
+             "new_within_days": new_within_days, "flare_gap": flare_gap, "flare_lookback": flare_lookback,
+             "cuts": asdict(cuts)}
     return CandidateSearch(table, objects, query, errors, known, funnel)
 
 
@@ -269,6 +297,49 @@ def _lasair_row(r: dict) -> dict:
         "ndethist": r.get("ncand"),
         "sources": "lasair:NT",
     }
+
+
+def flare_onset(mjds: list[float], at: float, gap: float) -> float | None:
+    """Start of the run of positive alerts ending at the latest alert before ``at``.
+
+    The run is broken by any gap longer than ``gap`` days. None without alerts.
+    """
+    past = [m for m in sorted(mjds) if m <= at]
+    if not past:
+        return None
+    start = past[-1]
+    for m in reversed(past[:-1]):
+        if start - m > gap:
+            break
+        start = m
+    return start
+
+
+def _flare_history(object_ids: list[str], at: float, gap: float, lookback: float, *,
+                   use_cache: bool, errors: list[str]) -> dict[str, tuple[float | None, int]]:
+    """(flare onset, positive alerts in the ``lookback`` days before it) per object."""
+
+    def one(oid):
+        # ALeRCE has the complete alert history; Fink's is filtered, so it's the fallback.
+        try:
+            mjds = alerce.positive_alert_mjds(oid, use_cache=use_cache)
+        except BrokerError:
+            try:
+                mjds = fink.positive_alert_mjds(oid, use_cache=use_cache)
+            except BrokerError:
+                return oid, None
+        onset = flare_onset(mjds, at, gap)
+        if onset is None:
+            return oid, (None, 0)
+        return oid, (onset, sum(1 for m in mjds if onset - lookback <= m < onset))
+
+    with ThreadPoolExecutor(max_workers=8) as pool:
+        results = dict(pool.map(one, object_ids))
+    failed = [o for o, v in results.items() if v is None]
+    if failed:
+        # Without a history we can't tell, so keep the conservative "known" label.
+        errors.append(f"alert history unavailable for {len(failed)} object(s); filed as known")
+    return {o: v for o, v in results.items() if v is not None}
 
 
 def _age_days(row: dict, now: datetime) -> float | None:

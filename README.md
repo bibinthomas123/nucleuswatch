@@ -203,10 +203,13 @@ runs it every Monday and deploys the page to GitHub Pages:
   streams, plus Lasair objects that Sherlock classes as nuclear transients.
 - **Depth:** mag ≤ 20, where validation recovers 72% of confirmed TDEs. Each
   candidate is tagged *bright* (≤ 19) or *faint*.
-- **New vs known:** objects first detected in the last year are compared
-  across all brokers. Older nuclear sources that were active (mostly AGN) are
-  listed separately. A typical week has ~30 new candidates and ~350 known
-  sources.
+- **New vs known:** an object is *known* if it was first detected over a
+  year ago **and** its nucleus was producing alerts in the two years before
+  the current flare (mostly AGN). Everything else, including old sources that
+  were quiet for years and have just started flaring, is *new* and compared
+  across all brokers. This keeps 75% of confirmed TDEs in the new list (56%
+  with a plain age cut). A typical week has ~45 new candidates and ~320
+  known sources.
 - **Page contents:** headline numbers, a selection funnel, consensus and
   category breakdowns, a sky map, a table and a detailed card per candidate
   (host image from the Legacy Survey, merged light curve, stamps, broker
@@ -269,9 +272,9 @@ for objects, 10 min for streams) to respect rate limits.
   run live yet (it needs an LSST token).
 - Lasair-sourced candidates don't carry ZTF's alert-level cut fields; they
   rely on Sherlock's nuclear association and the magnitude limit.
-- "New" uses Fink's first-detection date where available, otherwise the year
-  in the ZTF name, so a new flare in an old ZTF object can land in the
-  known list.
+- The new-vs-known rule's thresholds (30-day flare gaps, 2-year look-back)
+  were tuned on the 2024–2025 validation sample and need checking on 2026
+  data. 25% of confirmed TDEs still land in the known list.
 - Direct Zooniverse upload is tested against a mocked client, not a live project.
 - The Alertissimo bridge handles single-object results.
   [docs/alertissimo.md](https://github.com/bibinthomas123/nucleuswatch/blob/main/docs/alertissimo.md) lists what Alertissimo can't do
