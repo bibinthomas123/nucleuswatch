@@ -1,12 +1,43 @@
 {
- "generated": "2026-10-26T11:53:40+00:00",
- "n_weeks": 11,
- "n_tracked": 94,
- "rows": [],
+ "generated": "2026-11-02T14:16:28+00:00",
+ "n_weeks": 12,
+ "n_tracked": 109,
+ "rows": [
+  {
+   "object_id": "ZTF26abziszp",
+   "week": "2026-10-24",
+   "recorded": "2026-10-24T19:29:28+00:00",
+   "backfill": false,
+   "consensus": "agree",
+   "alerce_vote": "SN",
+   "tde_score": 0.012,
+   "tns_then": null,
+   "mag": 18.7346,
+   "tns_now": "SN Ia",
+   "class_now": "SN"
+  }
+ ],
  "summary": {
-  "by_consensus": {},
-  "by_alerce_vote": {},
-  "by_score": {},
-  "classes": {}
+  "by_consensus": {
+   "agree": [
+    1,
+    0
+   ]
+  },
+  "by_alerce_vote": {
+   "other / none": [
+    1,
+    0
+   ]
+  },
+  "by_score": {
+   "< 0.1": [
+    1,
+    0
+   ]
+  },
+  "classes": {
+   "SN": 1
+  }
  }
 }
