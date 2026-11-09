@@ -1,8 +1,34 @@
 {
- "generated": "2026-11-02T14:16:28+00:00",
- "n_weeks": 12,
- "n_tracked": 109,
+ "generated": "2026-11-09T14:50:29+00:00",
+ "n_weeks": 13,
+ "n_tracked": 204,
  "rows": [
+  {
+   "object_id": "ZTF26acakche",
+   "week": "2026-10-23",
+   "recorded": "2026-10-23T23:51:05+00:00",
+   "backfill": false,
+   "consensus": "agree",
+   "alerce_vote": "SN",
+   "tde_score": null,
+   "tns_then": null,
+   "mag": 17.57149,
+   "tns_now": "SN Ia",
+   "class_now": "SN"
+  },
+  {
+   "object_id": "ZTF22aazfglb",
+   "week": "2026-10-24",
+   "recorded": "2026-10-24T19:29:28+00:00",
+   "backfill": false,
+   "consensus": "insufficient",
+   "alerce_vote": "SN",
+   "tde_score": 0.013,
+   "tns_then": null,
+   "mag": 17.2699,
+   "tns_now": "SN Ia",
+   "class_now": "SN"
+  },
   {
    "object_id": "ZTF26abziszp",
    "week": "2026-10-24",
@@ -20,24 +46,32 @@
  "summary": {
   "by_consensus": {
    "agree": [
+    2,
+    0
+   ],
+   "insufficient": [
     1,
     0
    ]
   },
   "by_alerce_vote": {
    "other / none": [
-    1,
+    3,
     0
    ]
   },
   "by_score": {
-   "< 0.1": [
+   "not scored": [
     1,
+    0
+   ],
+   "< 0.1": [
+    2,
     0
    ]
   },
   "classes": {
-   "SN": 1
+   "SN": 3
   }
  }
 }
